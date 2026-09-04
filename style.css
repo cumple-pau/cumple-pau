@@ -707,10 +707,45 @@ main {
         clamp(55px, 11vw, 105px);
 }
 
-.infinity p {
-    white-space: pre-line;
+/* ================================================= */
+/* TEXTO DEL INFINITO */
+/* ================================================= */
 
-    margin-bottom: 15px;
+.infinity-text {
+    width: min(800px, 100%);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    margin-top: 4px;
+}
+
+.infinity-text p {
+    width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(13px, 1.7vw, 17px);
+
+    line-height: 1.75;
+
+    text-align: center;
+}
+
+.infinity-highlight {
+    font-weight: 500;
+
+    font-size: clamp(14px, 1.8vw, 18px) !important;
+}
+
+.infinity-final {
+    font-family: 'DM Serif Display', serif;
+
+    font-size: clamp(17px, 2.5vw, 22px) !important;
+
+    line-height: 1.5 !important;
 }
 
 .final-heart {
@@ -1115,6 +1150,86 @@ main {
 
         font-size: 19px;
     }
+.infinity {
+    justify-content: flex-start;
+
+    padding:
+        22px
+        17px
+        85px;
+
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.infinity .rating-label {
+    font-size: 10px;
+
+    margin-bottom: 2px;
+
+    letter-spacing: 1.2px;
+}
+
+.infinity .rating {
+    font-size: 62px;
+
+    line-height: .85;
+
+    margin-bottom: 12px;
+}
+
+.infinity h2 {
+    font-size: 23px;
+
+    line-height: 1.15;
+
+    max-width: 340px;
+
+    margin-bottom: 20px;
+}
+
+.infinity-text {
+    gap: 19px;
+
+    width: 100%;
+
+    max-width: 370px;
+}
+
+.infinity-text p {
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: center;
+}
+
+.infinity-highlight {
+    font-size: 14px !important;
+
+    line-height: 1.65 !important;
+}
+
+.infinity-final {
+    font-size: 18px !important;
+
+    line-height: 1.45 !important;
+}
+
+.infinity .final-heart {
+    margin-top: 10px;
+
+    margin-bottom: 12px;
+}
+
+.infinity .final-message {
+    font-size: 17px;
+
+    line-height: 1.45;
+
+    margin-bottom: 15px;
+}
 }
 
 
