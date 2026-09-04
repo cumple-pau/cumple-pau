@@ -7,34 +7,56 @@ const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
 
 
+/* ================================================= */
+/* NAVEGACIÓN */
+/* ================================================= */
+
 function updateNavigation() {
 
-    /* PORTADA */
+    /* PORTADA: NO EXISTE LA NAVEGACIÓN */
     if (currentSlide === 0) {
 
-        navigation.classList.add("hidden");
+        navigation.style.display = "none";
 
         return;
     }
 
+
     /* RESTO DE DIAPOSITIVAS */
-    navigation.classList.remove("hidden");
+    navigation.style.display = "flex";
 
-    /* Flecha izquierda */
-    if (currentSlide === 0) {
-        prevButton.classList.add("hidden");
+
+    /* FLECHA IZQUIERDA */
+
+    if (currentSlide <= 0) {
+
+        prevButton.style.display = "none";
+
     } else {
-        prevButton.classList.remove("hidden");
+
+        prevButton.style.display = "block";
+
     }
 
-    /* Flecha derecha */
-    if (currentSlide === slides.length - 1) {
-        nextButton.classList.add("hidden");
+
+    /* FLECHA DERECHA */
+
+    if (currentSlide >= slides.length - 1) {
+
+        nextButton.style.display = "none";
+
     } else {
-        nextButton.classList.remove("hidden");
+
+        nextButton.style.display = "block";
+
     }
+
 }
 
+
+/* ================================================= */
+/* CAMBIAR DIAPOSITIVA */
+/* ================================================= */
 
 function showSlide(index) {
 
@@ -46,68 +68,101 @@ function showSlide(index) {
         index = slides.length - 1;
     }
 
+
     slides.forEach(slide => {
+
         slide.classList.remove("active");
+
     });
+
 
     slides[index].classList.add("active");
 
+
     currentSlide = index;
+
 
     updateNavigation();
 
+
+    /* CONFETI */
+
     if (index > 0) {
-        createConfetti(35);
+
+        createConfetti(25);
+
     }
+
 
     if (index === slides.length - 1) {
-        createConfetti(100);
+
+        createConfetti(80);
+
     }
+
 }
 
+
+/* ================================================= */
+/* SIGUIENTE */
+/* ================================================= */
 
 function nextSlide() {
 
     if (currentSlide < slides.length - 1) {
+
         showSlide(currentSlide + 1);
+
     }
 
 }
 
+
+/* ================================================= */
+/* ANTERIOR */
+/* ================================================= */
 
 function previousSlide() {
 
     if (currentSlide > 0) {
+
         showSlide(currentSlide - 1);
+
     }
 
 }
 
 
-/* ========================= */
+/* ================================================= */
 /* TECLADO */
-/* ========================= */
+/* ================================================= */
 
 document.addEventListener("keydown", event => {
 
-    if (event.key === "ArrowRight" || event.key === " ") {
+    if (
+        event.key === "ArrowRight" ||
+        event.key === " "
+    ) {
 
         event.preventDefault();
 
         nextSlide();
+
     }
+
 
     if (event.key === "ArrowLeft") {
 
         previousSlide();
+
     }
 
 });
 
 
-/* ========================= */
-/* MÓVIL / SWIPE */
-/* ========================= */
+/* ================================================= */
+/* SWIPE MÓVIL */
+/* ================================================= */
 
 let touchStartX = 0;
 
@@ -145,20 +200,23 @@ document.addEventListener("touchend", event => {
 });
 
 
-/* ========================= */
+/* ================================================= */
 /* CONFETI */
-/* ========================= */
+/* ================================================= */
 
-function createConfetti(amount = 50) {
+function createConfetti(amount = 40) {
 
     const container =
-        document.getElementById("confetti-container");
+        document.getElementById(
+            "confetti-container"
+        );
 
 
     for (let i = 0; i < amount; i++) {
 
         const piece =
             document.createElement("div");
+
 
         piece.classList.add("confetti");
 
@@ -176,8 +234,16 @@ function createConfetti(amount = 50) {
 
 
         piece.innerHTML =
-            ["💗", "✨", "🎉", "⭐"]
-            [Math.floor(Math.random() * 4)];
+            [
+                "💗",
+                "✨",
+                "⭐",
+                "🎉"
+            ][
+                Math.floor(
+                    Math.random() * 4
+                )
+            ];
 
 
         container.appendChild(piece);
@@ -194,21 +260,25 @@ function createConfetti(amount = 50) {
 }
 
 
-/* ========================= */
+/* ================================================= */
 /* CORAZONES */
-/* ========================= */
+/* ================================================= */
 
 function createHeart() {
 
     const container =
-        document.getElementById("hearts-container");
+        document.getElementById(
+            "hearts-container"
+        );
 
 
     const heart =
         document.createElement("div");
 
 
-    heart.classList.add("floating-heart");
+    heart.classList.add(
+        "floating-heart"
+    );
 
 
     heart.innerHTML = "💗";
@@ -219,11 +289,11 @@ function createHeart() {
 
 
     heart.style.fontSize =
-        (Math.random() * 15 + 15) + "px";
+        (Math.random() * 15 + 14) + "px";
 
 
     heart.style.animationDuration =
-        (Math.random() * 5 + 5) + "s";
+        (Math.random() * 5 + 6) + "s";
 
 
     container.appendChild(heart);
@@ -233,22 +303,24 @@ function createHeart() {
 
         heart.remove();
 
-    }, 10000);
+    }, 12000);
 
 }
 
 
-setInterval(createHeart, 900);
+setInterval(createHeart, 1100);
 
 
-/* ========================= */
+/* ================================================= */
 /* FIGURAS DEL FONDO */
-/* ========================= */
+/* ================================================= */
 
 function createDecoration() {
 
     const container =
-        document.getElementById("decorations-container");
+        document.getElementById(
+            "decorations-container"
+        );
 
 
     const decoration =
@@ -261,6 +333,7 @@ function createDecoration() {
 
 
     const figures = [
+
         "⭐",
         "✨",
         "👑",
@@ -268,13 +341,15 @@ function createDecoration() {
         "🦋",
         "🌸",
         "💫"
+
     ];
 
 
     decoration.innerHTML =
         figures[
             Math.floor(
-                Math.random() * figures.length
+                Math.random() *
+                figures.length
             )
         ];
 
@@ -284,14 +359,16 @@ function createDecoration() {
 
 
     decoration.style.fontSize =
-        (Math.random() * 15 + 15) + "px";
+        (Math.random() * 14 + 14) + "px";
 
 
     decoration.style.animationDuration =
         (Math.random() * 6 + 7) + "s";
 
 
-    container.appendChild(decoration);
+    container.appendChild(
+        decoration
+    );
 
 
     setTimeout(() => {
@@ -303,22 +380,25 @@ function createDecoration() {
 }
 
 
-setInterval(createDecoration, 1300);
+setInterval(
+    createDecoration,
+    1500
+);
 
 
-/* ========================= */
-/* BRILLOS INICIALES */
-/* ========================= */
+/* ================================================= */
+/* CONFETI INICIAL */
+/* ================================================= */
 
 setTimeout(() => {
 
-    createConfetti(60);
+    createConfetti(45);
 
-}, 800);
+}, 900);
 
 
-/* ========================= */
-/* INICIAR NAVEGACIÓN */
-/* ========================= */
+/* ================================================= */
+/* INICIO */
+/* ================================================= */
 
 updateNavigation();
