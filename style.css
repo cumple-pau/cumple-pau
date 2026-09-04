@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-/* ========================= */
-/* GENERAL */
-/* ========================= */
+/* ================================================= */
+/* BASE */
+/* ================================================= */
 
 * {
     margin: 0;
@@ -11,298 +11,181 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-
-    background:
-        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.35), transparent 20%),
-        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.25), transparent 25%),
-        linear-gradient(135deg, #ffd84d, #ffcf3f);
-
-    color: #493800;
-}
-
-
-/* ========================= */
-/* FONDO */
-/* ========================= */
-
-main {
     width: 100%;
-    height: 100vh;
-    position: relative;
-}
-
-#confetti-container,
-#hearts-container,
-#decorations-container {
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
+    height: 100%;
     overflow: hidden;
 
-    z-index: 200;
+    font-family: 'Poppins', sans-serif;
+
+    color: #493800;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #fff5b8 0%,
+            #ffe77b 28%,
+            #ffd84d 65%,
+            #f7c82e 100%
+        );
 }
 
 
-/* ========================= */
+/* ================================================= */
+/* CONTENEDOR PRINCIPAL */
+/* ================================================= */
+
+main {
+    position: relative;
+
+    width: 100%;
+    height: 100dvh;
+
+    overflow: hidden;
+}
+
+
+/* ================================================= */
 /* DIAPOSITIVAS */
-/* ========================= */
+/* ================================================= */
 
 .slide {
     position: absolute;
 
     inset: 0;
 
-    display: flex;
+    width: 100%;
+    height: 100%;
 
+    display: flex;
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 
-    padding: 45px 25px 90px;
+    padding:
+        clamp(20px, 4vh, 50px)
+        clamp(18px, 5vw, 60px)
+        90px;
 
     text-align: center;
 
     opacity: 0;
-
     visibility: hidden;
 
-    transform: scale(0.96) translateY(10px);
+    transform:
+        scale(.96)
+        translateY(12px);
 
     transition:
-        opacity 0.6s ease,
-        transform 0.6s ease,
-        visibility 0.6s;
+        opacity .55s ease,
+        transform .55s ease,
+        visibility .55s ease;
 }
 
 .slide.active {
     opacity: 1;
-
     visibility: visible;
 
-    transform: scale(1) translateY(0);
+    transform:
+        scale(1)
+        translateY(0);
 }
 
 
-/* ========================= */
+/* ================================================= */
 /* PORTADA */
-/* ========================= */
+/* ================================================= */
 
 .cover {
+    justify-content: center;
+
+    overflow: hidden;
+
     background:
         radial-gradient(
-            circle at 50% 15%,
-            rgba(255, 255, 220, 0.8),
+            circle at 50% 5%,
+            rgba(255,255,255,.55),
             transparent 25%
         ),
         radial-gradient(
-            circle at 10% 90%,
-            rgba(255, 201, 40, 0.8),
+            circle at 5% 95%,
+            rgba(255,191,30,.55),
             transparent 35%
         ),
         radial-gradient(
-            circle at 90% 80%,
-            rgba(255, 228, 119, 0.8),
+            circle at 100% 85%,
+            rgba(255,232,130,.65),
             transparent 35%
         );
 }
 
 
-/* ========================= */
-/* TARTA */
-/* ========================= */
+/* ================================================= */
+/* CONTENIDO DE PORTADA */
+/* ================================================= */
 
-.cake {
+.cover-content {
+    width: min(920px, 100%);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
     position: relative;
 
-    width: 230px;
+    z-index: 10;
+}
 
-    height: 180px;
 
-    margin-bottom: 5px;
+/* ================================================= */
+/* TEXTO SUPERIOR */
+/* ================================================= */
 
-    animation: cakeFloat 3s ease-in-out infinite;
+.birthday-small {
+    font-size: clamp(9px, 1.5vw, 13px);
+
+    font-weight: 600;
+
+    letter-spacing:
+        clamp(2px, .6vw, 4px);
+
+    opacity: .65;
+
+    margin-bottom:
+        clamp(5px, 1vh, 12px);
+
+    animation:
+        fadeDown .9s ease both;
+}
+
+
+/* ================================================= */
+/* TARTA */
+/* ================================================= */
+
+.new-cake {
+    position: relative;
+
+    width: min(320px, 72vw);
+
+    height: min(210px, 26vh);
+
+    margin-bottom:
+        clamp(-5px, -.5vh, 5px);
+
+    animation:
+        cakeFloat 3.5s ease-in-out infinite;
 }
 
 @keyframes cakeFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-7px);
-    }
-}
-
-.cake-layer {
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 10px 15px rgba(73, 56, 0, 0.15);
-}
-
-.cake-layer.bottom {
-    bottom: 0;
-
-    width: 220px;
-
-    height: 65px;
-
-    background: #f7a6b8;
-}
-
-.cake-layer.middle {
-    bottom: 48px;
-
-    width: 190px;
-
-    height: 55px;
-
-    background: #ffcfda;
-}
-
-.cake-layer.top {
-    bottom: 90px;
-
-    width: 155px;
-
-    height: 48px;
-
-    background: #fff1f5;
-}
-
-.cake-decoration {
-    position: absolute;
-
-    bottom: 12px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-size: 18px;
-
-    white-space: nowrap;
-}
-
-
-/* ========================= */
-/* VELAS */
-/* ========================= */
-
-.candles {
-    position: absolute;
-
-    top: 0;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 5px;
-
-    font-size: 25px;
-
-    z-index: 5;
-}
-
-.candles span {
-    display: inline-block;
-
-    animation:
-        candleFloat 1.5s ease-in-out infinite alternate;
-}
-
-.candles span:nth-child(2) {
-    animation-delay: 0.1s;
-}
-
-.candles span:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.candles span:nth-child(4) {
-    animation-delay: 0.3s;
-}
-
-.candles span:nth-child(5) {
-    animation-delay: 0.4s;
-}
-
-.candles span:nth-child(6) {
-    animation-delay: 0.5s;
-}
-
-.candles span:nth-child(7) {
-    animation-delay: 0.6s;
-}
-
-.candles span:nth-child(8) {
-    animation-delay: 0.7s;
-}
-
-@keyframes candleFloat {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-5px);
-    }
-}
-
-
-/* ========================= */
-/* NÚMERO 16 */
-/* ========================= */
-
-.big-number {
-    font-family: 'DM Serif Display', serif;
-
-    font-size: clamp(90px, 18vw, 175px);
-
-    line-height: 0.8;
-
-    color: #fff9d6;
-
-    text-shadow:
-        5px 5px 0 #eab72e,
-        10px 10px 20px rgba(73, 56, 0, 0.15);
-
-    margin: 5px 0 15px;
-
-    animation:
-        numberFloat 3s ease-in-out infinite,
-        numberGlow 2.5s ease-in-out infinite;
-}
-
-@keyframes numberFloat {
 
     0%,
     100% {
@@ -314,655 +197,176 @@ main {
     }
 }
 
-@keyframes numberGlow {
 
-    0%,
-    100% {
-        filter: brightness(1);
-    }
-
-    50% {
-        filter: brightness(1.12);
-    }
-}
-
-
-/* ========================= */
-/* TÍTULOS */
-/* ========================= */
-
-h1 {
-    font-family: 'DM Serif Display', serif;
-
-    font-size: clamp(27px, 5vw, 58px);
-
-    letter-spacing: 2px;
-
-    color: #493800;
-
-    margin-bottom: 9px;
-}
-
-.cover h2 {
-    font-family: 'DM Serif Display', serif;
-
-    font-size: clamp(23px, 4.5vw, 45px);
-
-    color: #fff;
-
-    text-shadow:
-        2px 2px 0 #d68b9c;
-
-    margin-bottom: 12px;
-}
-
-.cover p {
-    font-size: 15px;
-
-    margin-bottom: 23px;
-}
-
-
-/* ========================= */
-/* BOTONES */
-/* ========================= */
-
-button {
-    border: none;
-
-    background: #fff9d6;
-
-    color: #493800;
-
-    padding: 13px 23px;
-
-    border-radius: 30px;
-
-    font-family: 'Poppins', sans-serif;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 7px 15px rgba(73, 56, 0, 0.15);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-button:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 10px 20px rgba(73, 56, 0, 0.2);
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-
-/* ========================= */
-/* PUNTUACIONES */
-/* ========================= */
-
-.rating {
-    font-family: 'DM Serif Display', serif;
-
-    font-size: clamp(65px, 13vw, 125px);
-
-    color: #fff9d6;
-
-    text-shadow:
-        4px 4px 0 #eab72e,
-        8px 8px 18px rgba(73, 56, 0, 0.15);
-
-    margin-bottom: 8px;
-
-    animation: ratingFloat 3s ease-in-out infinite;
-}
-
-@keyframes ratingFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-
-/* ========================= */
-/* TEXTO DE LAS DIAPOSITIVAS */
-/* ========================= */
-
-.slide h2 {
-    font-family: 'DM Serif Display', serif;
-
-    font-size: clamp(25px, 4.5vw, 46px);
-
-    max-width: 850px;
-
-    margin-bottom: 20px;
-
-    line-height: 1.18;
-}
-
-.slide p {
-    max-width: 800px;
-
-    font-size: clamp(14px, 1.8vw, 17px);
-
-    line-height: 1.75;
-
-    font-weight: 400;
-}
-
-
-/* ========================= */
-/* ÚLTIMA DIAPOSITIVA */
-/* ========================= */
-
-.infinity {
-    justify-content: flex-start;
-
-    padding-top: 25px;
-
-    padding-bottom: 85px;
-
-    overflow-y: auto;
-}
-
-.infinity .rating {
-    font-size: clamp(55px, 11vw, 105px);
-}
-
-.infinity p {
-    max-width: 800px;
-
-    white-space: pre-line;
-
-    margin-bottom: 15px;
-}
-
-.final-heart {
-    font-size: 75px;
-
-    margin: 5px 0 10px;
-
-    animation:
-        heartBeat 1.3s ease-in-out infinite;
-}
-
-@keyframes heartBeat {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.15);
-    }
-}
-
-.final-message {
-    font-family: 'DM Serif Display', serif;
-
-    font-size: 22px;
-
-    line-height: 1.5;
-
-    margin-bottom: 25px;
-}
-
-
-/* ========================= */
-/* NAVEGACIÓN */
-/* ========================= */
-
-.navigation {
-    position: fixed;
-
-    bottom: 18px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    z-index: 100;
-}
-
-.navigation button {
-    width: 45px;
-
-    height: 45px;
-
-    padding: 0;
-
-    border-radius: 50%;
-
-    font-size: 22px;
-}
-
-
-/* ========================= */
-/* CONFETI */
-/* ========================= */
-
-.confetti {
-    position: fixed;
-
-    top: -30px;
-
-    font-size: 20px;
-
-    animation:
-        fall linear forwards;
-
-    filter: drop-shadow(
-        0 3px 4px rgba(73, 56, 0, 0.12)
-    );
-}
-
-@keyframes fall {
-
-    from {
-        transform:
-            translateY(-30px)
-            rotate(0deg);
-
-        opacity: 1;
-    }
-
-    to {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
-        opacity: 0;
-    }
-}
-
-
-/* ========================= */
-/* CORAZONES FLOTANTES */
-/* ========================= */
-
-.floating-heart {
-    position: fixed;
-
-    bottom: -40px;
-
-    animation:
-        floatHeart linear forwards;
-
-    opacity: 0.8;
-
-    filter:
-        drop-shadow(
-            0 3px 5px rgba(73, 56, 0, 0.12)
-        );
-}
-
-@keyframes floatHeart {
-
-    from {
-        transform:
-            translateY(0)
-            scale(1);
-
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.8;
-    }
-
-    to {
-        transform:
-            translateY(-110vh)
-            scale(1.3);
-
-        opacity: 0;
-    }
-}
-
-
-/* ========================= */
-/* DECORACIONES DEL FONDO */
-/* ========================= */
-
-.floating-decoration {
-    position: fixed;
-
-    bottom: -50px;
-
-    pointer-events: none;
-
-    animation:
-        floatDecoration linear forwards;
-
-    opacity: 0.75;
-
-    user-select: none;
-
-    filter:
-        drop-shadow(
-            0 3px 5px rgba(73, 56, 0, 0.1)
-        );
-}
-
-@keyframes floatDecoration {
-
-    0% {
-        transform:
-            translateY(0)
-            rotate(0deg)
-            scale(0.8);
-
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.75;
-    }
-
-    50% {
-        transform:
-            translateY(-50vh)
-            rotate(15deg)
-            scale(1);
-    }
-
-    100% {
-        transform:
-            translateY(-115vh)
-            rotate(-15deg)
-            scale(1.2);
-
-        opacity: 0;
-    }
-}
-
-
-/* ========================= */
-/* BRILLOS */
-/* ========================= */
-
-.sparkle {
-    position: fixed;
-
-    pointer-events: none;
-
-    animation:
-        sparkleAnimation 2s ease-in-out infinite;
-
-    opacity: 0.8;
-}
-
-@keyframes sparkleAnimation {
-
-    0%,
-    100% {
-        transform: scale(0.6);
-
-        opacity: 0.2;
-    }
-
-    50% {
-        transform: scale(1.2);
-
-        opacity: 1;
-    }
-}
-
-
-/* ========================= */
-/* MÓVIL */
-/* ========================= */
-
-@media (max-width: 600px) {
-
-    .slide {
-        padding: 25px 18px 80px;
-    }
-
-    .cake {
-        transform: scale(0.75);
-
-        margin-bottom: -18px;
-    }
-
-    .cover p {
-        font-size: 13px;
-    }
-
-    .cover h2 {
-        font-size: 26px;
-    }
-
-    .slide h2 {
-        font-size: 25px;
-
-        margin-bottom: 15px;
-    }
-
-    .slide p {
-        font-size: 13px;
-
-        line-height: 1.65;
-    }
-
-    .rating {
-        font-size: 70px;
-
-        margin-bottom: 5px;
-    }
-
-    .navigation {
-        bottom: 10px;
-    }
-
-    .navigation button {
-        width: 40px;
-
-        height: 40px;
-
-        font-size: 20px;
-    }
-
-    .final-heart {
-        font-size: 65px;
-    }
-
-    .final-message {
-        font-size: 19px;
-    }
-}
-
-
-/* ========================= */
-/* PANTALLAS PEQUEÑAS */
-/* ========================= */
-
-@media (max-height: 700px) {
-
-    .cake {
-        transform: scale(0.65);
-
-        margin-bottom: -35px;
-    }
-
-    .big-number {
-        font-size: 95px;
-    }
-
-    .cover h2 {
-        font-size: 25px;
-    }
-
-    .slide h2 {
-        font-size: 25px;
-    }
-
-    .slide p {
-        font-size: 13px;
-
-        line-height: 1.55;
-    }
-    ```css
-/* ========================= */
-/* NUEVA PORTADA */
-/* ========================= */
-
-.cover {
-    overflow: hidden;
-}
-
-.cover-content {
-    width: min(900px, 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.birthday-small {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    margin-bottom: 5px;
-    opacity: 0.7;
-}
-
-
-/* ========================= */
-/* NUEVA TARTA */
-/* ========================= */
-
-.new-cake {
-    position: relative;
-    width: 300px;
-    height: 205px;
-    margin-bottom: -5px;
-    animation: newCakeFloat 3s ease-in-out infinite;
-}
-
-@keyframes newCakeFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-7px);
-    }
-}
+/* ================================================= */
+/* CAPAS DE LA TARTA */
+/* ================================================= */
 
 .cake-tier {
     position: absolute;
+
     left: 50%;
+
     transform: translateX(-50%);
+
     border-radius: 18px;
-    box-shadow: 0 10px 20px rgba(73, 56, 0, 0.16);
+
+    box-shadow:
+        0 12px 22px rgba(73,56,0,.16);
 }
 
 .cake-tier-bottom {
     bottom: 0;
-    width: 275px;
-    height: 65px;
-    background: linear-gradient(
-        to bottom,
-        #f8b0c1,
-        #ee91a8
-    );
+
+    width: 88%;
+
+    height: 31%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7b0c2,
+            #ed8fa8
+        );
 }
 
 .cake-tier-middle {
-    bottom: 52px;
-    width: 225px;
-    height: 58px;
-    background: linear-gradient(
-        to bottom,
-        #fff0f5,
-        #ffd5e0
-    );
+    bottom: 25%;
+
+    width: 72%;
+
+    height: 28%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff7fa,
+            #ffd6e2
+        );
 }
 
 .cake-tier-top {
-    bottom: 101px;
-    width: 175px;
-    height: 52px;
-    background: linear-gradient(
-        to bottom,
-        #fffafc,
-        #ffe7ee
-    );
+    bottom: 48%;
+
+    width: 55%;
+
+    height: 25%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffdfd,
+            #ffe9f0
+        );
 }
+
+
+/* ================================================= */
+/* CREMA */
+/* ================================================= */
 
 .cream-line {
     position: absolute;
-    left: 10px;
-    right: 10px;
-    bottom: 8px;
-    height: 8px;
-    border-radius: 10px;
+
+    left: 8%;
+    right: 8%;
+
+    bottom: 15%;
+
+    height: 10px;
+
+    border-radius: 20px;
+
     background: #fff;
 }
 
 .cream-drip {
     position: absolute;
+
     top: 0;
-    left: 12px;
-    right: 12px;
-    height: 18px;
-    border-radius: 0 0 15px 15px;
+
+    left: 5%;
+    right: 5%;
+
+    height: 22px;
+
+    border-radius:
+        0 0 18px 18px;
+
     background: #fff;
 }
 
+
+/* ================================================= */
+/* FRESAS */
+/* ================================================= */
+
 .cake-strawberries {
     position: absolute;
-    top: -17px;
+
+    top: -22px;
+
     left: 50%;
+
     transform: translateX(-50%);
-    font-size: 21px;
+
     white-space: nowrap;
+
+    font-size:
+        clamp(17px, 4vw, 24px);
 }
+
+
+/* ================================================= */
+/* DECORACIÓN TARTA */
+/* ================================================= */
 
 .cake-decoration {
     position: absolute;
-    bottom: 13px;
+
+    bottom: 15px;
+
     left: 50%;
+
     transform: translateX(-50%);
+
     white-space: nowrap;
-    font-size: 18px;
+
+    font-size:
+        clamp(13px, 3vw, 19px);
 }
+
+
+/* ================================================= */
+/* VELAS */
+/* ================================================= */
 
 .cake-candles {
     position: absolute;
+
     z-index: 10;
-    top: 3px;
+
+    top: 0;
+
     left: 50%;
+
     transform: translateX(-50%);
+
     display: flex;
-    gap: 7px;
-    font-size: 25px;
+
+    justify-content: center;
+
+    gap: clamp(2px, 1vw, 8px);
+
+    font-size:
+        clamp(20px, 5vw, 29px);
 }
 
 .cake-candles span {
     display: inline-block;
-    animation: candleMove 1.4s ease-in-out infinite alternate;
+
+    animation:
+        candleMove 1.5s ease-in-out infinite alternate;
 }
 
 .cake-candles span:nth-child(2) {
@@ -986,110 +390,428 @@ button:active {
 }
 
 @keyframes candleMove {
+
     from {
         transform: translateY(0);
     }
 
     to {
-        transform: translateY(-4px);
+        transform: translateY(-5px);
     }
 }
 
 
-/* ========================= */
-/* PORTADA: 16 */
-/* ========================= */
+/* ================================================= */
+/* NÚMERO 16 */
+/* ================================================= */
 
 .cover-number {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(75px, 13vw, 135px);
-    line-height: .75;
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size:
+        clamp(80px, 17vw, 160px);
+
+    line-height: .72;
+
     color: #fff9d6;
 
     text-shadow:
         4px 4px 0 #eab72e,
-        8px 8px 18px rgba(73, 56, 0, 0.15);
+        8px 12px 22px rgba(73,56,0,.17);
 
-    animation: numberFloat 3s ease-in-out infinite;
+    margin-top: 4px;
+
+    animation:
+        numberFloat 3s ease-in-out infinite;
 }
+
+@keyframes numberFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* ================================================= */
+/* TÍTULO PORTADA */
+/* ================================================= */
 
 .cover h1 {
-    font-size: clamp(26px, 4.5vw, 52px);
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size:
+        clamp(24px, 5vw, 54px);
+
+    letter-spacing:
+        clamp(1px, .3vw, 3px);
+
+    line-height: 1;
+
     margin-top: 14px;
-    margin-bottom: 5px;
+
+    margin-bottom: 6px;
+
+    animation:
+        fadeUp 1s .15s ease both;
 }
+
+
+/* ================================================= */
+/* SEPARADOR */
+/* ================================================= */
 
 .cover-divider {
-    font-size: 13px;
-    opacity: .65;
-    margin: 3px 0 9px;
+    font-size:
+        clamp(9px, 2vw, 14px);
+
+    opacity: .6;
+
+    margin-bottom: 7px;
 }
+
+
+/* ================================================= */
+/* FELICIDADES */
+/* ================================================= */
 
 .cover h2 {
-    font-size: clamp(22px, 4vw, 40px);
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size:
+        clamp(23px, 5vw, 48px);
+
+    line-height: 1.05;
+
+    color: white;
+
+    text-shadow:
+        2px 3px 0 #d68b9c,
+        0 5px 12px rgba(73,56,0,.12);
+
     margin-bottom: 8px;
+
+    animation:
+        fadeUp 1s .25s ease both;
 }
+
+
+/* ================================================= */
+/* TEXTO PORTADA */
+/* ================================================= */
 
 .cover-text {
-    font-size: 14px;
+    font-size:
+        clamp(11px, 2vw, 15px);
+
     line-height: 1.6;
-    margin-bottom: 18px;
+
+    margin-bottom:
+        clamp(15px, 2.5vh, 25px);
+
+    opacity: .85;
+
+    animation:
+        fadeUp 1s .35s ease both;
 }
 
 
-/* ========================= */
+/* ================================================= */
 /* BOTÓN REGALO */
-/* ========================= */
+/* ================================================= */
 
 .gift-button {
-    padding: 14px 27px;
-    font-size: 14px;
+    position: relative;
+
+    border: none;
+
+    padding:
+        clamp(12px, 2vh, 16px)
+        clamp(22px, 5vw, 32px);
+
+    border-radius: 50px;
+
+    background: #fff9d6;
+
+    color: #493800;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    font-size:
+        clamp(12px, 2vw, 15px);
+
+    font-weight: 700;
+
+    letter-spacing: .3px;
+
+    cursor: pointer;
 
     box-shadow:
-        0 8px 20px rgba(73, 56, 0, .18);
+        0 9px 24px rgba(73,56,0,.18);
 
-    animation: giftPulse 2.2s ease-in-out infinite;
+    animation:
+        buttonPulse 2.2s ease-in-out infinite;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
-@keyframes giftPulse {
-    0%, 100% {
+.gift-button:hover {
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 13px 28px rgba(73,56,0,.23);
+}
+
+.gift-button:active {
+    transform: scale(.96);
+}
+
+@keyframes buttonPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 9px 24px rgba(73,56,0,.18);
+    }
+
+    50% {
+        box-shadow:
+            0 9px 30px rgba(73,56,0,.27);
+    }
+}
+
+
+/* ================================================= */
+/* DIAPOSITIVAS INTERIORES */
+/* ================================================= */
+
+.rating {
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size:
+        clamp(60px, 13vw, 125px);
+
+    line-height: .8;
+
+    color: #fff9d6;
+
+    text-shadow:
+        4px 4px 0 #eab72e,
+        8px 9px 18px rgba(73,56,0,.15);
+
+    margin-bottom:
+        clamp(10px, 2vh, 20px);
+
+    animation:
+        ratingFloat 3s ease-in-out infinite;
+}
+
+@keyframes ratingFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.slide h2 {
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size:
+        clamp(23px, 4.5vw, 46px);
+
+    max-width: 850px;
+
+    line-height: 1.15;
+
+    margin-bottom:
+        clamp(14px, 2.5vh, 25px);
+}
+
+.slide p {
+    width: min(800px, 100%);
+
+    font-size:
+        clamp(13px, 1.7vw, 17px);
+
+    line-height: 1.75;
+
+    font-weight: 400;
+}
+
+
+/* ================================================= */
+/* ÚLTIMA DIAPOSITIVA */
+/* ================================================= */
+
+.infinity {
+    justify-content: flex-start;
+
+    padding-top:
+        clamp(20px, 4vh, 35px);
+
+    padding-bottom: 85px;
+
+    overflow-y: auto;
+}
+
+.infinity .rating {
+    font-size:
+        clamp(55px, 11vw, 105px);
+}
+
+.infinity p {
+    white-space: pre-line;
+
+    margin-bottom: 15px;
+}
+
+.final-heart {
+    font-size:
+        clamp(55px, 10vw, 75px);
+
+    margin: 5px 0 10px;
+
+    animation:
+        heartBeat 1.3s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(1.04);
+        transform: scale(1.15);
     }
 }
 
+.final-message {
+    font-family:
+        'DM Serif Display',
+        serif;
 
-/* ========================= */
+    font-size:
+        clamp(18px, 3vw, 23px);
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+/* ================================================= */
 /* NAVEGACIÓN */
-/* ========================= */
+/* ================================================= */
 
 .navigation {
+    position: fixed;
+
+    z-index: 500;
+
+    left: 50%;
+
+    bottom:
+        max(14px, env(safe-area-inset-bottom));
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
     transition:
         opacity .3s ease,
         visibility .3s ease;
 }
 
 .navigation.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+}
+
+.navigation button {
+    width: 44px;
+    height: 44px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,249,214,.95);
+
+    color: #493800;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 15px rgba(73,56,0,.15);
+
+    transition:
+        transform .2s ease;
+}
+
+.navigation button:hover {
+    transform: translateY(-3px);
 }
 
 .navigation button.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    display: none !important;
 }
 
 
-/* ========================= */
-/* DECORACIONES DE FONDO */
-/* ========================= */
+/* ================================================= */
+/* ELEMENTOS DEL FONDO */
+/* ================================================= */
 
-.floating-decoration {
+#confetti-container,
+#hearts-container,
+#decorations-container {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+#decorations-container {
     z-index: 1;
 }
 
@@ -1101,47 +823,329 @@ button:active {
     z-index: 3;
 }
 
+.cover-content,
+.slide > * {
+    position: relative;
 
-/* ========================= */
+    z-index: 10;
+}
+
+
+/* ================================================= */
+/* CORAZONES */
+/* ================================================= */
+
+.floating-heart {
+    position: fixed;
+
+    bottom: -40px;
+
+    opacity: .65;
+
+    animation:
+        floatHeart linear forwards;
+
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(73,56,0,.1)
+        );
+}
+
+@keyframes floatHeart {
+
+    from {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .65;
+    }
+
+    to {
+        transform:
+            translateY(-110vh)
+            scale(1.3);
+
+        opacity: 0;
+    }
+}
+
+
+/* ================================================= */
+/* DECORACIONES */
+/* ================================================= */
+
+.floating-decoration {
+    position: fixed;
+
+    bottom: -50px;
+
+    opacity: .45;
+
+    animation:
+        floatDecoration linear forwards;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(73,56,0,.08)
+        );
+}
+
+@keyframes floatDecoration {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.8);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .45;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            rotate(12deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(-12deg)
+            scale(1.15);
+
+        opacity: 0;
+    }
+}
+
+
+/* ================================================= */
+/* CONFETI */
+/* ================================================= */
+
+.confetti {
+    position: fixed;
+
+    top: -30px;
+
+    font-size: 18px;
+
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall {
+
+    from {
+        transform:
+            translateY(-30px)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ================================================= */
+/* ANIMACIONES DE ENTRADA */
+/* ================================================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-10px);
+    }
+
+    to {
+        opacity: .65;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ================================================= */
 /* MÓVIL */
-/* ========================= */
+/* ================================================= */
 
 @media (max-width: 600px) {
 
+    .slide {
+        padding:
+            18px
+            15px
+            75px;
+    }
+
+    .cover-content {
+        max-height: 100%;
+    }
+
     .birthday-small {
-        font-size: 9px;
-        letter-spacing: 2px;
+        margin-bottom: 2px;
     }
 
     .new-cake {
-        transform: scale(.72);
-        margin-top: -15px;
-        margin-bottom: -40px;
+        width: 270px;
+        height: 175px;
+
+        transform: scale(.9);
+
+        margin-top: -8px;
+        margin-bottom: -12px;
     }
 
     .cover-number {
-        font-size: 85px;
+        font-size: 90px;
     }
 
     .cover h1 {
         font-size: 28px;
-    }
 
-    .cover h2 {
-        font-size: 25px;
+        margin-top: 12px;
     }
 
     .cover-divider {
-        font-size: 10px;
+        margin: 2px 0 6px;
+    }
+
+    .cover h2 {
+        font-size: 26px;
     }
 
     .cover-text {
         font-size: 12px;
+
+        margin-bottom: 16px;
     }
 
     .gift-button {
         font-size: 13px;
-        padding: 12px 21px;
+
+        padding:
+            13px 23px;
+    }
+
+    .slide h2 {
+        font-size: 25px;
+    }
+
+    .slide p {
+        font-size: 13px;
+
+        line-height: 1.65;
+    }
+
+    .rating {
+        font-size: 72px;
+    }
+
+    .navigation {
+        bottom:
+            max(10px, env(safe-area-inset-bottom));
+    }
+
+    .navigation button {
+        width: 41px;
+        height: 41px;
+
+        font-size: 19px;
     }
 }
+
+
+/* ================================================= */
+/* MÓVILES MUY PEQUEÑOS */
+/* ================================================= */
+
+@media (max-width: 380px),
+       (max-height: 650px) {
+
+    .new-cake {
+        transform: scale(.68);
+
+        margin-top: -30px;
+        margin-bottom: -50px;
+    }
+
+    .cover-number {
+        font-size: 75px;
+    }
+
+    .cover h1 {
+        font-size: 24px;
+    }
+
+    .cover h2 {
+        font-size: 22px;
+    }
+
+    .cover-text {
+        font-size: 11px;
+
+        margin-bottom: 12px;
+    }
+
+    .gift-button {
+        font-size: 12px;
+
+        padding:
+            11px 19px;
+    }
+}
+
+
+/* ================================================= */
+/* PANTALLAS GRANDES */
+/* ================================================= */
+
+@media (min-width: 1000px) {
+
+    .new-cake {
+        transform: scale(1.05);
+    }
+
+    .cover-number {
+        font-size: 150px;
+    }
 }
