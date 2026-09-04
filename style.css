@@ -1,4 +1,10 @@
+```css
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* ========================= */
+/* GENERAL */
+/* ========================= */
 
 * {
     margin: 0;
@@ -15,9 +21,19 @@ body {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #ffd84d;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.35), transparent 20%),
+        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.25), transparent 25%),
+        linear-gradient(135deg, #ffd84d, #ffcf3f);
+
     color: #493800;
 }
+
+
+/* ========================= */
+/* FONDO */
+/* ========================= */
 
 main {
     width: 100%;
@@ -25,22 +41,47 @@ main {
     position: relative;
 }
 
+#confetti-container,
+#hearts-container,
+#decorations-container {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 200;
+}
+
+
+/* ========================= */
+/* DIAPOSITIVAS */
+/* ========================= */
+
 .slide {
     position: absolute;
+
     inset: 0;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
 
-    padding: 50px 25px 90px;
+    padding: 45px 25px 90px;
 
     text-align: center;
 
     opacity: 0;
+
     visibility: hidden;
-    transform: scale(0.96);
+
+    transform: scale(0.96) translateY(10px);
 
     transition:
         opacity 0.6s ease,
@@ -50,38 +91,83 @@ main {
 
 .slide.active {
     opacity: 1;
+
     visibility: visible;
-    transform: scale(1);
+
+    transform: scale(1) translateY(0);
 }
+
+
+/* ========================= */
+/* PORTADA */
+/* ========================= */
 
 .cover {
     background:
-        radial-gradient(circle at 50% 25%, #fff3a3 0%, transparent 25%),
-        radial-gradient(circle at 10% 90%, #ffc928 0%, transparent 35%),
-        radial-gradient(circle at 90% 80%, #ffe477 0%, transparent 35%);
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255, 255, 220, 0.8),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(255, 201, 40, 0.8),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(255, 228, 119, 0.8),
+            transparent 35%
+        );
 }
+
+
+/* ========================= */
+/* TARTA */
+/* ========================= */
 
 .cake {
     position: relative;
+
     width: 230px;
+
     height: 180px;
 
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
 }
 
 .cake-layer {
     position: absolute;
+
     left: 50%;
+
     transform: translateX(-50%);
 
     border-radius: 18px;
-    box-shadow: 0 10px 15px rgba(73, 56, 0, 0.15);
+
+    box-shadow:
+        0 10px 15px rgba(73, 56, 0, 0.15);
 }
 
 .cake-layer.bottom {
     bottom: 0;
 
     width: 220px;
+
     height: 65px;
 
     background: #f7a6b8;
@@ -91,6 +177,7 @@ main {
     bottom: 48px;
 
     width: 190px;
+
     height: 55px;
 
     background: #ffcfda;
@@ -100,6 +187,7 @@ main {
     bottom: 90px;
 
     width: 155px;
+
     height: 48px;
 
     background: #fff1f5;
@@ -109,24 +197,34 @@ main {
     position: absolute;
 
     bottom: 12px;
+
     left: 50%;
 
     transform: translateX(-50%);
 
     font-size: 18px;
+
     white-space: nowrap;
 }
+
+
+/* ========================= */
+/* VELAS */
+/* ========================= */
 
 .candles {
     position: absolute;
 
     top: 0;
+
     left: 50%;
 
     transform: translateX(-50%);
 
     display: flex;
+
     justify-content: center;
+
     gap: 5px;
 
     font-size: 25px;
@@ -137,7 +235,8 @@ main {
 .candles span {
     display: inline-block;
 
-    animation: candleFloat 1.5s ease-in-out infinite alternate;
+    animation:
+        candleFloat 1.5s ease-in-out infinite alternate;
 }
 
 .candles span:nth-child(2) {
@@ -169,6 +268,7 @@ main {
 }
 
 @keyframes candleFloat {
+
     from {
         transform: translateY(0);
     }
@@ -178,10 +278,16 @@ main {
     }
 }
 
+
+/* ========================= */
+/* NÚMERO 16 */
+/* ========================= */
+
 .big-number {
     font-family: 'DM Serif Display', serif;
 
-    font-size: clamp(100px, 20vw, 190px);
+    font-size: clamp(90px, 18vw, 175px);
+
     line-height: 0.8;
 
     color: #fff9d6;
@@ -192,10 +298,13 @@ main {
 
     margin: 5px 0 15px;
 
-    animation: numberFloat 3s ease-in-out infinite;
+    animation:
+        numberFloat 3s ease-in-out infinite,
+        numberGlow 2.5s ease-in-out infinite;
 }
 
 @keyframes numberFloat {
+
     0%,
     100% {
         transform: translateY(0);
@@ -206,51 +315,78 @@ main {
     }
 }
 
+@keyframes numberGlow {
+
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.12);
+    }
+}
+
+
+/* ========================= */
+/* TÍTULOS */
+/* ========================= */
+
 h1 {
     font-family: 'DM Serif Display', serif;
 
-    font-size: clamp(30px, 6vw, 65px);
+    font-size: clamp(27px, 5vw, 58px);
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
     color: #493800;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 
 .cover h2 {
     font-family: 'DM Serif Display', serif;
 
-    font-size: clamp(25px, 5vw, 50px);
+    font-size: clamp(23px, 4.5vw, 45px);
 
     color: #fff;
 
-    text-shadow: 2px 2px 0 #d68b9c;
+    text-shadow:
+        2px 2px 0 #d68b9c;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .cover p {
-    font-size: 16px;
-    margin-bottom: 25px;
+    font-size: 15px;
+
+    margin-bottom: 23px;
 }
+
+
+/* ========================= */
+/* BOTONES */
+/* ========================= */
 
 button {
     border: none;
 
     background: #fff9d6;
+
     color: #493800;
 
-    padding: 14px 24px;
+    padding: 13px 23px;
 
     border-radius: 30px;
 
     font-family: 'Poppins', sans-serif;
+
     font-weight: 600;
 
     cursor: pointer;
 
-    box-shadow: 0 7px 15px rgba(73, 56, 0, 0.15);
+    box-shadow:
+        0 7px 15px rgba(73, 56, 0, 0.15);
 
     transition:
         transform 0.2s ease,
@@ -259,13 +395,24 @@ button {
 
 button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(73, 56, 0, 0.2);
+
+    box-shadow:
+        0 10px 20px rgba(73, 56, 0, 0.2);
 }
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* ========================= */
+/* PUNTUACIONES */
+/* ========================= */
 
 .rating {
     font-family: 'DM Serif Display', serif;
 
-    font-size: clamp(70px, 15vw, 140px);
+    font-size: clamp(65px, 13vw, 125px);
 
     color: #fff9d6;
 
@@ -273,61 +420,88 @@ button:hover {
         4px 4px 0 #eab72e,
         8px 8px 18px rgba(73, 56, 0, 0.15);
 
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+
+    animation: ratingFloat 3s ease-in-out infinite;
 }
+
+@keyframes ratingFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* ========================= */
+/* TEXTO DE LAS DIAPOSITIVAS */
+/* ========================= */
 
 .slide h2 {
     font-family: 'DM Serif Display', serif;
 
-    font-size: clamp(28px, 5vw, 50px);
+    font-size: clamp(25px, 4.5vw, 46px);
 
-    max-width: 900px;
+    max-width: 850px;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 
-    line-height: 1.15;
+    line-height: 1.18;
 }
 
 .slide p {
-    max-width: 850px;
+    max-width: 800px;
 
-    font-size: clamp(15px, 2vw, 19px);
+    font-size: clamp(14px, 1.8vw, 17px);
 
-    line-height: 1.8;
+    line-height: 1.75;
 
     font-weight: 400;
 }
 
+
+/* ========================= */
+/* ÚLTIMA DIAPOSITIVA */
+/* ========================= */
+
 .infinity {
     justify-content: flex-start;
 
-    padding-top: 30px;
-    padding-bottom: 90px;
+    padding-top: 25px;
+
+    padding-bottom: 85px;
 
     overflow-y: auto;
 }
 
 .infinity .rating {
-    font-size: clamp(60px, 12vw, 110px);
+    font-size: clamp(55px, 11vw, 105px);
 }
 
 .infinity p {
-    max-width: 850px;
+    max-width: 800px;
 
     white-space: pre-line;
 
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .final-heart {
-    font-size: 80px;
+    font-size: 75px;
 
-    margin: 10px 0;
+    margin: 5px 0 10px;
 
-    animation: heartBeat 1.3s ease-in-out infinite;
+    animation:
+        heartBeat 1.3s ease-in-out infinite;
 }
 
 @keyframes heartBeat {
+
     0%,
     100% {
         transform: scale(1);
@@ -341,23 +515,31 @@ button:hover {
 .final-message {
     font-family: 'DM Serif Display', serif;
 
-    font-size: 24px;
+    font-size: 22px;
 
     line-height: 1.5;
 
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
+
+
+/* ========================= */
+/* NAVEGACIÓN */
+/* ========================= */
 
 .navigation {
     position: fixed;
 
-    bottom: 20px;
+    bottom: 18px;
+
     left: 50%;
 
     transform: translateX(-50%);
 
     display: flex;
+
     align-items: center;
+
     gap: 15px;
 
     z-index: 100;
@@ -365,6 +547,7 @@ button:hover {
 
 .navigation button {
     width: 45px;
+
     height: 45px;
 
     padding: 0;
@@ -374,26 +557,10 @@ button:hover {
     font-size: 22px;
 }
 
-#counter {
-    font-weight: 600;
 
-    min-width: 65px;
-
-    text-align: center;
-}
-
-#confetti-container,
-#hearts-container {
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 200;
-}
+/* ========================= */
+/* CONFETI */
+/* ========================= */
 
 .confetti {
     position: fixed;
@@ -402,34 +569,61 @@ button:hover {
 
     font-size: 20px;
 
-    animation: fall linear forwards;
+    animation:
+        fall linear forwards;
+
+    filter: drop-shadow(
+        0 3px 4px rgba(73, 56, 0, 0.12)
+    );
 }
 
 @keyframes fall {
+
     from {
-        transform: translateY(-30px) rotate(0deg);
+        transform:
+            translateY(-30px)
+            rotate(0deg);
+
         opacity: 1;
     }
 
     to {
-        transform: translateY(110vh) rotate(360deg);
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
         opacity: 0;
     }
 }
+
+
+/* ========================= */
+/* CORAZONES FLOTANTES */
+/* ========================= */
 
 .floating-heart {
     position: fixed;
 
     bottom: -40px;
 
-    animation: floatHeart linear forwards;
+    animation:
+        floatHeart linear forwards;
 
     opacity: 0.8;
+
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(73, 56, 0, 0.12)
+        );
 }
 
 @keyframes floatHeart {
+
     from {
-        transform: translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
+
         opacity: 0;
     }
 
@@ -438,49 +632,196 @@ button:hover {
     }
 
     to {
-        transform: translateY(-110vh) scale(1.3);
+        transform:
+            translateY(-110vh)
+            scale(1.3);
+
         opacity: 0;
     }
 }
 
+
+/* ========================= */
+/* DECORACIONES DEL FONDO */
+/* ========================= */
+
+.floating-decoration {
+    position: fixed;
+
+    bottom: -50px;
+
+    pointer-events: none;
+
+    animation:
+        floatDecoration linear forwards;
+
+    opacity: 0.75;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(73, 56, 0, 0.1)
+        );
+}
+
+@keyframes floatDecoration {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.8);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.75;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            rotate(15deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(-15deg)
+            scale(1.2);
+
+        opacity: 0;
+    }
+}
+
+
+/* ========================= */
+/* BRILLOS */
+/* ========================= */
+
+.sparkle {
+    position: fixed;
+
+    pointer-events: none;
+
+    animation:
+        sparkleAnimation 2s ease-in-out infinite;
+
+    opacity: 0.8;
+}
+
+@keyframes sparkleAnimation {
+
+    0%,
+    100% {
+        transform: scale(0.6);
+
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scale(1.2);
+
+        opacity: 1;
+    }
+}
+
+
+/* ========================= */
+/* MÓVIL */
+/* ========================= */
+
 @media (max-width: 600px) {
 
     .slide {
-        padding: 30px 20px 85px;
+        padding: 25px 18px 80px;
     }
 
     .cake {
-        transform: scale(0.8);
-        margin-bottom: -10px;
+        transform: scale(0.75);
+
+        margin-bottom: -18px;
     }
 
     .cover p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .cover h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .slide h2 {
-        font-size: 27px;
+        font-size: 25px;
+
+        margin-bottom: 15px;
     }
 
     .slide p {
-        font-size: 14px;
-        line-height: 1.7;
+        font-size: 13px;
+
+        line-height: 1.65;
     }
 
     .rating {
-        font-size: 75px;
+        font-size: 70px;
+
+        margin-bottom: 5px;
     }
 
     .navigation {
-        bottom: 12px;
+        bottom: 10px;
     }
 
     .navigation button {
         width: 40px;
+
         height: 40px;
+
+        font-size: 20px;
+    }
+
+    .final-heart {
+        font-size: 65px;
+    }
+
+    .final-message {
+        font-size: 19px;
     }
 }
+
+
+/* ========================= */
+/* PANTALLAS PEQUEÑAS */
+/* ========================= */
+
+@media (max-height: 700px) {
+
+    .cake {
+        transform: scale(0.65);
+
+        margin-bottom: -35px;
+    }
+
+    .big-number {
+        font-size: 95px;
+    }
+
+    .cover h2 {
+        font-size: 25px;
+    }
+
+    .slide h2 {
+        font-size: 25px;
+    }
+
+    .slide p {
+        font-size: 13px;
+
+        line-height: 1.55;
+    }
+}
+```
