@@ -1,8 +1,12 @@
+/* ================================================= */
+/* FUENTES */
+/* ================================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
 /* ================================================= */
-/* BASE */
+/* RESET */
 /* ================================================= */
 
 * {
@@ -11,27 +15,23 @@
     box-sizing: border-box;
 }
 
-html {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
     font-family: 'Poppins', sans-serif;
-
     color: #493800;
 
     background:
         radial-gradient(
             circle at 50% 20%,
             #fff5b8 0%,
-            #ffe77b 28%,
-            #ffd84d 65%,
+            #ffe77b 30%,
+            #ffd84d 70%,
             #f7c82e 100%
         );
 }
@@ -52,11 +52,12 @@ main {
 
 
 /* ================================================= */
-/* DIAPOSITIVAS */
+/* DIAPOSITIVAS — SISTEMA DE TRANSICIONES */
 /* ================================================= */
 
 .slide {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
@@ -64,6 +65,7 @@ main {
 
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
@@ -75,49 +77,99 @@ main {
     text-align: center;
 
     opacity: 0;
+
     visibility: hidden;
 
     pointer-events: none;
+
+    z-index: 1;
+
+    /*
+       MUY IMPORTANTE:
+       No ponemos transition ni transform aquí.
+       Las animaciones se controlan mediante
+       @keyframes más abajo.
+    */
 
     will-change:
         transform,
         opacity,
         filter;
-
-    z-index: 1;
 }
 
 
+/* ================================================= */
+/* DIAPOSITIVA ACTIVA */
+/* ================================================= */
+
 .slide.active {
     opacity: 1;
+
     visibility: visible;
+
     pointer-events: auto;
+
     z-index: 3;
 }
 
 
+/* ================================================= */
 /* DIAPOSITIVA QUE SALE */
+/* ================================================= */
 
 .slide.slide-leave {
-    visibility: visible;
+    visibility: visible !important;
+
+    opacity: 1;
+
     pointer-events: none;
+
     z-index: 2;
 }
 
 
+/* ================================================= */
 /* DIAPOSITIVA QUE ENTRA */
+/* ================================================= */
 
 .slide.slide-enter {
-    visibility: visible;
+    visibility: visible !important;
+
     pointer-events: none;
+
     z-index: 4;
 }
 
-.slide.active {
-    opacity: 1;
-    visibility: visible;
 
-    pointer-events: auto;
+/* ================================================= */
+/* ELEMENTOS DEL FONDO */
+/* ================================================= */
+
+#confetti-container,
+#hearts-container,
+#decorations-container {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+#decorations-container {
+    z-index: 1;
+}
+
+#hearts-container {
+    z-index: 2;
+}
+
+#confetti-container {
+    z-index: 3;
 }
 
 
@@ -150,7 +202,7 @@ main {
 
 
 /* ================================================= */
-/* CONTENIDO DE PORTADA */
+/* CONTENIDO PORTADA */
 /* ================================================= */
 
 .cover-content {
@@ -168,11 +220,12 @@ main {
 
 
 /* ================================================= */
-/* TEXTO SUPERIOR */
+/* TEXTO PEQUEÑO */
 /* ================================================= */
 
 .birthday-small {
-    font-size: clamp(9px, 1.5vw, 13px);
+    font-size:
+        clamp(9px, 1.5vw, 13px);
 
     font-weight: 600;
 
@@ -196,9 +249,11 @@ main {
 .new-cake {
     position: relative;
 
-    width: min(320px, 72vw);
+    width:
+        min(320px, 72vw);
 
-    height: min(210px, 26vh);
+    height:
+        min(210px, 26vh);
 
     margin-bottom:
         clamp(-5px, -.5vh, 5px);
@@ -206,6 +261,7 @@ main {
     animation:
         cakeFloat 3.5s ease-in-out infinite;
 }
+
 
 @keyframes cakeFloat {
 
@@ -217,6 +273,7 @@ main {
     50% {
         transform: translateY(-8px);
     }
+
 }
 
 
@@ -237,11 +294,11 @@ main {
         0 12px 22px rgba(73,56,0,.16);
 }
 
+
 .cake-tier-bottom {
     bottom: 0;
 
     width: 88%;
-
     height: 31%;
 
     background:
@@ -252,11 +309,11 @@ main {
         );
 }
 
+
 .cake-tier-middle {
     bottom: 25%;
 
     width: 72%;
-
     height: 28%;
 
     background:
@@ -267,11 +324,11 @@ main {
         );
 }
 
+
 .cake-tier-top {
     bottom: 48%;
 
     width: 55%;
-
     height: 25%;
 
     background:
@@ -301,6 +358,7 @@ main {
 
     background: #fff;
 }
+
 
 .cream-drip {
     position: absolute;
@@ -378,18 +436,25 @@ main {
 
     justify-content: center;
 
-    gap: clamp(2px, 1vw, 8px);
+    gap:
+        clamp(2px, 1vw, 8px);
 
     font-size:
         clamp(20px, 5vw, 29px);
 }
 
+
 .cake-candles span {
     display: inline-block;
 
     animation:
-        candleMove 1.5s ease-in-out infinite alternate;
+        candleMove
+        1.5s
+        ease-in-out
+        infinite
+        alternate;
 }
+
 
 .cake-candles span:nth-child(2) {
     animation-delay: .15s;
@@ -411,6 +476,7 @@ main {
     animation-delay: .75s;
 }
 
+
 @keyframes candleMove {
 
     from {
@@ -420,6 +486,7 @@ main {
     to {
         transform: translateY(-5px);
     }
+
 }
 
 
@@ -446,8 +513,12 @@ main {
     margin-top: 4px;
 
     animation:
-        numberFloat 3s ease-in-out infinite;
+        numberFloat
+        3s
+        ease-in-out
+        infinite;
 }
+
 
 @keyframes numberFloat {
 
@@ -459,6 +530,7 @@ main {
     50% {
         transform: translateY(-7px);
     }
+
 }
 
 
@@ -484,7 +556,11 @@ main {
     margin-bottom: 6px;
 
     animation:
-        fadeUp 1s .15s ease both;
+        fadeUp
+        1s
+        .15s
+        ease
+        both;
 }
 
 
@@ -525,7 +601,11 @@ main {
     margin-bottom: 8px;
 
     animation:
-        fadeUp 1s .25s ease both;
+        fadeUp
+        1s
+        .25s
+        ease
+        both;
 }
 
 
@@ -545,12 +625,16 @@ main {
     opacity: .85;
 
     animation:
-        fadeUp 1s .35s ease both;
+        fadeUp
+        1s
+        .35s
+        ease
+        both;
 }
 
 
 /* ================================================= */
-/* BOTÓN REGALO */
+/* BOTÓN */
 /* ================================================= */
 
 .gift-button {
@@ -585,12 +669,16 @@ main {
         0 9px 24px rgba(73,56,0,.18);
 
     animation:
-        buttonPulse 2.2s ease-in-out infinite;
+        buttonPulse
+        2.2s
+        ease-in-out
+        infinite;
 
     transition:
         transform .2s ease,
         box-shadow .2s ease;
 }
+
 
 .gift-button:hover {
     transform:
@@ -601,9 +689,11 @@ main {
         0 13px 28px rgba(73,56,0,.23);
 }
 
+
 .gift-button:active {
     transform: scale(.96);
 }
+
 
 @keyframes buttonPulse {
 
@@ -617,11 +707,12 @@ main {
         box-shadow:
             0 9px 30px rgba(73,56,0,.27);
     }
+
 }
 
 
 /* ================================================= */
-/* TEXTO SOBRE LA PUNTUACIÓN */
+/* "ERES UNA PERSONA" */
 /* ================================================= */
 
 .rating-label {
@@ -646,12 +737,15 @@ main {
         clamp(3px, .8vh, 8px);
 
     animation:
-        fadeDown .8s ease both;
+        fadeDown
+        .8s
+        ease
+        both;
 }
 
 
 /* ================================================= */
-/* PUNTUACIONES */
+/* RATING */
 /* ================================================= */
 
 .rating {
@@ -674,8 +768,12 @@ main {
         clamp(10px, 2vh, 20px);
 
     animation:
-        ratingFloat 3s ease-in-out infinite;
+        ratingFloat
+        3s
+        ease-in-out
+        infinite;
 }
+
 
 @keyframes ratingFloat {
 
@@ -687,6 +785,7 @@ main {
     50% {
         transform: translateY(-6px);
     }
+
 }
 
 
@@ -712,11 +811,12 @@ main {
 
 
 /* ================================================= */
-/* TEXTOS INTERIORES */
+/* PÁRRAFOS */
 /* ================================================= */
 
 .slide p {
-    width: min(800px, 100%);
+    width:
+        min(800px, 100%);
 
     font-size:
         clamp(13px, 1.7vw, 17px);
@@ -728,7 +828,7 @@ main {
 
 
 /* ================================================= */
-/* ÚLTIMA DIAPOSITIVA */
+/* INFINITO */
 /* ================================================= */
 
 .infinity {
@@ -742,6 +842,7 @@ main {
     overflow-y: auto;
 }
 
+
 .infinity .rating {
     font-size:
         clamp(55px, 11vw, 105px);
@@ -749,11 +850,12 @@ main {
 
 
 /* ================================================= */
-/* TEXTO DEL INFINITO */
+/* TEXTO INFINITO */
 /* ================================================= */
 
 .infinity-text {
-    width: min(800px, 100%);
+    width:
+        min(800px, 100%);
 
     display: flex;
 
@@ -763,6 +865,7 @@ main {
 
     margin-top: 4px;
 }
+
 
 .infinity-text p {
     width: 100%;
@@ -777,12 +880,14 @@ main {
     text-align: center;
 }
 
+
 .infinity-highlight {
     font-weight: 500;
 
     font-size:
         clamp(14px, 1.8vw, 18px) !important;
 }
+
 
 .infinity-final {
     font-family:
@@ -808,8 +913,12 @@ main {
         5px 0 10px;
 
     animation:
-        heartBeat 1.3s ease-in-out infinite;
+        heartBeat
+        1.3s
+        ease-in-out
+        infinite;
 }
+
 
 @keyframes heartBeat {
 
@@ -821,6 +930,7 @@ main {
     50% {
         transform: scale(1.15);
     }
+
 }
 
 
@@ -863,19 +973,8 @@ main {
     align-items: center;
 
     gap: 15px;
-
-    transition:
-        opacity .3s ease,
-        visibility .3s ease;
 }
 
-.navigation.hidden {
-    opacity: 0 !important;
-
-    visibility: hidden !important;
-
-    pointer-events: none !important;
-}
 
 .navigation button {
     width: 44px;
@@ -901,52 +1000,10 @@ main {
         transform .2s ease;
 }
 
+
 .navigation button:hover {
     transform:
         translateY(-3px);
-}
-
-.navigation button.hidden {
-    display: none !important;
-}
-
-
-/* ================================================= */
-/* ELEMENTOS DEL FONDO */
-/* ================================================= */
-
-#confetti-container,
-#hearts-container,
-#decorations-container {
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-
-    overflow: hidden;
-}
-
-#decorations-container {
-    z-index: 1;
-}
-
-#hearts-container {
-    z-index: 2;
-}
-
-#confetti-container {
-    z-index: 3;
-}
-
-.cover-content,
-.slide > * {
-    position: relative;
-
-    z-index: 10;
 }
 
 
@@ -962,7 +1019,9 @@ main {
     opacity: .65;
 
     animation:
-        floatHeart linear forwards;
+        floatHeart
+        linear
+        forwards;
 
     filter:
         drop-shadow(
@@ -970,32 +1029,27 @@ main {
         );
 }
 
+
 @keyframes floatHeart {
 
     from {
-
         transform:
             translateY(0)
             scale(1);
 
         opacity: 0;
-
     }
 
     10% {
-
         opacity: .65;
-
     }
 
     to {
-
         transform:
             translateY(-110vh)
             scale(1.3);
 
         opacity: 0;
-
     }
 
 }
@@ -1013,7 +1067,9 @@ main {
     opacity: .45;
 
     animation:
-        floatDecoration linear forwards;
+        floatDecoration
+        linear
+        forwards;
 
     user-select: none;
 
@@ -1023,43 +1079,36 @@ main {
         );
 }
 
+
 @keyframes floatDecoration {
 
     0% {
-
         transform:
             translateY(0)
             rotate(0deg)
             scale(.8);
 
         opacity: 0;
-
     }
 
     10% {
-
         opacity: .45;
-
     }
 
     50% {
-
         transform:
             translateY(-50vh)
             rotate(12deg)
             scale(1);
-
     }
 
     100% {
-
         transform:
             translateY(-115vh)
             rotate(-12deg)
             scale(1.15);
 
         opacity: 0;
-
     }
 
 }
@@ -1077,95 +1126,80 @@ main {
     font-size: 18px;
 
     animation:
-        fall linear forwards;
+        fall
+        linear
+        forwards;
 }
+
 
 @keyframes fall {
 
     from {
-
         transform:
             translateY(-30px)
             rotate(0deg);
 
         opacity: 1;
-
     }
 
     to {
-
         transform:
             translateY(110vh)
             rotate(360deg);
 
         opacity: 0;
-
     }
 
 }
 
 
 /* ================================================= */
-/* ANIMACIONES DE ENTRADA DE LA PORTADA */
+/* ANIMACIONES PORTADA */
 /* ================================================= */
 
 @keyframes fadeUp {
 
     from {
-
         opacity: 0;
 
         transform:
             translateY(12px);
-
     }
 
     to {
-
         opacity: 1;
 
         transform:
             translateY(0);
-
     }
 
 }
+
 
 @keyframes fadeDown {
 
     from {
-
         opacity: 0;
 
         transform:
             translateY(-10px);
-
     }
 
     to {
-
         opacity: .65;
 
         transform:
             translateY(0);
-
     }
 
 }
 
 
 /* ================================================= */
-/* TRANSICIONES ENTRE DIAPOSITIVAS */
 /* ================================================= */
-
-.slide-enter,
-.slide-leave {
-
-    animation-fill-mode: both;
-
-    pointer-events: none;
-
-}
+/* TRANSICIONES ESPECIALES */
+/* ================================================= */
+/* ================================================= */
 
 
 /* ================================================= */
@@ -1173,73 +1207,75 @@ main {
 /* ================================================= */
 
 .theme-narnia.slide-enter.forward {
-
     animation:
-        narniaEnter
-        1s
-        cubic-bezier(.16, 1, .3, 1)
+        narniaForward
+        1.1s
+        cubic-bezier(.16,1,.3,1)
         both;
-
 }
+
 
 .theme-narnia.slide-enter.backward {
-
     animation:
-        narniaEnterBack
-        1s
-        cubic-bezier(.16, 1, .3, 1)
+        narniaBackward
+        1.1s
+        cubic-bezier(.16,1,.3,1)
         both;
-
 }
+
 
 .theme-narnia.slide-leave.forward {
-
     animation:
-        narniaLeave
-        .7s
+        narniaExitForward
+        .8s
         ease
         both;
-
 }
+
 
 .theme-narnia.slide-leave.backward {
-
     animation:
-        narniaLeaveBack
-        .7s
+        narniaExitBackward
+        .8s
         ease
         both;
-
 }
 
 
-@keyframes narniaEnter {
+@keyframes narniaForward {
 
     0% {
-
         opacity: 0;
 
         transform:
-            scale(.65);
+            scale(.55);
 
         filter:
-            blur(18px)
+            blur(20px)
             brightness(1.6);
-
     }
 
-    45% {
-
+    40% {
         opacity: 1;
 
-        filter:
-            blur(5px)
-            brightness(1.25);
+        transform:
+            scale(.88);
 
+        filter:
+            blur(8px)
+            brightness(1.3);
+    }
+
+    70% {
+        transform:
+            scale(1.04);
+
+        filter:
+            blur(2px)
+            brightness(1.08);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1248,28 +1284,24 @@ main {
         filter:
             blur(0)
             brightness(1);
-
     }
 
 }
 
 
-@keyframes narniaEnterBack {
+@keyframes narniaBackward {
 
     0% {
-
         opacity: 0;
 
         transform:
-            scale(1.2);
+            scale(1.3);
 
         filter:
-            blur(15px);
-
+            blur(20px);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1277,59 +1309,46 @@ main {
 
         filter:
             blur(0);
-
     }
 
 }
 
 
-@keyframes narniaLeave {
+@keyframes narniaExitForward {
 
     from {
-
         opacity: 1;
-
-        transform:
-            scale(1);
-
+        transform: scale(1);
     }
 
     to {
-
         opacity: 0;
 
         transform:
-            scale(1.2);
+            scale(1.25);
 
         filter:
-            blur(12px);
-
+            blur(15px);
     }
 
 }
 
 
-@keyframes narniaLeaveBack {
+@keyframes narniaExitBackward {
 
     from {
-
         opacity: 1;
-
-        transform:
-            scale(1);
-
+        transform: scale(1);
     }
 
     to {
-
         opacity: 0;
 
         transform:
-            scale(.8);
+            scale(.75);
 
         filter:
-            blur(10px);
-
+            blur(15px);
     }
 
 }
@@ -1340,141 +1359,128 @@ main {
 /* ================================================= */
 
 .theme-outerbanks.slide-enter.forward {
-
     animation:
-        outerEnter
-        .7s
-        cubic-bezier(.2, .9, .3, 1)
+        outerForward
+        .85s
+        cubic-bezier(.2,.9,.3,1)
         both;
-
 }
+
 
 .theme-outerbanks.slide-enter.backward {
-
     animation:
-        outerEnterBack
-        .7s
-        cubic-bezier(.2, .9, .3, 1)
+        outerBackward
+        .85s
+        cubic-bezier(.2,.9,.3,1)
         both;
-
 }
+
 
 .theme-outerbanks.slide-leave.forward {
-
     animation:
-        outerLeave
-        .6s
+        outerExitForward
+        .7s
         ease
         both;
-
 }
+
 
 .theme-outerbanks.slide-leave.backward {
-
     animation:
-        outerLeaveBack
-        .6s
+        outerExitBackward
+        .7s
         ease
         both;
-
 }
 
 
-@keyframes outerEnter {
+@keyframes outerForward {
 
     0% {
-
         opacity: 0;
 
         transform:
             translateX(100vw)
-            rotate(3deg);
-
+            rotate(4deg);
     }
 
-    70% {
-
+    65% {
         opacity: 1;
 
         transform:
-            translateX(-15px)
-            rotate(-.5deg);
-
+            translateX(-18px)
+            rotate(-.7deg);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
             translateX(0)
             rotate(0);
-
     }
 
 }
 
 
-@keyframes outerEnterBack {
+@keyframes outerBackward {
 
     0% {
-
         opacity: 0;
 
         transform:
             translateX(-100vw)
-            rotate(-3deg);
-
+            rotate(-4deg);
     }
 
-    70% {
-
+    65% {
         opacity: 1;
 
         transform:
-            translateX(15px)
-            rotate(.5deg);
-
+            translateX(18px)
+            rotate(.7deg);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
             translateX(0)
             rotate(0);
-
     }
 
 }
 
 
-@keyframes outerLeave {
+@keyframes outerExitForward {
+
+    from {
+        opacity: 1;
+    }
 
     to {
-
         opacity: 0;
 
         transform:
             translateX(-100vw)
-            rotate(-3deg);
-
+            rotate(-4deg);
     }
 
 }
 
 
-@keyframes outerLeaveBack {
+@keyframes outerExitBackward {
+
+    from {
+        opacity: 1;
+    }
 
     to {
-
         opacity: 0;
 
         transform:
             translateX(100vw)
-            rotate(3deg);
-
+            rotate(4deg);
     }
 
 }
@@ -1485,54 +1491,50 @@ main {
 /* ================================================= */
 
 .theme-bella.slide-enter {
-
     animation:
         bellaEnter
         1.2s
-        cubic-bezier(.2, .8, .2, 1)
+        cubic-bezier(.2,.8,.2,1)
         both;
-
 }
 
-.theme-bella.slide-leave {
 
+.theme-bella.slide-leave {
     animation:
-        bellaLeave
+        bellaExit
         .8s
         ease
         both;
-
 }
 
 
 @keyframes bellaEnter {
 
     0% {
-
         opacity: 0;
 
         transform:
-            scale(.9)
-            translateY(30px);
+            scale(.78)
+            translateY(40px);
 
         filter:
-            blur(10px)
-            brightness(1.4);
-
+            blur(18px)
+            brightness(1.5);
     }
 
-    60% {
-
+    50% {
         opacity: 1;
 
-        filter:
-            blur(2px)
-            brightness(1.15);
+        transform:
+            scale(1.04)
+            translateY(-5px);
 
+        filter:
+            blur(3px)
+            brightness(1.18);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1542,25 +1544,22 @@ main {
         filter:
             blur(0)
             brightness(1);
-
     }
 
 }
 
 
-@keyframes bellaLeave {
+@keyframes bellaExit {
 
     to {
-
         opacity: 0;
 
         transform:
-            scale(1.08)
-            translateY(-20px);
+            scale(1.1)
+            translateY(-25px);
 
         filter:
-            blur(8px);
-
+            blur(10px);
     }
 
 }
@@ -1571,43 +1570,48 @@ main {
 /* ================================================= */
 
 .theme-bridgerton.slide-enter {
-
     animation:
         bridgertonEnter
-        1.1s
+        1.15s
         ease
         both;
-
 }
 
-.theme-bridgerton.slide-leave {
 
+.theme-bridgerton.slide-leave {
     animation:
-        bridgertonLeave
+        bridgertonExit
         .8s
         ease
         both;
-
 }
 
 
 @keyframes bridgertonEnter {
 
     0% {
-
         opacity: 0;
 
         transform:
-            translateY(70px)
-            scale(.96);
+            translateY(90px)
+            scale(.94);
 
         filter:
-            blur(5px);
+            blur(8px);
+    }
 
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-6px)
+            scale(1.015);
+
+        filter:
+            blur(1px);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1616,87 +1620,76 @@ main {
 
         filter:
             blur(0);
-
     }
 
 }
 
 
-@keyframes bridgertonLeave {
+@keyframes bridgertonExit {
 
     to {
-
         opacity: 0;
 
         transform:
-            translateY(-50px)
-            scale(.97);
+            translateY(-65px)
+            scale(.96);
 
         filter:
-            blur(5px);
-
+            blur(7px);
     }
 
 }
 
 
 /* ================================================= */
-/* PRINCESA / DISNEY */
+/* PRINCESAS / DISNEY */
 /* ================================================= */
 
 .theme-princess.slide-enter {
-
     animation:
         princessEnter
-        1s
-        cubic-bezier(.16, 1, .3, 1)
+        1.05s
+        cubic-bezier(.16,1,.3,1)
         both;
-
 }
 
-.theme-princess.slide-leave {
 
+.theme-princess.slide-leave {
     animation:
-        princessLeave
+        princessExit
         .8s
         ease
         both;
-
 }
 
 
 @keyframes princessEnter {
 
     0% {
-
         opacity: 0;
 
         transform:
-            scale(.55)
-            rotate(-3deg);
+            scale(.5)
+            rotate(-5deg);
 
         filter:
-            blur(12px)
+            blur(16px)
             brightness(1.8);
-
     }
 
     55% {
-
         opacity: 1;
 
         transform:
-            scale(1.04)
-            rotate(.5deg);
+            scale(1.06)
+            rotate(1deg);
 
         filter:
             blur(2px)
-            brightness(1.2);
-
+            brightness(1.3);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1706,25 +1699,22 @@ main {
         filter:
             blur(0)
             brightness(1);
-
     }
 
 }
 
 
-@keyframes princessLeave {
+@keyframes princessExit {
 
     to {
-
         opacity: 0;
 
         transform:
-            scale(1.15)
-            rotate(3deg);
+            scale(1.16)
+            rotate(5deg);
 
         filter:
-            blur(8px);
-
+            blur(10px);
     }
 
 }
@@ -1735,66 +1725,60 @@ main {
 /* ================================================= */
 
 .theme-harrypotter.slide-enter {
-
     animation:
-        magicEnter
-        1s
-        cubic-bezier(.16, 1, .3, 1)
+        harryEnter
+        1.05s
+        cubic-bezier(.16,1,.3,1)
         both;
-
 }
+
 
 .theme-harrypotter.slide-leave {
-
     animation:
-        magicLeave
-        .7s
+        harryExit
+        .8s
         ease
         both;
-
 }
 
 
-@keyframes magicEnter {
+@keyframes harryEnter {
 
     0% {
-
         opacity: 0;
 
         transform:
-            scale(.7)
-            rotate(-2deg);
+            scale(.62)
+            rotate(-4deg);
 
         filter:
-            blur(20px)
-            brightness(1.7);
-
+            blur(22px)
+            brightness(1.8);
     }
 
-    35% {
-
+    40% {
         opacity: 1;
 
-        filter:
-            blur(8px)
-            brightness(1.4);
+        transform:
+            scale(.92)
+            rotate(1deg);
 
+        filter:
+            blur(7px)
+            brightness(1.35);
     }
 
-    70% {
-
+    75% {
         transform:
-            scale(1.03)
-            rotate(.5deg);
+            scale(1.04)
+            rotate(-.5deg);
 
         filter:
-            blur(2px)
-            brightness(1.1);
-
+            blur(1px)
+            brightness(1.08);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1804,25 +1788,22 @@ main {
         filter:
             blur(0)
             brightness(1);
-
     }
 
 }
 
 
-@keyframes magicLeave {
+@keyframes harryExit {
 
     to {
-
         opacity: 0;
 
         transform:
-            scale(.8)
-            rotate(2deg);
+            scale(.78)
+            rotate(4deg);
 
         filter:
-            blur(15px);
-
+            blur(16px);
     }
 
 }
@@ -1833,56 +1814,48 @@ main {
 /* ================================================= */
 
 .theme-final.slide-enter {
-
     animation:
         finalEnter
-        1.2s
-        cubic-bezier(.16, 1, .3, 1)
+        1.25s
+        cubic-bezier(.16,1,.3,1)
         both;
-
 }
 
-.theme-final.slide-leave {
 
+.theme-final.slide-leave {
     animation:
-        finalLeave
+        finalExit
         .8s
         ease
         both;
-
 }
 
 
 @keyframes finalEnter {
 
     0% {
-
         opacity: 0;
 
         transform:
-            scale(.5);
+            scale(.4);
 
         filter:
-            blur(20px)
-            brightness(1.7);
-
+            blur(25px)
+            brightness(1.9);
     }
 
     50% {
-
         opacity: 1;
 
         transform:
-            scale(1.05);
+            scale(1.07);
 
         filter:
             blur(3px)
-            brightness(1.2);
-
+            brightness(1.25);
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1891,24 +1864,21 @@ main {
         filter:
             blur(0)
             brightness(1);
-
     }
 
 }
 
 
-@keyframes finalLeave {
+@keyframes finalExit {
 
     to {
-
         opacity: 0;
 
         transform:
-            scale(.85);
+            scale(.84);
 
         filter:
-            blur(10px);
-
+            blur(13px);
     }
 
 }
@@ -1919,58 +1889,50 @@ main {
 /* ================================================= */
 
 .theme-infinity.slide-enter {
-
     animation:
         infinityEnter
-        1.5s
-        cubic-bezier(.16, 1, .3, 1)
+        1.7s
+        cubic-bezier(.16,1,.3,1)
         both;
-
 }
 
-.theme-infinity.slide-leave {
 
+.theme-infinity.slide-leave {
     animation:
-        infinityLeave
+        infinityExit
         1s
         ease
         both;
-
 }
 
 
 @keyframes infinityEnter {
 
     0% {
-
         opacity: 0;
 
         transform:
-            scale(.7)
-            translateY(50px);
+            scale(.62)
+            translateY(65px);
 
         filter:
-            blur(20px)
-            brightness(1.5);
-
+            blur(25px)
+            brightness(1.6);
     }
 
-    40% {
-
+    45% {
         opacity: 1;
 
         transform:
-            scale(.94)
-            translateY(15px);
+            scale(.93)
+            translateY(18px);
 
         filter:
-            blur(7px)
+            blur(8px)
             brightness(1.2);
-
     }
 
     75% {
-
         transform:
             scale(1.02)
             translateY(-3px);
@@ -1978,11 +1940,9 @@ main {
         filter:
             blur(1px)
             brightness(1.05);
-
     }
 
     100% {
-
         opacity: 1;
 
         transform:
@@ -1992,61 +1952,53 @@ main {
         filter:
             blur(0)
             brightness(1);
-
     }
 
 }
 
 
-@keyframes infinityLeave {
+@keyframes infinityExit {
 
     to {
-
         opacity: 0;
 
         transform:
-            scale(1.08)
-            translateY(-30px);
+            scale(1.1)
+            translateY(-35px);
 
         filter:
-            blur(10px);
-
+            blur(13px);
     }
 
 }
 
 
 /* ================================================= */
-/* TRANSICIÓN PORTADA */
+/* PORTADA — ENTRADA */
 /* ================================================= */
 
 .theme-cover.slide-enter {
-
     animation:
         coverEnter
-        1s
-        cubic-bezier(.16, 1, .3, 1)
+        1.1s
+        cubic-bezier(.16,1,.3,1)
         both;
-
 }
 
 
 @keyframes coverEnter {
 
-    from {
-
+    0% {
         opacity: 0;
 
         transform:
-            scale(.8);
+            scale(.78);
 
         filter:
-            blur(15px);
-
+            blur(18px);
     }
 
-    to {
-
+    100% {
         opacity: 1;
 
         transform:
@@ -2054,7 +2006,6 @@ main {
 
         filter:
             blur(0);
-
     }
 
 }
@@ -2067,152 +2018,109 @@ main {
 @media (max-width: 600px) {
 
     .slide {
-
         padding:
             18px
             15px
             75px;
-
-    }
-
-
-    .cover-content {
-
-        max-height: 100%;
-
     }
 
 
     .birthday-small {
-
         margin-bottom: 2px;
-
     }
 
 
     .new-cake {
-
         width: 270px;
-
         height: 175px;
 
         transform: scale(.9);
 
         margin-top: -8px;
-
         margin-bottom: -12px;
-
     }
 
 
     .cover-number {
-
         font-size: 90px;
-
     }
 
 
     .cover h1 {
-
         font-size: 28px;
-
         margin-top: 12px;
-
     }
 
 
     .cover-divider {
-
         margin:
             2px 0 6px;
-
     }
 
 
     .cover h2 {
-
         font-size: 26px;
-
     }
 
 
     .cover-text {
-
         font-size: 12px;
-
         margin-bottom: 16px;
-
     }
 
 
     .gift-button {
-
         font-size: 13px;
 
         padding:
             13px 23px;
-
     }
 
 
     .slide h2 {
-
         font-size: 25px;
-
     }
 
 
     .slide p {
-
         font-size: 13px;
-
         line-height: 1.65;
-
     }
 
 
     .rating {
-
         font-size: 72px;
-
     }
 
 
     .rating-label {
-
         font-size: 10px;
 
         letter-spacing: 1.2px;
 
         margin-bottom: 3px;
-
     }
 
 
     .navigation {
-
         bottom:
             max(
                 10px,
                 env(safe-area-inset-bottom)
             );
-
     }
 
 
     .navigation button {
-
         width: 41px;
-
         height: 41px;
 
         font-size: 19px;
-
     }
 
 
     /* ============================================= */
-    /* INFINITO EN MÓVIL */
+    /* INFINITO */
     /* ============================================= */
 
     .infinity {
@@ -2227,32 +2135,25 @@ main {
         overflow-y: auto;
 
         -webkit-overflow-scrolling: touch;
-
     }
 
 
     .infinity .rating-label {
-
         font-size: 10px;
-
         margin-bottom: 2px;
-
     }
 
 
     .infinity .rating {
-
         font-size: 62px;
 
         line-height: .85;
 
         margin-bottom: 12px;
-
     }
 
 
     .infinity h2 {
-
         font-size: 23px;
 
         line-height: 1.15;
@@ -2260,67 +2161,53 @@ main {
         max-width: 340px;
 
         margin-bottom: 20px;
-
     }
 
 
     .infinity-text {
-
         gap: 19px;
 
         width: 100%;
 
         max-width: 370px;
-
     }
 
 
     .infinity-text p {
-
         font-size: 13px;
 
         line-height: 1.7;
 
         text-align: center;
-
     }
 
 
     .infinity-highlight {
-
         font-size: 14px !important;
 
         line-height: 1.65 !important;
-
     }
 
 
     .infinity-final {
-
         font-size: 18px !important;
 
         line-height: 1.45 !important;
-
     }
 
 
     .infinity .final-heart {
-
         margin-top: 10px;
-
         margin-bottom: 12px;
-
     }
 
 
     .infinity .final-message {
-
         font-size: 17px;
 
         line-height: 1.45;
 
         margin-bottom: 15px;
-
     }
 
 }
@@ -2330,101 +2217,76 @@ main {
 /* MÓVILES MUY PEQUEÑOS */
 /* ================================================= */
 
-@media (max-width: 380px),
-       (max-height: 650px) {
+@media (
+    max-width: 380px
+),
+(
+    max-height: 650px
+) {
 
     .new-cake {
-
         transform: scale(.68);
 
         margin-top: -30px;
-
         margin-bottom: -50px;
-
     }
 
 
     .cover-number {
-
         font-size: 75px;
-
     }
 
 
     .cover h1 {
-
         font-size: 24px;
-
     }
 
 
     .cover h2 {
-
         font-size: 22px;
-
     }
 
 
     .cover-text {
-
         font-size: 11px;
-
         margin-bottom: 12px;
-
     }
 
 
     .gift-button {
-
         font-size: 12px;
 
         padding:
             11px 19px;
-
     }
 
 
-    /* ============================================= */
-    /* INFINITO MUY PEQUEÑO */
-    /* ============================================= */
-
     .infinity {
-
         padding:
             18px
             14px
             80px;
-
     }
 
 
     .infinity .rating {
-
         font-size: 55px;
-
     }
 
 
     .infinity h2 {
-
         font-size: 21px;
-
     }
 
 
     .infinity-text {
-
         gap: 16px;
-
     }
 
 
     .infinity-text p {
-
         font-size: 12px;
-
         line-height: 1.65;
-
     }
 
 }
@@ -2437,23 +2299,19 @@ main {
 @media (min-width: 1000px) {
 
     .new-cake {
-
         transform: scale(1.05);
-
     }
 
 
     .cover-number {
-
         font-size: 150px;
-
     }
 
 }
 
 
 /* ================================================= */
-/* REDUCIR MOVIMIENTO */
+/* ACCESIBILIDAD */
 /* ================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -2466,7 +2324,6 @@ main {
             .25s
             ease
             both !important;
-
     }
 
 }
@@ -2475,15 +2332,11 @@ main {
 @keyframes simpleFade {
 
     from {
-
         opacity: 0;
-
     }
 
     to {
-
         opacity: 1;
-
     }
 
 }
