@@ -2340,3 +2340,434 @@ main {
     }
 
 }
+/* ================================================= */
+/* ✨ CAPA DE BRILLOS Y MAGIA */
+/* ================================================= */
+
+.magic-sparkle {
+    position: fixed;
+    z-index: 450;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .95);
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 6px rgba(255, 255, 255, .9),
+        0 0 14px rgba(255, 230, 120, .8),
+        0 0 25px rgba(255, 255, 255, .45);
+
+    animation:
+        sparkleAppear 1.8s ease-out forwards;
+}
+
+
+.magic-sparkle::before,
+.magic-sparkle::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(255, 255, 255, .9);
+
+    border-radius: 50%;
+}
+
+
+.magic-sparkle::before {
+    width: 2px;
+    height: 18px;
+}
+
+
+.magic-sparkle::after {
+    width: 18px;
+    height: 2px;
+}
+
+
+@keyframes sparkleAppear {
+
+    0% {
+        opacity: 0;
+        transform: scale(.2) rotate(0deg);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1) rotate(45deg);
+    }
+
+    70% {
+        opacity: .9;
+        transform: scale(.8) rotate(90deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.1) rotate(135deg);
+    }
+
+}
+
+
+/* ================================================= */
+/* 💫 PEQUEÑAS PARTÍCULAS */
+/* ================================================= */
+
+.magic-particle {
+    position: fixed;
+
+    z-index: 440;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .7);
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, .8);
+
+    animation:
+        particleFloat
+        var(--particle-duration)
+        ease-out
+        forwards;
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate3d(0, 20px, 0)
+            scale(.3);
+    }
+
+    15% {
+        opacity: .75;
+    }
+
+    75% {
+        opacity: .45;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--particle-x),
+                var(--particle-y),
+                0
+            )
+            scale(1.15);
+    }
+
+}
+
+
+/* ================================================= */
+/* ✨ BRILLO DEL RATING */
+/* ================================================= */
+
+.rating {
+    position: relative;
+}
+
+
+.rating::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 80%;
+    height: 70%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.18),
+            transparent 65%
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        ratingGlow
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes ratingGlow {
+
+    0%,
+    100% {
+        opacity: .3;
+        transform:
+            translate(-50%, -50%)
+            scale(.85);
+    }
+
+    50% {
+        opacity: .75;
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+}
+
+
+/* ================================================= */
+/* 💖 BRILLO DEL CORAZÓN FINAL */
+/* ================================================= */
+
+.final-heart {
+    filter:
+        drop-shadow(
+            0 0 5px rgba(255,255,255,.35)
+        )
+        drop-shadow(
+            0 0 18px rgba(255,190,90,.35)
+        );
+}
+
+
+/* ================================================= */
+/* 🎁 BOTÓN — EFECTO AL PULSAR */
+/* ================================================= */
+
+.gift-button {
+    overflow: hidden;
+}
+
+
+.gift-button::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.65),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    pointer-events: none;
+}
+
+
+.gift-button:hover::after {
+    animation:
+        buttonShine
+        .7s
+        ease
+        forwards;
+}
+
+
+@keyframes buttonShine {
+
+    from {
+        left: -120%;
+    }
+
+    to {
+        left: 150%;
+    }
+
+}
+
+
+.gift-button:active {
+    transform:
+        scale(.94);
+}
+
+
+/* ================================================= */
+/* ✨ ENTRADA DEL CONTENIDO */
+/* ================================================= */
+
+.slide.active .rating-label {
+    animation:
+        contentFromTop
+        .7s
+        .12s
+        both;
+}
+
+
+.slide.active .rating {
+    animation:
+        ratingEntrance
+        .9s
+        .18s
+        both;
+}
+
+
+.slide.active h2 {
+    animation:
+        contentFromBottom
+        .75s
+        .3s
+        both;
+}
+
+
+.slide.active p {
+    animation:
+        contentFromBottom
+        .75s
+        .42s
+        both;
+}
+
+
+@keyframes contentFromTop {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-12px);
+    }
+
+    to {
+        opacity: .65;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes ratingEntrance {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(.7)
+            translateY(15px);
+
+        filter:
+            blur(8px);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            scale(1.04)
+            translateY(-3px);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+}
+
+
+@keyframes contentFromBottom {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ================================================= */
+/* 📱 EN MÓVIL — MÁS SUTIL */
+/* ================================================= */
+
+@media (max-width: 600px) {
+
+    .magic-sparkle {
+        width: 5px;
+        height: 5px;
+    }
+
+    .magic-sparkle::before {
+        height: 14px;
+    }
+
+    .magic-sparkle::after {
+        width: 14px;
+    }
+
+}
+
+
+/* ================================================= */
+/* ♿ REDUCIR MOVIMIENTO */
+/* ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .magic-sparkle,
+    .magic-particle {
+        display: none;
+    }
+
+}
