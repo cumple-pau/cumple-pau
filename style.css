@@ -2778,15 +2778,11 @@ main {
 #theme-particles {
     position: fixed;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     pointer-events: none;
-
-    z-index: 4;
+    z-index: 2;
 }
 
 
@@ -3347,6 +3343,464 @@ main {
 
     #theme-particles {
         display: none;
+    }
+
+}
+/* ================================================= */
+/* 🌌 ATMÓSFERAS CINEMATOGRÁFICAS POR TEMÁTICA */
+/* ================================================= */
+
+
+/* ================================================= */
+/* BASE */
+/* ================================================= */
+
+.slide {
+    isolation: isolate;
+}
+
+
+/*
+ * Capa de luz ambiental.
+ * No ocupa espacio y no afecta al contenido.
+ */
+
+.slide::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: 0;
+
+    transition:
+        opacity 1.2s ease,
+        background 1.2s ease,
+        box-shadow 1.2s ease;
+
+}
+
+
+/*
+ * Todo el contenido permanece por encima
+ * de la iluminación.
+ */
+
+.slide > * {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+/* ================================================= */
+/* ❄️ NARNIA */
+/* ================================================= */
+
+.slide.theme-narnia::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(210, 235, 255, .18),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(170, 210, 255, .10),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(220, 240, 255, .08),
+            transparent 32%
+        );
+
+    box-shadow:
+        inset 0 0 90px rgba(170, 215, 255, .08);
+}
+
+
+/* ================================================= */
+/* 🌊 OUTER BANKS */
+/* ================================================= */
+
+.slide.theme-outerbanks::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 215, 150, .14),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(90, 180, 210, .11),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(255, 220, 160, .04),
+            transparent 45%,
+            rgba(50, 130, 160, .05)
+        );
+
+    box-shadow:
+        inset 0 0 100px rgba(255, 210, 140, .06);
+}
+
+
+/* ================================================= */
+/* 🌹 BELLA Y LA BESTIA */
+/* ================================================= */
+
+.slide.theme-bella::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 50% 18%,
+            rgba(255, 205, 130, .15),
+            transparent 36%
+        ),
+
+        radial-gradient(
+            circle at 10% 70%,
+            rgba(190, 35, 65, .09),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(255, 170, 120, .08),
+            transparent 32%
+        );
+
+    box-shadow:
+        inset 0 0 100px rgba(255, 190, 110, .07);
+}
+
+
+/* ================================================= */
+/* 🕯️ BRIDGERTON */
+/* ================================================= */
+
+.slide.theme-bridgerton::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(255, 230, 165, .18),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(255, 220, 150, .07),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 55%,
+            rgba(255, 225, 170, .07),
+            transparent 30%
+        );
+
+    box-shadow:
+        inset 0 0 120px rgba(255, 220, 150, .09);
+}
+
+
+/* ================================================= */
+/* 👑 DISNEY / PRINCESAS */
+/* ================================================= */
+
+.slide.theme-princess::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255, 240, 190, .20),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 20% 75%,
+            rgba(255, 200, 230, .08),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(190, 210, 255, .08),
+            transparent 32%
+        );
+
+    box-shadow:
+        inset 0 0 110px rgba(255, 225, 170, .08);
+}
+
+
+/* ================================================= */
+/* 🪄 HARRY POTTER */
+/* ================================================= */
+
+.slide.theme-harrypotter::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(190, 190, 255, .15),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(120, 140, 230, .08),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(180, 150, 255, .08),
+            transparent 32%
+        );
+
+    box-shadow:
+        inset 0 0 110px rgba(150, 160, 255, .08);
+}
+
+
+/* ================================================= */
+/* 💛 100/10 */
+/* ================================================= */
+
+.slide.theme-final::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 225, 90, .22),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(255, 190, 90, .09),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(255, 220, 120, .10),
+            transparent 32%
+        );
+
+    box-shadow:
+        inset 0 0 130px rgba(255, 210, 80, .10);
+
+    animation:
+        finalAtmosphere 4s ease-in-out infinite;
+}
+
+
+@keyframes finalAtmosphere {
+
+    0%,
+    100% {
+
+        opacity: .8;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* ================================================= */
+/* ♾️ INFINITO */
+/* ================================================= */
+
+.slide.theme-infinity::before {
+
+    opacity: 1;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255, 255, 255, .10),
+            transparent 42%
+        ),
+
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(255, 225, 170, .06),
+            transparent 40%
+        );
+
+    box-shadow:
+        inset 0 0 140px rgba(255, 255, 255, .055);
+
+    animation:
+        infinityAtmosphere
+        8s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes infinityAtmosphere {
+
+    0%,
+    100% {
+
+        opacity: .55;
+
+    }
+
+    50% {
+
+        opacity: .9;
+
+    }
+
+}
+
+
+/* ================================================= */
+/* ✨ TRANSICIÓN DE ATMÓSFERA */
+/* ================================================= */
+
+.slide.active::before {
+
+    animation:
+        atmosphereReveal
+        1.2s
+        ease-out
+        both;
+
+}
+
+
+@keyframes atmosphereReveal {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.08);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* 📱 MÓVIL */
+/* ================================================= */
+
+@media (max-width: 600px) {
+
+    .slide.theme-narnia::before {
+        box-shadow:
+            inset 0 0 65px rgba(170, 215, 255, .07);
+    }
+
+    .slide.theme-outerbanks::before {
+        box-shadow:
+            inset 0 0 70px rgba(255, 210, 140, .055);
+    }
+
+    .slide.theme-bella::before {
+        box-shadow:
+            inset 0 0 70px rgba(255, 190, 110, .06);
+    }
+
+    .slide.theme-bridgerton::before {
+        box-shadow:
+            inset 0 0 75px rgba(255, 220, 150, .07);
+    }
+
+    .slide.theme-princess::before {
+        box-shadow:
+            inset 0 0 70px rgba(255, 225, 170, .07);
+    }
+
+    .slide.theme-harrypotter::before {
+        box-shadow:
+            inset 0 0 70px rgba(150, 160, 255, .07);
+    }
+
+    .slide.theme-final::before {
+        box-shadow:
+            inset 0 0 80px rgba(255, 210, 80, .08);
+    }
+
+    .slide.theme-infinity::before {
+        box-shadow:
+            inset 0 0 90px rgba(255, 255, 255, .045);
+    }
+
+}
+
+
+/* ================================================= */
+/* ♿ REDUCIR MOVIMIENTO */
+/* ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .slide.theme-final::before,
+    .slide.theme-infinity::before {
+
+        animation: none;
+
+    }
+
+    .slide.active::before {
+
+        animation: none;
+
     }
 
 }
