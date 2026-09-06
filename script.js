@@ -29,12 +29,484 @@ const themes = [
 
 
 /* ================================================= */
+/* OBJETOS PROTAGONISTAS */
+/* ================================================= */
+
+const themeObjects = {
+
+    1: {
+        icon: "🚪",
+        name: "Puerta de Narnia"
+    },
+
+    2: {
+        icon: "🗺️",
+        name: "Mapa de aventuras"
+    },
+
+    3: {
+        icon: "🌹",
+        name: "Rosa encantada"
+    },
+
+    4: {
+        icon: "✉️",
+        name: "Carta"
+    },
+
+    5: {
+        icon: "👑",
+        name: "Corona"
+    },
+
+    6: {
+        icon: "🗝️",
+        name: "Llave mágica"
+    },
+
+    7: {
+        icon: "🪄",
+        name: "Varita"
+    },
+
+    8: {
+        icon: "🏮",
+        name: "Linterna"
+    },
+
+    9: {
+        icon: "🧭",
+        name: "Brújula"
+    }
+
+};
+
+
+/* ================================================= */
+/* SISTEMA DE OBJETOS ACUMULATIVOS */
+/* ================================================= */
+
+let unlockedObjects = [];
+
+
+/* Crear contenedor automáticamente
+   sin modificar el HTML */
+
+const objectsContainer =
+    document.createElement("div");
+
+objectsContainer.id =
+    "theme-objects-container";
+
+document.body.appendChild(
+    objectsContainer
+);
+
+
+/* ================================================= */
+/* DESBLOQUEAR OBJETO */
+/* ================================================= */
+
+function unlockThemeObject(index) {
+
+    if (!themeObjects[index]) return;
+
+    /* Si ya existe, no lo duplicamos */
+
+    if (
+        unlockedObjects.some(
+            object => object.index === index
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const objectData =
+        themeObjects[index];
+
+
+    const object =
+        document.createElement("div");
+
+
+    object.className =
+        "theme-object";
+
+
+    object.dataset.index =
+        index;
+
+
+    object.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    object.innerHTML = `
+
+        <div class="theme-object-glow"></div>
+
+        <div class="theme-object-icon">
+            ${objectData.icon}
+        </div>
+
+    `;
+
+
+    objectsContainer.appendChild(
+        object
+    );
+
+
+    unlockedObjects.push({
+        index,
+        element: object
+    });
+
+
+    positionThemeObjects();
+
+
+    /* Pequeño efecto especial al desbloquear */
+
+    object.classList.add(
+        "theme-object-new"
+    );
+
+
+    setTimeout(() => {
+
+        object.classList.remove(
+            "theme-object-new"
+        );
+
+    }, 1200);
+
+}
+
+
+/* ================================================= */
+/* POSICIÓN DE LOS OBJETOS */
+/* ================================================= */
+
+function positionThemeObjects() {
+
+    const total =
+        unlockedObjects.length;
+
+
+    unlockedObjects.forEach(
+        (item, index) => {
+
+            const object =
+                item.element;
+
+
+            /* El objeto más reciente
+               es el protagonista */
+
+            if (index === total - 1) {
+
+                object.classList.add(
+                    "theme-object-current"
+                );
+
+                object.classList.remove(
+                    "theme-object-memory"
+                );
+
+                object.style.setProperty(
+                    "--object-x",
+                    "0px"
+                );
+
+                object.style.setProperty(
+                    "--object-y",
+                    "0px"
+                );
+
+                return;
+
+            }
+
+
+            object.classList.remove(
+                "theme-object-current"
+            );
+
+            object.classList.add(
+                "theme-object-memory"
+            );
+
+
+            /*
+                Los objetos antiguos se
+                distribuyen alrededor de
+                la pantalla.
+            */
+
+            const memoryPositions = [
+
+                [-42, -18],
+                [42, -18],
+                [-48, 28],
+                [48, 28],
+                [-38, 55],
+                [38, 55],
+                [-52, 0],
+                [52, 0]
+
+            ];
+
+
+            const position =
+                memoryPositions[
+                    index % memoryPositions.length
+                ];
+
+
+            object.style.setProperty(
+                "--object-x",
+                `${position[0]}vw`
+            );
+
+
+            object.style.setProperty(
+                "--object-y",
+                `${position[1]}vh`
+            );
+
+        }
+    );
+
+}
+
+
+/* ================================================= */
+/* REUNIÓN FINAL — 100/10 */
+/* ================================================= */
+
+function gatherThemeObjects() {
+
+    objectsContainer.classList.add(
+        "objects-gathering"
+    );
+
+
+    unlockedObjects.forEach(
+        (item, index) => {
+
+            const object =
+                item.element;
+
+
+            object.classList.remove(
+                "theme-object-current",
+                "theme-object-memory"
+            );
+
+
+            object.classList.add(
+                "theme-object-gathered"
+            );
+
+
+            const positions = [
+
+                [-28, -22],
+                [0, -27],
+                [28, -22],
+
+                [-34, 0],
+                [34, 0],
+
+                [-28, 24],
+                [0, 28],
+                [28, 24],
+
+                [0, 0]
+
+            ];
+
+
+            const position =
+                positions[
+                    index % positions.length
+                ];
+
+
+            object.style.setProperty(
+                "--gather-x",
+                `${position[0]}vw`
+            );
+
+
+            object.style.setProperty(
+                "--gather-y",
+                `${position[1]}vh`
+            );
+
+
+            object.style.setProperty(
+                "--gather-delay",
+                `${index * 0.08}s`
+            );
+
+        }
+    );
+
+}
+
+
+/* ================================================= */
+/* REUNIÓN FINAL — INFINITO */
+/* ================================================= */
+
+function createInfinityObjects() {
+
+    objectsContainer.classList.remove(
+        "objects-gathering"
+    );
+
+
+    objectsContainer.classList.add(
+        "objects-infinity"
+    );
+
+
+    unlockedObjects.forEach(
+        (item, index) => {
+
+            const object =
+                item.element;
+
+
+            object.classList.remove(
+                "theme-object-current",
+                "theme-object-memory",
+                "theme-object-gathered"
+            );
+
+
+            object.classList.add(
+                "theme-object-infinity"
+            );
+
+
+            object.style.setProperty(
+                "--infinity-delay",
+                `${index * 0.09}s`
+            );
+
+        }
+    );
+
+}
+
+
+/* ================================================= */
+/* ACTUALIZAR OBJETOS SEGÚN DIAPOSITIVA */
+/* ================================================= */
+
+function updateThemeObjects(index) {
+
+    /*
+        1–9:
+        desbloqueamos objetos
+    */
+
+    if (
+        index >= 1 &&
+        index <= 9
+    ) {
+
+        unlockThemeObject(index);
+
+        objectsContainer.classList.remove(
+            "objects-gathering",
+            "objects-infinity"
+        );
+
+        return;
+
+    }
+
+
+    /*
+        100/10:
+        todos comienzan a reunirse
+    */
+
+    if (index === 10) {
+
+        gatherThemeObjects();
+
+        return;
+
+    }
+
+
+    /*
+        ∞/10:
+        composición final
+    */
+
+    if (index === 11) {
+
+        createInfinityObjects();
+
+        return;
+
+    }
+
+
+    /*
+        Portada:
+        ocultamos los objetos.
+    */
+
+    if (index === 0) {
+
+        objectsContainer.classList.remove(
+            "objects-gathering",
+            "objects-infinity"
+        );
+
+        unlockedObjects.forEach(
+            item => {
+
+                item.element.classList.remove(
+                    "theme-object-current",
+                    "theme-object-memory",
+                    "theme-object-gathered",
+                    "theme-object-infinity"
+                );
+
+                item.element.classList.add(
+                    "theme-object-hidden"
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+/* ================================================= */
 /* PREPARAR DIAPOSITIVAS */
 /* ================================================= */
 
 slides.forEach((slide, index) => {
 
-    slide.classList.add(themes[index] || "theme-cover");
+    slide.classList.add(
+        themes[index] || "theme-cover"
+    );
 
 });
 
@@ -184,6 +656,13 @@ function showSlide(index) {
 
 
     updateNavigation();
+
+
+    /* ================================================= */
+    /* ACTUALIZAR OBJETOS */
+    /* ================================================= */
+
+    updateThemeObjects(index);
 
 
     /* ================================================= */
@@ -473,6 +952,7 @@ function createHeart() {
 
 }
 
+
 /* ================================================= */
 /* ✨ BRILLOS MÁGICOS */
 /* ================================================= */
@@ -554,6 +1034,7 @@ function createMagicParticle() {
 setInterval(createSparkle, 750);
 
 setInterval(createMagicParticle, 1200);
+
 setInterval(
     createHeart,
     1100
