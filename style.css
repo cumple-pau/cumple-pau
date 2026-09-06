@@ -2771,3 +2771,582 @@ main {
     }
 
 }
+/* ================================================= */
+/* ✨ SISTEMA DE ATMÓSFERAS TEMÁTICAS */
+/* ================================================= */
+
+#theme-particles {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+/* ================================================= */
+/* PARTÍCULA BASE */
+/* ================================================= */
+
+.theme-particle {
+    position: absolute;
+
+    pointer-events: none;
+    user-select: none;
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+
+    animation:
+        themeParticleFloat
+        var(--duration)
+        var(--delay)
+        ease-in-out
+        forwards;
+}
+
+
+/* ================================================= */
+/* ANIMACIÓN GENERAL */
+/* ================================================= */
+
+@keyframes themeParticleFloat {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--start-x),
+                20px,
+                0
+            )
+            rotate(0deg)
+            scale(.4);
+
+        filter:
+            blur(1px);
+    }
+
+    12% {
+        opacity: var(--opacity);
+    }
+
+    50% {
+        transform:
+            translate3d(
+                var(--middle-x),
+                var(--middle-y),
+                0
+            )
+            rotate(var(--rotate-mid))
+            scale(1);
+    }
+
+    82% {
+        opacity: calc(var(--opacity) * .7);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--end-x),
+                var(--end-y),
+                0
+            )
+            rotate(var(--rotate-end))
+            scale(var(--scale-end));
+
+        filter:
+            blur(1px);
+    }
+
+}
+
+
+/* ================================================= */
+/* ❄️ NARNIA */
+/* ================================================= */
+
+.theme-particle.narnia-star {
+
+    color: rgba(255,255,255,.9);
+
+    font-size:
+        var(--size);
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,.9),
+        0 0 12px rgba(190,220,255,.75),
+        0 0 22px rgba(255,255,255,.4);
+}
+
+
+.theme-particle.narnia-snow {
+
+    width:
+        var(--size);
+
+    height:
+        var(--size);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.8);
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,.8),
+        0 0 10px rgba(210,235,255,.65);
+}
+
+
+/* Narnia: movimiento más lento */
+
+.theme-particle.narnia-star,
+.theme-particle.narnia-snow {
+
+    animation-timing-function:
+        cubic-bezier(.25,.7,.35,1);
+}
+
+
+/* ================================================= */
+/* 🌊 OUTER BANKS */
+/* ================================================= */
+
+.theme-particle.outer-sand {
+
+    width:
+        var(--size);
+
+    height:
+        var(--size);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,239,190,.7);
+
+    box-shadow:
+        0 0 5px rgba(255,225,150,.45);
+}
+
+
+.theme-particle.outer-light {
+
+    color:
+        rgba(255,235,180,.9);
+
+    font-size:
+        var(--size);
+
+    text-shadow:
+        0 0 5px rgba(255,210,120,.8),
+        0 0 15px rgba(255,190,90,.5);
+}
+
+
+/* ================================================= */
+/* 🌹 BELLA Y LA BESTIA */
+/* ================================================= */
+
+.theme-particle.rose-petal {
+
+    width:
+        var(--size);
+
+    height:
+        calc(var(--size) * .65);
+
+    border-radius:
+        70% 30% 70% 30%;
+
+    background:
+        rgba(220,55,75,.55);
+
+    box-shadow:
+        0 0 6px rgba(255,100,120,.3);
+}
+
+
+.theme-particle.rose-petal::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 20%;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,190,200,.25);
+}
+
+
+/* ================================================= */
+/* 🕯️ BRIDGERTON */
+/* ================================================= */
+
+.theme-particle.bridge-gold {
+
+    width:
+        var(--size);
+
+    height:
+        var(--size);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,220,130,.9);
+
+    box-shadow:
+        0 0 5px rgba(255,225,150,.85),
+        0 0 12px rgba(255,205,100,.55),
+        0 0 20px rgba(255,235,170,.3);
+}
+
+
+.theme-particle.bridge-spark {
+
+    color:
+        rgba(255,238,180,.9);
+
+    font-size:
+        var(--size);
+
+    text-shadow:
+        0 0 5px rgba(255,225,130,.9),
+        0 0 14px rgba(255,205,100,.6);
+}
+
+
+/* ================================================= */
+/* 👑 DISNEY */
+/* ================================================= */
+
+.theme-particle.disney-star {
+
+    color:
+        rgba(255,255,255,.95);
+
+    font-size:
+        var(--size);
+
+    text-shadow:
+        0 0 6px rgba(255,255,255,.95),
+        0 0 14px rgba(255,225,100,.75),
+        0 0 25px rgba(255,240,170,.45);
+}
+
+
+.theme-particle.disney-twinkle {
+
+    color:
+        rgba(255,240,170,.95);
+
+    font-size:
+        var(--size);
+
+    text-shadow:
+        0 0 8px rgba(255,225,100,.9),
+        0 0 18px rgba(255,255,255,.55);
+}
+
+
+/* ================================================= */
+/* 🪄 HARRY POTTER */
+/* ================================================= */
+
+.theme-particle.hp-magic {
+
+    width:
+        var(--size);
+
+    height:
+        var(--size);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.95);
+
+    box-shadow:
+        0 0 5px white,
+        0 0 12px rgba(180,190,255,.9),
+        0 0 25px rgba(150,150,255,.55);
+}
+
+
+.theme-particle.hp-spark {
+
+    color:
+        rgba(230,230,255,.95);
+
+    font-size:
+        var(--size);
+
+    text-shadow:
+        0 0 6px white,
+        0 0 15px rgba(170,170,255,.9),
+        0 0 25px rgba(130,130,255,.6);
+}
+
+
+/* ================================================= */
+/* 💛 100/10 */
+/* ================================================= */
+
+.theme-particle.final-confetti {
+
+    width:
+        var(--size);
+
+    height:
+        calc(var(--size) * 1.8);
+
+    border-radius:
+        2px;
+
+    background:
+        rgba(255,220,80,.9);
+
+    box-shadow:
+        0 0 6px rgba(255,220,80,.55);
+
+    animation-name:
+        finalConfettiFall;
+}
+
+
+@keyframes finalConfettiFall {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--start-x),
+                -20px,
+                0
+            )
+            rotate(0deg)
+            scale(.7);
+    }
+
+    10% {
+        opacity: var(--opacity);
+    }
+
+    50% {
+
+        transform:
+            translate3d(
+                var(--middle-x),
+                50vh,
+                0
+            )
+            rotate(180deg)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--end-x),
+                115vh,
+                0
+            )
+            rotate(450deg)
+            scale(.8);
+    }
+
+}
+
+
+/* ================================================= */
+/* ♾️ INFINITO */
+/* ================================================= */
+
+.theme-particle.infinity-light {
+
+    width:
+        var(--size);
+
+    height:
+        var(--size);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.7);
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,.7),
+        0 0 14px rgba(255,225,160,.45);
+
+    animation:
+        infinityParticle
+        var(--duration)
+        var(--delay)
+        ease-in-out
+        forwards;
+}
+
+
+@keyframes infinityParticle {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate3d(
+                0,
+                30px,
+                0
+            )
+            scale(.3);
+    }
+
+    20% {
+        opacity: .45;
+    }
+
+    50% {
+
+        opacity: .55;
+
+        transform:
+            translate3d(
+                var(--middle-x),
+                var(--middle-y),
+                0
+            )
+            scale(1);
+    }
+
+    80% {
+        opacity: .3;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--end-x),
+                var(--end-y),
+                0
+            )
+            scale(.7);
+    }
+
+}
+
+
+/* ================================================= */
+/* ✨ DESTELLO ESPECIAL */
+/* ================================================= */
+
+.theme-particle.cross-spark {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 6px white,
+        0 0 15px rgba(255,225,130,.9);
+}
+
+
+.theme-particle.cross-spark::before,
+.theme-particle.cross-spark::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(255,255,255,.9);
+}
+
+
+.theme-particle.cross-spark::before {
+
+    width: 2px;
+    height: 20px;
+}
+
+
+.theme-particle.cross-spark::after {
+
+    width: 20px;
+    height: 2px;
+}
+
+
+/* ================================================= */
+/* 📱 AJUSTES MÓVILES */
+/* ================================================= */
+
+@media (max-width: 600px) {
+
+    .theme-particle {
+        transform-origin: center;
+    }
+
+    .theme-particle.cross-spark {
+        width: 4px;
+        height: 4px;
+    }
+
+    .theme-particle.cross-spark::before {
+        height: 15px;
+    }
+
+    .theme-particle.cross-spark::after {
+        width: 15px;
+    }
+
+}
+
+
+/* ================================================= */
+/* ♿ REDUCIR MOVIMIENTO */
+/* ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #theme-particles {
+        display: none;
+    }
+
+}
