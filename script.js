@@ -1,18 +1,45 @@
+/* ================================================= */
+/* 🎂 PRESENTACIÓN DE CUMPLEAÑOS */
+/* ================================================= */
+
+
+/* ================================================= */
+/* ESTADO PRINCIPAL */
+/* ================================================= */
+
 let currentSlide = 0;
 let isTransitioning = false;
 
-const slides = document.querySelectorAll(".slide");
 
-const navigation = document.querySelector(".navigation");
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+/* ================================================= */
+/* REFERENCIAS */
+/* ================================================= */
+
+const slides =
+    document.querySelectorAll(".slide");
+
+const prevButton =
+    document.getElementById("prev-btn");
+
+const nextButton =
+    document.getElementById("next-btn");
+
+const confettiContainer =
+    document.getElementById("confetti-container");
+
+const heartsContainer =
+    document.getElementById("hearts-container");
+
+const decorationsContainer =
+    document.getElementById("decorations-container");
 
 
 /* ================================================= */
-/* TEMAS DE CADA DIAPOSITIVA */
+/* TEMAS */
 /* ================================================= */
 
 const themes = [
+
     "theme-cover",        // 0 - Portada
     "theme-narnia",       // 1 - Narnia
     "theme-outerbanks",   // 2 - Outer Banks
@@ -25,16 +52,23 @@ const themes = [
     "theme-outerbanks",   // 9 - Outer Banks
     "theme-final",        // 10 - 100/10
     "theme-infinity"      // 11 - Infinito
+
 ];
 
 
 /* ================================================= */
-/* PREPARAR DIAPOSITIVAS */
+/* AÑADIR TEMAS A LOS SLIDES */
 /* ================================================= */
 
 slides.forEach((slide, index) => {
 
-    slide.classList.add(themes[index] || "theme-cover");
+    if (themes[index]) {
+
+        slide.classList.add(
+            themes[index]
+        );
+
+    }
 
 });
 
@@ -45,39 +79,49 @@ slides.forEach((slide, index) => {
 
 function updateNavigation() {
 
+    /* Ocultar navegación en portada */
+
     if (currentSlide === 0) {
 
-        navigation.style.display = "none";
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
 
         return;
 
     }
 
-    navigation.style.display = "flex";
+
+    /* Mostrar navegación */
+
+    prevButton.style.display = "flex";
+    nextButton.style.display = "flex";
 
 
-    /* FLECHA IZQUIERDA */
+    /* Botón anterior */
 
-    if (currentSlide <= 0) {
+    if (currentSlide <= 1) {
 
-        prevButton.style.display = "none";
+        prevButton.style.opacity = "0.35";
 
     } else {
 
-        prevButton.style.display = "block";
+        prevButton.style.opacity = "1";
 
     }
 
 
-    /* FLECHA DERECHA */
+    /* Botón siguiente */
 
-    if (currentSlide >= slides.length - 1) {
+    if (
+        currentSlide >=
+        slides.length - 1
+    ) {
 
-        nextButton.style.display = "none";
+        nextButton.style.opacity = "0.35";
 
     } else {
 
-        nextButton.style.display = "block";
+        nextButton.style.opacity = "1";
 
     }
 
@@ -85,13 +129,12 @@ function updateNavigation() {
 
 
 /* ================================================= */
-/* CAMBIAR DIAPOSITIVA */
+/* MOSTRAR SLIDE */
 /* ================================================= */
 
 function showSlide(index) {
 
-    if (isTransitioning) return;
-
+    /* Limitar índice */
 
     if (index < 0) {
 
@@ -99,35 +142,49 @@ function showSlide(index) {
 
     }
 
-    if (index >= slides.length) {
+    if (
+        index >=
+        slides.length
+    ) {
 
-        index = slides.length - 1;
+        index =
+            slides.length - 1;
 
     }
 
-    if (index === currentSlide) return;
+
+    /* Evitar cambios innecesarios */
+
+    if (
+        index === currentSlide ||
+        isTransitioning
+    ) {
+
+        return;
+
+    }
 
 
     isTransitioning = true;
 
 
-    const oldIndex = currentSlide;
-
-    const oldSlide = slides[oldIndex];
-
-    const newSlide = slides[index];
-
-
-    /* DIRECCIÓN */
+    /* Dirección */
 
     const direction =
-        index > oldIndex
+        index > currentSlide
             ? "forward"
             : "backward";
 
 
+    const oldSlide =
+        slides[currentSlide];
+
+    const newSlide =
+        slides[index];
+
+
     /* ================================================= */
-    /* LIMPIAR CLASES DE ANIMACIÓN */
+    /* LIMPIAR ANIMACIONES ANTERIORES */
     /* ================================================= */
 
     slides.forEach(slide => {
@@ -143,7 +200,7 @@ function showSlide(index) {
 
 
     /* ================================================= */
-    /* PREPARAR NUEVA DIAPOSITIVA */
+    /* PREPARAR NUEVO SLIDE */
     /* ================================================= */
 
     newSlide.classList.add(
@@ -153,7 +210,7 @@ function showSlide(index) {
 
 
     /* ================================================= */
-    /* PREPARAR DIAPOSITIVA ANTERIOR */
+    /* PREPARAR SLIDE ANTERIOR */
     /* ================================================= */
 
     oldSlide.classList.add(
@@ -163,32 +220,54 @@ function showSlide(index) {
 
 
     /* ================================================= */
-    /* FORZAR AL NAVEGADOR A RECONOCER LA ANIMACIÓN */
-    /* ================================================= */
+    /* FORZAR REFLOW */
+/* ================================================= */
 
     void newSlide.offsetWidth;
 
 
     /* ================================================= */
-    /* ACTIVAR NUEVA */
+    /* ACTIVAR NUEVO SLIDE */
     /* ================================================= */
 
-    newSlide.classList.add("active");
+    newSlide.classList.add(
+        "active"
+    );
+
+
+    newSlide.classList.remove(
+        "slide-enter"
+    );
 
 
     /* ================================================= */
     /* ACTUALIZAR ÍNDICE */
     /* ================================================= */
 
-    currentSlide = index;
+    currentSlide =
+        index;
 
+
+    /* ================================================= */
+    /* CAMBIAR ATMÓSFERA */
+/* ================================================= */
+
+    startThemeAtmosphere(
+        themes[currentSlide] ||
+        "theme-cover"
+    );
+
+
+    /* ================================================= */
+    /* ACTUALIZAR NAVEGACIÓN */
+/* ================================================= */
 
     updateNavigation();
 
 
     /* ================================================= */
     /* CONFETI */
-    /* ================================================= */
+/* ================================================= */
 
     if (index > 0) {
 
@@ -197,7 +276,14 @@ function showSlide(index) {
     }
 
 
-    if (index === slides.length - 1) {
+    /* ================================================= */
+    /* EFECTO ESPECIAL AL LLEGAR AL FINAL */
+/* ================================================= */
+
+    if (
+        index ===
+        slides.length - 1
+    ) {
 
         createConfetti(80);
 
@@ -205,8 +291,8 @@ function showSlide(index) {
 
 
     /* ================================================= */
-    /* TERMINAR TRANSICIÓN */
-    /* ================================================= */
+    /* LIMPIAR TRANSICIÓN */
+/* ================================================= */
 
     setTimeout(() => {
 
@@ -219,7 +305,6 @@ function showSlide(index) {
 
 
         newSlide.classList.remove(
-            "slide-enter",
             "forward",
             "backward"
         );
@@ -258,7 +343,9 @@ function nextSlide() {
 
 function previousSlide() {
 
-    if (currentSlide > 0) {
+    if (
+        currentSlide > 0
+    ) {
 
         showSlide(
             currentSlide - 1
@@ -270,6 +357,21 @@ function previousSlide() {
 
 
 /* ================================================= */
+/* BOTONES */
+/* ================================================= */
+
+nextButton.addEventListener(
+    "click",
+    nextSlide
+);
+
+prevButton.addEventListener(
+    "click",
+    previousSlide
+);
+
+
+/* ================================================= */
 /* TECLADO */
 /* ================================================= */
 
@@ -278,8 +380,10 @@ document.addEventListener(
     event => {
 
         if (
-            event.key === "ArrowRight" ||
-            event.key === " "
+            event.key ===
+            "ArrowRight" ||
+            event.key ===
+            " "
         ) {
 
             event.preventDefault();
@@ -290,8 +394,11 @@ document.addEventListener(
 
 
         if (
-            event.key === "ArrowLeft"
+            event.key ===
+            "ArrowLeft"
         ) {
+
+            event.preventDefault();
 
             previousSlide();
 
@@ -302,19 +409,28 @@ document.addEventListener(
 
 
 /* ================================================= */
-/* SWIPE MÓVIL */
+/* SWIPE PARA MÓVIL */
 /* ================================================= */
 
 let touchStartX = 0;
-
+let touchStartY = 0;
 
 document.addEventListener(
     "touchstart",
     event => {
 
-        touchStartX =
-            event.changedTouches[0].screenX;
+        const touch =
+            event.changedTouches[0];
 
+        touchStartX =
+            touch.screenX;
+
+        touchStartY =
+            touch.screenY;
+
+    },
+    {
+        passive: true
     }
 );
 
@@ -323,43 +439,80 @@ document.addEventListener(
     "touchend",
     event => {
 
+        const touch =
+            event.changedTouches[0];
+
         const touchEndX =
-            event.changedTouches[0].screenX;
+            touch.screenX;
 
-        const difference =
-            touchStartX - touchEndX;
+        const touchEndY =
+            touch.screenY;
 
+
+        const deltaX =
+            touchEndX -
+            touchStartX;
+
+        const deltaY =
+            touchEndY -
+            touchStartY;
+
+
+        /* Solo considerar swipe horizontal */
 
         if (
-            Math.abs(difference) > 50
+            Math.abs(deltaX) <
+            50
         ) {
 
-            if (difference > 0) {
-
-                nextSlide();
-
-            } else {
-
-                previousSlide();
-
-            }
+            return;
 
         }
 
+
+        /* Evitar interpretar scroll vertical */
+
+        if (
+            Math.abs(deltaX) <
+            Math.abs(deltaY)
+        ) {
+
+            return;
+
+        }
+
+
+        if (deltaX < 0) {
+
+            nextSlide();
+
+        } else {
+
+            previousSlide();
+
+        }
+
+    },
+    {
+        passive: true
     }
 );
 
 
 /* ================================================= */
-/* CONFETI */
+/* 🎉 CONFETI */
 /* ================================================= */
 
-function createConfetti(amount = 40) {
+function createConfetti(
+    amount = 20
+) {
 
-    const container =
-        document.getElementById(
-            "confetti-container"
-        );
+    const figures = [
+        "💗",
+        "✨",
+        "⭐",
+        "🎉"
+    ];
 
 
     for (
@@ -368,52 +521,72 @@ function createConfetti(amount = 40) {
         i++
     ) {
 
-        const piece =
-            document.createElement("div");
+        const confetti =
+            document.createElement(
+                "div"
+            );
 
 
-        piece.classList.add(
-            "confetti"
-        );
+        confetti.className =
+            "confetti";
 
 
-        piece.style.left =
-            Math.random() * 100 + "vw";
-
-
-        piece.style.animationDuration =
-            (
-                Math.random() * 2 + 2
-            ) + "s";
-
-
-        piece.style.animationDelay =
-            Math.random() * .5 + "s";
-
-
-        piece.innerHTML =
-            [
-                "💗",
-                "✨",
-                "⭐",
-                "🎉"
-            ][
+        confetti.textContent =
+            figures[
                 Math.floor(
-                    Math.random() * 4
+                    Math.random() *
+                    figures.length
                 )
             ];
 
 
-        container.appendChild(
-            piece
+        /* Posición */
+
+        confetti.style.left =
+            Math.random() * 100 +
+            "%";
+
+
+        /* Tamaño */
+
+        confetti.style.fontSize =
+            10 +
+            Math.random() * 16 +
+            "px";
+
+
+        /* Duración */
+
+        const duration =
+            2 +
+            Math.random() * 3;
+
+
+        confetti.style.animationDuration =
+            duration +
+            "s";
+
+
+        /* Retraso */
+
+        confetti.style.animationDelay =
+            Math.random() *
+            .8 +
+            "s";
+
+
+        confettiContainer.appendChild(
+            confetti
         );
 
 
+        /* Eliminar */
+
         setTimeout(() => {
 
-            piece.remove();
+            confetti.remove();
 
-        }, 4500);
+        }, (duration + 1) * 1000);
 
     }
 
@@ -421,46 +594,47 @@ function createConfetti(amount = 40) {
 
 
 /* ================================================= */
-/* CORAZONES */
+/* 💗 CORAZONES */
 /* ================================================= */
 
 function createHeart() {
 
-    const container =
-        document.getElementById(
-            "hearts-container"
+    const heart =
+        document.createElement(
+            "div"
         );
 
 
-    const heart =
-        document.createElement("div");
+    heart.className =
+        "floating-heart";
 
 
-    heart.classList.add(
-        "floating-heart"
-    );
-
-
-    heart.innerHTML = "💗";
+    heart.textContent =
+        "💗";
 
 
     heart.style.left =
-        Math.random() * 100 + "vw";
+        Math.random() * 100 +
+        "vw";
 
 
     heart.style.fontSize =
-        (
-            Math.random() * 15 + 14
-        ) + "px";
+        12 +
+        Math.random() * 14 +
+        "px";
+
+
+    const duration =
+        4 +
+        Math.random() * 4;
 
 
     heart.style.animationDuration =
-        (
-            Math.random() * 5 + 6
-        ) + "s";
+        duration +
+        "s";
 
 
-    container.appendChild(
+    heartsContainer.appendChild(
         heart
     );
 
@@ -469,173 +643,861 @@ function createHeart() {
 
         heart.remove();
 
-    }, 12000);
+    }, duration * 1000);
 
 }
 
+
 /* ================================================= */
-/* ✨ BRILLOS MÁGICOS */
+/* ❤️ CORAZONES AMBIENTALES */
 /* ================================================= */
 
-function createSparkle() {
+const heartTimer =
+    setInterval(() => {
 
-    const sparkle = document.createElement("div");
+        /*
+         * Los corazones siguen existiendo,
+         * pero no queremos saturar las
+         * diapositivas temáticas.
+         */
 
-    sparkle.className = "magic-sparkle";
+        if (
+            currentSlide === 0 ||
+            currentSlide === 10 ||
+            currentSlide === 11
+        ) {
 
-    sparkle.style.left =
-        `${Math.random() * 100}vw`;
+            createHeart();
 
-    sparkle.style.top =
-        `${10 + Math.random() * 80}vh`;
+        }
 
-    const size =
-        3 + Math.random() * 5;
-
-    sparkle.style.width =
-        `${size}px`;
-
-    sparkle.style.height =
-        `${size}px`;
-
-    document.body.appendChild(sparkle);
-
-    setTimeout(() => {
-        sparkle.remove();
-    }, 1900);
-}
+    }, 1400);
 
 
 /* ================================================= */
-/* 💫 PARTÍCULAS FLOTANTES */
+/* ✨ CONTENEDOR DE PARTÍCULAS TEMÁTICAS */
 /* ================================================= */
 
-function createMagicParticle() {
-
-    const particle =
-        document.createElement("div");
-
-    particle.className =
-        "magic-particle";
-
-    particle.style.left =
-        `${Math.random() * 100}vw`;
-
-    particle.style.top =
-        `${60 + Math.random() * 35}vh`;
-
-    particle.style.setProperty(
-        "--particle-x",
-        `${(Math.random() - .5) * 120}px`
+const themeParticleContainer =
+    document.createElement(
+        "div"
     );
 
-    particle.style.setProperty(
-        "--particle-y",
-        `${-80 - Math.random() * 160}px`
-    );
 
-    particle.style.setProperty(
-        "--particle-duration",
-        `${2.5 + Math.random() * 2.5}s`
-    );
-
-    document.body.appendChild(particle);
-
-    setTimeout(() => {
-        particle.remove();
-    }, 5500);
-}
+themeParticleContainer.id =
+    "theme-particles";
 
 
-/* ================================================= */
-/* ✨ GENERADOR AMBIENTAL */
-/* ================================================= */
-
-setInterval(createSparkle, 750);
-
-setInterval(createMagicParticle, 1200);
-setInterval(
-    createHeart,
-    1100
+document.body.appendChild(
+    themeParticleContainer
 );
 
 
 /* ================================================= */
-/* FIGURAS DEL FONDO */
+/* CONFIGURACIÓN DE ATMÓSFERAS */
 /* ================================================= */
 
-function createDecoration() {
+const themeEffects = {
 
-    const container =
-        document.getElementById(
-            "decorations-container"
+
+    /* ================================================= */
+    /* PORTADA */
+    /* ================================================= */
+
+    "theme-cover": {
+
+        types: [
+            "cross-spark"
+        ],
+
+        interval: 950,
+
+        amount: 1,
+
+        duration: [
+            2.5,
+            4
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* NARNIA */
+    /* ================================================= */
+
+    "theme-narnia": {
+
+        types: [
+            "narnia-star",
+            "narnia-star",
+            "narnia-snow",
+            "narnia-snow"
+        ],
+
+        interval: 700,
+
+        amount: 1,
+
+        duration: [
+            4,
+            7
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* OUTER BANKS */
+    /* ================================================= */
+
+    "theme-outerbanks": {
+
+        types: [
+            "outer-sand",
+            "outer-sand",
+            "outer-light"
+        ],
+
+        interval: 500,
+
+        amount: 1,
+
+        duration: [
+            3.5,
+            6
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* BELLA Y LA BESTIA */
+    /* ================================================= */
+
+    "theme-bella": {
+
+        types: [
+            "rose-petal",
+            "rose-petal",
+            "rose-petal",
+            "cross-spark"
+        ],
+
+        interval: 650,
+
+        amount: 1,
+
+        duration: [
+            4,
+            6.5
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* BRIDGERTON */
+    /* ================================================= */
+
+    "theme-bridgerton": {
+
+        types: [
+            "bridge-gold",
+            "bridge-gold",
+            "bridge-spark"
+        ],
+
+        interval: 650,
+
+        amount: 1,
+
+        duration: [
+            3.5,
+            5.5
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* DISNEY */
+    /* ================================================= */
+
+    "theme-princess": {
+
+        types: [
+            "disney-star",
+            "disney-star",
+            "disney-twinkle",
+            "cross-spark"
+        ],
+
+        interval: 550,
+
+        amount: 1,
+
+        duration: [
+            3,
+            5
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* HARRY POTTER */
+    /* ================================================= */
+
+    "theme-harrypotter": {
+
+        types: [
+            "hp-magic",
+            "hp-magic",
+            "hp-spark",
+            "hp-spark"
+        ],
+
+        interval: 500,
+
+        amount: 1,
+
+        duration: [
+            3,
+            5.5
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* 100/10 */
+    /* ================================================= */
+
+    "theme-final": {
+
+        types: [
+            "final-confetti"
+        ],
+
+        interval: 230,
+
+        amount: 2,
+
+        duration: [
+            3.5,
+            5
+        ]
+
+    },
+
+
+    /* ================================================= */
+    /* INFINITO */
+    /* ================================================= */
+
+    "theme-infinity": {
+
+        types: [
+            "infinity-light",
+            "infinity-light",
+            "cross-spark"
+        ],
+
+        interval: 1500,
+
+        amount: 1,
+
+        duration: [
+            7,
+            11
+        ]
+
+    }
+
+};
+
+
+/* ================================================= */
+/* ESTADO DE ATMÓSFERA */
+/* ================================================= */
+
+let themeParticleTimer = null;
+
+let activeTheme =
+    themes[currentSlide] ||
+    "theme-cover";
+
+
+/* ================================================= */
+/* CREAR PARTÍCULA TEMÁTICA */
+/* ================================================= */
+
+function createThemeParticle(
+    themeName
+) {
+
+    const config =
+        themeEffects[themeName];
+
+
+    if (!config) {
+
+        return;
+
+    }
+
+
+    for (
+        let i = 0;
+        i < config.amount;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        /* ================================================= */
+        /* TIPO */
+        /* ================================================= */
+
+        const type =
+            config.types[
+                Math.floor(
+                    Math.random() *
+                    config.types.length
+                )
+            ];
+
+
+        particle.className =
+            "theme-particle " +
+            type;
+
+
+        /* ================================================= */
+        /* POSICIÓN */
+        /* ================================================= */
+
+        const x =
+            Math.random() * 100;
+
+
+        let y;
+
+
+        if (
+            type ===
+            "final-confetti"
+        ) {
+
+            y = -5;
+
+        } else {
+
+            y =
+                20 +
+                Math.random() * 70;
+
+        }
+
+
+        particle.style.left =
+            `${x}vw`;
+
+
+        particle.style.top =
+            `${y}vh`;
+
+
+        /* ================================================= */
+        /* TAMAÑO */
+        /* ================================================= */
+
+        let size;
+
+
+        if (
+
+            type ===
+            "narnia-star" ||
+
+            type ===
+            "disney-star" ||
+
+            type ===
+            "disney-twinkle" ||
+
+            type ===
+            "bridge-spark" ||
+
+            type ===
+            "hp-spark"
+
+        ) {
+
+            size =
+                8 +
+                Math.random() * 9;
+
+        } else {
+
+            size =
+                2.5 +
+                Math.random() * 4;
+
+        }
+
+
+        particle.style.setProperty(
+            "--size",
+            `${size}px`
         );
 
 
-    const decoration =
-        document.createElement("div");
+        /* ================================================= */
+        /* OPACIDAD */
+        /* ================================================= */
+
+        let opacity =
+            .25 +
+            Math.random() * .45;
 
 
-    decoration.classList.add(
-        "floating-decoration"
-    );
+        if (
+            type ===
+            "cross-spark"
+        ) {
+
+            opacity =
+                .5 +
+                Math.random() * .4;
+
+        }
 
 
-    const figures = [
-
-        "⭐",
-        "✨",
-        "👑",
-        "🎈",
-        "🦋",
-        "🌸",
-        "💫"
-
-    ];
+        particle.style.setProperty(
+            "--opacity",
+            opacity
+        );
 
 
-    decoration.innerHTML =
-        figures[
-            Math.floor(
-                Math.random() *
-                figures.length
-            )
-        ];
+        /* ================================================= */
+        /* MOVIMIENTO HORIZONTAL */
+        /* ================================================= */
+
+        const drift =
+            (
+                Math.random() -
+                .5
+            ) * 100;
 
 
-    decoration.style.left =
-        Math.random() * 100 + "vw";
+        const driftEnd =
+            (
+                Math.random() -
+                .5
+            ) * 180;
 
 
-    decoration.style.fontSize =
-        (
-            Math.random() * 14 + 14
-        ) + "px";
+        /* ================================================= */
+        /* MOVIMIENTO VERTICAL */
+        /* ================================================= */
+
+        const vertical =
+            -80 -
+            Math.random() * 170;
 
 
-    decoration.style.animationDuration =
-        (
-            Math.random() * 6 + 7
-        ) + "s";
+        particle.style.setProperty(
+            "--start-x",
+            "0px"
+        );
 
 
-    container.appendChild(
-        decoration
-    );
+        particle.style.setProperty(
+            "--middle-x",
+            `${drift}px`
+        );
 
 
-    setTimeout(() => {
+        particle.style.setProperty(
+            "--middle-y",
+            `${vertical * .5}px`
+        );
 
-        decoration.remove();
 
-    }, 14000);
+        particle.style.setProperty(
+            "--end-x",
+            `${driftEnd}px`
+        );
+
+
+        particle.style.setProperty(
+            "--end-y",
+            `${vertical}px`
+        );
+
+
+        /* ================================================= */
+        /* ROTACIÓN */
+        /* ================================================= */
+
+        particle.style.setProperty(
+            "--rotate-mid",
+            `${
+                (
+                    Math.random() -
+                    .5
+                ) * 120
+            }deg`
+        );
+
+
+        particle.style.setProperty(
+            "--rotate-end",
+            `${
+                (
+                    Math.random() -
+                    .5
+                ) * 260
+            }deg`
+        );
+
+
+        /* ================================================= */
+        /* ESCALA FINAL */
+        /* ================================================= */
+
+        particle.style.setProperty(
+            "--scale-end",
+            .6 +
+            Math.random() * .8
+        );
+
+
+        /* ================================================= */
+        /* DURACIÓN */
+        /* ================================================= */
+
+        const duration =
+            config.duration[0] +
+
+            Math.random() *
+
+            (
+                config.duration[1] -
+                config.duration[0]
+            );
+
+
+        particle.style.setProperty(
+            "--duration",
+            `${duration}s`
+        );
+
+
+        /* ================================================= */
+        /* RETRASO */
+        /* ================================================= */
+
+        particle.style.setProperty(
+            "--delay",
+            `${Math.random() * .25}s`
+        );
+
+
+        /* ================================================= */
+        /* TEXTO DE LAS PARTÍCULAS */
+        /* ================================================= */
+
+        if (
+            type ===
+            "narnia-star"
+        ) {
+
+            particle.textContent =
+                "✦";
+
+        }
+
+
+        if (
+            type ===
+            "bridge-spark"
+        ) {
+
+            particle.textContent =
+                "✦";
+
+        }
+
+
+        if (
+            type ===
+            "disney-star"
+        ) {
+
+            particle.textContent =
+                "✦";
+
+        }
+
+
+        if (
+            type ===
+            "disney-twinkle"
+        ) {
+
+            particle.textContent =
+                "✧";
+
+        }
+
+
+        if (
+            type ===
+            "hp-spark"
+        ) {
+
+            particle.textContent =
+                "✦";
+
+        }
+
+
+        /* ================================================= */
+        /* AÑADIR */
+        /* ================================================= */
+
+        themeParticleContainer.appendChild(
+            particle
+        );
+
+
+        /* ================================================= */
+        /* ELIMINAR */
+        /* ================================================= */
+
+        setTimeout(() => {
+
+            particle.remove();
+
+        }, (duration + .5) * 1000);
+
+    }
 
 }
 
 
-setInterval(
-    createDecoration,
-    1500
+/* ================================================= */
+/* ARRANCAR ATMÓSFERA */
+/* ================================================= */
+
+function startThemeAtmosphere(
+    themeName
+) {
+
+    activeTheme =
+        themeName;
+
+
+    /* Limpiar partículas anteriores */
+
+    themeParticleContainer.innerHTML =
+        "";
+
+
+    /* Detener intervalo anterior */
+
+    if (
+        themeParticleTimer
+    ) {
+
+        clearInterval(
+            themeParticleTimer
+        );
+
+        themeParticleTimer =
+            null;
+
+    }
+
+
+    const config =
+        themeEffects[themeName];
+
+
+    if (!config) {
+
+        return;
+
+    }
+
+
+    /* ================================================= */
+    /* RÁFAGA INICIAL */
+/* ================================================= */
+
+    let initialAmount;
+
+
+    if (
+        themeName ===
+        "theme-final"
+    ) {
+
+        initialAmount = 12;
+
+    } else if (
+        themeName ===
+        "theme-infinity"
+    ) {
+
+        initialAmount = 3;
+
+    } else {
+
+        initialAmount = 5;
+
+    }
+
+
+    for (
+        let i = 0;
+        i < initialAmount;
+        i++
+    ) {
+
+        setTimeout(() => {
+
+            createThemeParticle(
+                themeName
+            );
+
+        }, i * 90);
+
+    }
+
+
+    /* ================================================= */
+    /* GENERADOR CONTINUO */
+/* ================================================= */
+
+    themeParticleTimer =
+        setInterval(() => {
+
+            if (
+                activeTheme !==
+                themeName
+            ) {
+
+                return;
+
+            }
+
+
+            createThemeParticle(
+                themeName
+            );
+
+        }, config.interval);
+
+}
+
+
+/* ================================================= */
+/* 🎬 EFECTO ESPECIAL DE ENTRADA */
+/* ================================================= */
+
+function triggerThemeBurst(
+    themeName
+) {
+
+    if (
+        themeName ===
+        "theme-final"
+    ) {
+
+        for (
+            let i = 0;
+            i < 35;
+            i++
+        ) {
+
+            setTimeout(() => {
+
+                createThemeParticle(
+                    themeName
+                );
+
+            }, i * 45);
+
+        }
+
+    }
+
+
+    if (
+        themeName ===
+        "theme-bella"
+    ) {
+
+        for (
+            let i = 0;
+            i < 8;
+            i++
+        ) {
+
+            setTimeout(() => {
+
+                createThemeParticle(
+                    themeName
+                );
+
+            }, i * 100);
+
+        }
+
+    }
+
+
+    if (
+        themeName ===
+        "theme-princess"
+    ) {
+
+        for (
+            let i = 0;
+            i < 10;
+            i++
+        ) {
+
+            setTimeout(() => {
+
+                createThemeParticle(
+                    themeName
+                );
+
+            }, i * 80);
+
+        }
+
+    }
+
+}
+
+
+/* ================================================= */
+/* INICIAR ATMÓSFERA ACTUAL */
+/* ================================================= */
+
+startThemeAtmosphere(
+    themes[currentSlide] ||
+    "theme-cover"
 );
 
 
@@ -651,13 +1513,19 @@ setTimeout(() => {
 
 
 /* ================================================= */
-/* INICIO */
+/* ESTADO INICIAL */
 /* ================================================= */
 
-if (slides.length > 0) {
+slides.forEach(
+    (slide, index) => {
 
-    slides[0].classList.add("active");
+        slide.classList.toggle(
+            "active",
+            index === currentSlide
+        );
 
-}
+    }
+);
+
 
 updateNavigation();
