@@ -14,15 +14,18 @@ const nextButton = document.getElementById("nextButton");
 function updateNavigation() {
 
     /* PORTADA: NO EXISTE LA NAVEGACIÓN */
+
     if (currentSlide === 0) {
 
         navigation.style.display = "none";
 
         return;
+
     }
 
 
     /* RESTO DE DIAPOSITIVAS */
+
     navigation.style.display = "flex";
 
 
@@ -55,6 +58,52 @@ function updateNavigation() {
 
 
 /* ================================================= */
+/* TRANSICIONES */
+/* ================================================= */
+
+/*
+    Cada número corresponde a una referencia:
+
+    0  = Portada
+    1  = Narnia
+    2  = Outer Banks
+    3  = La Bella y la Bestia
+    4  = Bridgerton
+    5  = Princesa / Disney
+    6  = Narnia
+    7  = Harry Potter
+    8  = Narnia
+    9  = Outer Banks
+    10 = 100/10
+    11 = Infinito
+*/
+
+const transitionNames = [
+
+    "transition-cover",
+    "transition-narnia",
+    "transition-outerbanks",
+    "transition-bella",
+    "transition-bridgerton",
+    "transition-princess",
+    "transition-narnia",
+    "transition-harrypotter",
+    "transition-narnia",
+    "transition-outerbanks",
+    "transition-final",
+    "transition-infinity"
+
+];
+
+
+function getTransitionClass(index) {
+
+    return transitionNames[index] || "transition-default";
+
+}
+
+
+/* ================================================= */
 /* CAMBIAR DIAPOSITIVA */
 /* ================================================= */
 
@@ -69,14 +118,69 @@ function showSlide(index) {
     }
 
 
+    /* Si se pulsa sobre la diapositiva actual,
+       no hacemos nada */
+
+    if (index === currentSlide) {
+        return;
+    }
+
+
+    const previousIndex = currentSlide;
+
+    const direction =
+        index > previousIndex
+            ? "forward"
+            : "backward";
+
+
+    const oldSlide =
+        slides[previousIndex];
+
+    const newSlide =
+        slides[index];
+
+
+    /* ================================================= */
+    /* PREPARAR TRANSICIÓN */
+    /* ================================================= */
+
     slides.forEach(slide => {
 
-        slide.classList.remove("active");
+        slide.classList.remove(
+            "active",
+            "transition-forward",
+            "transition-backward"
+        );
 
     });
 
 
-    slides[index].classList.add("active");
+    /* Clase específica de la nueva diapositiva */
+
+    newSlide.classList.add(
+        getTransitionClass(index)
+    );
+
+
+    /* Dirección */
+
+    newSlide.classList.add(
+        direction === "forward"
+            ? "transition-forward"
+            : "transition-backward"
+    );
+
+
+    /* ================================================= */
+    /* ACTIVAR NUEVA DIAPOSITIVA */
+    /* ================================================= */
+
+    requestAnimationFrame(() => {
+
+        newSlide.classList.add("active");
+
+    });
 
 
     currentSlide = index;
@@ -85,7 +189,9 @@ function showSlide(index) {
     updateNavigation();
 
 
+    /* ================================================= */
     /* CONFETI */
+    /* ================================================= */
 
     if (index > 0) {
 
@@ -165,6 +271,7 @@ document.addEventListener("keydown", event => {
 /* ================================================= */
 
 let touchStartX = 0;
+
 
 document.addEventListener("touchstart", event => {
 
