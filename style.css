@@ -57,7 +57,6 @@ main {
 
 .slide {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
@@ -65,7 +64,6 @@ main {
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
 
@@ -85,6 +83,34 @@ main {
         transform,
         opacity,
         filter;
+
+    z-index: 1;
+}
+
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 3;
+}
+
+
+/* DIAPOSITIVA QUE SALE */
+
+.slide.slide-leave {
+    visibility: visible;
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+/* DIAPOSITIVA QUE ENTRA */
+
+.slide.slide-enter {
+    visibility: visible;
+    pointer-events: none;
+    z-index: 4;
 }
 
 .slide.active {
