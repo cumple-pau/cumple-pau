@@ -473,7 +473,87 @@ function createHeart() {
 
 }
 
+/* ================================================= */
+/* ✨ BRILLOS MÁGICOS */
+/* ================================================= */
 
+function createSparkle() {
+
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "magic-sparkle";
+
+    sparkle.style.left =
+        `${Math.random() * 100}vw`;
+
+    sparkle.style.top =
+        `${10 + Math.random() * 80}vh`;
+
+    const size =
+        3 + Math.random() * 5;
+
+    sparkle.style.width =
+        `${size}px`;
+
+    sparkle.style.height =
+        `${size}px`;
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+        sparkle.remove();
+    }, 1900);
+}
+
+
+/* ================================================= */
+/* 💫 PARTÍCULAS FLOTANTES */
+/* ================================================= */
+
+function createMagicParticle() {
+
+    const particle =
+        document.createElement("div");
+
+    particle.className =
+        "magic-particle";
+
+    particle.style.left =
+        `${Math.random() * 100}vw`;
+
+    particle.style.top =
+        `${60 + Math.random() * 35}vh`;
+
+    particle.style.setProperty(
+        "--particle-x",
+        `${(Math.random() - .5) * 120}px`
+    );
+
+    particle.style.setProperty(
+        "--particle-y",
+        `${-80 - Math.random() * 160}px`
+    );
+
+    particle.style.setProperty(
+        "--particle-duration",
+        `${2.5 + Math.random() * 2.5}s`
+    );
+
+    document.body.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 5500);
+}
+
+
+/* ================================================= */
+/* ✨ GENERADOR AMBIENTAL */
+/* ================================================= */
+
+setInterval(createSparkle, 750);
+
+setInterval(createMagicParticle, 1200);
 setInterval(
     createHeart,
     1100
