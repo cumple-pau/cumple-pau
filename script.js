@@ -142,6 +142,7 @@ function showSlide(index) {
 
     }
 
+
     if (
         index >=
         slides.length
@@ -221,7 +222,7 @@ function showSlide(index) {
 
     /* ================================================= */
     /* FORZAR REFLOW */
-/* ================================================= */
+    /* ================================================= */
 
     void newSlide.offsetWidth;
 
@@ -250,7 +251,7 @@ function showSlide(index) {
 
     /* ================================================= */
     /* CAMBIAR ATMÓSFERA */
-/* ================================================= */
+    /* ================================================= */
 
     startThemeAtmosphere(
         themes[currentSlide] ||
@@ -259,15 +260,24 @@ function showSlide(index) {
 
 
     /* ================================================= */
+    /* EFECTO ESPECIAL DE ENTRADA */
+    /* ================================================= */
+
+    triggerThemeBurst(
+        themes[currentSlide]
+    );
+
+
+    /* ================================================= */
     /* ACTUALIZAR NAVEGACIÓN */
-/* ================================================= */
+    /* ================================================= */
 
     updateNavigation();
 
 
     /* ================================================= */
     /* CONFETI */
-/* ================================================= */
+    /* ================================================= */
 
     if (index > 0) {
 
@@ -277,8 +287,8 @@ function showSlide(index) {
 
 
     /* ================================================= */
-    /* EFECTO ESPECIAL AL LLEGAR AL FINAL */
-/* ================================================= */
+    /* EFECTO ESPECIAL AL LLEGAR AL ÚLTIMO SLIDE */
+    /* ================================================= */
 
     if (
         index ===
@@ -292,7 +302,7 @@ function showSlide(index) {
 
     /* ================================================= */
     /* LIMPIAR TRANSICIÓN */
-/* ================================================= */
+    /* ================================================= */
 
     setTimeout(() => {
 
@@ -409,18 +419,46 @@ document.addEventListener(
 
 
 /* ================================================= */
-/* SWIPE PARA MÓVIL */
+/* 📱 SWIPE PARA MÓVIL */
 /* ================================================= */
 
 let touchStartX = 0;
 let touchStartY = 0;
 
+let touchCurrentX = 0;
+
+let isDragging = false;
+
+
+/* ================================================= */
+/* CONFIGURACIÓN DEL SWIPE */
+/* ================================================= */
+
+const SWIPE_THRESHOLD = 55;
+
+const SWIPE_MAX_ROTATION = 2.5;
+
+const SWIPE_MAX_TRANSLATE = 90;
+
+
+/* ================================================= */
+/* INICIO DEL TOUCH */
+/* ================================================= */
+
 document.addEventListener(
     "touchstart",
     event => {
 
+        if (isTransitioning) {
+
+            return;
+
+        }
+
+
         const touch =
             event.changedTouches[0];
+
 
         touchStartX =
             touch.screenX;
@@ -428,75 +466,460 @@ document.addEventListener(
         touchStartY =
             touch.screenY;
 
+        touchCurrentX =
+            touchStartX;
+
+
+        isDragging = true;
+
+
+        const current =
+            slides[currentSlide];
+
+
+        current.style.transition =
+            "none";
+
+
+        current.style.willChange =
+            "transform";
+
     },
     {
         passive: true
     }
 );
 
+
+/* ================================================= */
+/* MOVIMIENTO DEL DEDO */
+/* ================================================= */
+
+document.addEventListener(
+    "touchmove",
+    event => {
+
+        if (
+            !isDragging ||
+            isTransitioning
+        ) {
+
+            return;
+
+        }
+
+
+        const touch =
+            event.changedTouches[0];
+
+
+        touchCurrentX =
+            touch.screenX;
+
+
+        const deltaX =
+            touchCurrentX -
+            touchStartX;
+
+
+        const deltaY =
+            touch.screenY -
+            touchStartY;
+
+
+        /*
+         * Si el movimiento es principalmente
+         * vertical, no aplicar desplazamiento.
+         */
+
+        if (
+            Math.abs(deltaY) >
+            Math.abs(deltaX) &&
+            Math.abs(deltaY) > 15
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Limitar el desplazamiento.
+         */
+
+        const limitedDelta =
+            Math.max(
+                -SWIPE_MAX_TRANSLATE,
+                Math.min(
+                    SWIPE_MAX_TRANSLATE,
+                    deltaX
+                )
+            );
+
+
+        /*
+         * Pequeña rotación.
+         */
+
+        const rotation =
+            (
+                limitedDelta /
+                SWIPE_MAX_TRANSLATE
+            ) *
+            SWIPE_MAX_ROTATION;
+
+
+        const current =
+            slides[currentSlide];
+
+
+        /*
+         * La diapositiva sigue al dedo.
+         */
+
+        current.style.transform =
+            `translateX(${limitedDelta * .45}px)
+             rotate(${rotation}deg)`;
+
+
+        /*
+         * Ligera pérdida de opacidad.
+         */
+
+        const distance =
+            Math.min(
+                Math.abs(deltaX),
+                SWIPE_MAX_TRANSLATE
+            );
+
+
+        const opacity =
+            1 -
+            (
+                distance /
+                SWIPE_MAX_TRANSLATE
+            ) *
+            .08;
+
+
+        current.style.opacity =
+            opacity;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* ================================================= */
+/* FINAL DEL TOUCH */
+/* ================================================= */
 
 document.addEventListener(
     "touchend",
     event => {
 
+        if (!isDragging) {
+
+            return;
+
+        }
+
+
+        isDragging = false;
+
+
         const touch =
             event.changedTouches[0];
 
-        const touchEndX =
-            touch.screenX;
-
-        const touchEndY =
-            touch.screenY;
-
 
         const deltaX =
-            touchEndX -
+            touch.screenX -
             touchStartX;
 
+
         const deltaY =
-            touchEndY -
+            touch.screenY -
             touchStartY;
 
 
-        /* Solo considerar swipe horizontal */
+        const current =
+            slides[currentSlide];
+
+
+        /*
+         * Si el gesto era vertical,
+         * cancelar.
+         */
 
         if (
-            Math.abs(deltaX) <
-            50
+            Math.abs(deltaY) >
+            Math.abs(deltaX)
         ) {
+
+            resetSwipePosition();
 
             return;
 
         }
 
 
-        /* Evitar interpretar scroll vertical */
+        /*
+         * Swipe demasiado pequeño.
+         */
 
         if (
             Math.abs(deltaX) <
-            Math.abs(deltaY)
+            SWIPE_THRESHOLD
         ) {
+
+            resetSwipePosition();
 
             return;
 
         }
 
 
-        if (deltaX < 0) {
+        /*
+         * SWIPE HACIA LA IZQUIERDA
+         */
 
-            nextSlide();
+        if (
+            deltaX < 0 &&
+            currentSlide <
+            slides.length - 1
+        ) {
 
-        } else {
+            finishSwipe(
+                "left"
+            );
 
-            previousSlide();
+
+            setTimeout(() => {
+
+                nextSlide();
+
+            }, 70);
+
+
+            return;
 
         }
+
+
+        /*
+         * SWIPE HACIA LA DERECHA
+         */
+
+        if (
+            deltaX > 0 &&
+            currentSlide > 0
+        ) {
+
+            finishSwipe(
+                "right"
+            );
+
+
+            setTimeout(() => {
+
+                previousSlide();
+
+            }, 70);
+
+
+            return;
+
+        }
+
+
+        /*
+         * Hemos llegado al límite.
+         */
+
+        bounceSwipe(
+            deltaX > 0
+                ? "right"
+                : "left"
+        );
 
     },
     {
         passive: true
     }
 );
+
+
+/* ================================================= */
+/* CANCELAR TOUCH */
+/* ================================================= */
+
+document.addEventListener(
+    "touchcancel",
+    () => {
+
+        if (!isDragging) {
+
+            return;
+
+        }
+
+
+        isDragging = false;
+
+        resetSwipePosition();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* ================================================= */
+/* RESTABLECER POSICIÓN */
+/* ================================================= */
+
+function resetSwipePosition() {
+
+    const current =
+        slides[currentSlide];
+
+
+    current.style.transition =
+        "transform .35s cubic-bezier(.22,.8,.25,1), opacity .35s ease";
+
+
+    current.style.transform =
+        "";
+
+
+    current.style.opacity =
+        "";
+
+
+    setTimeout(() => {
+
+        current.style.transition =
+            "";
+
+        current.style.willChange =
+            "";
+
+    }, 400);
+
+}
+
+
+/* ================================================= */
+/* TERMINAR SWIPE */
+/* ================================================= */
+
+function finishSwipe(
+    direction
+) {
+
+    const current =
+        slides[currentSlide];
+
+
+    current.style.transition =
+        "transform .22s cubic-bezier(.4,0,1,1), opacity .22s ease";
+
+
+    const distance =
+        direction === "left"
+            ? -120
+            : 120;
+
+
+    const rotation =
+        direction === "left"
+            ? -3
+            : 3;
+
+
+    current.style.transform =
+        `translateX(${distance}px)
+         rotate(${rotation}deg)`;
+
+
+    current.style.opacity =
+        ".65";
+
+}
+
+
+/* ================================================= */
+/* 🔄 REBOTE EN LOS EXTREMOS */
+/* ================================================= */
+
+function bounceSwipe(
+    direction
+) {
+
+    const current =
+        slides[currentSlide];
+
+
+    const firstMove =
+        direction === "left"
+            ? -18
+            : 18;
+
+
+    const secondMove =
+        direction === "left"
+            ? 8
+            : -8;
+
+
+    current.style.transition =
+        "transform .15s ease";
+
+
+    current.style.transform =
+        `translateX(${firstMove}px)`;
+
+
+    setTimeout(() => {
+
+        current.style.transition =
+            "transform .2s cubic-bezier(.22,.8,.25,1)";
+
+
+        current.style.transform =
+            `translateX(${secondMove}px)`;
+
+
+    }, 150);
+
+
+    setTimeout(() => {
+
+        current.style.transition =
+            "transform .25s cubic-bezier(.22,.8,.25,1)";
+
+
+        current.style.transform =
+            "";
+
+
+    }, 320);
+
+
+    setTimeout(() => {
+
+        current.style.transition =
+            "";
+
+        current.style.willChange =
+            "";
+
+    }, 600);
+
+}
 
 
 /* ================================================= */
@@ -540,22 +963,16 @@ function createConfetti(
             ];
 
 
-        /* Posición */
-
         confetti.style.left =
             Math.random() * 100 +
             "%";
 
-
-        /* Tamaño */
 
         confetti.style.fontSize =
             10 +
             Math.random() * 16 +
             "px";
 
-
-        /* Duración */
 
         const duration =
             2 +
@@ -567,8 +984,6 @@ function createConfetti(
             "s";
 
 
-        /* Retraso */
-
         confetti.style.animationDelay =
             Math.random() *
             .8 +
@@ -579,8 +994,6 @@ function createConfetti(
             confetti
         );
 
-
-        /* Eliminar */
 
         setTimeout(() => {
 
@@ -652,26 +1065,24 @@ function createHeart() {
 /* ❤️ CORAZONES AMBIENTALES */
 /* ================================================= */
 
-const heartTimer =
-    setInterval(() => {
+setInterval(() => {
 
-        /*
-         * Los corazones siguen existiendo,
-         * pero no queremos saturar las
-         * diapositivas temáticas.
-         */
+    /*
+     * Los corazones aparecen principalmente
+     * en las partes más emocionales.
+     */
 
-        if (
-            currentSlide === 0 ||
-            currentSlide === 10 ||
-            currentSlide === 11
-        ) {
+    if (
+        currentSlide === 0 ||
+        currentSlide === 10 ||
+        currentSlide === 11
+    ) {
 
-            createHeart();
+        createHeart();
 
-        }
+    }
 
-    }, 1400);
+}, 1400);
 
 
 /* ================================================= */
@@ -1086,7 +1497,7 @@ function createThemeParticle(
 
 
         /* ================================================= */
-        /* MOVIMIENTO HORIZONTAL */
+        /* MOVIMIENTO */
         /* ================================================= */
 
         const drift =
@@ -1102,10 +1513,6 @@ function createThemeParticle(
                 .5
             ) * 180;
 
-
-        /* ================================================= */
-        /* MOVIMIENTO VERTICAL */
-        /* ================================================= */
 
         const vertical =
             -80 -
@@ -1211,7 +1618,7 @@ function createThemeParticle(
 
 
         /* ================================================= */
-        /* TEXTO DE LAS PARTÍCULAS */
+        /* SÍMBOLOS */
         /* ================================================= */
 
         if (
@@ -1340,7 +1747,7 @@ function startThemeAtmosphere(
 
     /* ================================================= */
     /* RÁFAGA INICIAL */
-/* ================================================= */
+    /* ================================================= */
 
     let initialAmount;
 
@@ -1385,7 +1792,7 @@ function startThemeAtmosphere(
 
     /* ================================================= */
     /* GENERADOR CONTINUO */
-/* ================================================= */
+    /* ================================================= */
 
     themeParticleTimer =
         setInterval(() => {
@@ -1410,12 +1817,17 @@ function startThemeAtmosphere(
 
 
 /* ================================================= */
-/* 🎬 EFECTO ESPECIAL DE ENTRADA */
+/* 🎬 EFECTOS ESPECIALES DE ENTRADA */
 /* ================================================= */
 
 function triggerThemeBurst(
     themeName
 ) {
+
+
+    /* ================================================= */
+    /* 💛 100/10 */
+    /* ================================================= */
 
     if (
         themeName ===
@@ -1441,6 +1853,10 @@ function triggerThemeBurst(
     }
 
 
+    /* ================================================= */
+    /* 🌹 BELLA */
+    /* ================================================= */
+
     if (
         themeName ===
         "theme-bella"
@@ -1464,6 +1880,10 @@ function triggerThemeBurst(
 
     }
 
+
+    /* ================================================= */
+    /* 👑 DISNEY */
+    /* ================================================= */
 
     if (
         themeName ===
