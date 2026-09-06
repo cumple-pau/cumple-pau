@@ -1,4 +1,5 @@
 let currentSlide = 0;
+let isTransitioning = false;
 
 const slides = document.querySelectorAll(".slide");
 
@@ -8,12 +9,41 @@ const nextButton = document.getElementById("nextButton");
 
 
 /* ================================================= */
+/* TEMAS DE CADA DIAPOSITIVA */
+/* ================================================= */
+
+const themes = [
+    "theme-cover",        // 0 - Portada
+    "theme-narnia",       // 1 - Narnia
+    "theme-outerbanks",   // 2 - Outer Banks
+    "theme-bella",        // 3 - Bella y la Bestia
+    "theme-bridgerton",   // 4 - Bridgerton
+    "theme-princess",     // 5 - Princesas / Disney
+    "theme-narnia",       // 6 - Narnia
+    "theme-harrypotter",  // 7 - Harry Potter
+    "theme-narnia",       // 8 - Narnia
+    "theme-outerbanks",   // 9 - Outer Banks
+    "theme-final",        // 10 - 100/10
+    "theme-infinity"      // 11 - Infinito
+];
+
+
+/* ================================================= */
+/* PREPARAR DIAPOSITIVAS */
+/* ================================================= */
+
+slides.forEach((slide, index) => {
+
+    slide.classList.add(themes[index] || "theme-cover");
+
+});
+
+
+/* ================================================= */
 /* NAVEGACIÓN */
 /* ================================================= */
 
 function updateNavigation() {
-
-    /* PORTADA: NO EXISTE LA NAVEGACIÓN */
 
     if (currentSlide === 0) {
 
@@ -22,9 +52,6 @@ function updateNavigation() {
         return;
 
     }
-
-
-    /* RESTO DE DIAPOSITIVAS */
 
     navigation.style.display = "flex";
 
@@ -58,130 +85,100 @@ function updateNavigation() {
 
 
 /* ================================================= */
-/* TRANSICIONES */
-/* ================================================= */
-
-/*
-    Cada número corresponde a una referencia:
-
-    0  = Portada
-    1  = Narnia
-    2  = Outer Banks
-    3  = La Bella y la Bestia
-    4  = Bridgerton
-    5  = Princesa / Disney
-    6  = Narnia
-    7  = Harry Potter
-    8  = Narnia
-    9  = Outer Banks
-    10 = 100/10
-    11 = Infinito
-*/
-
-const transitionNames = [
-
-    "transition-cover",
-    "transition-narnia",
-    "transition-outerbanks",
-    "transition-bella",
-    "transition-bridgerton",
-    "transition-princess",
-    "transition-narnia",
-    "transition-harrypotter",
-    "transition-narnia",
-    "transition-outerbanks",
-    "transition-final",
-    "transition-infinity"
-
-];
-
-
-function getTransitionClass(index) {
-
-    return transitionNames[index] || "transition-default";
-
-}
-
-
-/* ================================================= */
 /* CAMBIAR DIAPOSITIVA */
 /* ================================================= */
 
 function showSlide(index) {
 
+    if (isTransitioning) return;
+
+
     if (index < 0) {
+
         index = 0;
+
     }
 
     if (index >= slides.length) {
+
         index = slides.length - 1;
+
     }
 
-
-    /* Si se pulsa sobre la diapositiva actual,
-       no hacemos nada */
-
-    if (index === currentSlide) {
-        return;
-    }
+    if (index === currentSlide) return;
 
 
-    const previousIndex = currentSlide;
+    isTransitioning = true;
+
+
+    const oldIndex = currentSlide;
+
+    const oldSlide = slides[oldIndex];
+
+    const newSlide = slides[index];
+
+
+    /* DIRECCIÓN */
 
     const direction =
-        index > previousIndex
+        index > oldIndex
             ? "forward"
             : "backward";
 
 
-    const oldSlide =
-        slides[previousIndex];
-
-    const newSlide =
-        slides[index];
-
-
     /* ================================================= */
-    /* PREPARAR TRANSICIÓN */
+    /* LIMPIAR CLASES DE ANIMACIÓN */
     /* ================================================= */
 
     slides.forEach(slide => {
 
         slide.classList.remove(
-            "active",
-            "transition-forward",
-            "transition-backward"
+            "slide-enter",
+            "slide-leave",
+            "forward",
+            "backward"
         );
 
     });
 
 
-    /* Clase específica de la nueva diapositiva */
+    /* ================================================= */
+    /* PREPARAR NUEVA DIAPOSITIVA */
+    /* ================================================= */
 
     newSlide.classList.add(
-        getTransitionClass(index)
-    );
-
-
-    /* Dirección */
-
-    newSlide.classList.add(
-        direction === "forward"
-            ? "transition-forward"
-            : "transition-backward"
+        "slide-enter",
+        direction
     );
 
 
     /* ================================================= */
-    /* ACTIVAR NUEVA DIAPOSITIVA */
+    /* PREPARAR DIAPOSITIVA ANTERIOR */
     /* ================================================= */
 
-    requestAnimationFrame(() => {
+    oldSlide.classList.add(
+        "slide-leave",
+        direction
+    );
 
-        newSlide.classList.add("active");
 
-    });
+    /* ================================================= */
+    /* FORZAR AL NAVEGADOR A RECONOCER LA ANIMACIÓN */
+    /* ================================================= */
 
+    void newSlide.offsetWidth;
+
+
+    /* ================================================= */
+    /* ACTIVAR NUEVA */
+    /* ================================================= */
+
+    newSlide.classList.add("active");
+
+
+    /* ================================================= */
+    /* ACTUALIZAR ÍNDICE */
+    /* ================================================= */
 
     currentSlide = index;
 
@@ -206,6 +203,32 @@ function showSlide(index) {
 
     }
 
+
+    /* ================================================= */
+    /* TERMINAR TRANSICIÓN */
+    /* ================================================= */
+
+    setTimeout(() => {
+
+        oldSlide.classList.remove(
+            "active",
+            "slide-leave",
+            "forward",
+            "backward"
+        );
+
+
+        newSlide.classList.remove(
+            "slide-enter",
+            "forward",
+            "backward"
+        );
+
+
+        isTransitioning = false;
+
+    }, 1300);
+
 }
 
 
@@ -215,9 +238,14 @@ function showSlide(index) {
 
 function nextSlide() {
 
-    if (currentSlide < slides.length - 1) {
+    if (
+        currentSlide <
+        slides.length - 1
+    ) {
 
-        showSlide(currentSlide + 1);
+        showSlide(
+            currentSlide + 1
+        );
 
     }
 
@@ -232,7 +260,9 @@ function previousSlide() {
 
     if (currentSlide > 0) {
 
-        showSlide(currentSlide - 1);
+        showSlide(
+            currentSlide - 1
+        );
 
     }
 
@@ -243,27 +273,32 @@ function previousSlide() {
 /* TECLADO */
 /* ================================================= */
 
-document.addEventListener("keydown", event => {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    if (
-        event.key === "ArrowRight" ||
-        event.key === " "
-    ) {
+        if (
+            event.key === "ArrowRight" ||
+            event.key === " "
+        ) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        nextSlide();
+            nextSlide();
+
+        }
+
+
+        if (
+            event.key === "ArrowLeft"
+        ) {
+
+            previousSlide();
+
+        }
 
     }
-
-
-    if (event.key === "ArrowLeft") {
-
-        previousSlide();
-
-    }
-
-});
+);
 
 
 /* ================================================= */
@@ -273,38 +308,46 @@ document.addEventListener("keydown", event => {
 let touchStartX = 0;
 
 
-document.addEventListener("touchstart", event => {
+document.addEventListener(
+    "touchstart",
+    event => {
 
-    touchStartX =
-        event.changedTouches[0].screenX;
+        touchStartX =
+            event.changedTouches[0].screenX;
 
-});
-
-
-document.addEventListener("touchend", event => {
-
-    const touchEndX =
-        event.changedTouches[0].screenX;
-
-    const difference =
-        touchStartX - touchEndX;
+    }
+);
 
 
-    if (Math.abs(difference) > 50) {
+document.addEventListener(
+    "touchend",
+    event => {
 
-        if (difference > 0) {
+        const touchEndX =
+            event.changedTouches[0].screenX;
 
-            nextSlide();
+        const difference =
+            touchStartX - touchEndX;
 
-        } else {
 
-            previousSlide();
+        if (
+            Math.abs(difference) > 50
+        ) {
+
+            if (difference > 0) {
+
+                nextSlide();
+
+            } else {
+
+                previousSlide();
+
+            }
 
         }
 
     }
-
-});
+);
 
 
 /* ================================================= */
@@ -319,13 +362,19 @@ function createConfetti(amount = 40) {
         );
 
 
-    for (let i = 0; i < amount; i++) {
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
 
         const piece =
             document.createElement("div");
 
 
-        piece.classList.add("confetti");
+        piece.classList.add(
+            "confetti"
+        );
 
 
         piece.style.left =
@@ -333,7 +382,9 @@ function createConfetti(amount = 40) {
 
 
         piece.style.animationDuration =
-            (Math.random() * 2 + 2) + "s";
+            (
+                Math.random() * 2 + 2
+            ) + "s";
 
 
         piece.style.animationDelay =
@@ -353,7 +404,9 @@ function createConfetti(amount = 40) {
             ];
 
 
-        container.appendChild(piece);
+        container.appendChild(
+            piece
+        );
 
 
         setTimeout(() => {
@@ -396,14 +449,20 @@ function createHeart() {
 
 
     heart.style.fontSize =
-        (Math.random() * 15 + 14) + "px";
+        (
+            Math.random() * 15 + 14
+        ) + "px";
 
 
     heart.style.animationDuration =
-        (Math.random() * 5 + 6) + "s";
+        (
+            Math.random() * 5 + 6
+        ) + "s";
 
 
-    container.appendChild(heart);
+    container.appendChild(
+        heart
+    );
 
 
     setTimeout(() => {
@@ -415,7 +474,10 @@ function createHeart() {
 }
 
 
-setInterval(createHeart, 1100);
+setInterval(
+    createHeart,
+    1100
+);
 
 
 /* ================================================= */
@@ -466,11 +528,15 @@ function createDecoration() {
 
 
     decoration.style.fontSize =
-        (Math.random() * 14 + 14) + "px";
+        (
+            Math.random() * 14 + 14
+        ) + "px";
 
 
     decoration.style.animationDuration =
-        (Math.random() * 6 + 7) + "s";
+        (
+            Math.random() * 6 + 7
+        ) + "s";
 
 
     container.appendChild(
@@ -507,5 +573,11 @@ setTimeout(() => {
 /* ================================================= */
 /* INICIO */
 /* ================================================= */
+
+if (slides.length > 0) {
+
+    slides[0].classList.add("active");
+
+}
 
 updateNavigation();
