@@ -1656,61 +1656,112 @@
             pointer-events: none !important;
             z-index: 2 !important;
         }
+/* =====================================================
+   OBJETOS FINALES — SOLO EN LOS LADOS
+   No invaden el texto central
+   ===================================================== */
 
-        .se-final-compass {
-            position: absolute !important;
-            left: 12px !important;
-            right: auto !important;
-            top: 12px !important;
-            bottom: auto !important;
-            transform: scale(.72) rotate(-8deg) !important;
-        }
+.se-final-safe-object,
+.se-infinity-object {
+    pointer-events: none !important;
+    z-index: 2 !important;
+}
 
-        .se-final-map {
-            position: absolute !important;
-            right: 10px !important;
-            left: auto !important;
-            top: 10px !important;
-            bottom: auto !important;
-            transform:
-                scale(.62)
-                rotate(5deg) !important;
-            transform-origin: top right !important;
-        }
 
-        .se-final-wand {
-            position: absolute !important;
-            right: 12px !important;
-            left: auto !important;
-            bottom: 70px !important;
-            top: auto !important;
-            transform:
-                scale(.72)
-                rotate(-18deg) !important;
-            transform-origin: bottom right !important;
-        }
+/* =====================================================
+   100/10 — POSICIONES LATERALES
+   ===================================================== */
 
-        .se-infinity-object {
-            position: absolute !important;
-            max-width: 105px !important;
-            max-height: 105px !important;
-        }
+.se-final-compass {
+    position: absolute !important;
 
-        .se-infinity-object:nth-of-type(1) {
-            left: 10px !important;
-            top: 12px !important;
-        }
+    left: 18px !important;
+    right: auto !important;
 
-        .se-infinity-object:nth-of-type(2) {
-            right: 10px !important;
-            top: 12px !important;
-        }
+    top: 18px !important;
+    bottom: auto !important;
 
-        .se-infinity-object:nth-of-type(3) {
-            right: 14px !important;
-            bottom: 72px !important;
-        }
+    transform:
+        scale(.62)
+        rotate(-8deg) !important;
+}
 
+
+.se-final-map {
+    position: absolute !important;
+
+    right: 18px !important;
+    left: auto !important;
+
+    top: 18px !important;
+    bottom: auto !important;
+
+    transform:
+        scale(.52)
+        rotate(5deg) !important;
+
+    transform-origin: top right !important;
+}
+
+
+.se-final-wand {
+    position: absolute !important;
+
+    right: 18px !important;
+    left: auto !important;
+
+    bottom: 25px !important;
+    top: auto !important;
+
+    transform:
+        scale(.62)
+        rotate(-18deg) !important;
+
+    transform-origin: bottom right !important;
+}
+
+
+/* =====================================================
+   INFINITO/10 — REPARTIDOS POR LOS LATERALES
+   ===================================================== */
+
+.se-infinity-object {
+    position: absolute !important;
+
+    max-width: 90px !important;
+    max-height: 90px !important;
+}
+
+
+/* Objeto izquierdo arriba */
+.se-infinity-object:nth-of-type(1) {
+    left: 15px !important;
+    right: auto !important;
+
+    top: 20px !important;
+    bottom: auto !important;
+}
+
+
+/* Objeto derecho arriba */
+.se-infinity-object:nth-of-type(2) {
+    right: 15px !important;
+    left: auto !important;
+
+    top: 20px !important;
+    bottom: auto !important;
+}
+
+
+/* Objeto derecho abajo */
+.se-infinity-object:nth-of-type(3) {
+    right: 18px !important;
+    left: auto !important;
+
+    bottom: 25px !important;
+    top: auto !important;
+}
+      
 
         /* =====================================================
            ANIMACIONES — ARMARIO
