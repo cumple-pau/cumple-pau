@@ -1534,130 +1534,91 @@
             transform: none !important;
         }
 
+/* =========================================================
+   INFINITO — MEGA CORAZÓN
+   ========================================================= */
 
-        /* =====================================================
-           INFINITO — CORAZÓN 💗
-           ===================================================== */
+.infinity .final-heart {
+    position: relative;
+    z-index: 20;
+    display: block;
+    font-size: clamp(90px, 15vw, 190px);
+    line-height: 1;
+    margin: 35px auto 20px;
+    transform-origin: center;
+    animation:
+        infinityHeartEntrance 1.4s cubic-bezier(.17,.67,.3,1.4) both,
+        infinityHeartBeat 1.35s ease-in-out 1.4s infinite;
+    filter:
+        drop-shadow(0 0 12px rgba(255, 80, 150, .45))
+        drop-shadow(0 0 35px rgba(255, 80, 150, .3));
+}
 
-        .se-infinity-heart {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 10vh;
-            animation:
-                seInfinityHeartFade
-                999999s
-                linear
-                forwards;
-        }
+@keyframes infinityHeartEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-20deg);
+    }
 
-        .se-infinity-heart::before {
-            content: "";
+    55% {
+        opacity: 1;
+        transform: scale(1.35) rotate(8deg);
+    }
 
-            position: absolute;
+    75% {
+        transform: scale(.88) rotate(-4deg);
+    }
 
-            left: 50%;
-            top: 10vh;
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
 
-            width: 210px;
-            height: 210px;
+@keyframes infinityHeartBeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
 
-            margin-left: -105px;
+    12% {
+        transform: scale(1.18);
+    }
 
-            border-radius: 50%;
+    24% {
+        transform: scale(1);
+    }
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,120,165,.38) 0%,
-                    rgba(255,100,150,.16) 38%,
-                    transparent 72%
-                );
+    36% {
+        transform: scale(1.12);
+    }
 
-            filter: blur(12px);
-
-            opacity: 0;
-
-            animation:
-                seInfinityHeartGlow
-                2.2s
-                ease-in-out
-                1s
-                infinite
-                alternate;
-        }
-
-        .se-infinity-heart .heart {
-            position: relative;
-            z-index: 5;
-
-            font-size: 115px;
-
-            opacity: 0;
-
-            filter:
-                drop-shadow(0 0 8px rgba(255,105,150,.65))
-                drop-shadow(0 0 22px rgba(255,80,130,.45))
-                drop-shadow(0 12px 18px rgba(0,0,0,.25));
-
-            animation:
-                seInfinityHeartEntrance
-                1.4s
-                cubic-bezier(.16,.8,.2,1)
-                forwards,
-                seInfinityHeartBeat
-                1.8s
-                ease-in-out
-                1.5s
-                infinite;
-        }
-
-        .se-infinity-heart .heart-spark {
-            position: absolute;
-
-            z-index: 4;
-
-            font-size: 18px;
-
-            color: #ffd6e3;
-
-            text-shadow:
-                0 0 8px rgba(255,130,170,.9);
-
-            opacity: 0;
-
-            animation:
-                seInfinityHeartSpark
-                2s
-                ease-in-out
-                infinite;
-        }
-
-        .se-infinity-heart .heart-spark:nth-child(2) {
-            left: calc(50% - 95px);
-            top: 38%;
-            animation-delay: .4s;
-        }
-
-        .se-infinity-heart .heart-spark:nth-child(3) {
-            right: calc(50% - 95px);
-            top: 45%;
-            animation-delay: .9s;
-        }
-
-        .se-infinity-heart .heart-spark:nth-child(4) {
-            left: calc(50% - 65px);
-            bottom: 28%;
-            animation-delay: 1.3s;
-        }
-
-        .se-infinity-heart .heart-spark:nth-child(5) {
-            right: calc(50% - 65px);
-            bottom: 32%;
-            animation-delay: 1.7s;
-        }
+    48% {
+        transform: scale(1);
+    }
+}
 
 
+/* =========================================================
+   PROTECCIÓN TOTAL DE 100/10 E INFINITO
+   ========================================================= */
+
+.slide.final-no-effects .se-effect,
+.slide.infinity-no-effects .se-effect {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+#special-effects-layer.final-clean,
+#special-effects-layer.infinity-clean {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
         /* =====================================================
            ANIMACIONES — ARMARIO
            ===================================================== */
@@ -3480,145 +3441,128 @@
            RELACIÓN DIAPOSITIVA → OBJETO
            ===================================================== */
 
-        function triggerForSlide(slide) {
+function triggerForSlide(slide) {
 
-            if (!slide) return;
+    if (!slide) return;
 
+    const slides = document.querySelectorAll(".slide");
+    const index = Array.from(slides).indexOf(slide);
 
-            const slides =
-                Array.from(
-                    document.querySelectorAll(".slide")
-                );
+    /*
+     * =====================================================
+     * 100/10 — ÍNDICE 10
+     * INFINITO — ÍNDICE 11
+     *
+     * AQUÍ NO SE CREA NINGÚN OBJETO.
+     * =====================================================
+     */
 
+    if (index === 10 || index === 11) {
 
-            const index =
-                slides.indexOf(slide);
+        // Elimina inmediatamente todos los objetos
+        // que pudiera haber creado anteriormente el JS.
+        layer.innerHTML = "";
 
+        // Limpieza absoluta de animaciones anteriores.
+        layer.classList.remove("final-clean");
+        layer.classList.remove("infinity-clean");
 
-            if (index === -1) return;
+        if (index === 10) {
 
+            slide.classList.add("final-no-effects");
+            slide.classList.remove("infinity-no-effects");
+
+            layer.classList.add("final-clean");
+
+        } else {
+
+            slide.classList.add("infinity-no-effects");
+            slide.classList.remove("final-no-effects");
+
+            layer.classList.add("infinity-clean");
 
             /*
-                0  = Portada
+             * Reiniciamos la animación del corazón para que
+             * vuelva a aparecer con la mega animación cada vez
+             * que entramos en la diapositiva.
+             */
+            const heart = slide.querySelector(".final-heart");
 
-                1  = 10/10 Narnia → ARMARIO
-                2  = 20/10 Outer Banks → MAPA
-                3  = 30/10 Bella y la Bestia → ROSA
-                4  = 40/10 Bridgerton → CARTA
-                5  = 50/10 Princesa por Sorpresa → CORONA
-                6  = 60/10 Narnia → FAROLA
-                7  = 70/10 Harry Potter → MAGO
-                8  = 80/10 Narnia → ASLAN
-                9  = 90/10 Outer Banks → ATARDECER + BARCO
+            if (heart) {
+                heart.style.animation = "none";
 
-                10 = 100/10 FINAL — SIN OBJETOS
-                11 = INFINITO — CORAZÓN 💗
-            */
+                // Forzamos el reinicio de la animación.
+                void heart.offsetWidth;
 
-
-            if (index === 1) {
-
-                createNarniaWardrobe();
-
-                return;
+                heart.style.animation =
+                    "infinityHeartEntrance 1.4s cubic-bezier(.17,.67,.3,1.4) both, " +
+                    "infinityHeartBeat 1.35s ease-in-out 1.4s infinite";
             }
-
-
-            if (index === 2) {
-
-                createOuterBanks();
-
-                return;
-            }
-
-
-            if (index === 3) {
-
-                createBella();
-
-                return;
-            }
-
-
-            if (index === 4) {
-
-                createBridgerton();
-
-                return;
-            }
-
-
-            if (index === 5) {
-
-                createPrincess();
-
-                return;
-            }
-
-
-            if (index === 6) {
-
-                createNarniaLamp();
-
-                return;
-            }
-
-
-            if (index === 7) {
-
-                createHarry();
-
-                return;
-            }
-
-
-            if (index === 8) {
-
-                createNarniaAslan();
-
-                return;
-            }
-
-
-            if (index === 9) {
-
-                createOuterBanksSunset();
-
-                return;
-            }
-
-
-            /* =================================================
-               100/10 — COMPLETAMENTE LIMPIO
-               ================================================= */
-
-            if (index === 10) {
-
-                if (removeTimer) {
-                    clearTimeout(removeTimer);
-                    removeTimer = null;
-                }
-
-                layer.innerHTML = "";
-
-                return;
-            }
-
-
-            /* =================================================
-               INFINITO — CORAZÓN 💗
-               ================================================= */
-
-            if (index === 11) {
-
-                createInfinityHeart();
-
-                return;
-            }
-
-
-            layer.innerHTML = "";
         }
+
+        return;
+    }
+
+    /*
+     * =====================================================
+     * RESTO DE DIAPOSITIVAS
+     * =====================================================
+     */
+
+    slide.classList.remove("final-no-effects");
+    slide.classList.remove("infinity-no-effects");
+
+    layer.classList.remove("final-clean");
+    layer.classList.remove("infinity-clean");
+
+    layer.innerHTML = "";
+
+    clearTimeout(removeTimer);
+
+    switch (index) {
+
+        case 1:
+            createNarniaWardrobe();
+            break;
+
+        case 2:
+            createOuterBanks();
+            break;
+
+        case 3:
+            createBella();
+            break;
+
+        case 4:
+            createBridgerton();
+            break;
+
+        case 5:
+            createPrincess();
+            break;
+
+        case 6:
+            createNarniaLamp();
+            break;
+
+        case 7:
+            createHarry();
+            break;
+
+        case 8:
+            createNarniaAslan();
+            break;
+
+        case 9:
+            createOuterBanksSunset();
+            break;
+
+        default:
+            break;
+    }
+
+    removeEffectAfter(4500);
+}
 
 
         /* =====================================================
@@ -3817,5 +3761,179 @@
         initSpecialEffects();
 
     }
+/* =========================================================
+   PROTECCIÓN FINAL — 100/10 + INFINITO
+   ========================================================= */
 
+function enforceFinalSlidesProtection() {
+
+    const slides = document.querySelectorAll(".slide");
+
+    if (!slides.length) return;
+
+    const finalSlide = slides[10];
+    const infinitySlide = slides[11];
+
+    /*
+     * 100/10
+     */
+    if (finalSlide) {
+        finalSlide.classList.add("final-no-effects");
+    }
+
+    /*
+     * INFINITO
+     */
+    if (infinitySlide) {
+        infinitySlide.classList.add("infinity-no-effects");
+    }
+
+    /*
+     * Eliminamos cualquier efecto que haya quedado
+     * accidentalmente en la capa global.
+     */
+    if (layer) {
+        layer.innerHTML = "";
+        layer.classList.add("final-clean");
+        layer.classList.add("infinity-clean");
+    }
+}
+
+
+/* =========================================================
+   DETECTOR DE DIAPOSITIVA ACTIVA
+   ========================================================= */
+
+let lastSpecialSlideIndex = -1;
+
+function checkCurrentSpecialSlide() {
+
+    const slides = document.querySelectorAll(".slide");
+
+    if (!slides.length) return;
+
+    let activeSlide = document.querySelector(".slide.active");
+
+    /*
+     * Si script.js todavía no ha puesto .active,
+     * buscamos la diapositiva visible.
+     */
+    if (!activeSlide) {
+
+        for (const slide of slides) {
+
+            const style = window.getComputedStyle(slide);
+
+            if (
+                style.display !== "none" &&
+                style.visibility !== "hidden" &&
+                parseFloat(style.opacity || "1") > 0
+            ) {
+                activeSlide = slide;
+                break;
+            }
+        }
+    }
+
+    if (!activeSlide) return;
+
+    const index = Array.from(slides).indexOf(activeSlide);
+
+    if (index === lastSpecialSlideIndex) return;
+
+    lastSpecialSlideIndex = index;
+
+    /*
+     * 100/10 e infinito: LIMPIEZA ABSOLUTA
+     */
+    if (index === 10 || index === 11) {
+
+        clearTimeout(removeTimer);
+
+        layer.innerHTML = "";
+
+        layer.classList.add(
+            index === 10
+                ? "final-clean"
+                : "infinity-clean"
+        );
+
+        activeSlide.classList.toggle(
+            "final-no-effects",
+            index === 10
+        );
+
+        activeSlide.classList.toggle(
+            "infinity-no-effects",
+            index === 11
+        );
+
+        /*
+         * Reiniciar corazón de infinito.
+         */
+        if (index === 11) {
+
+            const heart =
+                activeSlide.querySelector(".final-heart");
+
+            if (heart) {
+
+                heart.style.animation = "none";
+
+                void heart.offsetWidth;
+
+                heart.style.animation =
+                    "infinityHeartEntrance 1.4s cubic-bezier(.17,.67,.3,1.4) both, " +
+                    "infinityHeartBeat 1.35s ease-in-out 1.4s infinite";
+            }
+        }
+
+        return;
+    }
+
+    /*
+     * Resto de diapositivas.
+     */
+    layer.classList.remove("final-clean");
+    layer.classList.remove("infinity-clean");
+
+    triggerForSlide(activeSlide);
+}
+
+
+/* =========================================================
+   OBSERVADOR
+   ========================================================= */
+
+const slideObserver = new MutationObserver(function () {
+
+    checkCurrentSpecialSlide();
+
+});
+
+slideObserver.observe(document.body, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: [
+        "class",
+        "style"
+    ]
+});
+
+
+/*
+ * Comprobación adicional.
+ * Esto hace que funcione incluso si script.js cambia
+ * la diapositiva de una manera que el observer no detecta.
+ */
+setInterval(checkCurrentSpecialSlide, 150);
+
+
+/*
+ * Primera comprobación.
+ */
+setTimeout(function () {
+    checkCurrentSpecialSlide();
+}, 100);
+   
 })();
