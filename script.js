@@ -573,7 +573,103 @@ function updateNavigation() {
 /* ================================================= */
 /* CAMBIAR DIAPOSITIVA */
 /* ================================================= */
+/* ================================================= */
+/* 💗 TRANSICIÓN ESPECIAL — 100/10 */
+/* ================================================= */
 
+function createFinalTransition() {
+
+    const overlay =
+        document.createElement("div");
+
+    overlay.className =
+        "final-transition-overlay";
+
+
+    overlay.innerHTML = `
+
+        <div class="final-transition-light"></div>
+
+        <div class="final-transition-flash"></div>
+
+        <div class="final-transition-rays"></div>
+
+        <div class="final-transition-ring"></div>
+        <div class="final-transition-ring"></div>
+        <div class="final-transition-ring"></div>
+
+        <div class="final-transition-heart">
+            💗
+        </div>
+
+    `;
+
+
+    /* ================================================= */
+    /* PARTÍCULAS RADIALES */
+    /* ================================================= */
+
+    const particleCount = 28;
+
+
+    for (
+        let i = 0;
+        i < particleCount;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("div");
+
+
+        particle.className =
+            "final-transition-particle";
+
+
+        const angle =
+            (360 / particleCount) * i
+            + (Math.random() * 10 - 5);
+
+
+        const distance =
+            25 + Math.random() * 35;
+
+
+        particle.style.setProperty(
+            "--particle-angle",
+            `${angle}deg`
+        );
+
+
+        particle.style.setProperty(
+            "--particle-distance",
+            `${distance}vw`
+        );
+
+
+        particle.style.animationDelay =
+            `${0.15 + Math.random() * 0.45}s`;
+
+
+        overlay.appendChild(
+            particle
+        );
+
+    }
+
+
+    document.body.appendChild(
+        overlay
+    );
+
+
+    setTimeout(() => {
+
+        overlay.remove();
+
+    }, 2900);
+
+}
 function showSlide(index) {
 
     if (isTransitioning) return;
@@ -668,7 +764,19 @@ function showSlide(index) {
 
     currentSlide = index;
 
+/* ================================================= */
+/* 💗 GRAN TRANSICIÓN A 100/10 */
+/* ================================================= */
 
+if (
+    index === 10 &&
+    oldIndex === 9
+) {
+
+    createFinalTransition();
+
+}
+    
     updateNavigation();
 
 
