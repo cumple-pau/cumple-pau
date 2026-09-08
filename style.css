@@ -3499,3 +3499,581 @@ main {
     }
 
 }
+/* ================================================= */
+/* 💗 TRANSICIÓN ÉPICA — ENTRADA A 100/10 */
+/* ================================================= */
+
+.final-transition-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    animation:
+        finalTransitionMaster
+        2.7s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+}
+
+
+/* ================================================= */
+/* FONDO DE LUZ */
+/* ================================================= */
+
+.final-transition-light {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.1);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,1) 0%,
+            rgba(255,245,190,.95) 18%,
+            rgba(255,220,100,.65) 40%,
+            rgba(255,190,100,.25) 62%,
+            transparent 75%
+        );
+
+    filter: blur(2px);
+
+    opacity: 0;
+
+    animation:
+        finalLightExplosion
+        2.1s
+        cubic-bezier(.16,1,.3,1)
+        .05s
+        forwards;
+}
+
+
+/* ================================================= */
+/* CORAZÓN CENTRAL */
+/* ================================================= */
+
+.final-transition-heart {
+
+    position: relative;
+
+    z-index: 10;
+
+    font-size:
+        clamp(75px, 16vw, 150px);
+
+    line-height: 1;
+
+    opacity: 0;
+
+    transform:
+        scale(.15);
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(255,255,255,.95)
+        )
+        drop-shadow(
+            0 0 25px rgba(255,120,150,.8)
+        )
+        drop-shadow(
+            0 0 55px rgba(255,200,100,.65)
+        );
+
+    animation:
+        finalHeartExplosion
+        2s
+        cubic-bezier(.16,1,.3,1)
+        .18s
+        forwards;
+}
+
+
+/* ================================================= */
+/* ANILLOS */
+/* ================================================= */
+
+.final-transition-ring {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(255,255,255,.9);
+
+    transform:
+        translate(-50%, -50%)
+        scale(.1);
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.55),
+        0 0 40px rgba(255,210,120,.45);
+
+}
+
+
+.final-transition-ring:nth-child(3) {
+
+    animation:
+        finalRing
+        1.9s
+        ease-out
+        .35s
+        forwards;
+
+}
+
+
+.final-transition-ring:nth-child(4) {
+
+    width: 130px;
+    height: 130px;
+
+    animation:
+        finalRing
+        2.1s
+        ease-out
+        .5s
+        forwards;
+
+}
+
+
+.final-transition-ring:nth-child(5) {
+
+    width: 190px;
+    height: 190px;
+
+    animation:
+        finalRing
+        2.3s
+        ease-out
+        .65s
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* DESTELLO CENTRAL */
+/* ================================================= */
+
+.final-transition-flash {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 30px;
+    height: 30px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.1);
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0;
+
+    filter:
+        blur(1px);
+
+    animation:
+        finalFlash
+        1.4s
+        ease-out
+        .05s
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* RAYOS */
+/* ================================================= */
+
+.final-transition-rays {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    transform:
+        translate(-50%, -50%);
+
+}
+
+
+.final-transition-rays::before,
+.final-transition-rays::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 8px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,255,255,.7),
+            transparent
+        );
+
+    opacity: 0;
+
+    filter: blur(3px);
+
+    animation:
+        finalRays
+        1.8s
+        ease-out
+        .2s
+        forwards;
+
+}
+
+
+.final-transition-rays::after {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(90deg);
+
+    animation-delay: .32s;
+
+}
+
+
+/* ================================================= */
+/* PARTÍCULAS */
+/* ================================================= */
+
+.final-transition-particle {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.95);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.9),
+        0 0 18px rgba(255,220,120,.75);
+
+    opacity: 0;
+
+    animation:
+        finalParticle
+        1.8s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+}
+
+
+/* ================================================= */
+/* ANIMACIONES */
+/* ================================================= */
+
+@keyframes finalTransitionMaster {
+
+    0% {
+        opacity: 1;
+        background: rgba(255,255,255,0);
+    }
+
+    12% {
+        opacity: 1;
+        background: rgba(255,255,255,.08);
+    }
+
+    28% {
+        opacity: 1;
+        background: rgba(255,245,205,.12);
+    }
+
+    70% {
+        opacity: 1;
+        background: rgba(255,245,205,.04);
+    }
+
+    100% {
+        opacity: 0;
+        background: transparent;
+    }
+
+}
+
+
+@keyframes finalLightExplosion {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(.1);
+    }
+
+    18% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(5);
+    }
+
+    38% {
+        opacity: .85;
+        transform:
+            translate(-50%, -50%)
+            scale(18);
+    }
+
+    65% {
+        opacity: .3;
+        transform:
+            translate(-50%, -50%)
+            scale(35);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(55);
+    }
+
+}
+
+
+@keyframes finalHeartExplosion {
+
+    0% {
+        opacity: 0;
+        transform:
+            scale(.15)
+            rotate(-12deg);
+    }
+
+    25% {
+        opacity: 1;
+        transform:
+            scale(1.35)
+            rotate(5deg);
+    }
+
+    42% {
+        transform:
+            scale(.92)
+            rotate(-3deg);
+    }
+
+    58% {
+        transform:
+            scale(1.12)
+            rotate(2deg);
+    }
+
+    75% {
+        opacity: 1;
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            scale(.82)
+            rotate(0deg);
+    }
+
+}
+
+
+@keyframes finalRing {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(.1);
+    }
+
+    18% {
+        opacity: .9;
+    }
+
+    65% {
+        opacity: .45;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(8);
+    }
+
+}
+
+
+@keyframes finalFlash {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(.1);
+    }
+
+    30% {
+        opacity: .95;
+        transform:
+            translate(-50%, -50%)
+            scale(10);
+    }
+
+    55% {
+        opacity: .25;
+        transform:
+            translate(-50%, -50%)
+            scale(25);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(40);
+    }
+
+}
+
+
+@keyframes finalRays {
+
+    0% {
+        opacity: 0;
+        height: 20px;
+    }
+
+    25% {
+        opacity: .9;
+        height: 300px;
+    }
+
+    100% {
+        opacity: 0;
+        height: 650px;
+    }
+
+}
+
+
+@keyframes finalParticle {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            rotate(var(--particle-angle))
+            translateX(0)
+            scale(.3);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            rotate(var(--particle-angle))
+            translateX(var(--particle-distance))
+            scale(.05);
+    }
+
+}
+
+
+/* ================================================= */
+/* 📱 MÓVIL */
+/* ================================================= */
+
+@media (max-width: 600px) {
+
+    .final-transition-heart {
+
+        font-size: 95px;
+
+    }
+
+    .final-transition-ring:nth-child(3) {
+        width: 60px;
+        height: 60px;
+    }
+
+    .final-transition-ring:nth-child(4) {
+        width: 100px;
+        height: 100px;
+    }
+
+    .final-transition-ring:nth-child(5) {
+        width: 145px;
+        height: 145px;
+    }
+
+}
