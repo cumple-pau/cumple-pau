@@ -1645,123 +1645,18 @@
             top: 34%;
             animation-delay: 1.25s;
         }
-
-
-        /* =====================================================
-           OBJETOS 100/10 E INFINITO
-           ===================================================== */
-
-        .se-final-safe-object,
-        .se-infinity-object {
-            pointer-events: none !important;
-            z-index: 2 !important;
-        }
 /* =====================================================
-   OBJETOS FINALES — SOLO EN LOS LADOS
-   No invaden el texto central
+   OBJETOS 100/10 E INFINITO
+   OCULTOS
    ===================================================== */
 
 .se-final-safe-object,
 .se-infinity-object {
-    pointer-events: none !important;
-    z-index: 2 !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    animation: none !important;
 }
-
-
-/* =====================================================
-   100/10 — POSICIONES LATERALES
-   ===================================================== */
-
-.se-final-compass {
-    position: absolute !important;
-
-    left: 18px !important;
-    right: auto !important;
-
-    top: 18px !important;
-    bottom: auto !important;
-
-    transform:
-        scale(.62)
-        rotate(-8deg) !important;
-}
-
-
-.se-final-map {
-    position: absolute !important;
-
-    right: 18px !important;
-    left: auto !important;
-
-    top: 18px !important;
-    bottom: auto !important;
-
-    transform:
-        scale(.52)
-        rotate(5deg) !important;
-
-    transform-origin: top right !important;
-}
-
-
-.se-final-wand {
-    position: absolute !important;
-
-    right: 18px !important;
-    left: auto !important;
-
-    bottom: 25px !important;
-    top: auto !important;
-
-    transform:
-        scale(.62)
-        rotate(-18deg) !important;
-
-    transform-origin: bottom right !important;
-}
-
-
-/* =====================================================
-   INFINITO/10 — REPARTIDOS POR LOS LATERALES
-   ===================================================== */
-
-.se-infinity-object {
-    position: absolute !important;
-
-    max-width: 90px !important;
-    max-height: 90px !important;
-}
-
-
-/* Objeto izquierdo arriba */
-.se-infinity-object:nth-of-type(1) {
-    left: 15px !important;
-    right: auto !important;
-
-    top: 20px !important;
-    bottom: auto !important;
-}
-
-
-/* Objeto derecho arriba */
-.se-infinity-object:nth-of-type(2) {
-    right: 15px !important;
-    left: auto !important;
-
-    top: 20px !important;
-    bottom: auto !important;
-}
-
-
-/* Objeto derecho abajo */
-.se-infinity-object:nth-of-type(3) {
-    right: 18px !important;
-    left: auto !important;
-
-    bottom: 25px !important;
-    top: auto !important;
-}
-      
 
         /* =====================================================
            ANIMACIONES — ARMARIO
