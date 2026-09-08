@@ -441,13 +441,20 @@ function updateThemeObjects(index) {
         todos comienzan a reunirse
     */
 
-    if (index === 10) {
+if (index === 10) {
 
-        gatherThemeObjects();
+    objectsContainer.classList.remove(
+        "objects-gathering",
+        "objects-infinity"
+    );
 
-        return;
+    unlockedObjects.forEach(item => {
+        item.element.classList.add("theme-object-hidden");
+    });
 
-    }
+    return;
+
+}
 
 
     /*
@@ -455,13 +462,20 @@ function updateThemeObjects(index) {
         composición final
     */
 
-    if (index === 11) {
+if (index === 11) {
 
-        createInfinityObjects();
+    objectsContainer.classList.remove(
+        "objects-gathering",
+        "objects-infinity"
+    );
 
-        return;
+    unlockedObjects.forEach(item => {
+        item.element.classList.add("theme-object-hidden");
+    });
 
-    }
+    return;
+
+}
 
 
     /*
