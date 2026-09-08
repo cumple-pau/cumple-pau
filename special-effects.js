@@ -58,38 +58,23 @@
             height: 260px;
             transform: translateX(-50%) scale(.35);
             border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(220,245,255,.55),
-                    rgba(120,200,255,.16) 42%,
-                    transparent 72%
-                );
-
+            background: radial-gradient(
+                circle,
+                rgba(220,245,255,.55),
+                rgba(120,200,255,.16) 42%,
+                transparent 72%
+            );
             filter: blur(10px);
             opacity: 0;
-
-            animation:
-                seNarniaAura
-                3s
-                ease
-                .15s
-                forwards;
+            animation: seNarniaAura 3s ease .15s forwards;
         }
 
         .se-wardrobe-area {
             position: relative;
-
             width: 178px;
             height: 238px;
-
             perspective: 1100px;
-
-            transform:
-                translateY(0)
-                scale(.96);
-
+            transform: translateY(0) scale(.96);
             animation:
                 seWardrobeEntrance
                 .9s
@@ -99,13 +84,10 @@
 
         .se-wardrobe-light {
             position: absolute;
-
             width: 115px;
             height: 180px;
-
             left: 27px;
             top: 18px;
-
             border-radius: 50%;
 
             background:
@@ -130,15 +112,12 @@
 
         .se-wardrobe {
             position: absolute;
-
             width: 150px;
             height: 205px;
-
             left: 10px;
             top: 10px;
 
-            border-radius:
-                9px 9px 4px 4px;
+            border-radius: 9px 9px 4px 4px;
 
             background:
                 linear-gradient(
@@ -181,7 +160,6 @@
 
         .se-door {
             position: absolute;
-
             top: 5px;
 
             width: 72px;
@@ -210,13 +188,10 @@
 
         .se-door::before {
             content: "";
-
             position: absolute;
             inset: 13px;
 
-            border:
-                2px solid rgba(20,10,5,.5);
-
+            border: 2px solid rgba(20,10,5,.5);
             border-radius: 3px;
         }
 
@@ -240,9 +215,7 @@
 
         .se-door-left {
             left: 2px;
-
             transform-origin: left center;
-
             z-index: 3;
 
             animation:
@@ -259,9 +232,7 @@
 
         .se-door-right {
             right: 2px;
-
             transform-origin: right center;
-
             z-index: 3;
 
             animation:
@@ -334,7 +305,6 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-
             padding-top: 6vh;
 
             animation:
@@ -582,7 +552,6 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-
             padding-top: 10vh;
 
             animation:
@@ -734,6 +703,618 @@
 
 
         /* =====================================================
+           BELLA Y LA BESTIA — ROSA
+           ===================================================== */
+
+        .se-bella {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10vh;
+
+            animation:
+                seBellaFade
+                2.7s
+                ease
+                forwards;
+        }
+
+        .se-rose-container {
+            position: relative;
+            width: 165px;
+            height: 190px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(14px);
+            animation:
+                seRoseEntrance
+                1.15s
+                cubic-bezier(.2,.8,.2,1)
+                forwards;
+        }
+
+        .se-rose-container::before {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 150px;
+            bottom: 3px;
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(255,245,190,.28),
+                    transparent 68%
+                );
+            filter: blur(7px);
+            opacity: 0;
+            animation:
+                seRoseAura
+                2.8s
+                ease
+                .35s
+                forwards;
+        }
+
+        .se-rose-glow {
+            position: absolute;
+
+            width: 135px;
+            height: 135px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,70,100,.42),
+                    rgba(255,100,130,.18) 38%,
+                    transparent 70%
+                );
+
+            filter: blur(8px);
+
+            animation:
+                seRoseGlow
+                1.5s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+        .se-rose {
+            position: relative;
+            z-index: 2;
+
+            font-size: 82px;
+
+            filter:
+                drop-shadow(0 0 7px rgba(255,70,100,.7))
+                drop-shadow(0 10px 10px rgba(0,0,0,.25));
+
+            animation:
+                seRoseBloom
+                1.05s
+                cubic-bezier(.2,.8,.2,1)
+                .15s
+                both,
+                seRoseFloat
+                2.2s
+                ease-in-out
+                1.2s
+                infinite;
+        }
+
+        .se-rose-petal {
+            position: absolute;
+            font-size: 17px;
+            opacity: 0;
+            animation:
+                seRoseSpark
+                1.9s
+                ease-in-out
+                infinite;
+        }
+
+        .se-rose-container::after {
+            content: "✦  ✧  ✦";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform:
+                translate(-50%, -50%)
+                scale(.4);
+            white-space: nowrap;
+            font-size: 18px;
+            letter-spacing: 18px;
+            color: rgba(255,245,190,.9);
+            text-shadow:
+                0 0 10px rgba(255,210,90,.9);
+            opacity: 0;
+            animation:
+                seRoseRing
+                2.2s
+                ease
+                .65s
+                forwards;
+        }
+
+        .se-rose-petal:nth-child(3) {
+            left: 12px;
+            top: 25px;
+        }
+
+        .se-rose-petal:nth-child(4) {
+            right: 12px;
+            top: 55px;
+            animation-delay: .4s;
+        }
+
+        .se-rose-petal:nth-child(5) {
+            left: 28px;
+            bottom: 12px;
+            animation-delay: .8s;
+        }
+
+        .se-rose-petal:nth-child(6) {
+            right: 25px;
+            bottom: 28px;
+            animation-delay: 1.1s;
+        }
+
+
+        /* =====================================================
+           BRIDGERTON — CARTA
+           ===================================================== */
+
+        .se-bridgerton {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10vh;
+
+            animation:
+                seLetterFade
+                2.8s
+                ease
+                forwards;
+        }
+
+        .se-letter-scene {
+            position: relative;
+
+            width: 190px;
+            height: 170px;
+
+            perspective: 800px;
+        }
+
+        .se-letter-glow {
+            position: absolute;
+
+            width: 150px;
+            height: 110px;
+
+            left: 20px;
+            top: 30px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(255,220,135,.65),
+                    rgba(255,220,135,.18) 45%,
+                    transparent 72%
+                );
+
+            filter: blur(8px);
+
+            animation:
+                seLetterGlow
+                1.5s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+        .se-envelope {
+            position: absolute;
+
+            width: 150px;
+            height: 105px;
+
+            left: 20px;
+            top: 30px;
+
+            border-radius: 5px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f8e8c8,
+                    #dfc49a
+                );
+
+            border:
+                2px solid rgba(95,65,35,.5);
+
+            box-shadow:
+                0 13px 25px rgba(0,0,0,.3);
+
+            animation:
+                seEnvelopeAppear
+                .75s
+                cubic-bezier(.2,.8,.2,1)
+                forwards;
+        }
+
+        .se-envelope::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    transparent 49%,
+                    rgba(110,75,38,.25) 50%,
+                    transparent 51%
+                );
+
+            opacity: .7;
+        }
+
+        .se-envelope-flap {
+            position: absolute;
+
+            z-index: 3;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 60px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f3dfbb,
+                    #d5b987
+                );
+
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                50% 100%
+            );
+
+            transform-origin: top center;
+
+            animation:
+                seEnvelopeOpen
+                1.15s
+                cubic-bezier(.2,.8,.2,1)
+                .65s
+                forwards;
+        }
+
+        .se-letter-paper {
+            position: absolute;
+
+            z-index: 2;
+
+            width: 122px;
+            height: 90px;
+
+            left: 34px;
+            top: 42px;
+
+            padding-top: 15px;
+
+            box-sizing: border-box;
+
+            text-align: center;
+
+            font-family: Georgia, serif;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+
+            color: rgba(80,52,25,.8);
+
+            background:
+                linear-gradient(
+                    #fff8e9,
+                    #ead9b9
+                );
+
+            border:
+                1px solid rgba(100,70,35,.35);
+
+            box-shadow:
+                0 5px 12px rgba(0,0,0,.18);
+
+            transform:
+                translateY(45px)
+                scale(.9);
+
+            opacity: 0;
+
+            animation:
+                seLetterRise
+                1s
+                cubic-bezier(.2,.8,.2,1)
+                1s
+                forwards;
+        }
+
+        .se-wax {
+            position: absolute;
+
+            z-index: 5;
+
+            left: 50%;
+            bottom: 7px;
+
+            width: 24px;
+            height: 24px;
+
+            margin-left: -12px;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 9px;
+
+            color: rgba(255,245,205,.8);
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #c86b6b,
+                    #7d2929
+                );
+
+            box-shadow:
+                0 2px 6px rgba(0,0,0,.25);
+
+            animation:
+                seWaxAppear
+                .7s
+                ease
+                1.35s
+                both;
+        }
+
+
+        /* =====================================================
+           PRINCESA POR SORPRESA — CORONA
+           ===================================================== */
+
+        .se-princess {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 9vh;
+
+            animation:
+                seCrownFade
+                2.6s
+                ease
+                forwards;
+        }
+
+        .se-crown-container {
+            position: relative;
+
+            width: 160px;
+            height: 145px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .se-crown-glow {
+            position: absolute;
+
+            width: 135px;
+            height: 135px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,225,95,.72),
+                    rgba(255,205,50,.22) 40%,
+                    transparent 70%
+                );
+
+            filter: blur(7px);
+
+            animation:
+                seCrownGlow
+                1.4s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+        .se-crown {
+            position: relative;
+            z-index: 2;
+
+            font-size: 78px;
+
+            filter:
+                drop-shadow(0 0 6px rgba(255,230,120,.9))
+                drop-shadow(0 10px 10px rgba(0,0,0,.25));
+
+            animation:
+                seCrownFloat
+                1.7s
+                ease-in-out
+                infinite;
+        }
+
+        .se-crown-spark {
+            position: absolute;
+
+            font-size: 18px;
+
+            opacity: 0;
+
+            animation:
+                seCrownSpark
+                1.6s
+                ease-in-out
+                infinite;
+        }
+
+        .se-crown-spark:nth-child(3) {
+            left: 15px;
+            top: 27px;
+            animation-delay: .2s;
+        }
+
+        .se-crown-spark:nth-child(4) {
+            right: 10px;
+            top: 50px;
+            animation-delay: .6s;
+        }
+
+        .se-crown-spark:nth-child(5) {
+            left: 30px;
+            bottom: 12px;
+            animation-delay: 1s;
+        }
+
+
+        /* =====================================================
+           HARRY POTTER — VUELO EN ESCOBA
+           ===================================================== */
+
+        .se-hp {
+            overflow: hidden;
+        }
+
+        .se-hp-flight {
+            position: absolute;
+
+            left: -190px;
+            top: 32%;
+
+            width: 180px;
+            height: 85px;
+
+            display: flex;
+            align-items: center;
+
+            transform: rotate(-5deg);
+
+            animation:
+                seHarryFlight
+                2.8s
+                cubic-bezier(.2,.7,.2,1)
+                forwards;
+        }
+
+        .se-hp-wizard {
+            position: relative;
+            z-index: 3;
+
+            font-size: 48px;
+
+            transform: rotate(-8deg);
+
+            filter:
+                drop-shadow(0 5px 5px rgba(0,0,0,.35));
+        }
+
+        .se-hp-broom {
+            position: absolute;
+
+            left: 57px;
+            top: 48px;
+
+            font-size: 47px;
+
+            transform: rotate(-12deg);
+
+            filter:
+                drop-shadow(0 4px 4px rgba(0,0,0,.35));
+        }
+
+        .se-hp-trail {
+            position: absolute;
+
+            left: -35px;
+            top: 47px;
+
+            width: 100px;
+            height: 4px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.72);
+
+            filter: blur(2px);
+
+            opacity: .7;
+
+            animation:
+                seHpTrail
+                1s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+        .se-hp-star {
+            position: absolute;
+
+            font-size: 15px;
+
+            animation:
+                seHpStar
+                1.4s
+                ease-in-out
+                infinite;
+        }
+
+        .se-hp-star:nth-child(4) {
+            left: 10%;
+            top: 25%;
+        }
+
+        .se-hp-star:nth-child(5) {
+            left: 28%;
+            top: 65%;
+            animation-delay: .3s;
+        }
+
+        .se-hp-star:nth-child(6) {
+            left: 47%;
+            top: 18%;
+            animation-delay: .6s;
+        }
+
+
+        /* =====================================================
            OUTER BANKS — MAPA + BRÚJULA
            ===================================================== */
 
@@ -741,7 +1322,6 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-
             padding-top: 9vh;
 
             animation:
@@ -941,292 +1521,7 @@
 
 
         /* =====================================================
-           OUTER BANKS — ATARDECER + BARCO
-           ===================================================== */
-
-        .se-obx-sunset {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-
-            padding-top: 8vh;
-
-            animation:
-                seSunsetFade
-                3.3s
-                ease
-                forwards;
-        }
-
-        .se-sunset-scene {
-            position: relative;
-
-            width: 300px;
-            height: 220px;
-
-            overflow: hidden;
-
-            border-radius: 50%;
-
-            transform:
-                translateY(25px)
-                scale(.72);
-
-            opacity: 0;
-
-            animation:
-                seSunsetEntrance
-                1.2s
-                cubic-bezier(.2,.8,.2,1)
-                .1s
-                forwards;
-        }
-
-        .se-sunset-sky {
-            position: absolute;
-
-            inset: 0;
-
-            border-radius: 50%;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    #172a4d 0%,
-                    #4e6587 38%,
-                    #d18a65 68%,
-                    #f2bd70 100%
-                );
-        }
-
-        .se-sunset-sun {
-            position: absolute;
-
-            left: 50%;
-            top: 48px;
-
-            width: 62px;
-            height: 62px;
-
-            margin-left: -31px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #fff6bd 0%,
-                    #ffd879 45%,
-                    #e99b5b 75%,
-                    transparent 76%
-                );
-
-            box-shadow:
-                0 0 25px rgba(255,210,120,.75);
-
-            animation:
-                seSunsetSun
-                2.3s
-                ease-in-out
-                .35s
-                forwards;
-        }
-
-        .se-sunset-sea {
-            position: absolute;
-
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            height: 78px;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(31,63,83,.9),
-                    rgba(12,35,52,.98)
-                );
-        }
-
-        .se-sunset-sea::before {
-            content: "";
-
-            position: absolute;
-
-            left: 45px;
-            top: 18px;
-
-            width: 210px;
-            height: 2px;
-
-            background:
-                rgba(255,220,150,.65);
-
-            box-shadow:
-                0 10px 0 rgba(255,220,150,.35),
-                0 20px 0 rgba(255,220,150,.2);
-        }
-
-        .se-sunset-boat {
-            position: absolute;
-
-            left: 50%;
-
-            bottom: 50px;
-
-            width: 105px;
-            height: 48px;
-
-            margin-left: -52px;
-
-            animation:
-                seBoatFloat
-                2.1s
-                ease-in-out
-                .6s
-                infinite;
-        }
-
-        .se-boat-hull {
-            position: absolute;
-
-            left: 0;
-            bottom: 2px;
-
-            width: 105px;
-            height: 25px;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    #3a2b24,
-                    #171516
-                );
-
-            clip-path:
-                polygon(
-                    0 0,
-                    100% 0,
-                    82% 100%,
-                    18% 100%
-                );
-        }
-
-        .se-boat-sail {
-            position: absolute;
-
-            left: 48px;
-            top: 0;
-
-            width: 3px;
-            height: 40px;
-
-            background:
-                #292727;
-
-            transform-origin: bottom center;
-        }
-
-        .se-boat-sail::before {
-            content: "";
-
-            position: absolute;
-
-            left: 3px;
-            top: 3px;
-
-            width: 36px;
-            height: 30px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,245,215,.95),
-                    rgba(224,205,170,.8)
-                );
-
-            clip-path:
-                polygon(
-                    0 0,
-                    100% 100%,
-                    0 100%
-                );
-        }
-
-        .se-sunset-bird {
-            position: absolute;
-
-            font-size: 16px;
-
-            color: rgba(20,25,32,.8);
-
-            opacity: 0;
-
-            animation:
-                seBirdFlight
-                2.5s
-                ease-in-out
-                infinite;
-        }
-
-        .se-sunset-bird:nth-child(4) {
-            left: 18%;
-            top: 30%;
-            animation-delay: .3s;
-        }
-
-        .se-sunset-bird:nth-child(5) {
-            left: 68%;
-            top: 23%;
-            animation-delay: 1s;
-        }
-
-        .se-sunset-bird:nth-child(6) {
-            left: 82%;
-            top: 39%;
-            animation-delay: 1.6s;
-        }
-
-        .se-sunset-spark {
-            position: absolute;
-
-            width: 4px;
-            height: 4px;
-
-            border-radius: 50%;
-
-            background: rgba(255,235,170,.9);
-
-            opacity: 0;
-
-            animation:
-                seSunsetSpark
-                1.8s
-                ease-in-out
-                infinite;
-        }
-
-        .se-sunset-spark:nth-child(7) {
-            left: 25%;
-            bottom: 24%;
-        }
-
-        .se-sunset-spark:nth-child(8) {
-            left: 72%;
-            bottom: 17%;
-            animation-delay: .6s;
-        }
-
-        .se-sunset-spark:nth-child(9) {
-            left: 55%;
-            bottom: 29%;
-            animation-delay: 1.1s;
-        }
-
-
-        /* =====================================================
-           OBJETOS FINALES
+           OBJETOS 100/10 E INFINITO
            ===================================================== */
 
         .se-final-safe-object,
@@ -1237,52 +1532,39 @@
 
         .se-final-compass {
             position: absolute !important;
-
             left: 12px !important;
             right: auto !important;
             top: 12px !important;
             bottom: auto !important;
-
-            transform:
-                scale(.72)
-                rotate(-8deg) !important;
+            transform: scale(.72) rotate(-8deg) !important;
         }
 
         .se-final-map {
             position: absolute !important;
-
             right: 10px !important;
             left: auto !important;
             top: 10px !important;
             bottom: auto !important;
-
             transform:
                 scale(.62)
                 rotate(5deg) !important;
-
-            transform-origin:
-                top right !important;
+            transform-origin: top right !important;
         }
 
         .se-final-wand {
             position: absolute !important;
-
             right: 12px !important;
             left: auto !important;
             bottom: 70px !important;
             top: auto !important;
-
             transform:
                 scale(.72)
                 rotate(-18deg) !important;
-
-            transform-origin:
-                bottom right !important;
+            transform-origin: bottom right !important;
         }
 
         .se-infinity-object {
             position: absolute !important;
-
             max-width: 105px !important;
             max-height: 105px !important;
         }
@@ -1304,57 +1586,7 @@
 
 
         /* =====================================================
-           RESPONSIVE
-           ===================================================== */
-
-        @media (max-width: 600px) {
-
-            .se-wardrobe-area {
-                transform: scale(.82);
-            }
-
-            .se-lamp-scene {
-                transform: scale(.82);
-            }
-
-            .se-aslan-scene {
-                transform: scale(.78);
-            }
-
-            .se-rose-container {
-                transform: scale(.82);
-            }
-
-            .se-letter-scene {
-                transform: scale(.82);
-            }
-
-            .se-crown-container {
-                transform: scale(.82);
-            }
-
-            .se-map-wrapper {
-                transform:
-                    scale(.82)
-                    rotate(-2deg);
-            }
-
-            .se-hp-flight {
-                transform:
-                    scale(.85)
-                    rotate(-5deg);
-            }
-
-            .se-sunset-scene {
-                transform:
-                    translateY(20px)
-                    scale(.7);
-            }
-        }
-
-
-        /* =====================================================
-           ANIMACIONES — ARMARIO
+           ANIMACIONES — NARNIA ARMARIO
            ===================================================== */
 
         @keyframes seDoorLeft {
@@ -1621,22 +1853,18 @@
         @keyframes seAslanEntrance {
             0% {
                 opacity: 0;
-
                 transform:
                     translateY(45px)
                     scale(.5);
-
                 filter:
                     brightness(.4);
             }
 
             45% {
                 opacity: 1;
-
                 transform:
                     translateY(-8px)
                     scale(1.08);
-
                 filter:
                     brightness(1.25);
             }
@@ -1645,18 +1873,15 @@
                 transform:
                     translateY(2px)
                     scale(.97);
-
                 filter:
                     brightness(1.05);
             }
 
             100% {
                 opacity: 1;
-
                 transform:
                     translateY(0)
                     scale(1);
-
                 filter:
                     brightness(1);
             }
@@ -1690,7 +1915,6 @@
                     translateY(35px)
                     scale(.65)
                     rotate(-3deg);
-
                 opacity: 0;
             }
 
@@ -1699,7 +1923,6 @@
                     translateY(-5px)
                     scale(1.06)
                     rotate(2deg);
-
                 opacity: 1;
             }
 
@@ -1708,7 +1931,6 @@
                     translateY(0)
                     scale(1)
                     rotate(0deg);
-
                 opacity: 1;
             }
         }
@@ -1732,7 +1954,6 @@
         @keyframes seAslanSpark {
             0%, 100% {
                 opacity: 0;
-
                 transform:
                     scale(.4)
                     translateY(5px)
@@ -1741,7 +1962,6 @@
 
             45% {
                 opacity: 1;
-
                 transform:
                     scale(1.2)
                     translateY(-6px)
@@ -1750,7 +1970,6 @@
 
             70% {
                 opacity: .35;
-
                 transform:
                     scale(.8)
                     translateY(-2px)
@@ -1778,13 +1997,423 @@
 
 
         /* =====================================================
-           ANIMACIONES — OUTER BANKS MAPA
+           ANIMACIONES — BELLA
+           ===================================================== */
+
+        @keyframes seRoseEntrance {
+            0% {
+                opacity: 0;
+                transform:
+                    translateY(45px)
+                    scale(.55);
+            }
+
+            65% {
+                opacity: 1;
+                transform:
+                    translateY(-4px)
+                    scale(1.04);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateY(14px)
+                    scale(1);
+            }
+        }
+
+        @keyframes seRoseBloom {
+            0% {
+                transform:
+                    scale(.35)
+                    rotate(-14deg);
+                opacity: 0;
+            }
+
+            55% {
+                transform:
+                    scale(1.14)
+                    rotate(4deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    scale(1)
+                    rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes seRoseFloat {
+            0%, 100% {
+                transform:
+                    translateY(3px)
+                    rotate(-2deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-10px)
+                    rotate(2deg);
+            }
+        }
+
+        @keyframes seRoseAura {
+            0% {
+                opacity: 0;
+                transform: scale(.45);
+            }
+
+            45% {
+                opacity: .8;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: .2;
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes seRoseRing {
+            0% {
+                opacity: 0;
+                transform:
+                    translate(-50%, -50%)
+                    scale(.4)
+                    rotate(-20deg);
+            }
+
+            35% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.5)
+                    rotate(20deg);
+            }
+        }
+
+        @keyframes seRoseGlow {
+            from {
+                opacity: .45;
+                transform: scale(.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes seRoseSpark {
+            0%, 100% {
+                opacity: 0;
+                transform:
+                    translateY(4px)
+                    scale(.5)
+                    rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+                transform:
+                    translateY(-6px)
+                    scale(1.15)
+                    rotate(90deg);
+            }
+        }
+
+        @keyframes seBellaFade {
+            0% {
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — BRIDGERTON
+           ===================================================== */
+
+        @keyframes seEnvelopeAppear {
+            0% {
+                opacity: 0;
+                transform:
+                    translateY(30px)
+                    rotate(-8deg)
+                    scale(.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    rotate(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes seEnvelopeOpen {
+            0% {
+                transform:
+                    rotateX(0deg);
+            }
+
+            100% {
+                transform:
+                    rotateX(-170deg);
+            }
+        }
+
+        @keyframes seLetterRise {
+            0% {
+                opacity: 0;
+                transform:
+                    translateY(45px)
+                    scale(.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateY(-20px)
+                    scale(1);
+            }
+        }
+
+        @keyframes seWaxAppear {
+            0% {
+                opacity: 0;
+                transform: scale(.2);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes seLetterGlow {
+            from {
+                opacity: .4;
+                transform: scale(.85);
+            }
+
+            to {
+                opacity: .9;
+                transform: scale(1.12);
+            }
+        }
+
+        @keyframes seLetterFade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — PRINCESA
+           ===================================================== */
+
+        @keyframes seCrownAppear {
+            0% {
+                opacity: 0;
+                transform:
+                    translateY(-35px)
+                    scale(.5)
+                    rotate(-8deg);
+            }
+
+            20% {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1.1)
+                    rotate(3deg);
+            }
+
+            32% {
+                transform:
+                    translateY(0)
+                    scale(1)
+                    rotate(0deg);
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    translateY(-10px)
+                    scale(.95);
+            }
+        }
+
+        @keyframes seCrownFloat {
+            0%, 100% {
+                transform:
+                    translateY(2px)
+                    rotate(-2deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-7px)
+                    rotate(2deg);
+            }
+        }
+
+        @keyframes seCrownGlow {
+            from {
+                opacity: .5;
+                transform: scale(.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes seCrownSpark {
+            0%, 100% {
+                opacity: 0;
+                transform:
+                    scale(.5)
+                    rotate(0deg);
+            }
+
+            45% {
+                opacity: 1;
+                transform:
+                    scale(1.2)
+                    rotate(90deg);
+            }
+        }
+
+        @keyframes seCrownFade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — HARRY POTTER
+           ===================================================== */
+
+        @keyframes seHarryFlight {
+            0% {
+                left: -190px;
+                top: 37%;
+                transform:
+                    rotate(-7deg)
+                    scale(.85);
+            }
+
+            45% {
+                top: 27%;
+                transform:
+                    rotate(2deg)
+                    scale(1);
+            }
+
+            70% {
+                top: 31%;
+                transform:
+                    rotate(-3deg)
+                    scale(1);
+            }
+
+            100% {
+                left: calc(100% + 30px);
+                top: 22%;
+                transform:
+                    rotate(5deg)
+                    scale(.8);
+            }
+        }
+
+        @keyframes seHpTrail {
+            from {
+                opacity: .3;
+                transform: scaleX(.7);
+            }
+
+            to {
+                opacity: .8;
+                transform: scaleX(1.2);
+            }
+        }
+
+        @keyframes seHpStar {
+            0%, 100% {
+                opacity: .2;
+                transform:
+                    translateY(4px)
+                    scale(.7);
+            }
+
+            50% {
+                opacity: 1;
+                transform:
+                    translateY(-5px)
+                    scale(1);
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — OUTER BANKS
            ===================================================== */
 
         @keyframes seMapOpen {
             0% {
                 opacity: 0;
-
                 transform:
                     rotateX(-70deg)
                     scale(.7);
@@ -1792,7 +2421,6 @@
 
             100% {
                 opacity: 1;
-
                 transform:
                     rotateX(0deg)
                     scale(1);
@@ -1802,7 +2430,6 @@
         @keyframes seCompassAppear {
             0% {
                 opacity: 0;
-
                 transform:
                     scale(.3)
                     rotate(-90deg);
@@ -1810,7 +2437,6 @@
 
             100% {
                 opacity: 1;
-
                 transform:
                     scale(1)
                     rotate(0deg);
@@ -1877,572 +2503,45 @@
 
 
         /* =====================================================
-           ANIMACIONES — OUTER BANKS ATARDECER
+           MÓVIL
            ===================================================== */
 
-        @keyframes seSunsetEntrance {
-            0% {
-                opacity: 0;
+        @media (max-width: 600px) {
 
+            .se-wardrobe-area {
+                transform: scale(.82);
+            }
+
+            .se-lamp-scene {
+                transform: scale(.82);
+            }
+
+            .se-aslan-scene {
+                transform: scale(.78);
+            }
+
+            .se-rose-container {
+                transform: scale(.82);
+            }
+
+            .se-letter-scene {
+                transform: scale(.82);
+            }
+
+            .se-crown-container {
+                transform: scale(.82);
+            }
+
+            .se-map-wrapper {
                 transform:
-                    translateY(45px)
-                    scale(.5);
-            }
-
-            50% {
-                opacity: 1;
-
-                transform:
-                    translateY(-4px)
-                    scale(1.03);
-            }
-
-            100% {
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
-
-        @keyframes seSunsetSun {
-            0% {
-                opacity: 0;
-
-                transform:
-                    translateY(25px)
-                    scale(.5);
-            }
-
-            50% {
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1.08);
-            }
-
-            100% {
-                opacity: 1;
-
-                transform:
-                    translateY(4px)
-                    scale(1);
-            }
-        }
-
-        @keyframes seBoatFloat {
-            0%, 100% {
-                transform:
-                    translateY(0)
-                    rotate(-1deg);
-            }
-
-            50% {
-                transform:
-                    translateY(-7px)
-                    rotate(1deg);
-            }
-        }
-
-        @keyframes seBirdFlight {
-            0% {
-                opacity: 0;
-
-                transform:
-                    translateX(-15px)
-                    translateY(8px)
-                    scale(.7);
-            }
-
-            25% {
-                opacity: .8;
-            }
-
-            75% {
-                opacity: .8;
-            }
-
-            100% {
-                opacity: 0;
-
-                transform:
-                    translateX(30px)
-                    translateY(-8px)
-                    scale(1);
-            }
-        }
-
-        @keyframes seSunsetSpark {
-            0%, 100% {
-                opacity: 0;
-
-                transform:
-                    scale(.4)
-                    translateY(4px);
-            }
-
-            50% {
-                opacity: 1;
-
-                transform:
-                    scale(1)
-                    translateY(-5px);
-            }
-        }
-
-        @keyframes seSunsetFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-
-        /* =====================================================
-           ANIMACIONES — BELLA Y LA BESTIA
-           ===================================================== */
-
-        @keyframes seRoseEntrance {
-            0% {
-                opacity: 0;
-
-                transform:
-                    translateY(45px)
-                    scale(.55);
-            }
-
-            65% {
-                opacity: 1;
-
-                transform:
-                    translateY(-4px)
-                    scale(1.04);
-            }
-
-            100% {
-                opacity: 1;
-
-                transform:
-                    translateY(14px)
-                    scale(1);
-            }
-        }
-
-        @keyframes seRoseBloom {
-            0% {
-                transform:
-                    scale(.35)
-                    rotate(-14deg);
-
-                opacity: 0;
-            }
-
-            55% {
-                transform:
-                    scale(1.14)
-                    rotate(4deg);
-
-                opacity: 1;
-            }
-
-            100% {
-                transform:
-                    scale(1)
-                    rotate(0deg);
-
-                opacity: 1;
-            }
-        }
-
-        @keyframes seRoseFloat {
-            0%, 100% {
-                transform:
-                    translateY(3px)
+                    scale(.82)
                     rotate(-2deg);
             }
 
-            50% {
+            .se-hp-flight {
                 transform:
-                    translateY(-10px)
-                    rotate(2deg);
-            }
-        }
-
-        @keyframes seRoseAura {
-            0% {
-                opacity: 0;
-                transform: scale(.45);
-            }
-
-            45% {
-                opacity: .8;
-                transform: scale(1);
-            }
-
-            100% {
-                opacity: .2;
-                transform: scale(1.15);
-            }
-        }
-
-        @keyframes seRoseRing {
-            0% {
-                opacity: 0;
-
-                transform:
-                    translate(-50%, -50%)
-                    scale(.4)
-                    rotate(-20deg);
-            }
-
-            35% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-
-                transform:
-                    translate(-50%, -50%)
-                    scale(1.5)
-                    rotate(20deg);
-            }
-        }
-
-        @keyframes seRoseGlow {
-            from {
-                opacity: .45;
-                transform: scale(.85);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1.15);
-            }
-        }
-
-        @keyframes seRoseSpark {
-            0%, 100% {
-                opacity: 0;
-
-                transform:
-                    translateY(4px)
-                    scale(.5)
-                    rotate(0deg);
-            }
-
-            50% {
-                opacity: 1;
-
-                transform:
-                    translateY(-6px)
-                    scale(1.15)
-                    rotate(90deg);
-            }
-        }
-
-        @keyframes seBellaFade {
-            0% {
-                opacity: 0;
-            }
-
-            12% {
-                opacity: 1;
-            }
-
-            78% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-
-        /* =====================================================
-           ANIMACIONES — BRIDGERTON
-           ===================================================== */
-
-        @keyframes seEnvelopeAppear {
-            0% {
-                opacity: 0;
-
-                transform:
-                    translateY(30px)
-                    rotate(-8deg)
-                    scale(.8);
-            }
-
-            100% {
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    rotate(0)
-                    scale(1);
-            }
-        }
-
-        @keyframes seEnvelopeOpen {
-            0% {
-                transform:
-                    rotateX(0deg);
-            }
-
-            100% {
-                transform:
-                    rotateX(-170deg);
-            }
-        }
-
-        @keyframes seLetterRise {
-            0% {
-                opacity: 0;
-
-                transform:
-                    translateY(45px)
-                    scale(.9);
-            }
-
-            100% {
-                opacity: 1;
-
-                transform:
-                    translateY(-20px)
-                    scale(1);
-            }
-        }
-
-        @keyframes seWaxAppear {
-            0% {
-                opacity: 0;
-                transform: scale(.2);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes seLetterGlow {
-            from {
-                opacity: .4;
-                transform: scale(.85);
-            }
-
-            to {
-                opacity: .9;
-                transform: scale(1.12);
-            }
-        }
-
-        @keyframes seLetterFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-
-        /* =====================================================
-           ANIMACIONES — PRINCESA
-           ===================================================== */
-
-        @keyframes seCrownAppear {
-            0% {
-                opacity: 0;
-
-                transform:
-                    translateY(-35px)
-                    scale(.5)
-                    rotate(-8deg);
-            }
-
-            20% {
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1.1)
-                    rotate(3deg);
-            }
-
-            32% {
-                transform:
-                    translateY(0)
-                    scale(1)
-                    rotate(0deg);
-            }
-
-            75% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-
-                transform:
-                    translateY(-10px)
-                    scale(.95);
-            }
-        }
-
-        @keyframes seCrownFloat {
-            0%, 100% {
-                transform:
-                    translateY(2px)
-                    rotate(-2deg);
-            }
-
-            50% {
-                transform:
-                    translateY(-7px)
-                    rotate(2deg);
-            }
-        }
-
-        @keyframes seCrownGlow {
-            from {
-                opacity: .5;
-                transform: scale(.85);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1.15);
-            }
-        }
-
-        @keyframes seCrownSpark {
-            0%, 100% {
-                opacity: 0;
-
-                transform:
-                    scale(.5)
-                    rotate(0deg);
-            }
-
-            45% {
-                opacity: 1;
-
-                transform:
-                    scale(1.2)
-                    rotate(90deg);
-            }
-        }
-
-        @keyframes seCrownFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            78% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-
-        /* =====================================================
-           ANIMACIONES — HARRY POTTER
-           ===================================================== */
-
-        @keyframes seHarryFlight {
-            0% {
-                left: -190px;
-                top: 37%;
-
-                transform:
-                    rotate(-7deg)
-                    scale(.85);
-            }
-
-            45% {
-                top: 27%;
-
-                transform:
-                    rotate(2deg)
-                    scale(1);
-            }
-
-            70% {
-                top: 31%;
-
-                transform:
-                    rotate(-3deg)
-                    scale(1);
-            }
-
-            100% {
-                left: calc(100% + 30px);
-                top: 22%;
-
-                transform:
-                    rotate(5deg)
-                    scale(.8);
-            }
-        }
-
-        @keyframes seHpTrail {
-            from {
-                opacity: .3;
-                transform: scaleX(.7);
-            }
-
-            to {
-                opacity: .8;
-                transform: scaleX(1.2);
-            }
-        }
-
-        @keyframes seHpStar {
-            0%, 100% {
-                opacity: .2;
-
-                transform:
-                    translateY(4px)
-                    scale(.7);
-            }
-
-            50% {
-                opacity: 1;
-
-                transform:
-                    translateY(-5px)
-                    scale(1);
+                    scale(.85)
+                    rotate(-5deg);
             }
         }
 
@@ -2470,17 +2569,13 @@
            ===================================================== */
 
         let layer =
-            document.getElementById(
-                "special-effects-layer"
-            );
+            document.getElementById("special-effects-layer");
 
         if (!layer) {
 
-            layer =
-                document.createElement("div");
+            layer = document.createElement("div");
 
-            layer.id =
-                "special-effects-layer";
+            layer.id = "special-effects-layer";
 
             document.body.appendChild(layer);
         }
@@ -2744,10 +2839,10 @@
 
 
         /* =====================================================
-           OUTER BANKS — MAPA
+           OUTER BANKS
            ===================================================== */
 
-        function createOuterBanksMap() {
+        function createOuterBanks() {
 
             layer.innerHTML = `
 
@@ -2789,64 +2884,14 @@
 
 
         /* =====================================================
-           OUTER BANKS — ATARDECER + BARCO
-           ===================================================== */
-
-        function createOuterBanksSunset() {
-
-            layer.innerHTML = `
-
-                <div class="se-effect se-obx-sunset">
-
-                    <div class="se-sunset-scene">
-
-                        <div class="se-sunset-sky"></div>
-
-                        <div class="se-sunset-sun"></div>
-
-                        <div class="se-sunset-sea"></div>
-
-                        <div class="se-sunset-boat">
-
-                            <div class="se-boat-hull"></div>
-
-                            <div class="se-boat-sail"></div>
-
-                        </div>
-
-                        <span class="se-sunset-bird">⌁</span>
-                        <span class="se-sunset-bird">⌁</span>
-                        <span class="se-sunset-bird">⌁</span>
-
-                        <span class="se-sunset-spark"></span>
-                        <span class="se-sunset-spark"></span>
-                        <span class="se-sunset-spark"></span>
-
-                    </div>
-
-                </div>
-            `;
-
-            removeEffectAfter(3300);
-        }
-
-
-        /* =====================================================
            DIAPOSITIVAS FINALES
            ===================================================== */
 
-        function protectFinalSlideObjects(
-            slide,
-            index
-        ) {
+        function protectFinalSlideObjects(slide, index) {
 
-            if (
-                !slide ||
-                (index !== 10 && index !== 11)
-            ) {
+            if (!slide || (index !== 10 && index !== 11)) {
                 return;
             }
-
 
             const selectors = [
 
@@ -2879,100 +2924,92 @@
                 "[class*='varita']"
             ];
 
-
             const objects = new Set();
 
+            selectors.forEach(function (selector) {
 
-            selectors.forEach(
-                function (selector) {
+                try {
 
-                    try {
+                    slide.querySelectorAll(selector)
+                        .forEach(function (el) {
 
-                        slide
-                            .querySelectorAll(selector)
-                            .forEach(function (el) {
+                            if (
+                                !el.classList.contains("slide") &&
+                                !el.closest(
+                                    "#special-effects-layer"
+                                )
+                            ) {
+                                objects.add(el);
+                            }
 
-                                if (
-                                    !el.classList.contains("slide") &&
-                                    !el.closest(
-                                        "#special-effects-layer"
-                                    )
-                                ) {
-                                    objects.add(el);
-                                }
+                        });
 
-                            });
-
-                    } catch (_) {}
-
-                }
-            );
+                } catch (_) {}
+            });
 
 
-            objects.forEach(
-                function (el) {
+            objects.forEach(function (el) {
 
-                    el.classList.add(
-                        "se-final-safe-object"
-                    );
+                el.classList.add(
+                    "se-final-safe-object"
+                );
 
 
-                    if (index === 10) {
+                if (index === 10) {
 
-                        if (
-                            el.matches(
-                                "[class*='compass'], " +
-                                "[class*='brujula'], " +
-                                "[class*='brújula'], " +
-                                ".compass, " +
-                                ".compass-object, " +
-                                ".compass-decoration"
-                            )
-                        ) {
-
-                            el.classList.add(
-                                "se-final-compass"
-                            );
-
-                        } else if (
-                            el.matches(
-                                "[class*='map'], " +
-                                ".map, " +
-                                ".map-object, " +
-                                ".map-decoration"
-                            )
-                        ) {
-
-                            el.classList.add(
-                                "se-final-map"
-                            );
-
-                        } else if (
-                            el.matches(
-                                "[class*='wand'], " +
-                                "[class*='varita'], " +
-                                ".wand, " +
-                                ".wand-object, " +
-                                ".wand-decoration, " +
-                                ".magic-wand, " +
-                                ".magic-wand-object"
-                            )
-                        ) {
-
-                            el.classList.add(
-                                "se-final-wand"
-                            );
-                        }
-
-                    } else {
+                    if (
+                        el.matches(
+                            "[class*='compass'], " +
+                            "[class*='brujula'], " +
+                            "[class*='brújula'], " +
+                            ".compass, " +
+                            ".compass-object, " +
+                            ".compass-decoration"
+                        )
+                    ) {
 
                         el.classList.add(
-                            "se-infinity-object"
+                            "se-final-compass"
+                        );
+
+                    } else if (
+                        el.matches(
+                            "[class*='map'], " +
+                            ".map, " +
+                            ".map-object, " +
+                            ".map-decoration"
+                        )
+                    ) {
+
+                        el.classList.add(
+                            "se-final-map"
+                        );
+
+                    } else if (
+                        el.matches(
+                            "[class*='wand'], " +
+                            "[class*='varita'], " +
+                            ".wand, " +
+                            ".wand-object, " +
+                            ".wand-decoration, " +
+                            ".magic-wand, " +
+                            ".magic-wand-object"
+                        )
+                    ) {
+
+                        el.classList.add(
+                            "se-final-wand"
                         );
                     }
 
+                } else {
+
+                    el.classList.add(
+                        "se-infinity-object"
+                    );
                 }
-            );
+
+            });
         }
 
 
@@ -2982,23 +3019,17 @@
 
         let removeTimer = null;
 
-
         function removeEffectAfter(time) {
 
             if (removeTimer) {
                 clearTimeout(removeTimer);
             }
 
+            removeTimer = setTimeout(function () {
 
-            removeTimer =
-                setTimeout(
-                    function () {
+                layer.innerHTML = "";
 
-                        layer.innerHTML = "";
-
-                    },
-                    time
-                );
+            }, time);
         }
 
 
@@ -3013,11 +3044,8 @@
 
             const slides =
                 Array.from(
-                    document.querySelectorAll(
-                        ".slide"
-                    )
+                    document.querySelectorAll(".slide")
                 );
-
 
             const index =
                 slides.indexOf(slide);
@@ -3029,32 +3057,15 @@
             /*
                 0  = Portada
 
-                1  = 10/10 Narnia
-                     → ARMARIO
-
+                1  = 10/10 Narnia → ARMARIO
                 2  = 20/10 Outer Banks
-                     → MAPA + BRÚJULA
-
                 3  = 30/10 Bella y la Bestia
-                     → ROSA
-
                 4  = 40/10 Bridgerton
-                     → CARTA
-
                 5  = 50/10 Princesa por Sorpresa
-                     → CORONA
-
-                6  = 60/10 Narnia
-                     → FAROLA
-
+                6  = 60/10 Narnia → FAROLA
                 7  = 70/10 Harry Potter
-                     → ESCOBA
-
-                8  = 80/10 Narnia
-                     → ASLAN
-
+                8  = 80/10 Narnia → ASLAN
                 9  = 90/10 Outer Banks
-                     → ATARDECER + BARCO
 
                 10 = 100/10 Final
                 11 = Infinito
@@ -3063,7 +3074,6 @@
 
             /* =================================================
                NARNIA — ARMARIO
-               SOLO 10/10
                ================================================= */
 
             if (index === 1) {
@@ -3075,13 +3085,39 @@
 
 
             /* =================================================
-               OUTER BANKS — MAPA
-               SOLO 20/10
+               NARNIA — FAROLA
                ================================================= */
 
-            if (index === 2) {
+            if (index === 6) {
 
-                createOuterBanksMap();
+                createNarniaLamp();
+
+                return;
+            }
+
+
+            /* =================================================
+               NARNIA — ASLAN
+               ================================================= */
+
+            if (index === 8) {
+
+                createNarniaAslan();
+
+                return;
+            }
+
+
+            /* =================================================
+               OUTER BANKS
+               ================================================= */
+
+            if (
+                index === 2 ||
+                index === 9
+            ) {
+
+                createOuterBanks();
 
                 return;
             }
@@ -3124,51 +3160,12 @@
 
 
             /* =================================================
-               NARNIA — FAROLA
-               SOLO 60/10
-               ================================================= */
-
-            if (index === 6) {
-
-                createNarniaLamp();
-
-                return;
-            }
-
-
-            /* =================================================
                HARRY POTTER
                ================================================= */
 
             if (index === 7) {
 
                 createHarry();
-
-                return;
-            }
-
-
-            /* =================================================
-               NARNIA — ASLAN
-               SOLO 80/10
-               ================================================= */
-
-            if (index === 8) {
-
-                createNarniaAslan();
-
-                return;
-            }
-
-
-            /* =================================================
-               OUTER BANKS — ATARDECER
-               SOLO 90/10
-               ================================================= */
-
-            if (index === 9) {
-
-                createOuterBanksSunset();
 
                 return;
             }
@@ -3187,9 +3184,7 @@
            ===================================================== */
 
         const slides =
-            document.querySelectorAll(
-                ".slide"
-            );
+            document.querySelectorAll(".slide");
 
 
         if (!slides.length) {
@@ -3255,30 +3250,24 @@
                 );
 
 
-                setTimeout(
-                    function () {
+                setTimeout(function () {
 
-                        protectFinalSlideObjects(
-                            activeSlide,
-                            activeIndex
-                        );
+                    protectFinalSlideObjects(
+                        activeSlide,
+                        activeIndex
+                    );
 
-                    },
-                    80
-                );
+                }, 80);
 
 
-                setTimeout(
-                    function () {
+                setTimeout(function () {
 
-                        protectFinalSlideObjects(
-                            activeSlide,
-                            activeIndex
-                        );
+                    protectFinalSlideObjects(
+                        activeSlide,
+                        activeIndex
+                    );
 
-                    },
-                    350
-                );
+                }, 350);
             }
         }
 
@@ -3326,19 +3315,17 @@
             );
 
 
-        slides.forEach(
-            function (slide) {
+        slides.forEach(function (slide) {
 
-                observer.observe(
-                    slide,
-                    {
-                        attributes: true,
-                        attributeFilter: ["class"]
-                    }
-                );
+            observer.observe(
+                slide,
+                {
+                    attributes: true,
+                    attributeFilter: ["class"]
+                }
+            );
 
-            }
-        );
+        });
 
 
         /* =====================================================
