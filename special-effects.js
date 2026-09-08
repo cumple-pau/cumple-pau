@@ -45,15 +45,32 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding-top: 8vh;
-            animation: seNarniaFade 2.7s ease forwards;
+            padding-top: 5vh;
+            animation: seNarniaFade 3.2s ease forwards;
+        }
+
+        .se-narnia::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 4vh;
+            width: 260px;
+            height: 260px;
+            transform: translateX(-50%) scale(.35);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(220,245,255,.55), rgba(120,200,255,.16) 42%, transparent 72%);
+            filter: blur(10px);
+            opacity: 0;
+            animation: seNarniaAura 3s ease .15s forwards;
         }
 
         .se-wardrobe-area {
             position: relative;
-            width: 170px;
-            height: 225px;
-            perspective: 900px;
+            width: 178px;
+            height: 238px;
+            perspective: 1100px;
+            transform: translateY(0) scale(.96);
+            animation: seWardrobeEntrance .9s cubic-bezier(.2,.8,.2,1) forwards;
         }
 
         .se-wardrobe-light {
@@ -77,7 +94,7 @@
             opacity: 0;
 
             animation:
-                seNarniaLight 2.2s ease .35s forwards;
+                seNarniaLight 2.7s cubic-bezier(.2,.8,.2,1) .35s forwards;
         }
 
         .se-wardrobe {
@@ -186,9 +203,10 @@
         .se-door-left {
             left: 2px;
             transform-origin: left center;
+            z-index: 3;
 
             animation:
-                seDoorLeft 1.05s cubic-bezier(.2,.8,.2,1) .2s forwards;
+                seDoorLeft 1.35s cubic-bezier(.15,.85,.15,1) .45s forwards;
         }
 
         .se-door-left::after {
@@ -198,9 +216,10 @@
         .se-door-right {
             right: 2px;
             transform-origin: right center;
+            z-index: 3;
 
             animation:
-                seDoorRight 1.05s cubic-bezier(.2,.8,.2,1) .2s forwards;
+                seDoorRight 1.35s cubic-bezier(.15,.85,.15,1) .45s forwards;
         }
 
         .se-door-right::after {
@@ -270,13 +289,26 @@
 
         .se-rose-container {
             position: relative;
-
-            width: 150px;
-            height: 170px;
-
+            width: 165px;
+            height: 190px;
             display: flex;
             justify-content: center;
             align-items: center;
+            transform: translateY(14px);
+            animation: seRoseEntrance 1.15s cubic-bezier(.2,.8,.2,1) forwards;
+        }
+
+        .se-rose-container::before {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 150px;
+            bottom: 3px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(255,245,190,.28), transparent 68%);
+            filter: blur(7px);
+            opacity: 0;
+            animation: seRoseAura 2.8s ease .35s forwards;
         }
 
         .se-rose-glow {
@@ -312,18 +344,31 @@
                 drop-shadow(0 10px 10px rgba(0,0,0,.25));
 
             animation:
-                seRoseFloat 1.7s ease-in-out infinite;
+                seRoseBloom 1.05s cubic-bezier(.2,.8,.2,1) .15s both,
+                seRoseFloat 2.2s ease-in-out 1.2s infinite;
         }
 
         .se-rose-petal {
             position: absolute;
-
             font-size: 17px;
-
             opacity: 0;
-
             animation:
-                seRoseSpark 1.7s ease-in-out infinite;
+                seRoseSpark 1.9s ease-in-out infinite;
+        }
+
+        .se-rose-container::after {
+            content: "✦  ✧  ✦";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(.4);
+            white-space: nowrap;
+            font-size: 18px;
+            letter-spacing: 18px;
+            color: rgba(255,245,190,.9);
+            text-shadow: 0 0 10px rgba(255,210,90,.9);
+            opacity: 0;
+            animation: seRoseRing 2.2s ease .65s forwards;
         }
 
         .se-rose-petal:nth-child(3) {
@@ -652,8 +697,8 @@
         }
 
 
-        /* =====================================================
-           HARRY POTTER — VUELO EN ESCOBA
+        /* ===================================================== 
+		HARRY POTTER — VUELO EN ESCOBA
            ===================================================== */
 
         .se-hp {
@@ -937,6 +982,92 @@
         }
 
 
+
+        /* =====================================================
+           OBJETOS 100/10 E INFINITO — ZONAS LIBRES
+           ===================================================== */
+
+        .se-final-safe-object,
+        .se-infinity-object {
+            pointer-events: none !important;
+            z-index: 2 !important;
+        }
+
+        .se-final-compass {
+            position: absolute !important;
+            left: 12px !important;
+            right: auto !important;
+            top: 12px !important;
+            bottom: auto !important;
+            transform: scale(.72) rotate(-8deg) !important;
+        }
+
+        .se-final-map {
+            position: absolute !important;
+            right: 10px !important;
+            left: auto !important;
+            top: 10px !important;
+            bottom: auto !important;
+            transform: scale(.62) rotate(5deg) !important;
+            transform-origin: top right !important;
+        }
+
+        .se-final-wand {
+            position: absolute !important;
+            right: 12px !important;
+            left: auto !important;
+            bottom: 70px !important;
+            top: auto !important;
+            transform: scale(.72) rotate(-18deg) !important;
+            transform-origin: bottom right !important;
+        }
+
+        .se-infinity-object {
+            position: absolute !important;
+            max-width: 105px !important;
+            max-height: 105px !important;
+        }
+
+        .se-infinity-object:nth-of-type(1) {
+            left: 10px !important;
+            top: 12px !important;
+        }
+
+        .se-infinity-object:nth-of-type(2) {
+            right: 10px !important;
+            top: 12px !important;
+        }
+
+        .se-infinity-object:nth-of-type(3) {
+            right: 14px !important;
+            bottom: 72px !important;
+        }
+
+        @media (max-width: 600px) {
+            .se-final-compass {
+                left: 5px !important;
+                top: 6px !important;
+                transform: scale(.58) rotate(-8deg) !important;
+            }
+
+            .se-final-map {
+                right: 4px !important;
+                top: 6px !important;
+                transform: scale(.48) rotate(5deg) !important;
+            }
+
+            .se-final-wand {
+                right: 6px !important;
+                bottom: 62px !important;
+                transform: scale(.58) rotate(-18deg) !important;
+            }
+
+            .se-infinity-object {
+                max-width: 82px !important;
+                max-height: 82px !important;
+            }
+        }
+
         /* =====================================================
            ANIMACIONES
            ===================================================== */
@@ -945,9 +1076,37 @@
             0% {
                 transform: rotateY(0deg);
             }
-
+            55% {
+                transform: rotateY(-55deg);
+            }
             100% {
-                transform: rotateY(-78deg);
+                transform: rotateY(-96deg);
+            }
+        }
+
+        @keyframes seWardrobeEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(22px) scale(.78);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(.96);
+            }
+        }
+
+        @keyframes seNarniaAura {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(.35);
+            }
+            35% {
+                opacity: .9;
+                transform: translateX(-50%) scale(1.05);
+            }
+            100% {
+                opacity: .18;
+                transform: translateX(-50%) scale(1.25);
             }
         }
 
@@ -955,9 +1114,11 @@
             0% {
                 transform: rotateY(0deg);
             }
-
+            55% {
+                transform: rotateY(55deg);
+            }
             100% {
-                transform: rotateY(78deg);
+                transform: rotateY(96deg);
             }
         }
 
@@ -1023,17 +1184,71 @@
         }
 
 
+        @keyframes seRoseEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(45px) scale(.55);
+            }
+            65% {
+                opacity: 1;
+                transform: translateY(-4px) scale(1.04);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(14px) scale(1);
+            }
+        }
+
+        @keyframes seRoseBloom {
+            0% {
+                transform: scale(.35) rotate(-14deg);
+                opacity: 0;
+            }
+            55% {
+                transform: scale(1.14) rotate(4deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
         @keyframes seRoseFloat {
             0%, 100% {
-                transform:
-                    translateY(3px)
-                    rotate(-2deg);
+                transform: translateY(3px) rotate(-2deg);
             }
-
             50% {
-                transform:
-                    translateY(-9px)
-                    rotate(2deg);
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+
+        @keyframes seRoseAura {
+            0% {
+                opacity: 0;
+                transform: scale(.45);
+            }
+            45% {
+                opacity: .8;
+                transform: scale(1);
+            }
+            100% {
+                opacity: .2;
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes seRoseRing {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(.4) rotate(-20deg);
+            }
+            35% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5) rotate(20deg);
             }
         }
 
@@ -1533,7 +1748,7 @@
                 </div>
             `;
 
-            removeEffectAfter(2800);
+            removeEffectAfter(3200);
         }
 
 
@@ -1721,6 +1936,66 @@
         }
 
 
+
+        /* =====================================================
+           DIAPOSITIVAS FINALES — OBJETOS SIN TAPAR EL TEXTO
+           ===================================================== */
+
+        /*
+           Estos estilos se aplican a los objetos originales que ya
+           existen en las diapositivas 100/10 e Infinito.
+           Se intentan varios selectores habituales para que el
+           movimiento funcione aunque el objeto use una clase distinta.
+        */
+        function protectFinalSlideObjects(slide, index) {
+            if (!slide || (index !== 10 && index !== 11)) return;
+
+            const selectors = [
+                ".compass", ".compass-object", ".compass-decoration",
+                ".map", ".map-object", ".map-decoration",
+                ".wand", ".wand-object", ".wand-decoration",
+                ".magic-wand", ".magic-wand-object",
+                ".wand-effect", ".compass-effect", ".map-effect",
+                "[class*='compass']", "[class*='map']", "[class*='wand']",
+                "[class*='brujula']", "[class*='brújula']",
+                "[class*='varita']"
+            ];
+
+            const objects = new Set();
+            selectors.forEach(function (selector) {
+                try {
+                    slide.querySelectorAll(selector).forEach(function (el) {
+                        if (!el.classList.contains("slide") &&
+                            !el.closest("#special-effects-layer")) {
+                            objects.add(el);
+                        }
+                    });
+                } catch (_) {}
+            });
+
+            objects.forEach(function (el) {
+                el.classList.add("se-final-safe-object");
+
+                if (index === 10) {
+                    if (
+                        el.matches("[class*='compass'], [class*='brujula'], [class*='brújula'], .compass, .compass-object, .compass-decoration"
+                    )) {
+                        el.classList.add("se-final-compass");
+                    } else if (
+                        el.matches("[class*='map'], .map, .map-object, .map-decoration"
+                    )) {
+                        el.classList.add("se-final-map");
+                    } else if (
+                        el.matches("[class*='wand'], [class*='varita'], .wand, .wand-object, .wand-decoration, .magic-wand, .magic-wand-object"
+                    )) {
+                        el.classList.add("se-final-wand");
+                    }
+                } else {
+                    el.classList.add("se-infinity-object");
+                }
+            });
+        }
+
         /* =====================================================
            BORRAR EFECTO
            ===================================================== */
@@ -1880,7 +2155,21 @@
 
                 lastActiveSlide = activeSlide;
 
+                const slides =
+                    Array.from(document.querySelectorAll(".slide"));
+                const activeIndex = slides.indexOf(activeSlide);
+
                 triggerForSlide(activeSlide);
+                protectFinalSlideObjects(activeSlide, activeIndex);
+
+                // Algunos objetos de las diapositivas finales pueden ser
+                // creados por el script principal unos instantes después.
+                setTimeout(function () {
+                    protectFinalSlideObjects(activeSlide, activeIndex);
+                }, 80);
+                setTimeout(function () {
+                    protectFinalSlideObjects(activeSlide, activeIndex);
+                }, 350);
             }
         }
 
