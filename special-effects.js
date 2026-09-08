@@ -235,12 +235,35 @@
                 infinite;
         }
 
-        .se-snow:nth-child(1) { left: 8%; animation-delay: .1s; }
-        .se-snow:nth-child(2) { left: 22%; animation-delay: .6s; }
-        .se-snow:nth-child(3) { left: 38%; animation-delay: .25s; }
-        .se-snow:nth-child(4) { left: 56%; animation-delay: .9s; }
-        .se-snow:nth-child(5) { left: 74%; animation-delay: .45s; }
-        .se-snow:nth-child(6) { left: 90%; animation-delay: 1s; }
+        .se-snow:nth-child(1) {
+            left: 8%;
+            animation-delay: .1s;
+        }
+
+        .se-snow:nth-child(2) {
+            left: 22%;
+            animation-delay: .6s;
+        }
+
+        .se-snow:nth-child(3) {
+            left: 38%;
+            animation-delay: .25s;
+        }
+
+        .se-snow:nth-child(4) {
+            left: 56%;
+            animation-delay: .9s;
+        }
+
+        .se-snow:nth-child(5) {
+            left: 74%;
+            animation-delay: .45s;
+        }
+
+        .se-snow:nth-child(6) {
+            left: 90%;
+            animation-delay: 1s;
+        }
 
 
         /* =====================================================
@@ -411,12 +434,35 @@
                 infinite;
         }
 
-        .se-lamp-snow:nth-child(6) { left: 12%; animation-delay: .1s; }
-        .se-lamp-snow:nth-child(7) { left: 27%; animation-delay: .8s; }
-        .se-lamp-snow:nth-child(8) { left: 43%; animation-delay: .35s; }
-        .se-lamp-snow:nth-child(9) { left: 62%; animation-delay: 1.1s; }
-        .se-lamp-snow:nth-child(10) { left: 78%; animation-delay: .5s; }
-        .se-lamp-snow:nth-child(11) { left: 91%; animation-delay: 1.4s; }
+        .se-lamp-snow:nth-child(6) {
+            left: 12%;
+            animation-delay: .1s;
+        }
+
+        .se-lamp-snow:nth-child(7) {
+            left: 27%;
+            animation-delay: .8s;
+        }
+
+        .se-lamp-snow:nth-child(8) {
+            left: 43%;
+            animation-delay: .35s;
+        }
+
+        .se-lamp-snow:nth-child(9) {
+            left: 62%;
+            animation-delay: 1.1s;
+        }
+
+        .se-lamp-snow:nth-child(10) {
+            left: 78%;
+            animation-delay: .5s;
+        }
+
+        .se-lamp-snow:nth-child(11) {
+            left: 91%;
+            animation-delay: 1.4s;
+        }
 
 
         /* =====================================================
@@ -564,14 +610,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             opacity: 0;
-
             animation:
                 seRoseEntrance
                 1.15s
                 cubic-bezier(.2,.8,.2,1)
-                forwards;
+                forwards,
+                seRoseFloatContainer
+                2.2s
+                ease-in-out
+                1.3s
+                infinite;
+            will-change: transform;
         }
 
         .se-rose-container::before {
@@ -622,24 +672,16 @@
             position: relative;
             z-index: 2;
             font-size: 82px;
-
             opacity: 0;
-
             filter:
                 drop-shadow(0 0 7px rgba(255,70,100,.7))
                 drop-shadow(0 10px 10px rgba(0,0,0,.25));
-
             animation:
                 seRoseBloom
                 1.05s
                 cubic-bezier(.2,.8,.2,1)
                 .15s
-                forwards,
-                seRoseFloat
-                2.2s
-                ease-in-out
-                1.25s
-                infinite;
+                forwards;
         }
 
         .se-rose-petal {
@@ -759,9 +801,7 @@
                 2px solid rgba(95,65,35,.5);
             box-shadow:
                 0 13px 25px rgba(0,0,0,.3);
-
             transform-style: preserve-3d;
-
             animation:
                 seEnvelopeAppear
                 .75s
@@ -794,24 +834,20 @@
             top: 0;
             width: 100%;
             height: 60px;
-
             background:
                 linear-gradient(
                     135deg,
                     #f3dfbb,
                     #d5b987
                 );
-
             clip-path:
                 polygon(
                     0 0,
                     100% 0,
                     50% 100%
                 );
-
             transform-origin: top center;
             transform-style: preserve-3d;
-
             animation:
                 seEnvelopeOpen
                 1.15s
@@ -823,42 +859,30 @@
         .se-letter-paper {
             position: absolute;
             z-index: 2;
-
             width: 122px;
             height: 90px;
-
             left: 34px;
             top: 42px;
-
             padding-top: 15px;
             box-sizing: border-box;
-
             text-align: center;
-
             font-family: Georgia, serif;
             font-size: 11px;
             letter-spacing: 1px;
-
             color: rgba(80,52,25,.8);
-
             background:
                 linear-gradient(
                     #fff8e9,
                     #ead9b9
                 );
-
             border:
                 1px solid rgba(100,70,35,.35);
-
             box-shadow:
                 0 5px 12px rgba(0,0,0,.18);
-
             transform:
                 translateY(45px)
                 scale(.9);
-
             opacity: 0;
-
             animation:
                 seLetterRise
                 1s
@@ -870,34 +894,25 @@
         .se-wax {
             position: absolute;
             z-index: 5;
-
             left: 50%;
             bottom: 7px;
-
             width: 24px;
             height: 24px;
-
             margin-left: -12px;
-
             border-radius: 50%;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             font-size: 9px;
             color: rgba(255,245,205,.8);
-
             background:
                 radial-gradient(
                     circle at 35% 30%,
                     #c86b6b,
                     #7d2929
                 );
-
             box-shadow:
                 0 2px 6px rgba(0,0,0,.25);
-
             animation:
                 seWaxAppear
                 .7s
@@ -925,16 +940,12 @@
 
         .se-crown-container {
             position: relative;
-
             width: 160px;
             height: 145px;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             opacity: 0;
-
             animation:
                 seCrownAppear
                 1.1s
@@ -944,12 +955,9 @@
 
         .se-crown-glow {
             position: absolute;
-
             width: 135px;
             height: 135px;
-
             border-radius: 50%;
-
             background:
                 radial-gradient(
                     circle,
@@ -957,9 +965,7 @@
                     rgba(255,205,50,.22) 40%,
                     transparent 70%
                 );
-
             filter: blur(7px);
-
             animation:
                 seCrownGlow
                 1.4s
@@ -971,13 +977,10 @@
         .se-crown {
             position: relative;
             z-index: 2;
-
             font-size: 78px;
-
             filter:
                 drop-shadow(0 0 6px rgba(255,230,120,.9))
                 drop-shadow(0 10px 10px rgba(0,0,0,.25));
-
             animation:
                 seCrownFloat
                 1.7s
@@ -988,11 +991,8 @@
 
         .se-crown-spark {
             position: absolute;
-
             font-size: 18px;
-
             opacity: 0;
-
             animation:
                 seCrownSpark
                 1.6s
@@ -1029,20 +1029,15 @@
 
         .se-hp-flight {
             position: absolute;
-
             left: -220px;
             top: 32%;
-
             width: 190px;
             height: 95px;
-
             display: flex;
             align-items: center;
-
             transform:
                 translateX(0)
                 rotate(-5deg);
-
             animation:
                 seHarryFlight
                 3s
@@ -1053,49 +1048,35 @@
         .se-hp-wizard {
             position: relative;
             z-index: 3;
-
             font-size: 48px;
-
             transform:
                 translateY(-4px)
                 rotate(-8deg);
-
             filter:
                 drop-shadow(0 5px 5px rgba(0,0,0,.35));
         }
 
         .se-hp-broom {
             position: absolute;
-
             left: 57px;
             top: 48px;
-
             font-size: 47px;
-
             transform: rotate(-12deg);
-
             filter:
                 drop-shadow(0 4px 4px rgba(0,0,0,.35));
         }
 
         .se-hp-trail {
             position: absolute;
-
             left: -45px;
             top: 47px;
-
             width: 105px;
             height: 4px;
-
             border-radius: 50%;
-
             background:
                 rgba(255,255,255,.72);
-
             filter: blur(2px);
-
             opacity: .7;
-
             animation:
                 seHpTrail
                 1s
@@ -1106,9 +1087,7 @@
 
         .se-hp-star {
             position: absolute;
-
             font-size: 15px;
-
             animation:
                 seHpStar
                 1.4s
@@ -1143,7 +1122,6 @@
             justify-content: center;
             align-items: flex-start;
             padding-top: 9vh;
-
             animation:
                 seMapFade
                 2.7s
@@ -1153,103 +1131,74 @@
 
         .se-map-wrapper {
             position: relative;
-
             width: 195px;
             height: 150px;
-
             transform: rotate(-2deg);
         }
 
         .se-map {
             position: absolute;
-
             left: 10px;
             top: 18px;
-
             width: 175px;
             height: 118px;
-
             border-radius: 5px;
-
             background:
                 linear-gradient(
                     135deg,
                     rgba(235,222,180,.97),
                     rgba(192,179,135,.97)
                 );
-
             border:
                 2px solid rgba(85,60,30,.65);
-
             box-shadow:
                 0 12px 25px rgba(0,0,0,.3);
-
             transform-origin: top center;
-
             animation:
                 seMapOpen
                 1s
                 cubic-bezier(.2,.8,.2,1)
                 forwards;
-
             overflow: hidden;
         }
 
         .se-map::before {
             content: "";
-
             position: absolute;
-
             width: 125px;
             height: 55px;
-
             left: 25px;
             top: 27px;
-
             border-top:
                 3px dashed rgba(100,70,35,.7);
-
             border-radius: 50%;
-
             transform: rotate(-10deg);
         }
 
         .se-map::after {
             content: "✦";
-
             position: absolute;
-
             left: 116px;
             top: 47px;
-
             font-size: 24px;
-
             color: rgba(83,53,26,.8);
         }
 
         .se-map-title {
             position: absolute;
-
             left: 13px;
             top: 8px;
-
             font-family: Georgia, serif;
-
             font-size: 11px;
-
             letter-spacing: 2px;
-
             color: rgba(60,42,25,.8);
         }
 
         .se-map-pin {
             position: absolute;
-
             left: 43px;
             bottom: 13px;
-
             font-size: 23px;
-
             animation:
                 sePinPulse
                 1.2s
@@ -1259,15 +1208,11 @@
 
         .se-compass {
             position: absolute;
-
             right: -8px;
             top: -8px;
-
             width: 70px;
             height: 70px;
-
             border-radius: 50%;
-
             background:
                 radial-gradient(
                     circle,
@@ -1275,22 +1220,16 @@
                     #b28b43 62%,
                     #604820 100%
                 );
-
             border:
                 3px solid #4d3519;
-
             box-shadow:
                 0 7px 16px rgba(0,0,0,.4),
                 0 0 15px rgba(255,216,104,.45);
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             font-size: 38px;
-
             z-index: 4;
-
             animation:
                 seCompassAppear
                 .6s
@@ -1310,11 +1249,8 @@
 
         .se-obx-stars span {
             position: absolute;
-
             font-size: 14px;
-
             opacity: 0;
-
             animation:
                 seObxSpark
                 1.7s
@@ -1348,9 +1284,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-
             padding-top: 10vh;
-
             animation:
                 seSunsetFade
                 3.4s
@@ -1360,20 +1294,14 @@
 
         .se-sunset-scene {
             position: relative;
-
             width: 280px;
             height: 220px;
-
             overflow: hidden;
-
             border-radius: 12px;
-
             opacity: 0;
-
             transform:
                 translateY(25px)
                 scale(.78);
-
             background:
                 linear-gradient(
                     to bottom,
@@ -1383,10 +1311,8 @@
                     #718791 52%,
                     #2d4855 100%
                 );
-
             box-shadow:
                 0 15px 30px rgba(0,0,0,.35);
-
             animation:
                 seSunsetEntrance
                 1.1s
@@ -1396,24 +1322,18 @@
 
         .se-sunset-scene::after {
             content: "";
-
             position: absolute;
-
             left: 0;
             right: 0;
             bottom: 0;
-
             height: 75px;
-
             background:
                 repeating-linear-gradient(
                     -4deg,
                     rgba(255,220,160,.1) 0 3px,
                     transparent 3px 12px
                 );
-
             opacity: .8;
-
             animation:
                 seSunsetWater
                 2.5s
@@ -1424,17 +1344,12 @@
 
         .se-sunset-sun {
             position: absolute;
-
             left: 50%;
             top: 45px;
-
             width: 72px;
             height: 72px;
-
             margin-left: -36px;
-
             border-radius: 50%;
-
             background:
                 radial-gradient(
                     circle,
@@ -1443,12 +1358,9 @@
                     #f2a052 70%,
                     transparent 72%
                 );
-
             box-shadow:
                 0 0 35px rgba(255,210,100,.72);
-
             opacity: 0;
-
             animation:
                 seSunsetSun
                 1.7s
@@ -1459,42 +1371,30 @@
 
         .se-sunset-horizon {
             position: absolute;
-
             left: 0;
             right: 0;
-
             top: 126px;
-
             height: 3px;
-
             background:
                 rgba(255,225,160,.6);
-
             box-shadow:
                 0 0 12px rgba(255,210,120,.45);
-
             z-index: 2;
         }
 
         .se-sunset-sea {
             position: absolute;
-
             left: 0;
             right: 0;
-
             bottom: 0;
-
             height: 91px;
-
             background:
                 repeating-linear-gradient(
                     -5deg,
                     rgba(255,220,155,.09) 0 3px,
                     transparent 3px 12px
                 );
-
             z-index: 1;
-
             animation:
                 seSunsetWater
                 2.5s
@@ -1505,19 +1405,13 @@
 
         .se-boat {
             position: absolute;
-
             left: 50%;
             top: 119px;
-
             width: 125px;
             height: 72px;
-
             margin-left: -62px;
-
             z-index: 5;
-
             opacity: 0;
-
             animation:
                 seBoatAppear
                 1.1s
@@ -1528,20 +1422,16 @@
 
         .se-boat-hull {
             position: absolute;
-
             left: 5px;
             bottom: 8px;
-
             width: 112px;
             height: 27px;
-
             background:
                 linear-gradient(
                     180deg,
                     #182125,
                     #070b0d
                 );
-
             clip-path:
                 polygon(
                     0 0,
@@ -1549,51 +1439,40 @@
                     82% 76%,
                     18% 100%
                 );
-
             box-shadow:
                 0 8px 12px rgba(0,0,0,.35);
         }
 
         .se-boat-mast {
             position: absolute;
-
             left: 61px;
             top: 0;
-
             width: 4px;
             height: 56px;
-
             border-radius: 3px;
-
             background:
                 #111719;
         }
 
         .se-boat-sail {
             position: absolute;
-
             left: 64px;
             top: 4px;
-
             width: 45px;
             height: 45px;
-
             background:
                 linear-gradient(
                     135deg,
                     rgba(250,240,210,.92),
                     rgba(190,174,145,.7)
                 );
-
             clip-path:
                 polygon(
                     0 0,
                     100% 100%,
                     0 100%
                 );
-
             transform-origin: left bottom;
-
             animation:
                 seSailWave
                 1.8s
@@ -1604,18 +1483,12 @@
 
         .se-sunset-star {
             position: absolute;
-
             font-size: 15px;
-
             color: rgba(255,245,210,.9);
-
             opacity: 0;
-
             text-shadow:
                 0 0 8px rgba(255,230,150,.8);
-
             z-index: 3;
-
             animation:
                 seSunsetStar
                 1.8s
@@ -1645,18 +1518,145 @@
             top: 34%;
             animation-delay: 1.25s;
         }
-/* =====================================================
-   OBJETOS 100/10 E INFINITO
-   OCULTOS
-   ===================================================== */
 
-.se-final-safe-object,
-.se-infinity-object {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    animation: none !important;
-}
+
+        /* =====================================================
+           100/10 E INFINITO
+           OCULTAR CUALQUIER OBJETO ANTERIOR
+           ===================================================== */
+
+        .se-final-safe-object,
+        .se-infinity-object {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            animation: none !important;
+            transform: none !important;
+        }
+
+
+        /* =====================================================
+           INFINITO — CORAZÓN 💗
+           ===================================================== */
+
+        .se-infinity-heart {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10vh;
+            animation:
+                seInfinityHeartFade
+                999999s
+                linear
+                forwards;
+        }
+
+        .se-infinity-heart::before {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 10vh;
+
+            width: 210px;
+            height: 210px;
+
+            margin-left: -105px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,120,165,.38) 0%,
+                    rgba(255,100,150,.16) 38%,
+                    transparent 72%
+                );
+
+            filter: blur(12px);
+
+            opacity: 0;
+
+            animation:
+                seInfinityHeartGlow
+                2.2s
+                ease-in-out
+                1s
+                infinite
+                alternate;
+        }
+
+        .se-infinity-heart .heart {
+            position: relative;
+            z-index: 5;
+
+            font-size: 115px;
+
+            opacity: 0;
+
+            filter:
+                drop-shadow(0 0 8px rgba(255,105,150,.65))
+                drop-shadow(0 0 22px rgba(255,80,130,.45))
+                drop-shadow(0 12px 18px rgba(0,0,0,.25));
+
+            animation:
+                seInfinityHeartEntrance
+                1.4s
+                cubic-bezier(.16,.8,.2,1)
+                forwards,
+                seInfinityHeartBeat
+                1.8s
+                ease-in-out
+                1.5s
+                infinite;
+        }
+
+        .se-infinity-heart .heart-spark {
+            position: absolute;
+
+            z-index: 4;
+
+            font-size: 18px;
+
+            color: #ffd6e3;
+
+            text-shadow:
+                0 0 8px rgba(255,130,170,.9);
+
+            opacity: 0;
+
+            animation:
+                seInfinityHeartSpark
+                2s
+                ease-in-out
+                infinite;
+        }
+
+        .se-infinity-heart .heart-spark:nth-child(2) {
+            left: calc(50% - 95px);
+            top: 38%;
+            animation-delay: .4s;
+        }
+
+        .se-infinity-heart .heart-spark:nth-child(3) {
+            right: calc(50% - 95px);
+            top: 45%;
+            animation-delay: .9s;
+        }
+
+        .se-infinity-heart .heart-spark:nth-child(4) {
+            left: calc(50% - 65px);
+            bottom: 28%;
+            animation-delay: 1.3s;
+        }
+
+        .se-infinity-heart .heart-spark:nth-child(5) {
+            right: calc(50% - 65px);
+            bottom: 32%;
+            animation-delay: 1.7s;
+        }
+
 
         /* =====================================================
            ANIMACIONES — ARMARIO
@@ -1773,10 +1773,21 @@
         }
 
         @keyframes seNarniaFade {
-            0% { opacity: 0; }
-            12% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -1890,10 +1901,21 @@
         }
 
         @keyframes seLampFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2025,10 +2047,21 @@
         }
 
         @keyframes seAslanFade {
-            0% { opacity: 0; }
-            12% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2080,39 +2113,6 @@
                     scale(1)
                     rotate(0deg);
             }
-        }
-
-        /*
-           IMPORTANTE:
-           El movimiento de flotación ahora usa un
-           pseudo-elemento independiente para no entrar
-           en conflicto con seRoseBloom.
-        */
-
-        .se-rose-container {
-            will-change: transform;
-        }
-
-        .se-rose {
-            animation:
-                seRoseBloom
-                1.05s
-                cubic-bezier(.2,.8,.2,1)
-                .15s
-                forwards;
-        }
-
-        .se-rose-container {
-            animation:
-                seRoseEntrance
-                1.15s
-                cubic-bezier(.2,.8,.2,1)
-                forwards,
-                seRoseFloatContainer
-                2.2s
-                ease-in-out
-                1.3s
-                infinite;
         }
 
         @keyframes seRoseFloatContainer {
@@ -2197,10 +2197,21 @@
         }
 
         @keyframes seBellaFade {
-            0% { opacity: 0; }
-            12% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2294,10 +2305,21 @@
         }
 
         @keyframes seLetterFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2388,10 +2410,21 @@
         }
 
         @keyframes seCrownFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            82% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            82% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2537,10 +2570,21 @@
         }
 
         @keyframes seMapFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2660,10 +2704,149 @@
         }
 
         @keyframes seSunsetFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            82% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            82% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — CORAZÓN INFINITO
+           ===================================================== */
+
+        @keyframes seInfinityHeartEntrance {
+
+            0% {
+                opacity: 0;
+
+                transform:
+                    translateY(45px)
+                    scale(.35)
+                    rotate(-8deg);
+            }
+
+            45% {
+                opacity: 1;
+
+                transform:
+                    translateY(-8px)
+                    scale(1.12)
+                    rotate(4deg);
+            }
+
+            65% {
+                transform:
+                    translateY(2px)
+                    scale(.96)
+                    rotate(-2deg);
+            }
+
+            100% {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1)
+                    rotate(0deg);
+            }
+        }
+
+        @keyframes seInfinityHeartBeat {
+
+            0%, 100% {
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+            18% {
+                transform:
+                    translateY(-2px)
+                    scale(1.06);
+            }
+
+            32% {
+                transform:
+                    translateY(0)
+                    scale(.98);
+            }
+
+            46% {
+                transform:
+                    translateY(-3px)
+                    scale(1.04);
+            }
+
+            60% {
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes seInfinityHeartGlow {
+
+            0% {
+                opacity: .25;
+                transform: scale(.75);
+            }
+
+            100% {
+                opacity: .75;
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes seInfinityHeartSpark {
+
+            0%, 100% {
+                opacity: 0;
+
+                transform:
+                    scale(.4)
+                    rotate(0deg)
+                    translateY(5px);
+            }
+
+            45% {
+                opacity: 1;
+
+                transform:
+                    scale(1.15)
+                    rotate(90deg)
+                    translateY(-5px);
+            }
+
+            70% {
+                opacity: .3;
+
+                transform:
+                    scale(.75)
+                    rotate(180deg)
+                    translateY(-2px);
+            }
+        }
+
+        @keyframes seInfinityHeartFade {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
 
@@ -2712,6 +2895,16 @@
                 transform:
                     scale(.85)
                     rotate(-5deg);
+            }
+
+            .se-infinity-heart .heart {
+                font-size: 90px;
+            }
+
+            .se-infinity-heart::before {
+                width: 170px;
+                height: 170px;
+                margin-left: -85px;
             }
         }
 
@@ -3096,6 +3289,40 @@
 
 
         /* =====================================================
+           INFINITO — CORAZÓN 💗
+           ===================================================== */
+
+        function createInfinityHeart() {
+
+            /*
+               Cancelamos cualquier temporizador anterior
+               para que el corazón no desaparezca.
+            */
+
+            if (removeTimer) {
+                clearTimeout(removeTimer);
+                removeTimer = null;
+            }
+
+            layer.innerHTML = `
+
+                <div class="se-effect se-infinity-heart">
+
+                    <div class="heart">
+                        💗
+                    </div>
+
+                    <span class="heart-spark">✦</span>
+                    <span class="heart-spark">✧</span>
+                    <span class="heart-spark">✦</span>
+                    <span class="heart-spark">✧</span>
+
+                </div>
+            `;
+        }
+
+
+        /* =====================================================
            DIAPOSITIVAS FINALES
            ===================================================== */
 
@@ -3107,24 +3334,31 @@
 
             const selectors = [
 
+                /* Brújula */
+
                 ".compass",
                 ".compass-object",
                 ".compass-decoration",
+                ".compass-effect",
+
+                /* Mapa */
 
                 ".map",
                 ".map-object",
                 ".map-decoration",
+                ".map-effect",
+
+                /* Varita */
 
                 ".wand",
                 ".wand-object",
                 ".wand-decoration",
+                ".wand-effect",
 
                 ".magic-wand",
                 ".magic-wand-object",
 
-                ".wand-effect",
-                ".compass-effect",
-                ".map-effect",
+                /* Nombres de clases */
 
                 "[class*='compass']",
                 "[class*='map']",
@@ -3133,10 +3367,19 @@
                 "[class*='brujula']",
                 "[class*='brújula']",
 
-                "[class*='varita']"
+                "[class*='varita']",
+
+                /* Objetos genéricos */
+
+                ".final-object",
+                ".final-decoration",
+                ".slide-object",
+                ".slide-decoration"
             ];
 
+
             const objects = new Set();
+
 
             selectors.forEach(function (selector) {
 
@@ -3157,69 +3400,55 @@
                         });
 
                 } catch (_) {}
+
             });
 
 
             objects.forEach(function (el) {
 
+                /*
+                   Tanto 100/10 como Infinito/10
+                   quedan sin los objetos anteriores.
+                */
+
                 el.classList.add(
                     "se-final-safe-object"
                 );
 
+                el.classList.add(
+                    "se-infinity-object"
+                );
 
-                if (index === 10) {
 
-                    if (
-                        el.matches(
-                            "[class*='compass'], " +
-                            "[class*='brujula'], " +
-                            "[class*='brújula'], " +
-                            ".compass, " +
-                            ".compass-object, " +
-                            ".compass-decoration"
-                        )
-                    ) {
+                el.style.setProperty(
+                    "display",
+                    "none",
+                    "important"
+                );
 
-                        el.classList.add(
-                            "se-final-compass"
-                        );
+                el.style.setProperty(
+                    "visibility",
+                    "hidden",
+                    "important"
+                );
 
-                    } else if (
-                        el.matches(
-                            "[class*='map'], " +
-                            ".map, " +
-                            ".map-object, " +
-                            ".map-decoration"
-                        )
-                    ) {
+                el.style.setProperty(
+                    "opacity",
+                    "0",
+                    "important"
+                );
 
-                        el.classList.add(
-                            "se-final-map"
-                        );
+                el.style.setProperty(
+                    "animation",
+                    "none",
+                    "important"
+                );
 
-                    } else if (
-                        el.matches(
-                            "[class*='wand'], " +
-                            "[class*='varita'], " +
-                            ".wand, " +
-                            ".wand-object, " +
-                            ".wand-decoration, " +
-                            ".magic-wand, " +
-                            ".magic-wand-object"
-                        )
-                    ) {
-
-                        el.classList.add(
-                            "se-final-wand"
-                        );
-                    }
-
-                } else {
-
-                    el.classList.add(
-                        "se-infinity-object"
-                    );
-                }
+                el.style.setProperty(
+                    "transform",
+                    "none",
+                    "important"
+                );
 
             });
         }
@@ -3241,6 +3470,8 @@
 
                 layer.innerHTML = "";
 
+                removeTimer = null;
+
             }, time);
         }
 
@@ -3253,13 +3484,16 @@
 
             if (!slide) return;
 
+
             const slides =
                 Array.from(
                     document.querySelectorAll(".slide")
                 );
 
+
             const index =
                 slides.indexOf(slide);
+
 
             if (index === -1) return;
 
@@ -3277,8 +3511,8 @@
                 8  = 80/10 Narnia → ASLAN
                 9  = 90/10 Outer Banks → ATARDECER + BARCO
 
-                10 = 100/10 Final
-                11 = Infinito
+                10 = 100/10 FINAL — SIN OBJETOS
+                11 = INFINITO — CORAZÓN 💗
             */
 
 
@@ -3349,6 +3583,35 @@
             if (index === 9) {
 
                 createOuterBanksSunset();
+
+                return;
+            }
+
+
+            /* =================================================
+               100/10 — COMPLETAMENTE LIMPIO
+               ================================================= */
+
+            if (index === 10) {
+
+                if (removeTimer) {
+                    clearTimeout(removeTimer);
+                    removeTimer = null;
+                }
+
+                layer.innerHTML = "";
+
+                return;
+            }
+
+
+            /* =================================================
+               INFINITO — CORAZÓN 💗
+               ================================================= */
+
+            if (index === 11) {
+
+                createInfinityHeart();
 
                 return;
             }
@@ -3429,6 +3692,12 @@
                 );
 
 
+                /*
+                   Repetimos la protección porque algunos
+                   objetos pueden aparecer ligeramente después
+                   del cambio de diapositiva.
+                */
+
                 setTimeout(function () {
 
                     protectFinalSlideObjects(
@@ -3447,6 +3716,16 @@
                     );
 
                 }, 350);
+
+
+                setTimeout(function () {
+
+                    protectFinalSlideObjects(
+                        activeSlide,
+                        activeIndex
+                    );
+
+                }, 700);
             }
         }
 
