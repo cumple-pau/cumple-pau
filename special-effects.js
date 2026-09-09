@@ -3267,18 +3267,12 @@
             /*
                 0  = Portada
 
-                1  = 10/10 Narnia → ARMARIO
-                2  = 20/10 Outer Banks → MAPA
-                3  = 30/10 Bella y la Bestia → ROSA
-                4  = 40/10 Bridgerton → CARTA
-                5  = 50/10 Princesa por Sorpresa → CORONA
-                6  = 60/10 Narnia → FAROLA
-                7  = 70/10 Harry Potter → MAGO
-                8  = 80/10 Narnia → ASLAN
-                9  = 90/10 Outer Banks → ATARDECER + BARCO
-
-                10 = 100/10 Final
-                11 = Infinito
+10/10  → ✨ estrella
+60/10  → ❄️ cristal de hielo
+80/10  → 🦋 mariposa
+90/10  → 🌺 detalle veraniego
+100/10 → ✦ constelación
+∞/10   → animación épica existente
             */
 
 
