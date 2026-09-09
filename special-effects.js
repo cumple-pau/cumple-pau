@@ -1645,6 +1645,683 @@
             top: 34%;
             animation-delay: 1.25s;
         }
+        /* =====================================================
+   ✨ ESTRELLA — 10/10
+   ===================================================== */
+
+.se-star10,
+.se-ice60,
+.se-butterfly80,
+.se-summer90,
+.se-constellation100 {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.se-star10-main {
+    position: relative;
+    z-index: 3;
+    font-size: 110px;
+    filter:
+        drop-shadow(0 0 12px rgba(255,255,255,.95))
+        drop-shadow(0 0 35px rgba(255,215,90,.9));
+    animation:
+        seStarAppear 1s ease-out forwards,
+        seStarPulse 1.5s ease-in-out 1s infinite;
+}
+
+.se-star10-glow {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,.8),
+        rgba(255,215,80,.35),
+        transparent 70%
+    );
+    animation: seStarGlow 1.8s ease-in-out infinite;
+}
+
+.se-star10-spark {
+    position: absolute;
+    font-size: 25px;
+    opacity: 0;
+    animation: seStarSpark 2.2s ease-out forwards;
+}
+
+.se-star10 .spark1 {
+    transform: translate(-120px,-80px);
+}
+
+.se-star10 .spark2 {
+    transform: translate(120px,-65px);
+    animation-delay: .2s;
+}
+
+.se-star10 .spark3 {
+    transform: translate(-100px,90px);
+    animation-delay: .4s;
+}
+
+.se-star10 .spark4 {
+    transform: translate(105px,80px);
+    animation-delay: .6s;
+}
+
+.se-star10 .spark5 {
+    transform: translate(0,-125px);
+    animation-delay: .8s;
+}
+
+
+/* =====================================================
+   ❄️ CRISTAL DE HIELO — 60/10
+   ===================================================== */
+
+.se-ice60 {
+    animation: seIceFade 3.4s ease forwards;
+}
+
+.se-ice60-main {
+    position: relative;
+    z-index: 3;
+    font-size: 115px;
+    filter:
+        drop-shadow(0 0 12px rgba(220,250,255,.95))
+        drop-shadow(0 0 35px rgba(120,220,255,.9));
+    animation:
+        seIceAppear 1s ease-out forwards,
+        seIceFloat 2.2s ease-in-out 1s infinite;
+}
+
+.se-ice60-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(210,250,255,.7),
+        rgba(100,210,255,.3),
+        transparent 70%
+    );
+    animation: seIceGlow 2s ease-in-out infinite;
+}
+
+.se-ice60-shard {
+    position: absolute;
+    font-size: 25px;
+    opacity: 0;
+    animation: seIceShard 2.5s ease-out forwards;
+}
+
+.se-ice60 .shard1 {
+    transform: translate(-130px,-70px);
+}
+
+.se-ice60 .shard2 {
+    transform: translate(125px,-65px);
+    animation-delay: .2s;
+}
+
+.se-ice60 .shard3 {
+    transform: translate(-110px,85px);
+    animation-delay: .4s;
+}
+
+.se-ice60 .shard4 {
+    transform: translate(115px,90px);
+    animation-delay: .6s;
+}
+
+
+/* =====================================================
+   🦋 MARIPOSA — 80/10
+   ===================================================== */
+
+.se-butterfly80-main {
+    position: relative;
+    z-index: 3;
+    font-size: 110px;
+    filter:
+        drop-shadow(0 0 12px rgba(255,255,255,.9))
+        drop-shadow(0 0 30px rgba(220,120,255,.8));
+    animation:
+        seButterflyAppear 1s ease-out forwards,
+        seButterflyFlight 2.5s ease-in-out 1s infinite;
+}
+
+.se-butterfly80-glow {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(220,170,255,.45),
+        transparent 70%
+    );
+    animation: seButterflyGlow 2s ease-in-out infinite;
+}
+
+.se-butterfly80-spark {
+    position: absolute;
+    font-size: 22px;
+    opacity: 0;
+    animation: seButterflySpark 2.4s ease-out forwards;
+}
+
+.se-butterfly80 .spark1 {
+    transform: translate(-115px,-65px);
+}
+
+.se-butterfly80 .spark2 {
+    transform: translate(120px,-50px);
+    animation-delay: .25s;
+}
+
+.se-butterfly80 .spark3 {
+    transform: translate(-105px,75px);
+    animation-delay: .5s;
+}
+
+.se-butterfly80 .spark4 {
+    transform: translate(110px,80px);
+    animation-delay: .75s;
+}
+
+
+/* =====================================================
+   🌺 DETALLE VERANIEGO — 90/10
+   ===================================================== */
+
+.se-summer90 {
+    animation: seSummerFade 4s ease forwards;
+}
+
+.se-summer90-main {
+    position: relative;
+    z-index: 4;
+    font-size: 110px;
+    filter:
+        drop-shadow(0 0 12px rgba(255,255,255,.9))
+        drop-shadow(0 0 35px rgba(255,170,70,.8));
+    animation:
+        seSummerAppear 1s ease-out forwards,
+        seSummerFloat 2.4s ease-in-out 1s infinite;
+}
+
+.se-summer90-sun {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255,220,120,.7),
+        rgba(255,170,80,.25),
+        transparent 70%
+    );
+    animation: seSummerSun 2s ease-in-out infinite;
+}
+
+.se-summer90-wave {
+    position: absolute;
+    width: 300px;
+    height: 35px;
+    border-top: 3px solid rgba(255,255,255,.5);
+    border-radius: 50%;
+    opacity: 0;
+    animation: seSummerWave 2.5s ease-out forwards;
+}
+
+.se-summer90 .wave1 {
+    transform: translateY(100px);
+}
+
+.se-summer90 .wave2 {
+    transform: translateY(130px);
+    animation-delay: .4s;
+}
+
+.se-summer90-spark {
+    position: absolute;
+    font-size: 22px;
+    opacity: 0;
+    animation: seSummerSpark 2.5s ease-out forwards;
+}
+
+.se-summer90 .spark1 {
+    transform: translate(-120px,-75px);
+}
+
+.se-summer90 .spark2 {
+    transform: translate(120px,-60px);
+    animation-delay: .3s;
+}
+
+.se-summer90 .spark3 {
+    transform: translate(0,-125px);
+    animation-delay: .6s;
+}
+
+
+/* =====================================================
+   ✦ CONSTELACIÓN — 100/10
+   ===================================================== */
+
+.se-constellation100 {
+    animation: seConstellationFade 4.2s ease forwards;
+}
+
+.se-constellation100-glow {
+    position: absolute;
+    width: 330px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse,
+        rgba(180,190,255,.35),
+        transparent 70%
+    );
+    animation: seConstellationGlow 2.5s ease-in-out infinite;
+}
+
+.se-constellation100-star {
+    position: absolute;
+    z-index: 3;
+    font-size: 30px;
+    opacity: 0;
+    filter:
+        drop-shadow(0 0 7px white)
+        drop-shadow(0 0 18px rgba(150,170,255,.9));
+    animation:
+        seConstellationStar 1s ease-out forwards,
+        seConstellationPulse 2s ease-in-out 1s infinite;
+}
+
+.se-constellation100 .star1 {
+    transform: translate(-125px,-60px);
+}
+
+.se-constellation100 .star2 {
+    transform: translate(-55px,-105px);
+    animation-delay: .15s;
+}
+
+.se-constellation100 .star3 {
+    transform: translate(25px,-65px);
+    animation-delay: .3s;
+}
+
+.se-constellation100 .star4 {
+    transform: translate(115px,-90px);
+    animation-delay: .45s;
+}
+
+.se-constellation100 .star5 {
+    transform: translate(90px,25px);
+    animation-delay: .6s;
+}
+
+.se-constellation100 .star6 {
+    transform: translate(10px,75px);
+    animation-delay: .75s;
+}
+
+.se-constellation100 .star7 {
+    transform: translate(-80px,45px);
+    animation-delay: .9s;
+}
+
+.se-constellation100-line {
+    position: absolute;
+    z-index: 2;
+    width: 85px;
+    height: 2px;
+    transform-origin: left center;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,.05),
+        rgba(180,200,255,.8),
+        rgba(255,255,255,.05)
+    );
+    opacity: 0;
+    animation: seConstellationLine 1s ease-out forwards;
+}
+
+.se-constellation100 .line1 {
+    transform: translate(-105px,-75px) rotate(-30deg);
+}
+
+.se-constellation100 .line2 {
+    transform: translate(-35px,-85px) rotate(25deg);
+}
+
+.se-constellation100 .line3 {
+    transform: translate(45px,-70px) rotate(-15deg);
+}
+
+.se-constellation100 .line4 {
+    transform: translate(105px,-65px) rotate(75deg);
+}
+
+.se-constellation100 .line5 {
+    transform: translate(75px,35px) rotate(160deg);
+}
+
+.se-constellation100 .line6 {
+    transform: translate(0,70px) rotate(170deg);
+}
+
+
+/* =====================================================
+   ANIMACIONES
+   ===================================================== */
+
+@keyframes seStarAppear {
+    from {
+        opacity: 0;
+        transform: scale(.2) rotate(-90deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes seStarPulse {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes seStarGlow {
+    0%,100% {
+        transform: scale(.8);
+        opacity: .45;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+}
+
+@keyframes seStarSpark {
+    from {
+        opacity: 0;
+        scale: .2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        scale: 1.2;
+    }
+}
+
+
+@keyframes seIceAppear {
+    from {
+        opacity: 0;
+        transform: scale(.2) rotate(-45deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes seIceFloat {
+    0%,100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(3deg);
+    }
+}
+
+@keyframes seIceGlow {
+    0%,100% {
+        transform: scale(.8);
+        opacity: .35;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: .9;
+    }
+}
+
+@keyframes seIceShard {
+    from {
+        opacity: 0;
+        transform: scale(.2);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes seIceFade {
+    0%,85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes seButterflyAppear {
+    from {
+        opacity: 0;
+        transform: scale(.3) translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes seButterflyFlight {
+    0%,100% {
+        transform: translate(0,0) rotate(-3deg);
+    }
+
+    25% {
+        transform: translate(25px,-20px) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(0,-35px) rotate(-2deg);
+    }
+
+    75% {
+        transform: translate(-25px,-15px) rotate(5deg);
+    }
+}
+
+@keyframes seButterflyGlow {
+    0%,100% {
+        transform: scale(.8);
+        opacity: .3;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: .8;
+    }
+}
+
+@keyframes seButterflySpark {
+    from {
+        opacity: 0;
+        transform: scale(.2);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+@keyframes seSummerAppear {
+    from {
+        opacity: 0;
+        transform: scale(.4) translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes seSummerFloat {
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+@keyframes seSummerSun {
+    0%,100% {
+        transform: scale(.8);
+        opacity: .4;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: .8;
+    }
+}
+
+@keyframes seSummerWave {
+    from {
+        opacity: 0;
+        transform: translateY(100px) scaleX(.4);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(100px) scaleX(1);
+    }
+}
+
+@keyframes seSummerSpark {
+    from {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes seSummerFade {
+    0%,90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes seConstellationStar {
+    from {
+        opacity: 0;
+        transform: scale(.1);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes seConstellationPulse {
+    0%,100% {
+        filter:
+            drop-shadow(0 0 7px white)
+            drop-shadow(0 0 18px rgba(150,170,255,.9));
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 0 12px white)
+            drop-shadow(0 0 30px rgba(150,170,255,1));
+    }
+}
+
+@keyframes seConstellationLine {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: .8;
+    }
+}
+
+@keyframes seConstellationGlow {
+    0%,100% {
+        transform: scale(.8);
+        opacity: .3;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: .8;
+    }
+}
+
+@keyframes seConstellationFade {
+    0%,90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 /* =====================================================
    OBJETOS 100/10 E INFINITO
    OCULTOS
@@ -2752,121 +3429,82 @@
 
 
         /* =====================================================
-           NARNIA — ARMARIO
+           NARNIA — ESTRELLA
            ===================================================== */
 
-        function createNarniaWardrobe() {
+function createStar10() {
 
-            layer.innerHTML = `
+    layer.innerHTML = `
+        <div class="se-effect se-star10">
+            <div class="se-star10-glow"></div>
 
-                <div class="se-effect se-narnia">
+            <div class="se-star10-main">
+                ✨
+            </div>
 
-                    <div class="se-wardrobe-area">
+            <div class="se-star10-spark spark1">✦</div>
+            <div class="se-star10-spark spark2">✧</div>
+            <div class="se-star10-spark spark3">✦</div>
+            <div class="se-star10-spark spark4">✧</div>
+            <div class="se-star10-spark spark5">✦</div>
+        </div>
+    `;
 
-                        <div class="se-wardrobe-light"></div>
+    removeEffectAfter(3200);
+}
 
-                        <div class="se-wardrobe">
+        /* =====================================================
+           NARNIA — CRISTAL HIELO
+           ===================================================== */
 
-                            <div class="se-wardrobe-inside">
-                                ✨
-                            </div>
+function createIce60() {
 
-                            <div class="se-door se-door-left"></div>
+    layer.innerHTML = `
+        <div class="se-effect se-ice60">
 
-                            <div class="se-door se-door-right"></div>
+            <div class="se-ice60-glow"></div>
 
-                        </div>
+            <div class="se-ice60-main">
+                ❄️
+            </div>
 
-                    </div>
+            <div class="se-ice60-shard shard1">✦</div>
+            <div class="se-ice60-shard shard2">✧</div>
+            <div class="se-ice60-shard shard3">❄</div>
+            <div class="se-ice60-shard shard4">✦</div>
 
-                    <span class="se-snow"></span>
-                    <span class="se-snow"></span>
-                    <span class="se-snow"></span>
-                    <span class="se-snow"></span>
-                    <span class="se-snow"></span>
-                    <span class="se-snow"></span>
+        </div>
+    `;
 
-                </div>
-            `;
-
-            removeEffectAfter(3200);
-        }
+    removeEffectAfter(3400);
+}
 
 
         /* =====================================================
-           NARNIA — FAROLA
+           NARNIA — MARIPOSA
            ===================================================== */
 
-        function createNarniaLamp() {
+function createButterfly80() {
 
-            layer.innerHTML = `
+    layer.innerHTML = `
+        <div class="se-effect se-butterfly80">
 
-                <div class="se-effect se-narnia-lamp">
+            <div class="se-butterfly80-glow"></div>
 
-                    <div class="se-lamp-scene">
+            <div class="se-butterfly80-main">
+                🦋
+            </div>
 
-                        <div class="se-lamp-glow"></div>
+            <div class="se-butterfly80-spark spark1">✦</div>
+            <div class="se-butterfly80-spark spark2">✧</div>
+            <div class="se-butterfly80-spark spark3">✦</div>
+            <div class="se-butterfly80-spark spark4">✧</div>
 
-                        <div class="se-lamp-post"></div>
+        </div>
+    `;
 
-                        <div class="se-lamp-base"></div>
-
-                        <div class="se-lamp-top">
-
-                            <div class="se-lamp-glass"></div>
-
-                        </div>
-
-                        <div class="se-lamp-cap"></div>
-
-                        <span class="se-lamp-snow">✦</span>
-                        <span class="se-lamp-snow">✧</span>
-                        <span class="se-lamp-snow">✦</span>
-                        <span class="se-lamp-snow">✧</span>
-                        <span class="se-lamp-snow">✦</span>
-                        <span class="se-lamp-snow">✧</span>
-
-                    </div>
-
-                </div>
-            `;
-
-            removeEffectAfter(3000);
-        }
-
-
-        /* =====================================================
-           NARNIA — ASLAN
-           ===================================================== */
-
-        function createNarniaAslan() {
-
-            layer.innerHTML = `
-
-                <div class="se-effect se-narnia-aslan">
-
-                    <div class="se-aslan-scene">
-
-                        <div class="se-aslan-aura"></div>
-
-                        <div class="se-aslan-light"></div>
-
-                        <div class="se-aslan">
-                            🦁
-                        </div>
-
-                        <span class="se-aslan-star">✦</span>
-                        <span class="se-aslan-star">✧</span>
-                        <span class="se-aslan-star">✦</span>
-                        <span class="se-aslan-star">✧</span>
-
-                    </div>
-
-                </div>
-            `;
-
-            removeEffectAfter(3400);
-        }
+    removeEffectAfter(3800);
+}
 
 
         /* =====================================================
@@ -3054,54 +3692,69 @@
 
 
         /* =====================================================
-           OUTER BANKS — ATARDECER + BARCO
+           OUTER BANKS — DETALLE VERANIEGO
            ===================================================== */
 
-        function createOuterBanksSunset() {
+function createSummer90() {
 
-            layer.innerHTML = `
+    layer.innerHTML = `
+        <div class="se-effect se-summer90">
 
-                <div class="se-effect se-obx-sunset">
+            <div class="se-summer90-sun"></div>
 
-                    <div class="se-sunset-scene">
+            <div class="se-summer90-main">
+                🌺
+            </div>
 
-                        <div class="se-sunset-sun"></div>
+            <div class="se-summer90-wave wave1"></div>
+            <div class="se-summer90-wave wave2"></div>
 
-                        <div class="se-sunset-horizon"></div>
+            <div class="se-summer90-spark spark1">✦</div>
+            <div class="se-summer90-spark spark2">✧</div>
+            <div class="se-summer90-spark spark3">✦</div>
 
-                        <div class="se-sunset-sea"></div>
+        </div>
+    `;
 
-                        <div class="se-boat">
+    removeEffectAfter(4000);
+}
+        /* =====================================================
+            CONSTELACION
+           ===================================================== */
+function createConstellation100() {
 
-                            <div class="se-boat-mast"></div>
+    layer.innerHTML = `
+        <div class="se-effect se-constellation100">
 
-                            <div class="se-boat-sail"></div>
+            <div class="se-constellation100-glow"></div>
 
-                            <div class="se-boat-hull"></div>
+            <div class="se-constellation100-line line1"></div>
+            <div class="se-constellation100-line line2"></div>
+            <div class="se-constellation100-line line3"></div>
+            <div class="se-constellation100-line line4"></div>
+            <div class="se-constellation100-line line5"></div>
+            <div class="se-constellation100-line line6"></div>
 
-                        </div>
+            <div class="se-constellation100-star star1">✦</div>
+            <div class="se-constellation100-star star2">✦</div>
+            <div class="se-constellation100-star star3">✦</div>
+            <div class="se-constellation100-star star4">✦</div>
+            <div class="se-constellation100-star star5">✦</div>
+            <div class="se-constellation100-star star6">✦</div>
+            <div class="se-constellation100-star star7">✦</div>
 
-                        <span class="se-sunset-star">✦</span>
-                        <span class="se-sunset-star">✧</span>
-                        <span class="se-sunset-star">✦</span>
-                        <span class="se-sunset-star">✧</span>
+        </div>
+    `;
 
-                    </div>
-
-                </div>
-            `;
-
-            removeEffectAfter(3400);
-        }
-
-
+    removeEffectAfter(4200);
+}
         /* =====================================================
            DIAPOSITIVAS FINALES
            ===================================================== */
 
         function protectFinalSlideObjects(slide, index) {
 
-            if (!slide || (index !== 10 && index !== 11)) {
+            if (!slide || (index !== 10)) {
                 return;
             }
 
@@ -3213,14 +3866,6 @@
                             "se-final-wand"
                         );
                     }
-
-                } else {
-
-                    el.classList.add(
-                        "se-infinity-object"
-                    );
-                }
-
             });
         }
 
@@ -3278,7 +3923,7 @@
 
             if (index === 1) {
 
-                createNarniaWardrobe();
+                createStar10();
 
                 return;
             }
@@ -3318,7 +3963,7 @@
 
             if (index === 6) {
 
-                createNarniaLamp();
+                createIce60();
 
                 return;
             }
@@ -3334,7 +3979,7 @@
 
             if (index === 8) {
 
-                createNarniaAslan();
+                createButterfly80();
 
                 return;
             }
@@ -3342,12 +3987,16 @@
 
             if (index === 9) {
 
-                createOuterBanksSunset();
+                createSummer90();
 
                 return;
             }
+            if (index === 10) {
+               createConstellation100();
 
-
+               return;
+            }
+            if (index === 11) {
             layer.innerHTML = "";
         }
 
