@@ -35,8 +35,8 @@ const themes = [
 const themeObjects = {
 
     1: {
-        icon: "🚪",
-        name: "Puerta de Narnia"
+        icon: "✨",
+        name: "Estrella"
     },
 
     2: {
@@ -60,8 +60,8 @@ const themeObjects = {
     },
 
     6: {
-        icon: "🗝️",
-        name: "Llave mágica"
+        icon: "❄️",
+        name: "Cristal de hielo"
     },
 
     7: {
@@ -70,13 +70,13 @@ const themeObjects = {
     },
 
     8: {
-        icon: "🏮",
-        name: "Linterna"
+        icon: "🦋",
+        name: "Mariposa"
     },
 
     9: {
-        icon: "🧭",
-        name: "Brújula"
+        icon: "🌺",
+        name: "Detalle veraniego"
     }
 
 };
@@ -449,7 +449,18 @@ if (index === 10) {
     );
 
     unlockedObjects.forEach(item => {
-        item.element.classList.add("theme-object-hidden");
+
+        item.element.classList.remove(
+            "theme-object-current",
+            "theme-object-memory",
+            "theme-object-gathered",
+            "theme-object-infinity"
+        );
+
+        item.element.classList.add(
+            "theme-object-hidden"
+        );
+
     });
 
     return;
@@ -470,7 +481,18 @@ if (index === 11) {
     );
 
     unlockedObjects.forEach(item => {
-        item.element.classList.add("theme-object-hidden");
+
+        item.element.classList.remove(
+            "theme-object-current",
+            "theme-object-memory",
+            "theme-object-gathered",
+            "theme-object-infinity"
+        );
+
+        item.element.classList.add(
+            "theme-object-hidden"
+        );
+
     });
 
     return;
