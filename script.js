@@ -791,8 +791,8 @@ function showSlide(index) {
 /* ================================================= */
 
 if (
-    index === 10 &&
-    oldIndex === 9
+    index === 11 &&
+    oldIndex === 10
 ) {
 
     createFinalTransition();
