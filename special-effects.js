@@ -38,6 +38,119 @@
 
 
         /* =====================================================
+           NARNIA — ESTRELLA 10/10
+           ===================================================== */
+
+        .se-star10 {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 7vh;
+            animation:
+                seStar10Fade
+                3.2s
+                ease
+                forwards;
+        }
+
+        .se-star10-glow {
+            position: absolute;
+            left: 50%;
+            top: 12vh;
+            width: 190px;
+            height: 190px;
+            transform:
+                translateX(-50%)
+                scale(.35);
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,245,190,.75),
+                    rgba(180,220,255,.28) 42%,
+                    rgba(130,180,255,.08) 60%,
+                    transparent 76%
+                );
+            filter: blur(13px);
+            opacity: 0;
+            animation:
+                seStar10Glow
+                2.8s
+                ease-out
+                .1s
+                forwards;
+        }
+
+        .se-star10-main {
+            position: relative;
+            z-index: 2;
+            font-size: 105px;
+            line-height: 1;
+            opacity: 0;
+            filter:
+                drop-shadow(0 7px 12px rgba(0,0,0,.2))
+                drop-shadow(0 0 12px rgba(255,240,150,.8))
+                drop-shadow(0 0 28px rgba(160,210,255,.7));
+            animation:
+                seStar10Appear
+                1.05s
+                cubic-bezier(.2,.8,.2,1)
+                .1s
+                forwards,
+                seStar10Float
+                2.4s
+                ease-in-out
+                1.2s
+                infinite;
+        }
+
+        .se-star10-spark {
+            position: absolute;
+            color: #fff8c9;
+            font-size: 21px;
+            opacity: 0;
+            filter:
+                drop-shadow(0 0 7px white)
+                drop-shadow(0 0 12px rgba(160,210,255,.8));
+            animation:
+                seStar10Spark
+                1.8s
+                ease-in-out
+                infinite;
+        }
+
+        .se-star10-spark.spark1 {
+            left: 24%;
+            top: 27%;
+            animation-delay: .25s;
+        }
+
+        .se-star10-spark.spark2 {
+            right: 24%;
+            top: 31%;
+            animation-delay: .7s;
+        }
+
+        .se-star10-spark.spark3 {
+            left: 34%;
+            bottom: 29%;
+            animation-delay: 1.05s;
+        }
+
+        .se-star10-spark.spark4 {
+            right: 32%;
+            bottom: 25%;
+            animation-delay: 1.4s;
+        }
+
+        .se-star10-spark.spark5 {
+            left: 50%;
+            top: 22%;
+            animation-delay: 1.75s;
+        }
+
+
+        /* =====================================================
            NARNIA — ARMARIO
            ===================================================== */
 
@@ -1445,305 +1558,216 @@
 
 
         /* =====================================================
-           ANIMACIONES
+           60/10 — CRISTAL DE HIELO
            ===================================================== */
 
-        @keyframes seStarAppear {
-            from {
-                opacity: 0;
-                transform: scale(.2) rotate(-90deg);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) rotate(0);
-            }
+        .se-ice60 {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 8vh;
+            animation:
+                seIceFade
+                3.4s
+                ease
+                forwards;
         }
 
-        @keyframes seStarPulse {
-            0%,100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.12);
-            }
+        .se-ice60-glow {
+            position: absolute;
+            left: 50%;
+            top: 12vh;
+            width: 200px;
+            height: 200px;
+            transform:
+                translateX(-50%)
+                scale(.35);
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(220,250,255,.9),
+                    rgba(120,205,255,.38) 38%,
+                    rgba(90,160,255,.12) 58%,
+                    transparent 76%
+                );
+            filter: blur(13px);
+            opacity: 0;
+            animation:
+                seIceGlow
+                2.8s
+                ease-out
+                .15s
+                forwards;
         }
 
-        @keyframes seStarGlow {
-            0%,100% {
-                transform: scale(.8);
-                opacity: .45;
-            }
-
-            50% {
-                transform: scale(1.25);
-                opacity: 1;
-            }
+        .se-ice60-main {
+            position: relative;
+            z-index: 2;
+            font-size: 105px;
+            line-height: 1;
+            opacity: 0;
+            filter:
+                drop-shadow(0 8px 15px rgba(0,0,0,.18))
+                drop-shadow(0 0 12px rgba(200,245,255,.9))
+                drop-shadow(0 0 30px rgba(100,190,255,.75));
+            animation:
+                seIceAppear
+                1.05s
+                cubic-bezier(.2,.8,.2,1)
+                .1s
+                forwards,
+                seIceFloat
+                2.5s
+                ease-in-out
+                1.15s
+                infinite;
         }
 
-        @keyframes seStarSpark {
-            from {
-                opacity: 0;
-                transform: scale(.2);
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-                transform: scale(1.2);
-            }
+        .se-ice60-shard {
+            position: absolute;
+            color: #e8fbff;
+            font-size: 20px;
+            opacity: 0;
+            filter:
+                drop-shadow(0 0 7px white)
+                drop-shadow(0 0 14px rgba(120,210,255,.8));
+            animation:
+                seIceShard
+                1.8s
+                ease-in-out
+                infinite;
         }
 
-
-        @keyframes seIceAppear {
-            from {
-                opacity: 0;
-                transform: scale(.2) rotate(-45deg);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) rotate(0);
-            }
+        .se-ice60-shard.shard1 {
+            left: 24%;
+            top: 27%;
+            animation-delay: .2s;
         }
 
-        @keyframes seIceFloat {
-            0%,100% {
-                transform: translateY(0) rotate(-3deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(3deg);
-            }
+        .se-ice60-shard.shard2 {
+            right: 23%;
+            top: 32%;
+            animation-delay: .65s;
         }
 
-        @keyframes seIceGlow {
-            0%,100% {
-                transform: scale(.8);
-                opacity: .35;
-            }
-
-            50% {
-                transform: scale(1.25);
-                opacity: .9;
-            }
+        .se-ice60-shard.shard3 {
+            left: 30%;
+            bottom: 25%;
+            animation-delay: 1s;
         }
 
-        @keyframes seIceShard {
-            from {
-                opacity: 0;
-                transform: scale(.2);
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
-
-        @keyframes seIceFade {
-            0%,85% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+        .se-ice60-shard.shard4 {
+            right: 29%;
+            bottom: 28%;
+            animation-delay: 1.4s;
         }
 
 
-        @keyframes seButterflyAppear {
-            from {
-                opacity: 0;
-                transform: scale(.3) translateY(50px);
-            }
+        /* =====================================================
+           80/10 — MARIPOSA
+           ===================================================== */
 
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+        .se-butterfly80 {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 9vh;
+            animation:
+                seButterflyFade
+                3.8s
+                ease
+                forwards;
         }
 
-        @keyframes seButterflyFlight {
-            0%,100% {
-                transform: translate(0,0) rotate(-3deg);
-            }
-
-            25% {
-                transform: translate(25px,-20px) rotate(5deg);
-            }
-
-            50% {
-                transform: translate(0,-35px) rotate(-2deg);
-            }
-
-            75% {
-                transform: translate(-25px,-15px) rotate(5deg);
-            }
+        .se-butterfly80-glow {
+            position: absolute;
+            left: 50%;
+            top: 13vh;
+            width: 190px;
+            height: 190px;
+            transform:
+                translateX(-50%)
+                scale(.35);
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,215,245,.72),
+                    rgba(200,160,255,.3) 40%,
+                    rgba(130,200,255,.12) 58%,
+                    transparent 76%
+                );
+            filter: blur(14px);
+            opacity: 0;
+            animation:
+                seButterflyGlow
+                2.8s
+                ease-out
+                .1s
+                forwards;
         }
 
-        @keyframes seButterflyGlow {
-            0%,100% {
-                transform: scale(.8);
-                opacity: .3;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: .8;
-            }
+        .se-butterfly80-main {
+            position: relative;
+            z-index: 2;
+            font-size: 95px;
+            line-height: 1;
+            opacity: 0;
+            filter:
+                drop-shadow(0 8px 15px rgba(0,0,0,.2))
+                drop-shadow(0 0 13px rgba(255,190,240,.8))
+                drop-shadow(0 0 25px rgba(170,180,255,.65));
+            animation:
+                seButterflyAppear
+                1.05s
+                cubic-bezier(.2,.8,.2,1)
+                .1s
+                forwards,
+                seButterflyFlight
+                3.2s
+                ease-in-out
+                1.2s
+                infinite;
         }
 
-        @keyframes seButterflySpark {
-            from {
-                opacity: 0;
-                transform: scale(.2);
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
+        .se-butterfly80-spark {
+            position: absolute;
+            color: #fff1fc;
+            font-size: 20px;
+            opacity: 0;
+            filter:
+                drop-shadow(0 0 7px white)
+                drop-shadow(0 0 15px rgba(210,170,255,.8));
+            animation:
+                seButterflySpark
+                1.7s
+                ease-in-out
+                infinite;
         }
 
-
-        @keyframes seSummerAppear {
-            from {
-                opacity: 0;
-                transform: scale(.4) translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+        .se-butterfly80-spark.spark1 {
+            left: 21%;
+            top: 28%;
+            animation-delay: .25s;
         }
 
-        @keyframes seSummerFloat {
-            0%,100% {
-                transform: translateY(0) rotate(-2deg);
-            }
-
-            50% {
-                transform: translateY(-12px) rotate(2deg);
-            }
+        .se-butterfly80-spark.spark2 {
+            right: 22%;
+            top: 24%;
+            animation-delay: .7s;
         }
 
-        @keyframes seSummerSun {
-            0%,100% {
-                transform: scale(.8);
-                opacity: .4;
-            }
-
-            50% {
-                transform: scale(1.25);
-                opacity: .8;
-            }
+        .se-butterfly80-spark.spark3 {
+            left: 28%;
+            bottom: 27%;
+            animation-delay: 1.05s;
         }
 
-        @keyframes seSummerWave {
-            from {
-                opacity: 0;
-                transform: translateY(100px) scaleX(.4);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(100px) scaleX(1);
-            }
-        }
-
-        @keyframes seSummerSpark {
-            from {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
-
-        @keyframes seSummerFade {
-            0%,90% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-
-        @keyframes seConstellationStar {
-            from {
-                opacity: 0;
-                transform: scale(.1);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes seConstellationPulse {
-            0%,100% {
-                filter:
-                    drop-shadow(0 0 7px white)
-                    drop-shadow(0 0 18px rgba(150,170,255,.9));
-            }
-
-            50% {
-                filter:
-                    drop-shadow(0 0 12px white)
-                    drop-shadow(0 0 30px rgba(150,170,255,1));
-            }
-        }
-
-        @keyframes seConstellationLine {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: .8;
-            }
-        }
-
-        @keyframes seConstellationGlow {
-            0%,100% {
-                transform: scale(.8);
-                opacity: .3;
-            }
-
-            50% {
-                transform: scale(1.15);
-                opacity: .8;
-            }
-        }
-
-        @keyframes seConstellationFade {
-            0%,90% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+        .se-butterfly80-spark.spark4 {
+            right: 27%;
+            bottom: 23%;
+            animation-delay: 1.45s;
         }
 
 
@@ -1758,6 +1782,119 @@
             visibility: hidden !important;
             opacity: 0 !important;
             animation: none !important;
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — 10/10
+           ===================================================== */
+
+        @keyframes seStar10Appear {
+            0% {
+                opacity: 0;
+                transform:
+                    scale(.2)
+                    rotate(-90deg);
+            }
+
+            55% {
+                opacity: 1;
+                transform:
+                    scale(1.15)
+                    rotate(8deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    rotate(0deg);
+            }
+        }
+
+        @keyframes seStar10Float {
+            0%, 100% {
+                transform:
+                    translateY(0)
+                    rotate(-3deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(3deg);
+            }
+        }
+
+        @keyframes seStar10Glow {
+            0% {
+                opacity: 0;
+                transform:
+                    translateX(-50%)
+                    scale(.3);
+            }
+
+            35% {
+                opacity: .9;
+                transform:
+                    translateX(-50%)
+                    scale(1);
+            }
+
+            70% {
+                opacity: .5;
+                transform:
+                    translateX(-50%)
+                    scale(1.15);
+            }
+
+            100% {
+                opacity: .2;
+                transform:
+                    translateX(-50%)
+                    scale(1.3);
+            }
+        }
+
+        @keyframes seStar10Spark {
+            0%, 100% {
+                opacity: 0;
+                transform:
+                    scale(.25)
+                    rotate(-20deg);
+            }
+
+            45% {
+                opacity: 1;
+                transform:
+                    scale(1.15)
+                    rotate(20deg);
+            }
+
+            70% {
+                opacity: .3;
+                transform:
+                    scale(.7)
+                    rotate(45deg);
+            }
+        }
+
+        @keyframes seStar10Fade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2166,6 +2303,7 @@
             0% {
                 opacity: 0;
                 transform:
+                    translate(-50%, -50%)
                     scale(.35)
                     rotate(-14deg);
             }
@@ -2173,6 +2311,7 @@
             55% {
                 opacity: 1;
                 transform:
+                    translate(-50%, -50%)
                     scale(1.14)
                     rotate(4deg);
             }
@@ -2180,6 +2319,7 @@
             100% {
                 opacity: 1;
                 transform:
+                    translate(-50%, -50%)
                     scale(1)
                     rotate(0deg);
             }
@@ -2200,17 +2340,23 @@
         @keyframes seRoseAura {
             0% {
                 opacity: 0;
-                transform: scale(.45);
+                transform:
+                    translate(-50%, -50%)
+                    scale(.45);
             }
 
             45% {
                 opacity: .8;
-                transform: scale(1);
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
             }
 
             100% {
                 opacity: .2;
-                transform: scale(1.15);
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.15);
             }
         }
 
@@ -2332,6 +2478,7 @@
             0% {
                 opacity: 0;
                 transform:
+                    translateX(-50%)
                     scale(.2)
                     rotate(-15deg);
             }
@@ -2339,6 +2486,7 @@
             70% {
                 opacity: 1;
                 transform:
+                    translateX(-50%)
                     scale(1.08)
                     rotate(3deg);
             }
@@ -2346,6 +2494,7 @@
             100% {
                 opacity: 1;
                 transform:
+                    translateX(-50%)
                     scale(1)
                     rotate(0deg);
             }
@@ -2594,11 +2743,15 @@
 
         @keyframes sePinPulse {
             0%, 100% {
-                transform: scale(.9);
+                transform:
+                    translate(-50%, -50%)
+                    scale(.9);
             }
 
             50% {
-                transform: scale(1.15);
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.15);
             }
         }
 
@@ -2626,122 +2779,399 @@
            ANIMACIONES — ATARDECER OUTER BANKS
            ===================================================== */
 
-        @keyframes seSunsetEntrance {
-            0% {
-                opacity: 0;
-                transform:
-                    translateY(35px)
-                    scale(.62);
-            }
-
-            55% {
-                opacity: 1;
-                transform:
-                    translateY(-4px)
-                    scale(1.03);
-            }
-
-            100% {
-                opacity: 1;
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
-
-        @keyframes seSunsetSun {
-            0% {
-                opacity: 0;
-                transform:
-                    translateY(18px)
-                    scale(.65);
-            }
-
-            55% {
-                opacity: 1;
-                transform:
-                    translateY(0)
-                    scale(1.08);
-            }
-
-            100% {
-                opacity: 1;
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
-
-        @keyframes seSunsetWater {
+        @keyframes seSummerAppear {
             from {
+                opacity: 0;
                 transform:
-                    translateX(-7px);
+                    scale(.4)
+                    translateY(40px);
             }
 
             to {
+                opacity: 1;
                 transform:
-                    translateX(7px);
+                    scale(1)
+                    translateY(0);
             }
         }
 
-        @keyframes seBoatAppear {
+        @keyframes seSummerFloat {
+            0%,100% {
+                transform:
+                    translateY(0)
+                    rotate(-2deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(2deg);
+            }
+        }
+
+        @keyframes seSummerSun {
+            0%,100% {
+                transform:
+                    scale(.8);
+                opacity: .4;
+            }
+
+            50% {
+                transform:
+                    scale(1.25);
+                opacity: .8;
+            }
+        }
+
+        @keyframes seSummerWave {
+            from {
+                opacity: 0;
+                transform:
+                    translateX(-50%)
+                    translateY(100px)
+                    scaleX(.4);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateX(-50%)
+                    translateY(100px)
+                    scaleX(1);
+            }
+        }
+
+        @keyframes seSummerSpark {
+            from {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes seSummerFade {
+            0%,90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — 60/10
+           ===================================================== */
+
+        @keyframes seIceAppear {
             0% {
                 opacity: 0;
                 transform:
-                    translateY(18px)
-                    scale(.7);
+                    scale(.2)
+                    rotate(-45deg);
             }
 
             55% {
                 opacity: 1;
                 transform:
+                    scale(1.15)
+                    rotate(8deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    rotate(0deg);
+            }
+        }
+
+        @keyframes seIceFloat {
+            0%,100% {
+                transform:
+                    translateY(0)
+                    rotate(-3deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-13px)
+                    rotate(3deg);
+            }
+        }
+
+        @keyframes seIceGlow {
+            0% {
+                opacity: 0;
+                transform:
+                    translateX(-50%)
+                    scale(.3);
+            }
+
+            35% {
+                opacity: .9;
+                transform:
+                    translateX(-50%)
+                    scale(1);
+            }
+
+            70% {
+                opacity: .55;
+                transform:
+                    translateX(-50%)
+                    scale(1.15);
+            }
+
+            100% {
+                opacity: .2;
+                transform:
+                    translateX(-50%)
+                    scale(1.3);
+            }
+        }
+
+        @keyframes seIceShard {
+            0%,100% {
+                opacity: 0;
+                transform:
+                    scale(.25)
+                    translateY(5px)
+                    rotate(0deg);
+            }
+
+            45% {
+                opacity: 1;
+                transform:
+                    scale(1.15)
+                    translateY(-6px)
+                    rotate(45deg);
+            }
+
+            70% {
+                opacity: .25;
+                transform:
+                    scale(.65)
                     translateY(-2px)
-                    scale(1.03);
+                    rotate(90deg);
+            }
+        }
+
+        @keyframes seIceFade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — 80/10
+           ===================================================== */
+
+        @keyframes seButterflyAppear {
+            0% {
+                opacity: 0;
+                transform:
+                    scale(.3)
+                    translateY(50px);
+            }
+
+            55% {
+                opacity: 1;
+                transform:
+                    scale(1.12)
+                    translateY(-5px);
             }
 
             100% {
                 opacity: 1;
                 transform:
-                    translateY(0)
-                    scale(1);
+                    scale(1)
+                    translateY(0);
             }
         }
 
-        @keyframes seSailWave {
-            from {
+        @keyframes seButterflyFlight {
+            0%,100% {
                 transform:
-                    skewY(-2deg)
-                    rotate(-1deg);
+                    translate(0,0)
+                    rotate(-3deg);
             }
 
-            to {
+            25% {
                 transform:
-                    skewY(2deg)
-                    rotate(1deg);
+                    translate(22px,-17px)
+                    rotate(5deg);
+            }
+
+            50% {
+                transform:
+                    translate(0,-32px)
+                    rotate(-2deg);
+            }
+
+            75% {
+                transform:
+                    translate(-22px,-14px)
+                    rotate(5deg);
             }
         }
 
-        @keyframes seSunsetStar {
-            0%, 100% {
+        @keyframes seButterflyGlow {
+            0% {
                 opacity: 0;
                 transform:
-                    scale(.45)
-                    translateY(4px);
+                    translateX(-50%)
+                    scale(.3);
+            }
+
+            35% {
+                opacity: .85;
+                transform:
+                    translateX(-50%)
+                    scale(1);
+            }
+
+            70% {
+                opacity: .45;
+                transform:
+                    translateX(-50%)
+                    scale(1.15);
+            }
+
+            100% {
+                opacity: .18;
+                transform:
+                    translateX(-50%)
+                    scale(1.3);
+            }
+        }
+
+        @keyframes seButterflySpark {
+            0%,100% {
+                opacity: 0;
+                transform:
+                    scale(.2)
+                    translateY(5px);
             }
 
             50% {
                 opacity: 1;
                 transform:
                     scale(1.15)
-                    translateY(-4px);
+                    translateY(-7px);
             }
         }
 
-        @keyframes seSunsetFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            82% { opacity: 1; }
-            100% { opacity: 0; }
+        @keyframes seButterflyFade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ANIMACIONES — CONSTELACIÓN 100/10
+           ===================================================== */
+
+        @keyframes seConstellationStar {
+            from {
+                opacity: 0;
+                transform: scale(.1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes seConstellationPulse {
+            0%,100% {
+                filter:
+                    drop-shadow(0 0 7px white)
+                    drop-shadow(0 0 18px rgba(150,170,255,.9));
+            }
+
+            50% {
+                filter:
+                    drop-shadow(0 0 12px white)
+                    drop-shadow(0 0 30px rgba(150,170,255,1));
+            }
+        }
+
+        @keyframes seConstellationLine {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: .8;
+            }
+        }
+
+        @keyframes seConstellationGlow {
+            0%,100% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(.8);
+                opacity: .3;
+            }
+
+            50% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.15);
+                opacity: .8;
+            }
+        }
+
+        @keyframes seConstellationFade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2750,6 +3180,21 @@
            ===================================================== */
 
         @media (max-width: 600px) {
+
+            .se-star10 {
+                transform: scale(.82);
+                transform-origin: top center;
+            }
+
+            .se-ice60 {
+                transform: scale(.82);
+                transform-origin: top center;
+            }
+
+            .se-butterfly80 {
+                transform: scale(.82);
+                transform-origin: top center;
+            }
 
             .se-wardrobe-area {
                 transform: scale(.82);
@@ -2783,6 +3228,7 @@
 
             .se-summer90 {
                 transform: scale(.82);
+                transform-origin: top center;
             }
 
             .se-hp-flight {
@@ -2830,7 +3276,7 @@
 
 
         /* =====================================================
-           NARNIA — ESTRELLA
+           NARNIA — ESTRELLA 10/10
            ===================================================== */
 
         function createStar10() {
@@ -2858,7 +3304,7 @@
 
 
         /* =====================================================
-           NARNIA — CRISTAL HIELO
+           NARNIA — CRISTAL HIELO 60/10
            ===================================================== */
 
         function createIce60() {
@@ -2885,7 +3331,7 @@
 
 
         /* =====================================================
-           NARNIA — MARIPOSA
+           NARNIA — MARIPOSA 80/10
            ===================================================== */
 
         function createButterfly80() {
@@ -3120,7 +3566,7 @@
 
 
         /* =====================================================
-           CONSTELACIÓN
+           CONSTELACIÓN 100/10
            ===================================================== */
 
         function createConstellation100() {
