@@ -2012,721 +2012,374 @@
             <!-- ================================================= -->
             <!-- MINIJUEGO DE GALLETAS -->
             <!-- ================================================= -->
+<!-- ============================= -->
+<!-- MINIJUEGO DE GALLETITAS -->
+<!-- ============================= -->
 
-            <section
-                class="cookie-game"
-                id="cookieGame"
-                aria-hidden="true">
-
-                <div class="cookie-game-header">
-
-                    <div class="cookie-game-kicker">
-                        ✨ UNA ÚLTIMA SORPRESA ✨
-                    </div>
-
-                    <h3 class="cookie-game-title">
-                        La pequeña pastelería navideña 🍪
-                    </h3>
-
-                    <p class="cookie-game-subtitle">
-                        Ahora toca crear unas galletitas juntas.
-                        Tú eliges los ingredientes, las formas y la decoración. 💗
-                    </p>
-
-                </div>
-
-
-                <div class="cookie-game-progress" id="cookieGameProgress">
-
-                    <span class="cookie-game-progress-dot active"></span>
-                    <span class="cookie-game-progress-dot"></span>
-                    <span class="cookie-game-progress-dot"></span>
-                    <span class="cookie-game-progress-dot"></span>
-                    <span class="cookie-game-progress-dot"></span>
-
-                </div>
-
-
-                <!-- ================================================= -->
-                <!-- PASO 1 -->
-                <!-- ================================================= -->
-
-                <div class="cookie-game-step active" id="cookieGameStep1">
-
-                    <p class="cookie-game-instruction">
-                        <strong>Paso 1 · Preparar los ingredientes</strong><br>
-                        Toca todos los ingredientes para echarlos al bol. 🥣
-                    </p>
-
-                    <div class="cookie-game-layout">
-
-                        <div class="cookie-game-character">
-
-                            <div class="cookie-game-character-bubble">
-                                ¡Vamos a cocinar! 🎄🍪
-                            </div>
-
-                            <!-- PERSONAJE SVG -->
-                            <svg viewBox="0 0 220 300"
-                                 xmlns="http://www.w3.org/2000/svg"
-                                 aria-label="Pequeña chef navideña morena con gafas">
-
-                                <ellipse cx="110" cy="287" rx="65" ry="8"
-                                         fill="rgba(90,60,20,.13)"/>
-
-                                <path d="M62 164
-                                         Q110 145 158 164
-                                         L177 263
-                                         Q110 285 43 263 Z"
-                                      fill="#f7f1df"
-                                      stroke="#a8792c"
-                                      stroke-width="2"/>
-
-                                <path d="M91 147 Q110 160 129 147 L130 169
-                                         Q110 182 90 169Z"
-                                      fill="#f2d0a7"/>
-
-                                <path d="M57 78
-                                         Q52 39 82 25
-                                         Q110 8 140 25
-                                         Q170 40 163 82
-                                         L171 135
-                                         Q165 164 143 171
-                                         L77 171
-                                         Q55 160 50 135Z"
-                                      fill="#3b2925"/>
-
-                                <path d="M69 63
-                                         Q110 38 151 63
-                                         L148 119
-                                         Q141 148 110 154
-                                         Q79 148 72 119Z"
-                                      fill="#f2cda8"
-                                      stroke="#c58d5b"
-                                      stroke-width="1.5"/>
-
-                                <path d="M66 70
-                                         Q59 43 81 29
-                                         Q109 13 139 29
-                                         Q159 40 154 72
-                                         Q139 53 124 52
-                                         Q108 70 66 70Z"
-                                      fill="#3b2925"/>
-
-                                <path d="M70 67 Q53 82 61 127"
-                                      fill="none"
-                                      stroke="#3b2925"
-                                      stroke-width="15"
-                                      stroke-linecap="round"/>
-
-                                <path d="M151 67 Q168 82 160 128"
-                                      fill="none"
-                                      stroke="#3b2925"
-                                      stroke-width="15"
-                                      stroke-linecap="round"/>
-
-                                <rect x="74" y="79" width="31" height="21"
-                                      rx="8"
-                                      fill="rgba(255,255,255,.18)"
-                                      stroke="#55433c"
-                                      stroke-width="4"/>
-
-                                <rect x="115" y="79" width="31" height="21"
-                                      rx="8"
-                                      fill="rgba(255,255,255,.18)"
-                                      stroke="#55433c"
-                                      stroke-width="4"/>
-
-                                <path d="M105 87 Q110 83 115 87"
-                                      fill="none"
-                                      stroke="#55433c"
-                                      stroke-width="4"/>
-
-                                <circle cx="90" cy="89" r="3.5" fill="#392925"/>
-                                <circle cx="130" cy="89" r="3.5" fill="#392925"/>
-
-                                <path d="M81 74 Q91 69 100 74"
-                                      fill="none"
-                                      stroke="#50352d"
-                                      stroke-width="2.5"
-                                      stroke-linecap="round"/>
-
-                                <path d="M120 74 Q130 69 139 74"
-                                      fill="none"
-                                      stroke="#50352d"
-                                      stroke-width="2.5"
-                                      stroke-linecap="round"/>
-
-                                <path d="M108 91 Q104 104 110 106"
-                                      fill="none"
-                                      stroke="#c38b63"
-                                      stroke-width="2"
-                                      stroke-linecap="round"/>
-
-                                <path d="M101 116 Q110 123 119 116"
-                                      fill="none"
-                                      stroke="#a94d50"
-                                      stroke-width="2.5"
-                                      stroke-linecap="round"/>
-
-                                <ellipse cx="82" cy="108" rx="9" ry="4"
-                                         fill="#e9a39c" opacity=".5"/>
-
-                                <ellipse cx="138" cy="108" rx="9" ry="4"
-                                         fill="#e9a39c" opacity=".5"/>
-
-                                <g class="cookie-game-character-hat">
-
-                                    <path d="M70 51
-                                             Q57 44 62 31
-                                             Q67 17 82 24
-                                             Q85 8 100 15
-                                             Q111 0 122 15
-                                             Q139 7 141 24
-                                             Q157 17 162 33
-                                             Q166 47 150 53Z"
-                                          fill="#fffaf0"
-                                          stroke="#b78532"
-                                          stroke-width="2"/>
-
-                                    <path d="M65 48 Q110 59 155 48
-                                             L153 61 Q110 70 67 60Z"
-                                          fill="#c94755"/>
-
-                                    <path d="M72 50 Q110 60 148 50"
-                                          fill="none"
-                                          stroke="#f6d67b"
-                                          stroke-width="3"/>
-
-                                </g>
-
-                                <path d="M83 150 L110 165 L137 150
-                                         L132 178 Q110 188 88 178Z"
-                                      fill="#c94755"/>
-
-                                <path d="M68 176
-                                         Q110 188 152 176
-                                         L163 261
-                                         Q110 278 57 261Z"
-                                      fill="#fff8e8"
-                                      stroke="#c49543"
-                                      stroke-width="2"/>
-
-                                <path d="M88 223 Q110 215 132 223
-                                         L130 248 Q110 255 90 248Z"
-                                      fill="#f3d995"
-                                      stroke="#b98531"
-                                      stroke-width="2"/>
-
-                                <path d="M110 198
-                                         C101 187 84 198 110 215
-                                         C136 198 119 187 110 198Z"
-                                      fill="#df6670"/>
-
-                                <path d="M67 183 Q42 204 50 236"
-                                      fill="none"
-                                      stroke="#f2cda8"
-                                      stroke-width="16"
-                                      stroke-linecap="round"/>
-
-                                <g class="cookie-game-character-arm">
-                                    <path d="M153 183 Q177 203 169 234"
-                                          fill="none"
-                                          stroke="#f2cda8"
-                                          stroke-width="16"
-                                          stroke-linecap="round"/>
-                                </g>
-
-                                <path d="M66 260 Q47 269 51 280
-                                         Q63 287 91 278"
-                                      fill="#7b4e45"/>
-
-                                <path d="M129 278 Q157 287 169 280
-                                         Q173 269 154 260"
-                                      fill="#7b4e45"/>
-
-                                <circle cx="48" cy="30" r="3" fill="#d6a839"/>
-                                <circle cx="171" cy="54" r="3" fill="#d6a839"/>
+<div id="cookieGameOverlay" class="cookie-game-overlay">
 
-                            </svg>
+    <div id="cookieGame" class="cookie-game">
 
-                        </div>
+        <button type="button"
+                class="cookie-game-close"
+                onclick="closeCookieGame()">
+            ×
+        </button>
 
+        <div class="cookie-game-header">
+            <span class="cookie-game-kicker">MINI JUEGO</span>
+            <h2>🍪 Vamos a cocinar</h2>
+            <p id="cookieGameMessage">
+                Prepara unas galletitas deliciosas.
+            </p>
+        </div>
 
-                        <div class="cookie-game-kitchen">
+        <!-- PROGRESO -->
 
-                            <div class="cookie-game-table">
+        <div class="cookie-progress">
+            <span class="cookie-progress-dot active" data-step="1">1</span>
+            <span class="cookie-progress-line"></span>
+            <span class="cookie-progress-dot" data-step="2">2</span>
+            <span class="cookie-progress-line"></span>
+            <span class="cookie-progress-dot" data-step="3">3</span>
+            <span class="cookie-progress-line"></span>
+            <span class="cookie-progress-dot" data-step="4">4</span>
+            <span class="cookie-progress-line"></span>
+            <span class="cookie-progress-dot" data-step="5">5</span>
+        </div>
 
-                                <div class="cookie-game-ingredients">
 
-                                    <button
-                                        type="button"
-                                        class="cookie-game-ingredient"
-                                        data-cookie-ingredient="harina"
-                                        data-cookie-icon="🌾">
+        <!-- PERSONAJE -->
 
-                                        <span class="cookie-game-ingredient-icon">
-                                            🌾
-                                        </span>
+        <div class="cookie-character-area">
 
-                                        <span class="cookie-game-ingredient-name">
-                                            Harina
-                                        </span>
+            <div id="cookieCharacter"
+                 class="cookie-character">
 
-                                    </button>
+                <div class="character-hair"></div>
 
+                <div class="character-head">
 
-                                    <button
-                                        type="button"
-                                        class="cookie-game-ingredient"
-                                        data-cookie-ingredient="mantequilla"
-                                        data-cookie-icon="🧈">
+                    <div class="character-face">
 
-                                        <span class="cookie-game-ingredient-icon">
-                                            🧈
-                                        </span>
+                        <span class="character-eye left"></span>
+                        <span class="character-eye right"></span>
 
-                                        <span class="cookie-game-ingredient-name">
-                                            Mantequilla
-                                        </span>
+                        <span class="character-glasses left"></span>
+                        <span class="character-glasses right"></span>
+                        <span class="character-glasses-bridge"></span>
 
-                                    </button>
-
-
-                                    <button
-                                        type="button"
-                                        class="cookie-game-ingredient"
-                                        data-cookie-ingredient="azucar"
-                                        data-cookie-icon="🍚">
-
-                                        <span class="cookie-game-ingredient-icon">
-                                            🍚
-                                        </span>
-
-                                        <span class="cookie-game-ingredient-name">
-                                            Azúcar
-                                        </span>
-
-                                    </button>
-
-
-                                    <button
-                                        type="button"
-                                        class="cookie-game-ingredient"
-                                        data-cookie-ingredient="huevo"
-                                        data-cookie-icon="🥚">
-
-                                        <span class="cookie-game-ingredient-icon">
-                                            🥚
-                                        </span>
-
-                                        <span class="cookie-game-ingredient-name">
-                                            Huevo
-                                        </span>
-
-                                    </button>
-
-
-                                    <button
-                                        type="button"
-                                        class="cookie-game-ingredient"
-                                        data-cookie-ingredient="chocolate"
-                                        data-cookie-icon="🍫">
-
-                                        <span class="cookie-game-ingredient-icon">
-                                            🍫
-                                        </span>
-
-                                        <span class="cookie-game-ingredient-name">
-                                            Chocolate
-                                        </span>
-
-                                    </button>
-
-                                </div>
-
-
-                                <div class="cookie-game-bowl-area">
-
-                                    <div class="cookie-game-bowl">
-
-                                        <div
-                                            class="cookie-game-mixture"
-                                            id="cookieGameSmallMixture">
-                                        </div>
-
-                                        <div
-                                            class="cookie-game-bowl-count"
-                                            id="cookieGameBowlCount">
-                                            0 / 5
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        <span class="character-mouth"></span>
 
                     </div>
 
                 </div>
 
+                <div class="character-neck"></div>
 
-                <!-- ================================================= -->
-                <!-- PASO 2 -->
-                <!-- ================================================= -->
+                <div class="character-body">
 
-                <div class="cookie-game-step" id="cookieGameStep2">
-
-                    <p class="cookie-game-instruction">
-                        <strong>Paso 2 · Mezclar</strong><br>
-                        Toca el bol varias veces para mezclar todos los ingredientes. 🥣✨
-                    </p>
-
-                    <div
-                        class="cookie-game-mixing-area"
-                        id="cookieGameMixingArea">
-
-                        <div
-                            class="cookie-game-large-bowl"
-                            id="cookieGameLargeBowl">
-
-                            <div
-                                class="cookie-game-dough"
-                                id="cookieGameDough">
-                            </div>
-
-                            <div class="cookie-game-spoon"></div>
-
-                        </div>
-
-                        <div
-                            class="cookie-game-mix-count"
-                            id="cookieGameMixCount">
-                            0 / 12
-                        </div>
-
-                        <div class="cookie-game-mix-hint">
-                            ¡Sigue mezclando! 💗
-                        </div>
-
+                    <div class="character-apron">
+                        <span>🍪</span>
                     </div>
+
+                    <div class="character-arm left"></div>
+                    <div class="character-arm right"></div>
 
                 </div>
 
+            </div>
 
-                <!-- ================================================= -->
-                <!-- PASO 3 -->
-                <!-- ================================================= -->
-
-                <div class="cookie-game-step" id="cookieGameStep3">
-
-                    <p class="cookie-game-instruction">
-                        <strong>Paso 3 · Dar forma</strong><br>
-                        Elige las formas que quieres hacer y colócalas en la bandeja. 🍪
-                    </p>
-
-                    <div class="cookie-game-shape-buttons">
-
-                        <button
-                            type="button"
-                            class="cookie-game-shape-button"
-                            data-cookie-shape="heart">
-
-                            <span class="cookie-game-shape-icon">
-                                💗
-                            </span>
-
-                            Corazón
-
-                        </button>
-
-                        <button
-                            type="button"
-                            class="cookie-game-shape-button"
-                            data-cookie-shape="star">
-
-                            <span class="cookie-game-shape-icon">
-                                ⭐
-                            </span>
-
-                            Estrella
-
-                        </button>
-
-                        <button
-                            type="button"
-                            class="cookie-game-shape-button"
-                            data-cookie-shape="circle">
-
-                            <span class="cookie-game-shape-icon">
-                                🍪
-                            </span>
-
-                            Redonda
-
-                        </button>
-
-                    </div>
+        </div>
 
 
-                    <div
-                        class="cookie-game-tray"
-                        id="cookieGameShapeTray">
-                    </div>
+        <!-- PASO 1 -->
 
+        <section id="cookieStep1" class="cookie-step active">
 
-                    <button
-                        type="button"
-                        class="cookie-game-button"
-                        id="cookieGameBakeButton"
-                        disabled>
-                        Meter al horno 🔥
-                    </button>
+            <h3>🥣 Primero, los ingredientes</h3>
 
+            <p>
+                Pulsa sobre todos los ingredientes para echarlos al bol.
+            </p>
+
+            <div class="cookie-ingredients">
+
+                <button type="button"
+                        class="ingredient"
+                        data-ingredient="harina"
+                        onclick="addIngredient(this)">
+                    <span class="ingredient-icon">🌾</span>
+                    <span>Harina</span>
+                </button>
+
+                <button type="button"
+                        class="ingredient"
+                        data-ingredient="mantequilla"
+                        onclick="addIngredient(this)">
+                    <span class="ingredient-icon">🧈</span>
+                    <span>Mantequilla</span>
+                </button>
+
+                <button type="button"
+                        class="ingredient"
+                        data-ingredient="azucar"
+                        onclick="addIngredient(this)">
+                    <span class="ingredient-icon">🍚</span>
+                    <span>Azúcar</span>
+                </button>
+
+                <button type="button"
+                        class="ingredient"
+                        data-ingredient="huevo"
+                        onclick="addIngredient(this)">
+                    <span class="ingredient-icon">🥚</span>
+                    <span>Huevo</span>
+                </button>
+
+                <button type="button"
+                        class="ingredient"
+                        data-ingredient="chocolate"
+                        onclick="addIngredient(this)">
+                    <span class="ingredient-icon">🍫</span>
+                    <span>Chocolate</span>
+                </button>
+
+            </div>
+
+            <div class="cookie-bowl">
+                <div class="cookie-bowl-inside">
+                    <span id="ingredientCount">0/5</span>
                 </div>
-
-
-                <!-- ================================================= -->
-                <!-- PASO 4 -->
-                <!-- ================================================= -->
-
-                <div class="cookie-game-step" id="cookieGameStep4">
-
-                    <p class="cookie-game-instruction">
-                        <strong>Paso 4 · Hornear</strong><br>
-                        Las galletitas ya están en el horno. Ahora toca esperar... 🎄
-                    </p>
-
-
-                    <div class="cookie-game-oven-area">
-
-                        <div
-                            class="cookie-game-oven closed"
-                            id="cookieGameOven">
-
-                            <div class="cookie-game-oven-top">
-
-                                <span>🔥</span>
-
-                                <div
-                                    class="cookie-game-oven-display"
-                                    id="cookieGameOvenDisplay">
-                                    0%
-                                </div>
-
-                                <span>✨</span>
-
-                            </div>
-
-
-                            <div class="cookie-game-oven-handle"></div>
-
-
-                            <div class="cookie-game-oven-window">
-
-                                <div
-                                    class="cookie-game-tray"
-                                    id="cookieGameOvenTray">
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="cookie-game-baking-bar">
-
-                            <div
-                                class="cookie-game-baking-fill"
-                                id="cookieGameBakingFill">
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="cookie-game-baking-text"
-                            id="cookieGameBakingText">
-                            Horneando con mucho cariño... 💗
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ================================================= -->
-                <!-- PASO 5 -->
-                <!-- ================================================= -->
-
-                <div class="cookie-game-step" id="cookieGameStep5">
-
-                    <p class="cookie-game-instruction">
-                        <strong>Paso 5 · Decorar</strong><br>
-                        Elige tus toppings favoritos y toca las galletas para llenarlas de magia. ✨
-                    </p>
-
-
-                    <div class="cookie-game-decoration-area">
-
-                        <div class="cookie-game-toppings">
-
-                            <button
-                                type="button"
-                                class="cookie-game-topping"
-                                data-cookie-topping="chocolate">
-
-                                <span>🍫</span>
-                                Chocolate
-
-                            </button>
-
-                            <button
-                                type="button"
-                                class="cookie-game-topping"
-                                data-cookie-topping="glaseado">
-
-                                <span>🤍</span>
-                                Glaseado
-
-                            </button>
-
-                            <button
-                                type="button"
-                                class="cookie-game-topping"
-                                data-cookie-topping="virutas">
-
-                                <span>🌈</span>
-                                Virutas
-
-                            </button>
-
-                            <button
-                                type="button"
-                                class="cookie-game-topping"
-                                data-cookie-topping="corazon">
-
-                                <span>💗</span>
-                                Corazones
-
-                            </button>
-
-                            <button
-                                type="button"
-                                class="cookie-game-topping"
-                                data-cookie-topping="estrella">
-
-                                <span>⭐</span>
-                                Estrellas
-
-                            </button>
-
-                        </div>
-
-
-                        <div
-                            class="cookie-game-decoration-tray"
-                            id="cookieGameDecorationTray">
-                        </div>
-
-
-                        <div
-                            class="cookie-game-decoration-counter"
-                            id="cookieGameDecorationCounter">
-                            Decoraciones: 0
-                        </div>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="cookie-game-button"
-                        id="cookieGameFinishButton"
-                        disabled>
-                        Terminar galletitas ✨
-                    </button>
-
-                </div>
-
-
-                <!-- ================================================= -->
-                <!-- RESULTADO -->
-                <!-- ================================================= -->
-
-                <div
-                    class="cookie-game-result"
-                    id="cookieGameResult">
-
-                    <div class="cookie-game-final-hearts">
-                        ✨ 💗 ✨
-                    </div>
-
-                    <h3 class="cookie-game-result-title">
-                        ¡Lo has conseguido! 🍪
-                    </h3>
-
-                    <p class="cookie-game-result-text">
-                        ¡Has creado tus propias galletitas! 🍪💗
-                        <br>
-                        Nuestra pequeña chef navideña está
-                        oficialmente orgullosa de ti.
-                    </p>
-
-
-                    <div class="cookie-game-result-cookies">
-
-                        <div class="cookie-game-result-cookie">
-                        </div>
-
-                        <div class="cookie-game-result-cookie">
-                        </div>
-
-                        <div class="cookie-game-result-cookie">
-                        </div>
-
-                    </div>
-
-
-                    <div class="cookie-game-message">
-                        Una receta hecha con cariño,
-                        chocolate y muchísimas ganas de celebrar. 🎄💗
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="cookie-game-button"
-                        id="cookieGameRestartButton">
-                        Volver a jugar 🍪
-                    </button>
-
-                </div>
-
-            </section>
+            </div>
 
         </section>
 
-    </main>
+
+        <!-- PASO 2 -->
+
+        <section id="cookieStep2" class="cookie-step">
+
+            <h3>🥄 ¡A mezclar!</h3>
+
+            <p>
+                Pulsa el bol varias veces para preparar la masa.
+            </p>
+
+            <button type="button"
+                    id="mixButton"
+                    class="mix-button"
+                    onclick="mixCookieDough()">
+
+                <span class="mix-bowl">🥣</span>
+                <span>MEZCLAR</span>
+
+            </button>
+
+            <div class="mix-progress">
+
+                <div class="mix-progress-bar">
+                    <div id="mixProgressFill"></div>
+                </div>
+
+                <span id="mixCount">
+                    0 / 12
+                </span>
+
+            </div>
+
+        </section>
 
 
-    <!-- NAVEGACIÓN -->
+        <!-- PASO 3 -->
 
-    <div class="navigation">
+        <section id="cookieStep3" class="cookie-step">
 
-        <button id="prevButton" onclick="previousSlide()">
-            ←
-        </button>
+            <h3>⭐ Dale forma a las galletas</h3>
 
-        <button id="nextButton" onclick="nextSlide()">
-            →
-        </button>
+            <p>
+                Elige una forma y crea tres galletitas.
+            </p>
+
+            <div class="cookie-shapes">
+
+                <button type="button"
+                        class="shape-button"
+                        onclick="createCookie('heart')">
+                    ❤️
+                    <small>Corazón</small>
+                </button>
+
+                <button type="button"
+                        class="shape-button"
+                        onclick="createCookie('star')">
+                    ⭐
+                    <small>Estrella</small>
+                </button>
+
+                <button type="button"
+                        class="shape-button"
+                        onclick="createCookie('circle')">
+                    🍪
+                    <small>Redonda</small>
+                </button>
+
+            </div>
+
+            <div id="createdCookies"
+                 class="created-cookies">
+            </div>
+
+            <p id="cookieShapeMessage"
+               class="cookie-small-message">
+                0 / 3 galletitas
+            </p>
+
+        </section>
+
+
+        <!-- PASO 4 -->
+
+        <section id="cookieStep4" class="cookie-step">
+
+            <h3>🔥 Al horno</h3>
+
+            <p>
+                Espera a que las galletitas estén perfectamente hechas.
+            </p>
+
+            <div class="cookie-oven">
+
+                <div class="oven-top">
+                    <span>🔥</span>
+                    <span>HORNO</span>
+                    <span>🔥</span>
+                </div>
+
+                <div class="oven-window">
+
+                    <div id="ovenCookies"
+                         class="oven-cookies">
+                        🍪 🍪 🍪
+                    </div>
+
+                </div>
+
+                <div class="oven-handle"></div>
+
+            </div>
+
+            <div class="oven-progress">
+
+                <div class="oven-progress-bar">
+                    <div id="ovenProgressFill"></div>
+                </div>
+
+                <span id="ovenProgressText">
+                    0%
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- PASO 5 -->
+
+        <section id="cookieStep5" class="cookie-step">
+
+            <h3>✨ ¡Hora de decorar!</h3>
+
+            <p>
+                Elige un topping y pulsa sobre cada galletita.
+            </p>
+
+            <div class="toppings">
+
+                <button type="button"
+                        class="topping-button active"
+                        data-topping="sprinkles"
+                        onclick="selectTopping(this)">
+                    🌈
+                    <small>Virutas</small>
+                </button>
+
+                <button type="button"
+                        class="topping-button"
+                        data-topping="chocolate"
+                        onclick="selectTopping(this)">
+                    🍫
+                    <small>Chocolate</small>
+                </button>
+
+                <button type="button"
+                        class="topping-button"
+                        data-topping="heart"
+                        onclick="selectTopping(this)">
+                    💗
+                    <small>Corazones</small>
+                </button>
+
+                <button type="button"
+                        class="topping-button"
+                        data-topping="star"
+                        onclick="selectTopping(this)">
+                    ⭐
+                    <small>Estrellas</small>
+                </button>
+
+            </div>
+
+            <div id="decorateCookies"
+                 class="decorate-cookies">
+            </div>
+
+            <p id="decorationMessage"
+               class="cookie-small-message">
+                0 / 3 decoradas
+            </p>
+
+        </section>
+
+
+        <!-- RESULTADO -->
+
+        <section id="cookieResult"
+                 class="cookie-step cookie-result">
+
+            <div class="result-character">
+                👩🏻‍🍳
+            </div>
+
+            <div class="result-cookies">
+                🍪 🍪 🍪
+            </div>
+
+            <h3>💗 ¡Galletitas terminadas!</h3>
+
+            <p>
+                Han quedado deliciosas.
+            </p>
+
+            <div class="final-rating">
+                100/10 ✨
+            </div>
+
+            <p class="result-message">
+                Hechas con muchísimo cariño.
+            </p>
+
+            <button type="button"
+                    class="restart-cookie-game"
+                    onclick="restartCookieGame()">
+                🍪 VOLVER A COCINAR
+            </button>
+
+        </section>
 
     </div>
 
+</div>
 
     <script src="script.js"></script>
     <script src="special-effects.js"></script>
