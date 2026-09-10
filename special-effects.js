@@ -92,16 +92,12 @@
                 drop-shadow(0 0 12px rgba(255,240,150,.8))
                 drop-shadow(0 0 28px rgba(160,210,255,.7));
             animation:
-                seStar10Appear
-                1.05s
-                cubic-bezier(.2,.8,.2,1)
-                .1s
-                forwards,
-                seStar10Float
-                2.4s
+                seStar10Main
+                3.1s
                 ease-in-out
-                1.2s
-                infinite;
+                .05s
+                forwards;
+            will-change: transform, opacity;
         }
 
         .se-star10-spark {
@@ -1612,16 +1608,12 @@
                 drop-shadow(0 0 12px rgba(200,245,255,.9))
                 drop-shadow(0 0 30px rgba(100,190,255,.75));
             animation:
-                seIceAppear
-                1.05s
-                cubic-bezier(.2,.8,.2,1)
-                .1s
-                forwards,
-                seIceFloat
-                2.5s
+                seIceMain
+                3.3s
                 ease-in-out
-                1.15s
-                infinite;
+                .05s
+                forwards;
+            will-change: transform, opacity;
         }
 
         .se-ice60-shard {
@@ -1719,16 +1711,12 @@
                 drop-shadow(0 0 13px rgba(255,190,240,.8))
                 drop-shadow(0 0 25px rgba(170,180,255,.65));
             animation:
-                seButterflyAppear
-                1.05s
-                cubic-bezier(.2,.8,.2,1)
-                .1s
-                forwards,
-                seButterflyFlight
-                3.2s
+                seButterflyMain
+                3.7s
                 ease-in-out
-                1.2s
-                infinite;
+                .05s
+                forwards;
+            will-change: transform, opacity;
         }
 
         .se-butterfly80-spark {
@@ -1789,40 +1777,68 @@
            ANIMACIONES — 10/10
            ===================================================== */
 
-        @keyframes seStar10Appear {
+        @keyframes seStar10Main {
+
             0% {
                 opacity: 0;
                 transform:
                     scale(.2)
-                    rotate(-90deg);
+                    rotate(-90deg)
+                    translateY(15px);
             }
 
-            55% {
+            18% {
                 opacity: 1;
                 transform:
                     scale(1.15)
-                    rotate(8deg);
+                    rotate(8deg)
+                    translateY(0);
             }
 
-            100% {
+            32% {
                 opacity: 1;
                 transform:
                     scale(1)
-                    rotate(0deg);
-            }
-        }
-
-        @keyframes seStar10Float {
-            0%, 100% {
-                transform:
-                    translateY(0)
-                    rotate(-3deg);
+                    rotate(0deg)
+                    translateY(0);
             }
 
-            50% {
+            45% {
                 transform:
-                    translateY(-12px)
-                    rotate(3deg);
+                    scale(1)
+                    rotate(-3deg)
+                    translateY(0);
+            }
+
+            60% {
+                transform:
+                    scale(1.02)
+                    rotate(3deg)
+                    translateY(-12px);
+            }
+
+            78% {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    rotate(-2deg)
+                    translateY(0);
+            }
+
+            92% {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    rotate(0deg)
+                    translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    scale(.92)
+                    rotate(0deg)
+                    translateY(-4px);
             }
         }
 
@@ -2870,40 +2886,68 @@
            ANIMACIONES — 60/10
            ===================================================== */
 
-        @keyframes seIceAppear {
+        @keyframes seIceMain {
+
             0% {
                 opacity: 0;
                 transform:
                     scale(.2)
-                    rotate(-45deg);
+                    rotate(-45deg)
+                    translateY(20px);
             }
 
-            55% {
+            18% {
                 opacity: 1;
                 transform:
                     scale(1.15)
-                    rotate(8deg);
+                    rotate(8deg)
+                    translateY(0);
             }
 
-            100% {
+            32% {
                 opacity: 1;
                 transform:
                     scale(1)
-                    rotate(0deg);
-            }
-        }
-
-        @keyframes seIceFloat {
-            0%,100% {
-                transform:
-                    translateY(0)
-                    rotate(-3deg);
+                    rotate(0deg)
+                    translateY(0);
             }
 
-            50% {
+            48% {
                 transform:
-                    translateY(-13px)
-                    rotate(3deg);
+                    scale(1)
+                    rotate(-3deg)
+                    translateY(0);
+            }
+
+            63% {
+                transform:
+                    scale(1.03)
+                    rotate(3deg)
+                    translateY(-13px);
+            }
+
+            80% {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    rotate(-2deg)
+                    translateY(0);
+            }
+
+            92% {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    rotate(0deg)
+                    translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    scale(.92)
+                    rotate(0deg)
+                    translateY(-5px);
             }
         }
 
@@ -2986,52 +3030,68 @@
            ANIMACIONES — 80/10
            ===================================================== */
 
-        @keyframes seButterflyAppear {
+        @keyframes seButterflyMain {
+
             0% {
                 opacity: 0;
                 transform:
                     scale(.3)
-                    translateY(50px);
+                    translateY(50px)
+                    rotate(-5deg);
             }
 
-            55% {
+            18% {
                 opacity: 1;
                 transform:
                     scale(1.12)
-                    translateY(-5px);
+                    translateY(-5px)
+                    rotate(3deg);
             }
 
-            100% {
+            32% {
                 opacity: 1;
                 transform:
                     scale(1)
-                    translateY(0);
-            }
-        }
-
-        @keyframes seButterflyFlight {
-            0%,100% {
-                transform:
-                    translate(0,0)
-                    rotate(-3deg);
+                    translateY(0)
+                    rotate(0deg);
             }
 
-            25% {
+            48% {
                 transform:
                     translate(22px,-17px)
-                    rotate(5deg);
+                    rotate(5deg)
+                    scale(1);
             }
 
-            50% {
+            64% {
                 transform:
                     translate(0,-32px)
-                    rotate(-2deg);
+                    rotate(-2deg)
+                    scale(1.02);
             }
 
-            75% {
+            80% {
+                opacity: 1;
                 transform:
                     translate(-22px,-14px)
-                    rotate(5deg);
+                    rotate(5deg)
+                    scale(1);
+            }
+
+            92% {
+                opacity: 1;
+                transform:
+                    translate(0,0)
+                    rotate(-2deg)
+                    scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    translate(0,-4px)
+                    rotate(0deg)
+                    scale(.92);
             }
         }
 
