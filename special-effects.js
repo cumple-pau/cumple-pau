@@ -118,285 +118,292 @@
                 linear-gradient(
                     90deg,
                     #3a2114 0%,
-                    #5b351f 18%,
-                    #70452a 50%,
-                    #4b2a18 82%,
-                    #2d190f 100%
+                    #70462a 10%,
+                    #52301d 45%,
+                    #70462a 90%,
+                    #351d12 100%
                 );
             box-shadow:
-                0 15px 35px rgba(0,0,0,.35),
-                inset 0 0 0 5px rgba(255,220,170,.16);
-            transform-style: preserve-3d;
+                0 16px 35px rgba(0,0,0,.45),
+                inset 0 0 0 5px rgba(25,12,6,.5);
         }
 
-        .se-wardrobe::before {
-            content: "";
+        .se-wardrobe-inside {
             position: absolute;
-            inset: 8px;
-            border: 2px solid rgba(255,224,180,.2);
+            inset: 9px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(255,255,255,.98),
+                    rgba(166,220,255,.55) 42%,
+                    rgba(36,72,92,.9) 100%
+                );
+            box-shadow:
+                inset 0 0 38px rgba(255,255,255,.65);
+            font-size: 30px;
+        }
+
+        .se-door {
+            position: absolute;
+            top: 5px;
+            width: 72px;
+            height: 195px;
             border-radius: 5px;
-        }
-
-        .se-wardrobe-door {
-            position: absolute;
-            top: 10px;
-            bottom: 10px;
-            width: 69px;
             background:
                 linear-gradient(
                     90deg,
-                    #4a2817,
-                    #71472b,
-                    #4b2918
+                    #321b10,
+                    #71472a 17%,
+                    #4b2b1a 50%,
+                    #70452a 83%,
+                    #2e190e
                 );
-            border: 2px solid rgba(255,220,175,.2);
+            border: 3px solid #25130a;
+            box-shadow:
+                inset 0 0 0 3px rgba(255,255,255,.05);
             transform-style: preserve-3d;
-            backface-visibility: visible;
+            backface-visibility: hidden;
         }
 
-        .se-wardrobe-door.left {
-            left: 7px;
-            transform-origin: left center;
-            animation:
-                seDoorLeft
-                1.6s
-                cubic-bezier(.2,.8,.2,1)
-                .7s
-                forwards;
+        .se-door::before {
+            content: "";
+            position: absolute;
+            inset: 13px;
+            border: 2px solid rgba(20,10,5,.5);
+            border-radius: 3px;
         }
 
-        .se-wardrobe-door.right {
-            right: 7px;
-            transform-origin: right center;
-            animation:
-                seDoorRight
-                1.6s
-                cubic-bezier(.2,.8,.2,1)
-                .7s
-                forwards;
-        }
-
-        .se-wardrobe-door::after {
+        .se-door::after {
             content: "";
             position: absolute;
             width: 7px;
             height: 7px;
             top: 50%;
             border-radius: 50%;
-            background: #d6b36a;
-            box-shadow: 0 0 8px rgba(255,225,150,.8);
+            background: #d7ad52;
+            box-shadow:
+                0 0 8px rgba(255,215,110,.85);
         }
 
-        .se-wardrobe-door.left::after {
-            right: 6px;
+        .se-door-left {
+            left: 2px;
+            transform-origin: left center;
+            z-index: 3;
+            animation:
+                seDoorLeft
+                1.35s
+                cubic-bezier(.15,.85,.15,1)
+                .45s
+                forwards;
         }
 
-        .se-wardrobe-door.right::after {
-            left: 6px;
+        .se-door-left::after {
+            right: 8px;
         }
 
-        .se-wardrobe-snow {
+        .se-door-right {
+            right: 2px;
+            transform-origin: right center;
+            z-index: 3;
+            animation:
+                seDoorRight
+                1.35s
+                cubic-bezier(.15,.85,.15,1)
+                .45s
+                forwards;
+        }
+
+        .se-door-right::after {
+            left: 8px;
+        }
+
+        .se-snow {
             position: absolute;
-            font-size: 14px;
-            color: white;
-            text-shadow: 0 0 7px white;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
             opacity: 0;
             animation:
                 seSnow
-                2.8s
-                linear
+                1.8s
+                ease-in-out
                 infinite;
         }
 
-        .se-wardrobe-snow.s1 {
-            left: 25%;
-            animation-delay: .4s;
-        }
-
-        .se-wardrobe-snow.s2 {
-            left: 45%;
-            animation-delay: 1.1s;
-        }
-
-        .se-wardrobe-snow.s3 {
-            left: 68%;
-            animation-delay: .8s;
-        }
-
-        .se-wardrobe-snow.s4 {
-            left: 82%;
-            animation-delay: 1.7s;
-        }
+        .se-snow:nth-child(1) { left: 8%; animation-delay: .1s; }
+        .se-snow:nth-child(2) { left: 22%; animation-delay: .6s; }
+        .se-snow:nth-child(3) { left: 38%; animation-delay: .25s; }
+        .se-snow:nth-child(4) { left: 56%; animation-delay: .9s; }
+        .se-snow:nth-child(5) { left: 74%; animation-delay: .45s; }
+        .se-snow:nth-child(6) { left: 90%; animation-delay: 1s; }
 
 
         /* =====================================================
-           FAROLA
+           NARNIA — FAROLA
            ===================================================== */
+
+        .se-narnia-lamp {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 6vh;
+            animation: seLampFade 3s ease forwards;
+        }
 
         .se-lamp-scene {
             position: relative;
-            width: 190px;
-            height: 300px;
-            margin: 0 auto;
+            width: 150px;
+            height: 275px;
+            transform:
+                translateY(25px)
+                scale(.75);
+            opacity: 0;
             animation:
                 seLampEntrance
-                1s
+                1.15s
                 cubic-bezier(.2,.8,.2,1)
+                .1s
                 forwards;
         }
 
         .se-lamp-glow {
             position: absolute;
-            width: 170px;
-            height: 170px;
-            left: 10px;
-            top: 5px;
+            left: 20px;
+            top: 10px;
+            width: 110px;
+            height: 145px;
             border-radius: 50%;
             background:
                 radial-gradient(
-                    circle,
-                    rgba(255,242,180,.8),
-                    rgba(255,205,100,.3) 38%,
-                    transparent 72%
+                    ellipse,
+                    rgba(255,245,190,.95) 0%,
+                    rgba(255,224,125,.55) 25%,
+                    rgba(180,210,255,.2) 55%,
+                    transparent 75%
                 );
-            filter: blur(8px);
+            filter: blur(9px);
             opacity: 0;
             animation:
                 seLampGlow
-                2.5s
+                2.4s
                 ease-in-out
-                .4s
+                .55s
                 forwards;
         }
 
         .se-lamp-post {
             position: absolute;
-            left: 50%;
-            bottom: 5px;
-            width: 13px;
-            height: 235px;
-            transform: translateX(-50%);
-            border-radius: 8px;
+            left: 68px;
+            top: 75px;
+            width: 14px;
+            height: 165px;
+            border-radius: 5px;
             background:
                 linear-gradient(
                     90deg,
-                    #222,
-                    #555,
-                    #1b1b1b
+                    #1b2020,
+                    #555b58 25%,
+                    #292e2d 55%,
+                    #101414
                 );
-            box-shadow: 4px 0 10px rgba(0,0,0,.2);
+            box-shadow:
+                4px 8px 12px rgba(0,0,0,.35);
         }
 
         .se-lamp-base {
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 80px;
-            height: 15px;
-            transform: translateX(-50%);
+            left: 47px;
+            bottom: 22px;
+            width: 56px;
+            height: 14px;
             border-radius: 50%;
-            background: #272727;
-            box-shadow: 0 5px 10px rgba(0,0,0,.25);
+            background:
+                linear-gradient(
+                    90deg,
+                    #151918,
+                    #555b58,
+                    #151918
+                );
+            box-shadow:
+                0 6px 12px rgba(0,0,0,.4);
         }
 
         .se-lamp-top {
             position: absolute;
-            left: 50%;
-            top: 35px;
-            width: 82px;
-            height: 75px;
-            transform: translateX(-50%);
-        }
-
-        .se-lamp-roof {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 95px;
-            height: 25px;
-            transform: translateX(-50%);
-            clip-path: polygon(
-                50% 0,
-                100% 100%,
-                0 100%
-            );
+            left: 48px;
+            top: 48px;
+            width: 54px;
+            height: 42px;
+            border-radius: 9px 9px 5px 5px;
             background:
                 linear-gradient(
                     90deg,
-                    #202020,
-                    #555,
-                    #202020
+                    #202524,
+                    #626764 25%,
+                    #292e2c 60%,
+                    #141817
                 );
+            border:
+                2px solid #171b1a;
+            box-shadow:
+                0 7px 12px rgba(0,0,0,.35);
         }
 
         .se-lamp-glass {
             position: absolute;
-            left: 50%;
-            top: 20px;
-            width: 58px;
-            height: 50px;
-            transform: translateX(-50%);
-            border-radius: 10px 10px 15px 15px;
+            left: 8px;
+            top: 8px;
+            width: 34px;
+            height: 25px;
+            border-radius: 5px;
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,250,190,.95),
-                    rgba(255,206,80,.55) 45%,
-                    rgba(255,170,50,.15)
+                    #fff5ba,
+                    #ffd76a 45%,
+                    #c58b28 100%
                 );
-            border: 3px solid #292929;
             box-shadow:
-                0 0 25px rgba(255,210,90,.75);
-            animation:
-                seLampFlicker
-                1.8s
-                ease-in-out
-                .8s
-                infinite alternate;
+                0 0 18px rgba(255,215,100,.85);
+        }
+
+        .se-lamp-cap {
+            position: absolute;
+            left: 42px;
+            top: 40px;
+            width: 66px;
+            height: 8px;
+            border-radius: 50%;
+            background: #292d2b;
         }
 
         .se-lamp-arm {
             position: absolute;
-            top: 75px;
-            left: 50%;
-            width: 78px;
-            height: 10px;
-            transform: translateX(-50%);
-            border-radius: 10px;
-            background: #292929;
+            left: 76px;
+            top: 40px;
+            width: 8px;
+            height: 32px;
+            background: #292d2b;
+            border-radius: 4px;
         }
 
         .se-lamp-snow {
             position: absolute;
-            font-size: 13px;
-            color: white;
-            text-shadow: 0 0 7px white;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
             opacity: 0;
             animation:
                 seLampSnow
-                3.5s
-                linear
+                2.2s
+                ease-in-out
                 infinite;
-        }
-
-        .se-lamp-snow.s1 {
-            left: 12%;
-            animation-delay: .2s;
-        }
-
-        .se-lamp-snow.s2 {
-            left: 30%;
-            animation-delay: 1.2s;
-        }
-
-        .se-lamp-snow.s3 {
-            left: 55%;
-            animation-delay: .6s;
-        }
-
-        .se-lamp-snow.s4 {
-            left: 76%;
-            animation-delay: 1.8s;
         }
 
 
@@ -406,72 +413,66 @@
 
         .se-aslan-scene {
             position: relative;
-            width: 220px;
-            height: 250px;
-            margin: 0 auto;
+            width: 230px;
+            height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             animation:
                 seAslanEntrance
-                1.1s
+                1.15s
                 cubic-bezier(.2,.8,.2,1)
                 forwards;
         }
 
         .se-aslan-aura {
             position: absolute;
-            left: 50%;
-            top: 30px;
-            width: 190px;
-            height: 190px;
-            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,236,155,.8),
-                    rgba(255,190,70,.25) 45%,
+                    rgba(255,225,120,.6),
+                    rgba(255,190,50,.18) 45%,
                     transparent 72%
                 );
-            filter: blur(7px);
+            filter: blur(10px);
             opacity: 0;
             animation:
                 seAslanAura
                 2.8s
                 ease-out
-                .25s
+                .15s
                 forwards;
         }
 
-        .se-aslan {
-            position: absolute;
-            left: 50%;
-            top: 42px;
-            transform: translateX(-50%);
-            font-size: 125px;
+        .se-aslan-main {
+            position: relative;
+            z-index: 2;
+            font-size: 95px;
             line-height: 1;
             filter:
-                drop-shadow(0 8px 12px rgba(0,0,0,.25))
-                drop-shadow(0 0 14px rgba(255,218,120,.4));
+                drop-shadow(0 8px 15px rgba(0,0,0,.35))
+                drop-shadow(0 0 18px rgba(255,220,110,.65));
             animation:
                 seAslanRise
-                1.2s
+                1.15s
                 cubic-bezier(.2,.8,.2,1)
-                .15s
+                .1s
                 forwards;
         }
 
         .se-aslan-ring {
             position: absolute;
-            left: 50%;
-            top: 52%;
-            width: 100px;
-            height: 100px;
-            transform: translate(-50%,-50%);
-            border: 2px solid rgba(255,225,130,.65);
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
+            border: 2px solid rgba(255,220,120,.7);
             opacity: 0;
             animation:
                 seAslanRing
-                2.6s
+                2.4s
                 ease-out
                 .5s
                 forwards;
@@ -479,40 +480,37 @@
 
         .se-aslan-spark {
             position: absolute;
-            font-size: 18px;
-            color: #fff4bd;
-            text-shadow:
-                0 0 7px white,
-                0 0 15px rgba(255,210,80,.9);
+            font-size: 20px;
+            color: #fff5bf;
             opacity: 0;
             animation:
                 seAslanSpark
-                2s
+                1.8s
                 ease-in-out
                 infinite;
         }
 
-        .se-aslan-spark.s1 {
-            left: 20px;
-            top: 55px;
-            animation-delay: .3s;
+        .se-aslan-spark:nth-child(1) {
+            left: 18%;
+            top: 25%;
+            animation-delay: .4s;
         }
 
-        .se-aslan-spark.s2 {
-            right: 15px;
-            top: 90px;
-            animation-delay: .8s;
+        .se-aslan-spark:nth-child(2) {
+            right: 15%;
+            top: 35%;
+            animation-delay: .9s;
         }
 
-        .se-aslan-spark.s3 {
-            left: 45px;
-            bottom: 45px;
+        .se-aslan-spark:nth-child(3) {
+            left: 27%;
+            bottom: 20%;
             animation-delay: 1.2s;
         }
 
-        .se-aslan-spark.s4 {
-            right: 42px;
-            bottom: 35px;
+        .se-aslan-spark:nth-child(4) {
+            right: 27%;
+            bottom: 25%;
             animation-delay: 1.6s;
         }
 
@@ -524,80 +522,112 @@
         .se-bella {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 6vh;
+            animation:
+                seBellaFade
+                3s
+                ease
+                forwards;
         }
 
         .se-rose-container {
             position: relative;
-            width: 180px;
-            height: 230px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 190px;
+            height: 210px;
+            will-change: transform;
+            animation:
+                seRoseEntrance
+                1.15s
+                cubic-bezier(.2,.8,.2,1)
+                forwards,
+                seRoseFloatContainer
+                2.2s
+                ease-in-out
+                1.3s
+                infinite;
         }
 
         .se-rose-glow {
             position: absolute;
-            width: 180px;
-            height: 180px;
+            left: 50%;
+            top: 50%;
+            width: 150px;
+            height: 150px;
+            transform: translate(-50%, -50%);
             border-radius: 50%;
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,120,150,.45),
-                    transparent 70%
+                    rgba(255,80,120,.45),
+                    rgba(255,40,90,.15) 45%,
+                    transparent 75%
                 );
-            filter: blur(8px);
+            filter: blur(12px);
+            opacity: 0;
             animation:
                 seRoseAura
-                2.8s
-                ease-in-out
-                infinite;
+                2.4s
+                ease-out
+                .2s
+                forwards;
         }
 
         .se-rose {
-            position: relative;
-            z-index: 2;
-            font-size: 105px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform:
+                translate(-50%, -50%)
+                scale(.35)
+                rotate(-14deg);
+            font-size: 90px;
             line-height: 1;
+            opacity: 0;
             filter:
-                drop-shadow(0 7px 10px rgba(80,0,20,.3))
-                drop-shadow(0 0 18px rgba(255,100,140,.35));
+                drop-shadow(0 8px 16px rgba(0,0,0,.25))
+                drop-shadow(0 0 15px rgba(255,60,100,.6));
+            animation:
+                seRoseBloom
+                1.05s
+                cubic-bezier(.2,.8,.2,1)
+                .15s
+                forwards;
         }
 
         .se-rose-petal {
             position: absolute;
-            font-size: 18px;
-            color: #ff9ab0;
-            text-shadow: 0 0 8px rgba(255,100,140,.8);
+            color: #ffb5c5;
+            font-size: 19px;
+            opacity: 0;
             animation:
                 seRoseSpark
-                2.2s
+                1.7s
                 ease-in-out
                 infinite;
         }
 
+        .se-rose-petal:nth-child(2) {
+            left: 17%;
+            top: 30%;
+            animation-delay: .3s;
+        }
+
         .se-rose-petal:nth-child(3) {
-            left: 15px;
-            top: 45px;
-            animation-delay: .2s;
+            right: 15%;
+            top: 27%;
+            animation-delay: .8s;
         }
 
         .se-rose-petal:nth-child(4) {
-            right: 15px;
-            top: 75px;
-            animation-delay: .7s;
-        }
-
-        .se-rose-petal:nth-child(5) {
-            left: 35px;
-            bottom: 35px;
+            left: 24%;
+            bottom: 22%;
             animation-delay: 1.1s;
         }
 
-        .se-rose-petal:nth-child(6) {
-            right: 30px;
-            bottom: 50px;
+        .se-rose-petal:nth-child(5) {
+            right: 22%;
+            bottom: 28%;
             animation-delay: 1.5s;
         }
 
@@ -609,216 +639,266 @@
         .se-bridgerton {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 8vh;
+            animation:
+                seLetterFade
+                3.1s
+                ease
+                forwards;
         }
 
         .se-letter-scene {
             position: relative;
-            width: 240px;
-            height: 220px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .se-letter-glow {
-            position: absolute;
-            width: 230px;
+            width: 220px;
             height: 180px;
-            border-radius: 50%;
-            background:
-                radial-gradient(
-                    ellipse,
-                    rgba(255,214,120,.45),
-                    transparent 70%
-                );
-            filter: blur(8px);
-            animation:
-                seLetterGlow
-                2.5s
-                ease-in-out
-                infinite alternate;
-        }
-
-        .se-envelope {
-            position: relative;
-            width: 190px;
-            height: 125px;
-            border-radius: 5px;
-            background:
-                linear-gradient(
-                    135deg,
-                    #fff7df,
-                    #ead7ae
-                );
-            box-shadow:
-                0 15px 30px rgba(70,45,15,.25);
+            perspective: 900px;
             animation:
                 seEnvelopeAppear
-                1s
+                1.05s
                 cubic-bezier(.2,.8,.2,1)
                 forwards;
         }
 
-        .se-letter-paper {
+        .se-letter-glow {
             position: absolute;
-            z-index: 1;
-            left: 25px;
-            right: 25px;
-            top: 8px;
-            height: 105px;
-            padding: 12px 8px;
-            box-sizing: border-box;
-            text-align: center;
-            font-family: Georgia, serif;
-            font-size: 13px;
-            line-height: 1.35;
-            color: #715629;
-            background: #fffaf0;
-            border: 1px solid rgba(120,90,40,.25);
-            box-shadow: 0 3px 8px rgba(0,0,0,.12);
+            left: 50%;
+            top: 50%;
+            width: 210px;
+            height: 130px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(255,215,120,.42),
+                    rgba(255,190,80,.13) 50%,
+                    transparent 75%
+                );
+            filter: blur(12px);
+            opacity: 0;
             animation:
-                seLetterRise
-                1.1s
-                ease-out
-                .65s
-                forwards;
+                seLetterGlow
+                2.4s
+                ease-in-out
+                .5s
+                infinite alternate;
         }
 
-        .se-envelope-flap {
+        .se-envelope {
             position: absolute;
-            z-index: 3;
-            left: 0;
-            top: 0;
-            width: 0;
-            height: 0;
-            border-left: 95px solid transparent;
-            border-right: 95px solid transparent;
-            border-top: 65px solid #dfc48e;
-            transform-origin: 50% 0;
+            left: 50%;
+            top: 50%;
+            width: 180px;
+            height: 120px;
+            transform:
+                translate(-50%, -50%);
+            background:
+                linear-gradient(
+                    135deg,
+                    #f9e8bd,
+                    #e4c58c
+                );
+            border-radius: 5px;
+            box-shadow:
+                0 14px 25px rgba(80,50,10,.3),
+                inset 0 0 0 2px rgba(120,80,25,.2);
+            transform-style: preserve-3d;
+        }
+
+        .se-letter-paper {
+            position: absolute;
+            left: 20px;
+            top: -35px;
+            width: 140px;
+            height: 90px;
+            padding: 13px;
+            box-sizing: border-box;
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffaf0,
+                    #f2e4c2
+                );
+            color: #7c5b25;
+            font-family: Georgia, serif;
+            font-size: 11px;
+            text-align: center;
+            line-height: 1.35;
+            box-shadow:
+                0 8px 14px rgba(0,0,0,.18);
+            opacity: 0;
             animation:
-                seEnvelopeOpen
-                1.15s
+                seLetterRise
+                1.2s
                 cubic-bezier(.2,.8,.2,1)
                 .7s
                 forwards;
         }
 
+        .se-envelope-flap {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 180px;
+            height: 70px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ecd39f,
+                    #c9a565
+                );
+            clip-path:
+                polygon(
+                    0 0,
+                    100% 0,
+                    50% 100%
+                );
+            transform-origin: top center;
+            z-index: 4;
+            animation:
+                seEnvelopeOpen
+                .95s
+                cubic-bezier(.2,.8,.2,1)
+                .5s
+                forwards;
+        }
+
         .se-wax {
             position: absolute;
-            z-index: 4;
             left: 50%;
-            top: 55px;
-            width: 34px;
-            height: 34px;
-            transform: translateX(-50%);
+            bottom: 37px;
+            width: 31px;
+            height: 31px;
+            transform:
+                translateX(-50%)
+                scale(.2)
+                rotate(-15deg);
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            background: #9a2639;
-            color: #f8d8a0;
-            font-size: 14px;
-            box-shadow: 0 3px 8px rgba(0,0,0,.2);
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #d94a57,
+                    #8c1e2a 70%
+                );
+            color: #ffd9a0;
+            font-size: 13px;
+            box-shadow:
+                0 4px 8px rgba(0,0,0,.25);
+            opacity: 0;
             animation:
                 seWaxAppear
                 .8s
-                ease-out
-                1.35s
+                cubic-bezier(.2,.8,.2,1)
+                .9s
                 forwards;
+            z-index: 5;
         }
 
 
         /* =====================================================
-           PRINCESA — CORONA
+           PRINCESA POR SORPRESA — CORONA
            ===================================================== */
 
         .se-princess {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 6vh;
+            animation:
+                seCrownFade
+                3s
+                ease
+                forwards;
         }
 
         .se-crown-container {
             position: relative;
             width: 190px;
-            height: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 170px;
+            transform:
+                translateY(0)
+                scale(.82);
             animation:
                 seCrownAppear
                 1.15s
                 cubic-bezier(.2,.8,.2,1)
-                forwards;
-        }
-
-        .se-crown-glow {
-            position: absolute;
-            width: 170px;
-            height: 130px;
-            border-radius: 50%;
-            background:
-                radial-gradient(
-                    ellipse,
-                    rgba(255,220,100,.55),
-                    transparent 70%
-                );
-            filter: blur(8px);
-            animation:
-                seCrownGlow
-                2.5s
-                ease-in-out
-                infinite alternate;
-        }
-
-        .se-crown {
-            position: relative;
-            z-index: 2;
-            font-size: 110px;
-            line-height: 1;
-            filter:
-                drop-shadow(0 7px 8px rgba(90,55,0,.25))
-                drop-shadow(0 0 16px rgba(255,205,70,.5));
-            animation:
+                forwards,
                 seCrownFloat
-                2.4s
+                2.6s
                 ease-in-out
                 1.3s
                 infinite;
         }
 
+        .se-crown-glow {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 170px;
+            height: 110px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(255,220,80,.6),
+                    rgba(255,180,40,.15) 50%,
+                    transparent 75%
+                );
+            filter: blur(12px);
+            opacity: .5;
+            animation:
+                seCrownGlow
+                1.9s
+                ease-in-out
+                infinite alternate;
+        }
+
+        .se-crown {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform:
+                translate(-50%, -50%);
+            font-size: 100px;
+            line-height: 1;
+            filter:
+                drop-shadow(0 8px 12px rgba(0,0,0,.3))
+                drop-shadow(0 0 14px rgba(255,215,80,.7));
+        }
+
         .se-crown-spark {
             position: absolute;
-            font-size: 19px;
-            color: #fff0a0;
-            text-shadow:
-                0 0 7px white,
-                0 0 15px rgba(255,205,80,.9);
+            color: #fff3a7;
+            font-size: 20px;
             opacity: 0;
             animation:
                 seCrownSpark
-                2s
+                1.7s
                 ease-in-out
                 infinite;
         }
 
-        .se-crown-spark:nth-child(3) {
-            left: 18px;
-            top: 40px;
+        .se-crown-spark:nth-child(2) {
+            left: 15%;
+            top: 20%;
             animation-delay: .3s;
         }
 
-        .se-crown-spark:nth-child(4) {
-            right: 12px;
-            top: 65px;
-            animation-delay: .8s;
+        .se-crown-spark:nth-child(3) {
+            right: 12%;
+            top: 28%;
+            animation-delay: .9s;
         }
 
-        .se-crown-spark:nth-child(5) {
-            left: 48px;
-            bottom: 18px;
-            animation-delay: 1.25s;
+        .se-crown-spark:nth-child(4) {
+            left: 25%;
+            bottom: 15%;
+            animation-delay: 1.4s;
         }
 
 
@@ -834,49 +914,49 @@
             position: absolute;
             left: -220px;
             top: 37%;
-            width: 170px;
-            height: 70px;
+            width: 190px;
+            height: 80px;
             animation:
                 seHarryFlight
-                3.1s
-                cubic-bezier(.2,.8,.2,1)
+                3s
+                cubic-bezier(.25,.7,.25,1)
                 forwards;
         }
 
         .se-hp-wizard {
             position: absolute;
-            left: 45px;
-            top: -5px;
-            font-size: 38px;
-            z-index: 2;
+            left: 50px;
+            top: 5px;
+            font-size: 46px;
+            transform: scaleX(-1);
             filter:
-                drop-shadow(0 0 8px rgba(150,110,255,.8));
+                drop-shadow(0 5px 10px rgba(0,0,0,.3));
         }
 
         .se-hp-broom {
             position: absolute;
             left: 0;
             top: 35px;
-            font-size: 45px;
-            transform: rotate(-10deg);
-            z-index: 1;
+            font-size: 35px;
+            transform: rotate(-8deg);
         }
 
         .se-hp-trail {
             position: absolute;
-            left: 15px;
-            top: 35px;
-            width: 130px;
-            height: 4px;
+            left: 5px;
+            top: 47px;
+            width: 90px;
+            height: 5px;
             border-radius: 50%;
             background:
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(180,140,255,.8),
+                    rgba(255,215,90,.7),
                     transparent
                 );
             filter: blur(2px);
+            transform-origin: right center;
             animation:
                 seHpTrail
                 .7s
@@ -886,35 +966,32 @@
 
         .se-hp-star {
             position: absolute;
-            color: #e9dcff;
-            font-size: 18px;
+            color: #ffe99b;
+            font-size: 19px;
             opacity: .2;
-            text-shadow:
-                0 0 7px white,
-                0 0 15px rgba(150,110,255,.8);
             animation:
                 seHpStar
-                1.7s
+                1.4s
                 ease-in-out
                 infinite;
         }
 
         .se-hp-star:nth-child(2) {
-            left: 20%;
-            top: 35%;
+            left: 24%;
+            top: 22%;
             animation-delay: .2s;
         }
 
         .se-hp-star:nth-child(3) {
-            left: 63%;
-            top: 25%;
-            animation-delay: .8s;
+            right: 25%;
+            top: 38%;
+            animation-delay: .7s;
         }
 
         .se-hp-star:nth-child(4) {
-            left: 78%;
-            top: 58%;
-            animation-delay: 1.2s;
+            left: 42%;
+            bottom: 25%;
+            animation-delay: 1.1s;
         }
 
 
@@ -925,14 +1002,22 @@
         .se-obx {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 7vh;
+            animation:
+                seMapFade
+                2.8s
+                ease
+                forwards;
         }
 
         .se-map-wrapper {
             position: relative;
-            width: 260px;
-            height: 210px;
-            perspective: 900px;
+            width: 230px;
+            height: 190px;
+            transform:
+                scale(.82)
+                rotate(-2deg);
         }
 
         .se-map {
@@ -942,231 +1027,264 @@
             width: 205px;
             height: 145px;
             transform:
-                translate(-50%,-50%)
-                rotateX(0deg)
-                scale(1);
-            border-radius: 8px;
+                translate(-50%, -50%)
+                rotateX(-70deg)
+                scale(.7);
+            transform-origin: center center;
             background:
                 linear-gradient(
                     135deg,
-                    #d7bc8c,
-                    #ead8af,
-                    #c9ad79
+                    #e8c88e,
+                    #b99155
                 );
-            border: 3px solid #76582f;
+            border:
+                4px solid #76532b;
+            border-radius: 5px;
             box-shadow:
-                0 12px 25px rgba(70,45,15,.3);
+                0 12px 25px rgba(0,0,0,.35);
+            opacity: 0;
             animation:
                 seMapOpen
-                1.1s
+                1.05s
                 cubic-bezier(.2,.8,.2,1)
+                .1s
                 forwards;
         }
 
-        .se-map::before {
+        .se-map::before,
+        .se-map::after {
             content: "";
             position: absolute;
-            inset: 15px;
-            border:
-                1px dashed
-                rgba(90,60,25,.45);
-            border-radius: 5px;
+            border-radius: 50%;
+            border: 1px dashed rgba(100,70,30,.35);
+        }
+
+        .se-map::before {
+            width: 110px;
+            height: 70px;
+            left: 20px;
+            top: 35px;
+        }
+
+        .se-map::after {
+            width: 70px;
+            height: 40px;
+            right: 15px;
+            bottom: 15px;
         }
 
         .se-map-title {
             position: absolute;
-            left: 50%;
-            top: 18px;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
+            top: 10px;
+            text-align: center;
+            color: #5a3a1b;
             font-family: Georgia, serif;
-            font-size: 16px;
             font-weight: bold;
+            font-size: 13px;
             letter-spacing: 2px;
-            color: #634a28;
         }
 
         .se-map-pin {
             position: absolute;
-            left: 48%;
-            top: 52%;
-            font-size: 30px;
+            left: 52%;
+            top: 48%;
+            font-size: 28px;
+            transform: translate(-50%, -50%);
             animation:
                 sePinPulse
-                1.6s
+                1.4s
                 ease-in-out
-                1.2s
                 infinite;
         }
 
         .se-compass {
             position: absolute;
-            right: 0;
-            bottom: 10px;
-            font-size: 48px;
+            right: 2px;
+            bottom: 5px;
+            font-size: 45px;
             filter:
-                drop-shadow(0 4px 6px rgba(0,0,0,.2));
+                drop-shadow(0 5px 8px rgba(0,0,0,.25));
             animation:
                 seCompassAppear
                 .8s
-                ease-out
-                .8s
+                cubic-bezier(.2,.8,.2,1)
+                .7s
                 forwards,
                 seCompassSpin
-                2.3s
+                2.2s
                 cubic-bezier(.2,.8,.2,1)
-                1.5s
+                .9s
                 forwards;
+        }
+
+        .se-obx-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
         }
 
         .se-obx-stars span {
             position: absolute;
-            font-size: 18px;
-            color: #fff1bd;
-            text-shadow:
-                0 0 7px white,
-                0 0 14px rgba(255,200,80,.8);
+            color: #fff3b0;
             opacity: 0;
             animation:
                 seObxSpark
-                1.8s
+                1.6s
                 ease-in-out
                 infinite;
         }
 
         .se-obx-stars span:nth-child(1) {
-            left: 5px;
-            top: 25px;
-            animation-delay: .2s;
+            left: 15%;
+            top: 20%;
+            animation-delay: .4s;
         }
 
         .se-obx-stars span:nth-child(2) {
-            right: 25px;
-            top: 30px;
-            animation-delay: .7s;
+            right: 15%;
+            top: 25%;
+            animation-delay: .8s;
         }
 
         .se-obx-stars span:nth-child(3) {
-            left: 35px;
-            bottom: 12px;
-            animation-delay: 1.1s;
+            left: 30%;
+            bottom: 15%;
+            animation-delay: 1.2s;
         }
 
 
         /* =====================================================
-           OUTER BANKS — ATARDECER
+           OUTER BANKS — VERANO
            ===================================================== */
 
         .se-summer90 {
+            position: relative;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 8vh;
+            animation:
+                seSummerFade
+                4s
+                ease
+                forwards;
         }
 
         .se-summer90-sun {
             position: absolute;
             left: 50%;
-            top: 25%;
-            width: 100px;
-            height: 100px;
-            transform: translateX(-50%);
+            top: 50px;
+            width: 150px;
+            height: 150px;
+            transform:
+                translateX(-50%)
+                scale(.8);
             border-radius: 50%;
             background:
                 radial-gradient(
                     circle,
-                    #fff5bd,
-                    #ffc85c 55%,
-                    rgba(255,170,60,.1) 72%,
-                    transparent 74%
+                    rgba(255,240,155,.8),
+                    rgba(255,175,70,.3) 50%,
+                    transparent 72%
                 );
-            box-shadow:
-                0 0 45px rgba(255,180,70,.5);
+            filter: blur(8px);
+            opacity: .4;
             animation:
                 seSummerSun
-                2.8s
+                2.5s
                 ease-in-out
-                infinite;
+                infinite alternate;
         }
 
         .se-summer90-main {
             position: relative;
             z-index: 2;
-            font-size: 95px;
+            font-size: 88px;
+            line-height: 1;
             filter:
-                drop-shadow(0 7px 10px rgba(100,40,10,.2));
+                drop-shadow(0 8px 14px rgba(0,0,0,.2));
             animation:
                 seSummerAppear
                 1.05s
                 cubic-bezier(.2,.8,.2,1)
                 forwards,
                 seSummerFloat
-                2.5s
+                2.4s
                 ease-in-out
-                1.2s
+                1.1s
                 infinite;
         }
 
         .se-summer90-wave {
             position: absolute;
             left: 50%;
-            top: 63%;
-            width: 300px;
-            height: 45px;
+            top: 175px;
+            width: 280px;
+            height: 65px;
+            transform:
+                translateX(-50%)
+                translateY(100px)
+                scaleX(.4);
             border-radius: 50%;
-            border-top: 3px solid rgba(120,200,230,.6);
-            border-bottom: 2px solid rgba(255,255,255,.45);
-            transform: translateX(-50%);
+            border-top: 4px solid rgba(100,190,220,.45);
+            border-bottom: 3px solid rgba(255,255,255,.3);
+            opacity: 0;
             animation:
                 seSummerWave
-                2s
-                ease-in-out
-                infinite alternate;
+                1.2s
+                ease-out
+                .45s
+                forwards;
         }
 
         .se-summer90-wave.wave2 {
-            top: 70%;
-            width: 250px;
-            opacity: .6;
-            animation-delay: .6s;
+            top: 190px;
+            width: 230px;
+            animation-delay: .75s;
         }
 
         .se-summer90-spark {
             position: absolute;
-            font-size: 18px;
-            color: #fff0a8;
-            text-shadow:
-                0 0 7px white,
-                0 0 15px rgba(255,180,70,.9);
+            color: #fff1a4;
+            font-size: 20px;
+            opacity: 0;
             animation:
                 seSummerSpark
-                1.7s
+                1.6s
                 ease-in-out
                 infinite;
         }
 
         .se-summer90-spark.spark1 {
             left: 25%;
-            top: 32%;
+            top: 30%;
             animation-delay: .2s;
         }
 
         .se-summer90-spark.spark2 {
-            right: 25%;
-            top: 40%;
-            animation-delay: .8s;
+            right: 23%;
+            top: 38%;
+            animation-delay: .7s;
         }
 
         .se-summer90-spark.spark3 {
-            left: 65%;
-            top: 65%;
-            animation-delay: 1.2s;
+            left: 40%;
+            bottom: 22%;
+            animation-delay: 1.1s;
         }
 
 
         /* =====================================================
-           100/10 — CONSTELACIÓN
+           CONSTELACIÓN 100/10
            ===================================================== */
 
         .se-constellation100 {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             animation:
                 seConstellationFade
                 4.2s
@@ -1176,141 +1294,153 @@
 
         .se-constellation100-glow {
             position: absolute;
-            width: 330px;
-            height: 250px;
             left: 50%;
             top: 50%;
-            transform: translate(-50%,-50%);
+            width: 250px;
+            height: 250px;
+            transform:
+                translate(-50%, -50%)
+                scale(.8);
             border-radius: 50%;
             background:
                 radial-gradient(
-                    ellipse,
-                    rgba(180,190,255,.35),
-                    transparent 70%
+                    circle,
+                    rgba(190,215,255,.4),
+                    rgba(130,160,255,.12) 45%,
+                    transparent 75%
                 );
+            filter: blur(12px);
             animation:
                 seConstellationGlow
-                2.5s
+                2.8s
                 ease-in-out
-                infinite;
-        }
-
-        .se-constellation100-star {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            z-index: 3;
-            font-size: 30px;
-            opacity: 0;
-            color: white;
-            text-shadow:
-                0 0 7px white,
-                0 0 18px rgba(150,170,255,.9);
-            filter:
-                drop-shadow(0 0 7px white)
-                drop-shadow(0 0 18px rgba(150,170,255,.9));
-            animation:
-                seConstellationStar
-                1s
-                ease-out
-                forwards,
-                seConstellationPulse
-                2s
-                ease-in-out
-                1s
-                infinite;
-        }
-
-        .se-constellation100 .star1 {
-            transform: translate(-125px,-60px);
-        }
-
-        .se-constellation100 .star2 {
-            transform: translate(-55px,-105px);
-            animation-delay: .15s;
-        }
-
-        .se-constellation100 .star3 {
-            transform: translate(25px,-65px);
-            animation-delay: .3s;
-        }
-
-        .se-constellation100 .star4 {
-            transform: translate(115px,-90px);
-            animation-delay: .45s;
-        }
-
-        .se-constellation100 .star5 {
-            transform: translate(90px,25px);
-            animation-delay: .6s;
-        }
-
-        .se-constellation100 .star6 {
-            transform: translate(10px,75px);
-            animation-delay: .75s;
-        }
-
-        .se-constellation100 .star7 {
-            transform: translate(-80px,45px);
-            animation-delay: .9s;
+                infinite alternate;
         }
 
         .se-constellation100-line {
             position: absolute;
             left: 50%;
             top: 50%;
+            width: 85px;
             height: 2px;
-            transform-origin: left center;
             background:
                 linear-gradient(
                     90deg,
-                    rgba(180,200,255,.05),
-                    rgba(200,215,255,.8)
+                    transparent,
+                    rgba(190,220,255,.9),
+                    transparent
                 );
-            box-shadow:
-                0 0 6px rgba(170,190,255,.6);
+            transform-origin: left center;
             opacity: 0;
             animation:
                 seConstellationLine
-                .8s
-                ease-out
+                .9s
+                ease
                 forwards;
         }
 
         .se-constellation100 .line1 {
-            width: 72px;
-            transform: rotate(-154deg);
-            animation-delay: .4s;
+            transform:
+                translate(-95px,-90px)
+                rotate(20deg);
+            animation-delay: .15s;
         }
 
         .se-constellation100 .line2 {
-            width: 80px;
-            transform: rotate(-56deg);
-            animation-delay: .55s;
+            transform:
+                translate(-35px,-85px)
+                rotate(25deg);
+            animation-delay: .3s;
         }
 
         .se-constellation100 .line3 {
-            width: 73px;
-            transform: rotate(-15deg);
-            animation-delay: .7s;
+            transform:
+                translate(45px,-70px)
+                rotate(-15deg);
+            animation-delay: .45s;
         }
 
         .se-constellation100 .line4 {
-            width: 80px;
-            transform: rotate(26deg);
-            animation-delay: .85s;
+            transform:
+                translate(105px,-65px)
+                rotate(75deg);
+            animation-delay: .6s;
         }
 
         .se-constellation100 .line5 {
-            width: 82px;
-            transform: rotate(143deg);
-            animation-delay: 1s;
+            transform:
+                translate(75px,35px)
+                rotate(160deg);
+            animation-delay: .75s;
         }
 
         .se-constellation100 .line6 {
-            width: 100px;
-            transform: rotate(173deg);
-            animation-delay: 1.15s;
+            transform:
+                translate(0,70px)
+                rotate(170deg);
+            animation-delay: .9s;
+        }
+
+        .se-constellation100-star {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            opacity: 0;
+            filter:
+                drop-shadow(0 0 7px white)
+                drop-shadow(0 0 18px rgba(150,170,255,.9));
+            animation:
+                seConstellationStar
+                .8s
+                ease
+                forwards,
+                seConstellationPulse
+                1.8s
+                ease-in-out
+                1s
+                infinite;
+        }
+
+        .se-constellation100 .star1 {
+            left: calc(50% - 105px);
+            top: calc(50% - 65px);
+            animation-delay: .1s, 1s;
+        }
+
+        .se-constellation100 .star2 {
+            left: calc(50% - 35px);
+            top: calc(50% - 85px);
+            animation-delay: .25s, 1.1s;
+        }
+
+        .se-constellation100 .star3 {
+            left: calc(50% + 45px);
+            top: calc(50% - 70px);
+            animation-delay: .4s, 1.2s;
+        }
+
+        .se-constellation100 .star4 {
+            left: calc(50% + 105px);
+            top: calc(50% - 65px);
+            animation-delay: .55s, 1.3s;
+        }
+
+        .se-constellation100 .star5 {
+            left: calc(50% + 75px);
+            top: calc(50% + 35px);
+            animation-delay: .7s, 1.4s;
+        }
+
+        .se-constellation100 .star6 {
+            left: calc(50% - 5px);
+            top: calc(50% + 70px);
+            animation-delay: .85s, 1.5s;
+        }
+
+        .se-constellation100 .star7 {
+            left: calc(50% - 75px);
+            top: calc(50% + 20px);
+            animation-delay: 1s, 1.6s;
         }
 
 
@@ -1566,6 +1696,7 @@
 
             to {
                 opacity: 1;
+                transform: scale(1);
             }
         }
 
@@ -1613,6 +1744,20 @@
             100% {
                 opacity: 0;
             }
+        }
+
+
+        /* =====================================================
+           OBJETOS 100/10 E INFINITO
+           OCULTOS
+           ===================================================== */
+
+        .se-final-safe-object,
+        .se-infinity-object {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            animation: none !important;
         }
 
 
@@ -1731,21 +1876,10 @@
         }
 
         @keyframes seNarniaFade {
-            0% {
-                opacity: 0;
-            }
-
-            12% {
-                opacity: 1;
-            }
-
-            78% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            12% { opacity: 1; }
+            78% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -1859,21 +1993,10 @@
         }
 
         @keyframes seLampFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -1979,7 +2102,7 @@
         }
 
         @keyframes seAslanSpark {
-            0%,100% {
+            0%, 100% {
                 opacity: 0;
                 transform:
                     scale(.4)
@@ -2005,21 +2128,10 @@
         }
 
         @keyframes seAslanFade {
-            0% {
-                opacity: 0;
-            }
-
-            12% {
-                opacity: 1;
-            }
-
-            78% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            12% { opacity: 1; }
+            78% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -2073,34 +2185,8 @@
             }
         }
 
-        .se-rose-container {
-            will-change: transform;
-        }
-
-        .se-rose {
-            animation:
-                seRoseBloom
-                1.05s
-                cubic-bezier(.2,.8,.2,1)
-                .15s
-                forwards;
-        }
-
-        .se-rose-container {
-            animation:
-                seRoseEntrance
-                1.15s
-                cubic-bezier(.2,.8,.2,1)
-                forwards,
-                seRoseFloatContainer
-                2.2s
-                ease-in-out
-                1.3s
-                infinite;
-        }
-
         @keyframes seRoseFloatContainer {
-            0%,100% {
+            0%, 100% {
                 transform:
                     translateY(0);
             }
@@ -2163,7 +2249,7 @@
         }
 
         @keyframes seRoseSpark {
-            0%,100% {
+            0%, 100% {
                 opacity: 0;
                 transform:
                     translateY(4px)
@@ -2181,21 +2267,10 @@
         }
 
         @keyframes seBellaFade {
-            0% {
-                opacity: 0;
-            }
-
-            12% {
-                opacity: 1;
-            }
-
-            78% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            12% { opacity: 1; }
+            78% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -2279,31 +2354,24 @@
         @keyframes seLetterGlow {
             from {
                 opacity: .4;
-                transform: scale(.85);
+                transform:
+                    translate(-50%, -50%)
+                    scale(.85);
             }
 
             to {
                 opacity: .9;
-                transform: scale(1.12);
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.12);
             }
         }
 
         @keyframes seLetterFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -2352,7 +2420,7 @@
         }
 
         @keyframes seCrownFloat {
-            0%,100% {
+            0%, 100% {
                 transform:
                     translateY(2px)
                     rotate(-2deg);
@@ -2368,17 +2436,21 @@
         @keyframes seCrownGlow {
             from {
                 opacity: .5;
-                transform: scale(.85);
+                transform:
+                    translate(-50%, -50%)
+                    scale(.85);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1.15);
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.15);
             }
         }
 
         @keyframes seCrownSpark {
-            0%,100% {
+            0%, 100% {
                 opacity: 0;
                 transform:
                     scale(.5)
@@ -2394,21 +2466,10 @@
         }
 
         @keyframes seCrownFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            82% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            82% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -2461,7 +2522,7 @@
         }
 
         @keyframes seHpStar {
-            0%,100% {
+            0%, 100% {
                 opacity: .2;
                 transform:
                     translateY(4px)
@@ -2532,7 +2593,7 @@
         }
 
         @keyframes sePinPulse {
-            0%,100% {
+            0%, 100% {
                 transform: scale(.9);
             }
 
@@ -2542,7 +2603,7 @@
         }
 
         @keyframes seObxSpark {
-            0%,100% {
+            0%, 100% {
                 opacity: 0;
                 transform: scale(.5);
             }
@@ -2554,21 +2615,10 @@
         }
 
         @keyframes seMapFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            78% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            78% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -2672,7 +2722,7 @@
         }
 
         @keyframes seSunsetStar {
-            0%,100% {
+            0%, 100% {
                 opacity: 0;
                 transform:
                     scale(.45)
@@ -2688,21 +2738,10 @@
         }
 
         @keyframes seSunsetFade {
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            82% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            82% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
 
@@ -2742,9 +2781,8 @@
                     rotate(-2deg);
             }
 
-            .se-sunset-scene {
-                transform:
-                    scale(.82);
+            .se-summer90 {
+                transform: scale(.82);
             }
 
             .se-hp-flight {
@@ -2778,9 +2816,7 @@
            ===================================================== */
 
         let layer =
-            document.getElementById(
-                "special-effects-layer"
-            );
+            document.getElementById("special-effects-layer");
 
         if (!layer) {
 
@@ -3084,7 +3120,7 @@
 
 
         /* =====================================================
-           CONSTELACIÓN — 100/10
+           CONSTELACIÓN
            ===================================================== */
 
         function createConstellation100() {
@@ -3120,15 +3156,9 @@
            DIAPOSITIVAS FINALES
            ===================================================== */
 
-        function protectFinalSlideObjects(
-            slide,
-            index
-        ) {
+        function protectFinalSlideObjects(slide, index) {
 
-            if (
-                !slide ||
-                index !== 10
-            ) {
+            if (!slide || index !== 10) {
                 return;
             }
 
@@ -3165,349 +3195,414 @@
 
             const objects = new Set();
 
-            selectors.forEach(
-                function (selector) {
+            selectors.forEach(function (selector) {
 
-                    try {
+                try {
 
-                        slide
-                            .querySelectorAll(selector)
-                            .forEach(
-                                function (el) {
+                    slide.querySelectorAll(selector)
+                        .forEach(function (el) {
 
-                                    if (
-                                        !el.classList.contains("slide") &&
-                                        !el.closest(
-                                            "#special-effects-layer"
-                                        )
-                                    ) {
-                                        objects.add(el);
-                                    }
+                            if (
+                                !el.classList.contains("slide") &&
+                                !el.closest("#special-effects-layer")
+                            ) {
+                                objects.add(el);
+                            }
 
-                                }
-                            );
+                        });
 
-                    } catch (_) {}
+                } catch (_) {}
 
-                }
-            );
+            });
 
 
-            objects.forEach(
-                function (el) {
+            objects.forEach(function (el) {
+
+                el.classList.add(
+                    "se-final-safe-object"
+                );
+
+
+                if (
+                    el.matches(
+                        "[class*='compass'], " +
+                        "[class*='brujula'], " +
+                        "[class*='brújula'], " +
+                        ".compass, " +
+                        ".compass-object, " +
+                        ".compass-decoration"
+                    )
+                ) {
 
                     el.classList.add(
-                        "se-final-safe-object"
+                        "se-final-compass"
+                    );
+
+                } else if (
+                    el.matches(
+                        "[class*='map'], " +
+                        ".map, " +
+                        ".map-object, " +
+                        ".map-decoration"
+                    )
+                ) {
+
+                    el.classList.add(
+                        "se-final-map"
+                    );
+
+                } else if (
+                    el.matches(
+                        "[class*='wand'], " +
+                        "[class*='varita'], " +
+                        ".wand, " +
+                        ".wand-object, " +
+                        ".wand-decoration, " +
+                        ".magic-wand, " +
+                        ".magic-wand-object"
+                    )
+                ) {
+
+                    el.classList.add(
+                        "se-final-wand"
+                    );
+                }
+
+            });
+        }
+
+
+        /* =====================================================
+           BORRAR EFECTO
+           ===================================================== */
+
+        let removeTimer = null;
+
+        function removeEffectAfter(time) {
+
+            if (removeTimer) {
+                clearTimeout(removeTimer);
+            }
+
+            removeTimer = setTimeout(function () {
+
+                layer.innerHTML = "";
+
+            }, time);
+        }
+
+
+        /* =====================================================
+           RELACIÓN DIAPOSITIVA → OBJETO
+           ===================================================== */
+
+        function triggerForSlide(slide) {
+
+            if (!slide) {
+                return;
+            }
+
+            const slides =
+                Array.from(
+                    document.querySelectorAll(".slide")
+                );
+
+            const index =
+                slides.indexOf(slide);
+
+            if (index === -1) {
+                return;
+            }
+
+
+            /*
+                0  = Portada
+                1  = 10/10
+                2  = Outer Banks
+                3  = Bella y la Bestia
+                4  = Bridgerton
+                5  = Princesa por sorpresa
+                6  = 60/10
+                7  = Harry Potter
+                8  = 80/10
+                9  = 90/10
+                10 = 100/10
+                11 = ∞/10
+            */
+
+
+            if (index === 1) {
+
+                createStar10();
+
+                return;
+            }
+
+
+            if (index === 2) {
+
+                createOuterBanks();
+
+                return;
+            }
+
+
+            if (index === 3) {
+
+                createBella();
+
+                return;
+            }
+
+
+            if (index === 4) {
+
+                createBridgerton();
+
+                return;
+            }
+
+
+            if (index === 5) {
+
+                createPrincess();
+
+                return;
+            }
+
+
+            if (index === 6) {
+
+                createIce60();
+
+                return;
+            }
+
+
+            if (index === 7) {
+
+                createHarry();
+
+                return;
+            }
+
+
+            if (index === 8) {
+
+                createButterfly80();
+
+                return;
+            }
+
+
+            if (index === 9) {
+
+                createSummer90();
+
+                return;
+            }
+
+
+            if (index === 10) {
+
+                createConstellation100();
+
+                return;
+            }
+
+
+            if (index === 11) {
+
+                layer.innerHTML = "";
+
+                return;
+            }
+
+
+            layer.innerHTML = "";
+        }
+
+
+        /* =====================================================
+           DETECTAR CAMBIO DE DIAPOSITIVA
+           ===================================================== */
+
+        const slides =
+            document.querySelectorAll(".slide");
+
+
+        if (!slides.length) {
+
+            console.warn(
+                "special-effects.js: no se encontraron diapositivas."
+            );
+
+            return;
+        }
+
+
+        let lastActiveSlide = null;
+
+        let checkScheduled = false;
+
+
+        function checkActiveSlide() {
+
+            checkScheduled = false;
+
+            const activeSlide =
+                document.querySelector(
+                    ".slide.active"
+                );
+
+
+            if (!activeSlide) {
+                return;
+            }
+
+
+            if (
+                activeSlide !==
+                lastActiveSlide
+            ) {
+
+                lastActiveSlide =
+                    activeSlide;
+
+
+                const allSlides =
+                    Array.from(
+                        document.querySelectorAll(".slide")
                     );
 
 
-                    if (index === 10) {
+                const activeIndex =
+                    allSlides.indexOf(
+                        activeSlide
+                    );
+
+
+                triggerForSlide(
+                    activeSlide
+                );
+
+
+                protectFinalSlideObjects(
+                    activeSlide,
+                    activeIndex
+                );
+
+
+                setTimeout(function () {
+
+                    protectFinalSlideObjects(
+                        activeSlide,
+                        activeIndex
+                    );
+
+                }, 80);
+
+
+                setTimeout(function () {
+
+                    protectFinalSlideObjects(
+                        activeSlide,
+                        activeIndex
+                    );
+
+                }, 350);
+            }
+        }
+
+
+        function scheduleCheck() {
+
+            if (checkScheduled) {
+                return;
+            }
+
+            checkScheduled = true;
+
+            requestAnimationFrame(
+                checkActiveSlide
+            );
+        }
+
+
+        /* =====================================================
+           OBSERVADOR
+           ===================================================== */
+
+        const observer =
+            new MutationObserver(
+                function (mutations) {
+
+                    for (
+                        const mutation
+                        of mutations
+                    ) {
 
                         if (
-                            el.matches(
-                                "[class*='compass'], " +
-                                "[class*='brujula'], " +
-                                "[class*='brújula'], " +
-                                ".compass, " +
-                                ".compass-object, " +
-                                ".compass-decoration"
-                            )
+                            mutation.type ===
+                                "attributes" &&
+                            mutation.attributeName ===
+                                "class"
                         ) {
 
-                            el.classList.add(
-                                "se-final-compass"
-                            );
+                            scheduleCheck();
 
-                        } else if (
-                            el.matches(
-                                "[class*='map'], " +
-                                ".map, " +
-                                ".map-object, " +
-                                ".map-decoration"
-                            )
-                        ) {
-
-                            el.classList.add(
-                                "se-final-map"
-                            );
-
-                        } else if (
-                            el.matches(
-                                "[class*='wand'], " +
-                                "[class*='varita'], " +
-                                ".wand, " +
-                                ".wand-object, " +
-                                ".wand-decoration, " +
-                                ".magic-wand, " +
-                                ".magic-wand-object"
-                            )
-                        ) {
-
-                            el.classList.add(
-                                "se-final-wand"
-                            );
-
+                            break;
                         }
-
                     }
 
                 }
             );
-        }
-       /* =========================================================
-   2. UTILIDADES DE EFECTOS
-   ========================================================= */
 
-function removeEffectAfter(ms) {
-    clearTimeout(effectTimeout);
 
-    effectTimeout = setTimeout(() => {
-        if (layer) {
-            layer.innerHTML = "";
-        }
-    }, ms);
-}
+        slides.forEach(function (slide) {
 
-function random(min, max) {
-    return Math.random() * (max - min) + min;
-}
+            observer.observe(
+                slide,
+                {
+                    attributes: true,
+                    attributeFilter: ["class"]
+                }
+            );
 
-function randomInt(min, max) {
-    return Math.floor(random(min, max + 1));
-}
+        });
 
-function createElement(className, content = "") {
-    const el = document.createElement("div");
 
-    el.className = className;
+        /* =====================================================
+           INICIALIZAR
+           ===================================================== */
 
-    if (content !== "") {
-        el.innerHTML = content;
+        scheduleCheck();
+
+
+        console.log(
+            "✨ Special Effects cargado correctamente."
+        );
     }
 
-    return el;
-}
 
-function setRandomPosition(el) {
-    el.style.left = `${random(5, 95)}%`;
-    el.style.top = `${random(5, 95)}%`;
-}
+    /* =========================================================
+       ARRANQUE SEGURO
+       ========================================================= */
 
-function setRandomDelay(el, min = 0, max = 2) {
-    el.style.animationDelay = `${random(min, max)}s`;
-}
+    if (
+        document.readyState ===
+        "loading"
+    ) {
 
-function setRandomDuration(el, min = 2, max = 5) {
-    el.style.animationDuration = `${random(min, max)}s`;
-}
+        document.addEventListener(
+            "DOMContentLoaded",
+            initSpecialEffects
+        );
 
-function appendParticles(count, className, content = "") {
-    if (!layer) return;
+    } else {
 
-    for (let i = 0; i < count; i++) {
-        const particle = createElement(className, content);
+        initSpecialEffects();
 
-        setRandomPosition(particle);
-        setRandomDelay(particle);
-        setRandomDuration(particle);
-
-        layer.appendChild(particle);
     }
-}
-/* =========================================================
-   NARNIA — CRISTAL DE HIELO
-   ========================================================= */
 
-function createIce60() {
-
-    layer.innerHTML = `
-        <div class="se-effect se-ice60">
-
-            <div class="se-ice60-glow"></div>
-
-            <div class="se-ice60-main">
-                ❄️
-            </div>
-
-            <div class="se-ice60-shard shard1">✦</div>
-            <div class="se-ice60-shard shard2">✧</div>
-            <div class="se-ice60-shard shard3">❄</div>
-            <div class="se-ice60-shard shard4">✦</div>
-
-        </div>
-    `;
-
-    removeEffectAfter(3400);
-}
-
-
-/* =========================================================
-   NARNIA — MARIPOSA
-   ========================================================= */
-
-function createButterfly80() {
-
-    layer.innerHTML = `
-        <div class="se-effect se-butterfly80">
-
-            <div class="se-butterfly80-glow"></div>
-
-            <div class="se-butterfly80-main">
-                🦋
-            </div>
-
-            <div class="se-butterfly80-spark spark1">✦</div>
-            <div class="se-butterfly80-spark spark2">✧</div>
-            <div class="se-butterfly80-spark spark3">✦</div>
-            <div class="se-butterfly80-spark spark4">✧</div>
-
-        </div>
-    `;
-
-    removeEffectAfter(3800);
-}
-
-
-/* =========================================================
-   BELLA Y LA BESTIA — ROSA
-   ========================================================= */
-
-function createBella() {
-
-    layer.innerHTML = `
-        <div class="se-effect se-bella">
-
-            <div class="se-rose-container">
-
-                <div class="se-rose-glow"></div>
-
-                <div class="se-rose">
-                    🌹
-                </div>
-
-                <span class="se-rose-petal petal1">❀</span>
-                <span class="se-rose-petal petal2">✿</span>
-                <span class="se-rose-petal petal3">❀</span>
-                <span class="se-rose-petal petal4">✿</span>
-                <span class="se-rose-petal petal5">❀</span>
-
-            </div>
-
-        </div>
-    `;
-
-    removeEffectAfter(3600);
-}
-
-
-/* =========================================================
-   BRIDGERTON — CARTA ELEGANTE
-   ========================================================= */
-
-function createBridgerton() {
-
-    layer.innerHTML = `
-        <div class="se-effect se-bridgerton">
-
-            <div class="se-letter-scene">
-
-                <div class="se-letter-glow"></div>
-
-                <div class="se-letter">
-                    <div class="se-letter-seal">
-                        ✦
-                    </div>
-
-                    <div class="se-letter-paper">
-                        ♡
-                    </div>
-                </div>
-
-                <span class="se-bridgerton-spark spark1">
-                    ✦
-                </span>
-
-                <span class="se-bridgerton-spark spark2">
-                    ✧
-                </span>
-
-                <span class="se-bridgerton-spark spark3">
-                    ✦
-                </span>
-
-                <span class="se-bridgerton-spark spark4">
-                    ✧
-                </span>
-
-            </div>
-
-        </div>
-    `;
-
-    removeEffectAfter(3600);
-}
-
-
-/* =========================================================
-   DISNEY — CORONA / CUENTO
-   ========================================================= */
-
-function createPrincess() {
-
-    layer.innerHTML = `
-        <div class="se-effect se-princess">
-
-            <div class="se-crown-container">
-
-                <div class="se-crown-glow"></div>
-
-                <div class="se-crown">
-                    👑
-                </div>
-
-                <span class="se-crown-star star1">✦</span>
-                <span class="se-crown-star star2">✧</span>
-                <span class="se-crown-star star3">✦</span>
-                <span class="se-crown-star star4">✧</span>
-
-            </div>
-
-        </div>
-    `;
-
-    removeEffectAfter(3500);
-}
-
-
-/* =========================================================
-   HARRY POTTER — MAGIA
-   ========================================================= */
-
-function createHarry() {
-
-    layer.innerHTML = `
-        <div class="se-effect se-hp">
-
-            <div class="se-hp-flight">
-
-                <div class="se-hp-trail"></div>
-
-                <div class="se-hp-wizard">
-                    🧙‍♂️
-                </div>
-
-                <div class="se-hp-broom">
-                    🧹
-                </div>
-
-            </div>
-
-            <span class="se-hp-star">✦</span>
-            <span class="se-hp-star">✧</span>
-            <span class="se-hp-star">✦</span>
-
-        </div>
-    `;
-
-    removeEffectAfter(3100);
-}
+})();
