@@ -118,400 +118,372 @@
                 linear-gradient(
                     90deg,
                     #3a2114 0%,
-                    #70462a 10%,
-                    #52301d 45%,
-                    #70462a 90%,
-                    #351d12 100%
+                    #5b351f 18%,
+                    #70452a 50%,
+                    #4b2a18 82%,
+                    #2d190f 100%
                 );
             box-shadow:
-                0 16px 35px rgba(0,0,0,.45),
-                inset 0 0 0 5px rgba(25,12,6,.5);
+                0 15px 35px rgba(0,0,0,.35),
+                inset 0 0 0 5px rgba(255,220,170,.16);
+            transform-style: preserve-3d;
         }
 
-        .se-wardrobe-inside {
+        .se-wardrobe::before {
+            content: "";
             position: absolute;
-            inset: 9px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 4px;
-            background:
-                radial-gradient(
-                    ellipse,
-                    rgba(255,255,255,.98),
-                    rgba(166,220,255,.55) 42%,
-                    rgba(36,72,92,.9) 100%
-                );
-            box-shadow:
-                inset 0 0 38px rgba(255,255,255,.65);
-            font-size: 30px;
-        }
-
-        .se-door {
-            position: absolute;
-            top: 5px;
-            width: 72px;
-            height: 195px;
+            inset: 8px;
+            border: 2px solid rgba(255,224,180,.2);
             border-radius: 5px;
+        }
+
+        .se-wardrobe-door {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            width: 69px;
             background:
                 linear-gradient(
                     90deg,
-                    #321b10,
-                    #71472a 17%,
-                    #4b2b1a 50%,
-                    #70452a 83%,
-                    #2e190e
+                    #4a2817,
+                    #71472b,
+                    #4b2918
                 );
-            border: 3px solid #25130a;
-            box-shadow:
-                inset 0 0 0 3px rgba(255,255,255,.05);
+            border: 2px solid rgba(255,220,175,.2);
             transform-style: preserve-3d;
-            backface-visibility: hidden;
+            backface-visibility: visible;
         }
 
-        .se-door::before {
-            content: "";
-            position: absolute;
-            inset: 13px;
-            border: 2px solid rgba(20,10,5,.5);
-            border-radius: 3px;
+        .se-wardrobe-door.left {
+            left: 7px;
+            transform-origin: left center;
+            animation:
+                seDoorLeft
+                1.6s
+                cubic-bezier(.2,.8,.2,1)
+                .7s
+                forwards;
         }
 
-        .se-door::after {
+        .se-wardrobe-door.right {
+            right: 7px;
+            transform-origin: right center;
+            animation:
+                seDoorRight
+                1.6s
+                cubic-bezier(.2,.8,.2,1)
+                .7s
+                forwards;
+        }
+
+        .se-wardrobe-door::after {
             content: "";
             position: absolute;
             width: 7px;
             height: 7px;
             top: 50%;
             border-radius: 50%;
-            background: #d7ad52;
-            box-shadow:
-                0 0 8px rgba(255,215,110,.85);
+            background: #d6b36a;
+            box-shadow: 0 0 8px rgba(255,225,150,.8);
         }
 
-        .se-door-left {
-            left: 2px;
-            transform-origin: left center;
-            z-index: 3;
-            animation:
-                seDoorLeft
-                1.35s
-                cubic-bezier(.15,.85,.15,1)
-                .45s
-                forwards;
+        .se-wardrobe-door.left::after {
+            right: 6px;
         }
 
-        .se-door-left::after {
-            right: 8px;
+        .se-wardrobe-door.right::after {
+            left: 6px;
         }
 
-        .se-door-right {
-            right: 2px;
-            transform-origin: right center;
-            z-index: 3;
-            animation:
-                seDoorRight
-                1.35s
-                cubic-bezier(.15,.85,.15,1)
-                .45s
-                forwards;
-        }
-
-        .se-door-right::after {
-            left: 8px;
-        }
-
-        .se-snow {
+        .se-wardrobe-snow {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: white;
+            font-size: 14px;
+            color: white;
+            text-shadow: 0 0 7px white;
             opacity: 0;
             animation:
                 seSnow
-                1.8s
-                ease-in-out
+                2.8s
+                linear
                 infinite;
         }
 
-        .se-snow:nth-child(1) { left: 8%; animation-delay: .1s; }
-        .se-snow:nth-child(2) { left: 22%; animation-delay: .6s; }
-        .se-snow:nth-child(3) { left: 38%; animation-delay: .25s; }
-        .se-snow:nth-child(4) { left: 56%; animation-delay: .9s; }
-        .se-snow:nth-child(5) { left: 74%; animation-delay: .45s; }
-        .se-snow:nth-child(6) { left: 90%; animation-delay: 1s; }
+        .se-wardrobe-snow.s1 {
+            left: 25%;
+            animation-delay: .4s;
+        }
+
+        .se-wardrobe-snow.s2 {
+            left: 45%;
+            animation-delay: 1.1s;
+        }
+
+        .se-wardrobe-snow.s3 {
+            left: 68%;
+            animation-delay: .8s;
+        }
+
+        .se-wardrobe-snow.s4 {
+            left: 82%;
+            animation-delay: 1.7s;
+        }
 
 
         /* =====================================================
-           NARNIA — FAROLA
+           FAROLA
            ===================================================== */
-
-        .se-narnia-lamp {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 6vh;
-            animation: seLampFade 3s ease forwards;
-        }
 
         .se-lamp-scene {
             position: relative;
-            width: 150px;
-            height: 275px;
-            transform:
-                translateY(25px)
-                scale(.75);
-            opacity: 0;
+            width: 190px;
+            height: 300px;
+            margin: 0 auto;
             animation:
                 seLampEntrance
-                1.15s
+                1s
                 cubic-bezier(.2,.8,.2,1)
-                .1s
                 forwards;
         }
 
         .se-lamp-glow {
             position: absolute;
-            left: 20px;
-            top: 10px;
-            width: 110px;
-            height: 145px;
+            width: 170px;
+            height: 170px;
+            left: 10px;
+            top: 5px;
             border-radius: 50%;
             background:
                 radial-gradient(
-                    ellipse,
-                    rgba(255,245,190,.95) 0%,
-                    rgba(255,224,125,.55) 25%,
-                    rgba(180,210,255,.2) 55%,
-                    transparent 75%
+                    circle,
+                    rgba(255,242,180,.8),
+                    rgba(255,205,100,.3) 38%,
+                    transparent 72%
                 );
-            filter: blur(9px);
+            filter: blur(8px);
             opacity: 0;
             animation:
                 seLampGlow
-                2.4s
+                2.5s
                 ease-in-out
-                .55s
+                .4s
                 forwards;
         }
 
         .se-lamp-post {
             position: absolute;
-            left: 68px;
-            top: 75px;
-            width: 14px;
-            height: 165px;
-            border-radius: 5px;
+            left: 50%;
+            bottom: 5px;
+            width: 13px;
+            height: 235px;
+            transform: translateX(-50%);
+            border-radius: 8px;
             background:
                 linear-gradient(
                     90deg,
-                    #1b2020,
-                    #555b58 25%,
-                    #292e2d 55%,
-                    #101414
+                    #222,
+                    #555,
+                    #1b1b1b
                 );
-            box-shadow:
-                4px 8px 12px rgba(0,0,0,.35);
+            box-shadow: 4px 0 10px rgba(0,0,0,.2);
         }
 
         .se-lamp-base {
             position: absolute;
-            left: 47px;
-            bottom: 22px;
-            width: 56px;
-            height: 14px;
+            bottom: 0;
+            left: 50%;
+            width: 80px;
+            height: 15px;
+            transform: translateX(-50%);
             border-radius: 50%;
-            background:
-                linear-gradient(
-                    90deg,
-                    #151918,
-                    #555b58,
-                    #151918
-                );
-            box-shadow:
-                0 6px 12px rgba(0,0,0,.4);
+            background: #272727;
+            box-shadow: 0 5px 10px rgba(0,0,0,.25);
         }
 
         .se-lamp-top {
             position: absolute;
-            left: 48px;
-            top: 48px;
-            width: 54px;
-            height: 42px;
-            border-radius: 9px 9px 5px 5px;
+            left: 50%;
+            top: 35px;
+            width: 82px;
+            height: 75px;
+            transform: translateX(-50%);
+        }
+
+        .se-lamp-roof {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 95px;
+            height: 25px;
+            transform: translateX(-50%);
+            clip-path: polygon(
+                50% 0,
+                100% 100%,
+                0 100%
+            );
             background:
                 linear-gradient(
                     90deg,
-                    #202524,
-                    #626764 25%,
-                    #292e2c 60%,
-                    #141817
+                    #202020,
+                    #555,
+                    #202020
                 );
-            border:
-                2px solid #171b1a;
-            box-shadow:
-                0 7px 12px rgba(0,0,0,.35);
         }
 
         .se-lamp-glass {
             position: absolute;
-            left: 8px;
-            top: 8px;
-            width: 34px;
-            height: 25px;
-            border-radius: 5px;
+            left: 50%;
+            top: 20px;
+            width: 58px;
+            height: 50px;
+            transform: translateX(-50%);
+            border-radius: 10px 10px 15px 15px;
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,255,225,1),
-                    rgba(255,218,110,.8) 45%,
-                    rgba(255,177,60,.25) 75%,
-                    transparent
+                    rgba(255,250,190,.95),
+                    rgba(255,206,80,.55) 45%,
+                    rgba(255,170,50,.15)
                 );
+            border: 3px solid #292929;
             box-shadow:
-                0 0 15px rgba(255,220,125,.95),
-                inset 0 0 8px rgba(255,255,255,.8);
+                0 0 25px rgba(255,210,90,.75);
             animation:
                 seLampFlicker
-                1.25s
+                1.8s
                 ease-in-out
-                infinite
-                alternate;
+                .8s
+                infinite alternate;
         }
 
-        .se-lamp-cap {
+        .se-lamp-arm {
             position: absolute;
-            left: 57px;
-            top: 36px;
-            width: 36px;
-            height: 13px;
-            border-radius:
-                50% 50% 4px 4px;
-            background:
-                linear-gradient(
-                    90deg,
-                    #161a19,
-                    #606663,
-                    #171b1a
-                );
+            top: 75px;
+            left: 50%;
+            width: 78px;
+            height: 10px;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            background: #292929;
         }
 
         .se-lamp-snow {
             position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: white;
+            font-size: 13px;
+            color: white;
+            text-shadow: 0 0 7px white;
             opacity: 0;
             animation:
                 seLampSnow
-                2.3s
+                3.5s
                 linear
                 infinite;
         }
 
-        .se-lamp-snow:nth-child(6) { left: 12%; animation-delay: .1s; }
-        .se-lamp-snow:nth-child(7) { left: 27%; animation-delay: .8s; }
-        .se-lamp-snow:nth-child(8) { left: 43%; animation-delay: .35s; }
-        .se-lamp-snow:nth-child(9) { left: 62%; animation-delay: 1.1s; }
-        .se-lamp-snow:nth-child(10) { left: 78%; animation-delay: .5s; }
-        .se-lamp-snow:nth-child(11) { left: 91%; animation-delay: 1.4s; }
+        .se-lamp-snow.s1 {
+            left: 12%;
+            animation-delay: .2s;
+        }
+
+        .se-lamp-snow.s2 {
+            left: 30%;
+            animation-delay: 1.2s;
+        }
+
+        .se-lamp-snow.s3 {
+            left: 55%;
+            animation-delay: .6s;
+        }
+
+        .se-lamp-snow.s4 {
+            left: 76%;
+            animation-delay: 1.8s;
+        }
 
 
         /* =====================================================
-           NARNIA — ASLAN
+           ASLAN
            ===================================================== */
-
-        .se-narnia-aslan {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 10vh;
-            animation: seAslanFade 3.4s ease forwards;
-        }
 
         .se-aslan-scene {
             position: relative;
-            width: 230px;
-            height: 230px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transform:
-                translateY(35px)
-                scale(.65);
+            width: 220px;
+            height: 250px;
+            margin: 0 auto;
             animation:
                 seAslanEntrance
-                1.35s
-                cubic-bezier(.16,.8,.2,1)
-                .1s
+                1.1s
+                cubic-bezier(.2,.8,.2,1)
                 forwards;
         }
 
         .se-aslan-aura {
             position: absolute;
-            width: 210px;
-            height: 210px;
+            left: 50%;
+            top: 30px;
+            width: 190px;
+            height: 190px;
+            transform: translateX(-50%);
             border-radius: 50%;
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,240,165,.75) 0%,
-                    rgba(255,211,91,.35) 30%,
-                    rgba(255,184,65,.12) 52%,
-                    transparent 73%
+                    rgba(255,236,155,.8),
+                    rgba(255,190,70,.25) 45%,
+                    transparent 72%
                 );
-            filter: blur(8px);
+            filter: blur(7px);
             opacity: 0;
             animation:
                 seAslanAura
                 2.8s
-                ease-in-out
-                .35s
+                ease-out
+                .25s
                 forwards;
         }
 
         .se-aslan {
-            position: relative;
-            z-index: 3;
+            position: absolute;
+            left: 50%;
+            top: 42px;
+            transform: translateX(-50%);
             font-size: 125px;
+            line-height: 1;
             filter:
-                drop-shadow(0 0 7px rgba(255,225,130,.9))
-                drop-shadow(0 13px 15px rgba(0,0,0,.35));
+                drop-shadow(0 8px 12px rgba(0,0,0,.25))
+                drop-shadow(0 0 14px rgba(255,218,120,.4));
             animation:
                 seAslanRise
-                1.3s
+                1.2s
                 cubic-bezier(.2,.8,.2,1)
-                .25s
-                both;
-        }
-
-        .se-aslan-light {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border:
-                2px solid rgba(255,235,160,.45);
-            opacity: 0;
-            transform: scale(.35);
-            animation:
-                seAslanRing
-                2.2s
-                ease-out
-                .7s
+                .15s
                 forwards;
         }
 
-        .se-aslan-star {
+        .se-aslan-ring {
             position: absolute;
-            z-index: 4;
-            font-size: 19px;
-            color: #fff3bd;
+            left: 50%;
+            top: 52%;
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%,-50%);
+            border: 2px solid rgba(255,225,130,.65);
+            border-radius: 50%;
+            opacity: 0;
+            animation:
+                seAslanRing
+                2.6s
+                ease-out
+                .5s
+                forwards;
+        }
+
+        .se-aslan-spark {
+            position: absolute;
+            font-size: 18px;
+            color: #fff4bd;
             text-shadow:
-                0 0 8px rgba(255,220,100,.95);
+                0 0 7px white,
+                0 0 15px rgba(255,210,80,.9);
             opacity: 0;
             animation:
                 seAslanSpark
@@ -520,28 +492,28 @@
                 infinite;
         }
 
-        .se-aslan-star:nth-child(5) {
-            left: 18px;
-            top: 45px;
-            animation-delay: .2s;
+        .se-aslan-spark.s1 {
+            left: 20px;
+            top: 55px;
+            animation-delay: .3s;
         }
 
-        .se-aslan-star:nth-child(6) {
-            right: 20px;
-            top: 65px;
-            animation-delay: .7s;
+        .se-aslan-spark.s2 {
+            right: 15px;
+            top: 90px;
+            animation-delay: .8s;
         }
 
-        .se-aslan-star:nth-child(7) {
-            left: 40px;
-            bottom: 28px;
-            animation-delay: 1.1s;
+        .se-aslan-spark.s3 {
+            left: 45px;
+            bottom: 45px;
+            animation-delay: 1.2s;
         }
 
-        .se-aslan-star:nth-child(8) {
-            right: 38px;
-            bottom: 38px;
-            animation-delay: 1.5s;
+        .se-aslan-spark.s4 {
+            right: 42px;
+            bottom: 35px;
+            animation-delay: 1.6s;
         }
 
 
@@ -552,151 +524,81 @@
         .se-bella {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            padding-top: 10vh;
-            animation: seBellaFade 3s ease forwards;
+            align-items: center;
         }
 
         .se-rose-container {
             position: relative;
-            width: 165px;
-            height: 190px;
+            width: 180px;
+            height: 230px;
             display: flex;
             justify-content: center;
             align-items: center;
-
-            opacity: 0;
-
-            animation:
-                seRoseEntrance
-                1.15s
-                cubic-bezier(.2,.8,.2,1)
-                forwards;
-        }
-
-        .se-rose-container::before {
-            content: "";
-            position: absolute;
-            width: 110px;
-            height: 150px;
-            bottom: 3px;
-            border-radius: 50%;
-            background:
-                radial-gradient(
-                    ellipse,
-                    rgba(255,245,190,.28),
-                    transparent 68%
-                );
-            filter: blur(7px);
-            opacity: 0;
-            animation:
-                seRoseAura
-                2.8s
-                ease
-                .35s
-                forwards;
         }
 
         .se-rose-glow {
             position: absolute;
-            width: 135px;
-            height: 135px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,70,100,.42),
-                    rgba(255,100,130,.18) 38%,
+                    rgba(255,120,150,.45),
                     transparent 70%
                 );
             filter: blur(8px);
             animation:
-                seRoseGlow
-                1.5s
+                seRoseAura
+                2.8s
                 ease-in-out
-                infinite
-                alternate;
+                infinite;
         }
 
         .se-rose {
             position: relative;
             z-index: 2;
-            font-size: 82px;
-
-            opacity: 0;
-
+            font-size: 105px;
+            line-height: 1;
             filter:
-                drop-shadow(0 0 7px rgba(255,70,100,.7))
-                drop-shadow(0 10px 10px rgba(0,0,0,.25));
-
-            animation:
-                seRoseBloom
-                1.05s
-                cubic-bezier(.2,.8,.2,1)
-                .15s
-                forwards,
-                seRoseFloat
-                2.2s
-                ease-in-out
-                1.25s
-                infinite;
+                drop-shadow(0 7px 10px rgba(80,0,20,.3))
+                drop-shadow(0 0 18px rgba(255,100,140,.35));
         }
 
         .se-rose-petal {
             position: absolute;
-            font-size: 17px;
-            opacity: 0;
+            font-size: 18px;
+            color: #ff9ab0;
+            text-shadow: 0 0 8px rgba(255,100,140,.8);
             animation:
                 seRoseSpark
-                1.9s
+                2.2s
                 ease-in-out
                 infinite;
         }
 
-        .se-rose-container::after {
-            content: "✦  ✧  ✦";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform:
-                translate(-50%, -50%)
-                scale(.4);
-            white-space: nowrap;
-            font-size: 18px;
-            letter-spacing: 18px;
-            color: rgba(255,245,190,.9);
-            text-shadow:
-                0 0 10px rgba(255,210,90,.9);
-            opacity: 0;
-            animation:
-                seRoseRing
-                2.2s
-                ease
-                .65s
-                forwards;
-        }
-
         .se-rose-petal:nth-child(3) {
-            left: 12px;
-            top: 25px;
+            left: 15px;
+            top: 45px;
+            animation-delay: .2s;
         }
 
         .se-rose-petal:nth-child(4) {
-            right: 12px;
-            top: 55px;
-            animation-delay: .4s;
+            right: 15px;
+            top: 75px;
+            animation-delay: .7s;
         }
 
         .se-rose-petal:nth-child(5) {
-            left: 28px;
-            bottom: 12px;
-            animation-delay: .8s;
+            left: 35px;
+            bottom: 35px;
+            animation-delay: 1.1s;
         }
 
         .se-rose-petal:nth-child(6) {
-            right: 25px;
-            bottom: 28px;
-            animation-delay: 1.1s;
+            right: 30px;
+            bottom: 50px;
+            animation-delay: 1.5s;
         }
 
 
@@ -707,1633 +609,1012 @@
         .se-bridgerton {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            padding-top: 10vh;
-            animation: seLetterFade 3.1s ease forwards;
+            align-items: center;
         }
 
         .se-letter-scene {
             position: relative;
-            width: 190px;
-            height: 170px;
-            perspective: 900px;
+            width: 240px;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .se-letter-glow {
             position: absolute;
-            width: 150px;
-            height: 110px;
-            left: 20px;
-            top: 30px;
+            width: 230px;
+            height: 180px;
             border-radius: 50%;
             background:
                 radial-gradient(
                     ellipse,
-                    rgba(255,220,135,.65),
-                    rgba(255,220,135,.18) 45%,
-                    transparent 72%
+                    rgba(255,214,120,.45),
+                    transparent 70%
                 );
             filter: blur(8px);
             animation:
                 seLetterGlow
-                1.5s
+                2.5s
                 ease-in-out
-                infinite
-                alternate;
+                infinite alternate;
         }
 
         .se-envelope {
-            position: absolute;
-            width: 150px;
-            height: 105px;
-            left: 20px;
-            top: 30px;
+            position: relative;
+            width: 190px;
+            height: 125px;
             border-radius: 5px;
             background:
                 linear-gradient(
-                    145deg,
-                    #f8e8c8,
-                    #dfc49a
+                    135deg,
+                    #fff7df,
+                    #ead7ae
                 );
-            border:
-                2px solid rgba(95,65,35,.5);
             box-shadow:
-                0 13px 25px rgba(0,0,0,.3);
-
-            transform-style: preserve-3d;
-
+                0 15px 30px rgba(70,45,15,.25);
             animation:
                 seEnvelopeAppear
-                .75s
+                1s
                 cubic-bezier(.2,.8,.2,1)
-                forwards;
-        }
-
-        .se-envelope::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(
-                    135deg,
-                    transparent 49%,
-                    rgba(110,75,38,.25) 50%,
-                    transparent 51%
-                );
-            opacity: .7;
-            pointer-events: none;
-        }
-
-        .se-envelope-flap {
-            position: absolute;
-            z-index: 4;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 60px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f3dfbb,
-                    #d5b987
-                );
-
-            clip-path:
-                polygon(
-                    0 0,
-                    100% 0,
-                    50% 100%
-                );
-
-            transform-origin: top center;
-            transform-style: preserve-3d;
-
-            animation:
-                seEnvelopeOpen
-                1.15s
-                cubic-bezier(.2,.8,.2,1)
-                .65s
                 forwards;
         }
 
         .se-letter-paper {
             position: absolute;
-            z-index: 2;
-
-            width: 122px;
-            height: 90px;
-
-            left: 34px;
-            top: 42px;
-
-            padding-top: 15px;
+            z-index: 1;
+            left: 25px;
+            right: 25px;
+            top: 8px;
+            height: 105px;
+            padding: 12px 8px;
             box-sizing: border-box;
-
             text-align: center;
-
             font-family: Georgia, serif;
-            font-size: 11px;
-            letter-spacing: 1px;
-
-            color: rgba(80,52,25,.8);
-
-            background:
-                linear-gradient(
-                    #fff8e9,
-                    #ead9b9
-                );
-
-            border:
-                1px solid rgba(100,70,35,.35);
-
-            box-shadow:
-                0 5px 12px rgba(0,0,0,.18);
-
-            transform:
-                translateY(45px)
-                scale(.9);
-
-            opacity: 0;
-
+            font-size: 13px;
+            line-height: 1.35;
+            color: #715629;
+            background: #fffaf0;
+            border: 1px solid rgba(120,90,40,.25);
+            box-shadow: 0 3px 8px rgba(0,0,0,.12);
             animation:
                 seLetterRise
-                1s
+                1.1s
+                ease-out
+                .65s
+                forwards;
+        }
+
+        .se-envelope-flap {
+            position: absolute;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 95px solid transparent;
+            border-right: 95px solid transparent;
+            border-top: 65px solid #dfc48e;
+            transform-origin: 50% 0;
+            animation:
+                seEnvelopeOpen
+                1.15s
                 cubic-bezier(.2,.8,.2,1)
-                1s
+                .7s
                 forwards;
         }
 
         .se-wax {
             position: absolute;
-            z-index: 5;
-
+            z-index: 4;
             left: 50%;
-            bottom: 7px;
-
-            width: 24px;
-            height: 24px;
-
-            margin-left: -12px;
-
-            border-radius: 50%;
-
+            top: 55px;
+            width: 34px;
+            height: 34px;
+            transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
-
-            font-size: 9px;
-            color: rgba(255,245,205,.8);
-
-            background:
-                radial-gradient(
-                    circle at 35% 30%,
-                    #c86b6b,
-                    #7d2929
-                );
-
-            box-shadow:
-                0 2px 6px rgba(0,0,0,.25);
-
+            border-radius: 50%;
+            background: #9a2639;
+            color: #f8d8a0;
+            font-size: 14px;
+            box-shadow: 0 3px 8px rgba(0,0,0,.2);
             animation:
                 seWaxAppear
-                .7s
-                ease
+                .8s
+                ease-out
                 1.35s
-                both;
+                forwards;
         }
 
 
         /* =====================================================
-           PRINCESA POR SORPRESA — CORONA
+           PRINCESA — CORONA
            ===================================================== */
 
         .se-princess {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            padding-top: 9vh;
-            animation:
-                seCrownFade
-                3s
-                ease
-                forwards;
+            align-items: center;
         }
 
         .se-crown-container {
             position: relative;
-
-            width: 160px;
-            height: 145px;
-
+            width: 190px;
+            height: 180px;
             display: flex;
             justify-content: center;
             align-items: center;
-
-            opacity: 0;
-
             animation:
                 seCrownAppear
-                1.1s
+                1.15s
                 cubic-bezier(.2,.8,.2,1)
                 forwards;
         }
 
         .se-crown-glow {
             position: absolute;
-
-            width: 135px;
-            height: 135px;
-
+            width: 170px;
+            height: 130px;
             border-radius: 50%;
-
             background:
                 radial-gradient(
-                    circle,
-                    rgba(255,225,95,.72),
-                    rgba(255,205,50,.22) 40%,
+                    ellipse,
+                    rgba(255,220,100,.55),
                     transparent 70%
                 );
-
-            filter: blur(7px);
-
+            filter: blur(8px);
             animation:
                 seCrownGlow
-                1.4s
+                2.5s
                 ease-in-out
-                infinite
-                alternate;
+                infinite alternate;
         }
 
         .se-crown {
             position: relative;
             z-index: 2;
-
-            font-size: 78px;
-
+            font-size: 110px;
+            line-height: 1;
             filter:
-                drop-shadow(0 0 6px rgba(255,230,120,.9))
-                drop-shadow(0 10px 10px rgba(0,0,0,.25));
-
+                drop-shadow(0 7px 8px rgba(90,55,0,.25))
+                drop-shadow(0 0 16px rgba(255,205,70,.5));
             animation:
                 seCrownFloat
-                1.7s
+                2.4s
                 ease-in-out
-                1s
+                1.3s
                 infinite;
         }
 
         .se-crown-spark {
             position: absolute;
-
-            font-size: 18px;
-
+            font-size: 19px;
+            color: #fff0a0;
+            text-shadow:
+                0 0 7px white,
+                0 0 15px rgba(255,205,80,.9);
             opacity: 0;
-
             animation:
                 seCrownSpark
-                1.6s
+                2s
                 ease-in-out
                 infinite;
         }
 
         .se-crown-spark:nth-child(3) {
-            left: 15px;
-            top: 27px;
-            animation-delay: .2s;
+            left: 18px;
+            top: 40px;
+            animation-delay: .3s;
         }
 
         .se-crown-spark:nth-child(4) {
-            right: 10px;
-            top: 50px;
-            animation-delay: .6s;
+            right: 12px;
+            top: 65px;
+            animation-delay: .8s;
         }
 
         .se-crown-spark:nth-child(5) {
-            left: 30px;
-            bottom: 12px;
-            animation-delay: 1s;
+            left: 48px;
+            bottom: 18px;
+            animation-delay: 1.25s;
         }
 
 
         /* =====================================================
-           HARRY POTTER — VUELO EN ESCOBA
+           HARRY POTTER
            ===================================================== */
 
         .se-hp {
-            overflow: hidden;
+            position: relative;
         }
 
         .se-hp-flight {
             position: absolute;
-
             left: -220px;
-            top: 32%;
-
-            width: 190px;
-            height: 95px;
-
-            display: flex;
-            align-items: center;
-
-            transform:
-                translateX(0)
-                rotate(-5deg);
-
+            top: 37%;
+            width: 170px;
+            height: 70px;
             animation:
                 seHarryFlight
-                3s
-                cubic-bezier(.2,.7,.2,1)
+                3.1s
+                cubic-bezier(.2,.8,.2,1)
                 forwards;
         }
 
         .se-hp-wizard {
-            position: relative;
-            z-index: 3;
-
-            font-size: 48px;
-
-            transform:
-                translateY(-4px)
-                rotate(-8deg);
-
+            position: absolute;
+            left: 45px;
+            top: -5px;
+            font-size: 38px;
+            z-index: 2;
             filter:
-                drop-shadow(0 5px 5px rgba(0,0,0,.35));
+                drop-shadow(0 0 8px rgba(150,110,255,.8));
         }
 
         .se-hp-broom {
             position: absolute;
-
-            left: 57px;
-            top: 48px;
-
-            font-size: 47px;
-
-            transform: rotate(-12deg);
-
-            filter:
-                drop-shadow(0 4px 4px rgba(0,0,0,.35));
+            left: 0;
+            top: 35px;
+            font-size: 45px;
+            transform: rotate(-10deg);
+            z-index: 1;
         }
 
         .se-hp-trail {
             position: absolute;
-
-            left: -45px;
-            top: 47px;
-
-            width: 105px;
+            left: 15px;
+            top: 35px;
+            width: 130px;
             height: 4px;
-
             border-radius: 50%;
-
             background:
-                rgba(255,255,255,.72);
-
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(180,140,255,.8),
+                    transparent
+                );
             filter: blur(2px);
-
-            opacity: .7;
-
             animation:
                 seHpTrail
-                1s
+                .7s
                 ease-in-out
-                infinite
-                alternate;
+                infinite alternate;
         }
 
         .se-hp-star {
             position: absolute;
-
-            font-size: 15px;
-
+            color: #e9dcff;
+            font-size: 18px;
+            opacity: .2;
+            text-shadow:
+                0 0 7px white,
+                0 0 15px rgba(150,110,255,.8);
             animation:
                 seHpStar
-                1.4s
+                1.7s
                 ease-in-out
                 infinite;
         }
 
-        .se-hp-star:nth-child(4) {
-            left: 10%;
+        .se-hp-star:nth-child(2) {
+            left: 20%;
+            top: 35%;
+            animation-delay: .2s;
+        }
+
+        .se-hp-star:nth-child(3) {
+            left: 63%;
             top: 25%;
+            animation-delay: .8s;
         }
 
-        .se-hp-star:nth-child(5) {
-            left: 28%;
-            top: 65%;
-            animation-delay: .3s;
-        }
-
-        .se-hp-star:nth-child(6) {
-            left: 47%;
-            top: 18%;
-            animation-delay: .6s;
+        .se-hp-star:nth-child(4) {
+            left: 78%;
+            top: 58%;
+            animation-delay: 1.2s;
         }
 
 
         /* =====================================================
-           OUTER BANKS — MAPA + BRÚJULA
+           OUTER BANKS — MAPA
            ===================================================== */
 
         .se-obx {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            padding-top: 9vh;
-
-            animation:
-                seMapFade
-                2.7s
-                ease
-                forwards;
+            align-items: center;
         }
 
         .se-map-wrapper {
             position: relative;
-
-            width: 195px;
-            height: 150px;
-
-            transform: rotate(-2deg);
+            width: 260px;
+            height: 210px;
+            perspective: 900px;
         }
 
         .se-map {
             position: absolute;
-
-            left: 10px;
-            top: 18px;
-
-            width: 175px;
-            height: 118px;
-
-            border-radius: 5px;
-
+            left: 50%;
+            top: 50%;
+            width: 205px;
+            height: 145px;
+            transform:
+                translate(-50%,-50%)
+                rotateX(0deg)
+                scale(1);
+            border-radius: 8px;
             background:
                 linear-gradient(
                     135deg,
-                    rgba(235,222,180,.97),
-                    rgba(192,179,135,.97)
+                    #d7bc8c,
+                    #ead8af,
+                    #c9ad79
                 );
-
-            border:
-                2px solid rgba(85,60,30,.65);
-
+            border: 3px solid #76582f;
             box-shadow:
-                0 12px 25px rgba(0,0,0,.3);
-
-            transform-origin: top center;
-
+                0 12px 25px rgba(70,45,15,.3);
             animation:
                 seMapOpen
-                1s
+                1.1s
                 cubic-bezier(.2,.8,.2,1)
                 forwards;
-
-            overflow: hidden;
         }
 
         .se-map::before {
             content: "";
-
             position: absolute;
-
-            width: 125px;
-            height: 55px;
-
-            left: 25px;
-            top: 27px;
-
-            border-top:
-                3px dashed rgba(100,70,35,.7);
-
-            border-radius: 50%;
-
-            transform: rotate(-10deg);
-        }
-
-        .se-map::after {
-            content: "✦";
-
-            position: absolute;
-
-            left: 116px;
-            top: 47px;
-
-            font-size: 24px;
-
-            color: rgba(83,53,26,.8);
+            inset: 15px;
+            border:
+                1px dashed
+                rgba(90,60,25,.45);
+            border-radius: 5px;
         }
 
         .se-map-title {
             position: absolute;
-
-            left: 13px;
-            top: 8px;
-
+            left: 50%;
+            top: 18px;
+            transform: translateX(-50%);
             font-family: Georgia, serif;
-
-            font-size: 11px;
-
+            font-size: 16px;
+            font-weight: bold;
             letter-spacing: 2px;
-
-            color: rgba(60,42,25,.8);
+            color: #634a28;
         }
 
         .se-map-pin {
             position: absolute;
-
-            left: 43px;
-            bottom: 13px;
-
-            font-size: 23px;
-
+            left: 48%;
+            top: 52%;
+            font-size: 30px;
             animation:
                 sePinPulse
-                1.2s
+                1.6s
                 ease-in-out
+                1.2s
                 infinite;
         }
 
         .se-compass {
             position: absolute;
-
-            right: -8px;
-            top: -8px;
-
-            width: 70px;
-            height: 70px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #ead28b 0%,
-                    #b28b43 62%,
-                    #604820 100%
-                );
-
-            border:
-                3px solid #4d3519;
-
-            box-shadow:
-                0 7px 16px rgba(0,0,0,.4),
-                0 0 15px rgba(255,216,104,.45);
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            font-size: 38px;
-
-            z-index: 4;
-
+            right: 0;
+            bottom: 10px;
+            font-size: 48px;
+            filter:
+                drop-shadow(0 4px 6px rgba(0,0,0,.2));
             animation:
                 seCompassAppear
-                .6s
-                ease
-                .5s
-                both,
+                .8s
+                ease-out
+                .8s
+                forwards,
                 seCompassSpin
-                2s
-                ease-in-out
-                .8s;
-        }
-
-        .se-obx-stars {
-            position: absolute;
-            inset: 0;
+                2.3s
+                cubic-bezier(.2,.8,.2,1)
+                1.5s
+                forwards;
         }
 
         .se-obx-stars span {
             position: absolute;
-
-            font-size: 14px;
-
+            font-size: 18px;
+            color: #fff1bd;
+            text-shadow:
+                0 0 7px white,
+                0 0 14px rgba(255,200,80,.8);
             opacity: 0;
-
             animation:
                 seObxSpark
-                1.7s
+                1.8s
                 ease-in-out
                 infinite;
         }
 
         .se-obx-stars span:nth-child(1) {
-            left: 2%;
-            top: 15%;
+            left: 5px;
+            top: 25px;
+            animation-delay: .2s;
         }
 
         .se-obx-stars span:nth-child(2) {
-            right: 8%;
-            bottom: 20%;
-            animation-delay: .5s;
+            right: 25px;
+            top: 30px;
+            animation-delay: .7s;
         }
 
         .se-obx-stars span:nth-child(3) {
-            left: 20%;
-            bottom: 3%;
-            animation-delay: .9s;
+            left: 35px;
+            bottom: 12px;
+            animation-delay: 1.1s;
         }
 
 
         /* =====================================================
-           OUTER BANKS — ATARDECER + BARCO
+           OUTER BANKS — ATARDECER
            ===================================================== */
 
-        .se-obx-sunset {
+        .se-summer90 {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-
-            padding-top: 10vh;
-
-            animation:
-                seSunsetFade
-                3.4s
-                ease
-                forwards;
+            align-items: center;
         }
 
-        .se-sunset-scene {
-            position: relative;
-
-            width: 280px;
-            height: 220px;
-
-            overflow: hidden;
-
-            border-radius: 12px;
-
-            opacity: 0;
-
-            transform:
-                translateY(25px)
-                scale(.78);
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    #f3ad67 0%,
-                    #f7c887 32%,
-                    #e8b46d 51%,
-                    #718791 52%,
-                    #2d4855 100%
-                );
-
-            box-shadow:
-                0 15px 30px rgba(0,0,0,.35);
-
-            animation:
-                seSunsetEntrance
-                1.1s
-                cubic-bezier(.2,.8,.2,1)
-                forwards;
-        }
-
-        .se-sunset-scene::after {
-            content: "";
-
+        .se-summer90-sun {
             position: absolute;
-
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            height: 75px;
-
-            background:
-                repeating-linear-gradient(
-                    -4deg,
-                    rgba(255,220,160,.1) 0 3px,
-                    transparent 3px 12px
-                );
-
-            opacity: .8;
-
-            animation:
-                seSunsetWater
-                2.5s
-                ease-in-out
-                infinite
-                alternate;
-        }
-
-        .se-sunset-sun {
-            position: absolute;
-
             left: 50%;
-            top: 45px;
-
-            width: 72px;
-            height: 72px;
-
-            margin-left: -36px;
-
+            top: 25%;
+            width: 100px;
+            height: 100px;
+            transform: translateX(-50%);
             border-radius: 50%;
-
             background:
                 radial-gradient(
                     circle,
-                    #fff3b3 0%,
-                    #ffd16b 46%,
-                    #f2a052 70%,
-                    transparent 72%
+                    #fff5bd,
+                    #ffc85c 55%,
+                    rgba(255,170,60,.1) 72%,
+                    transparent 74%
                 );
-
             box-shadow:
-                0 0 35px rgba(255,210,100,.72);
-
-            opacity: 0;
-
+                0 0 45px rgba(255,180,70,.5);
             animation:
-                seSunsetSun
-                1.7s
-                ease
-                .25s
-                forwards;
-        }
-
-        .se-sunset-horizon {
-            position: absolute;
-
-            left: 0;
-            right: 0;
-
-            top: 126px;
-
-            height: 3px;
-
-            background:
-                rgba(255,225,160,.6);
-
-            box-shadow:
-                0 0 12px rgba(255,210,120,.45);
-
-            z-index: 2;
-        }
-
-        .se-sunset-sea {
-            position: absolute;
-
-            left: 0;
-            right: 0;
-
-            bottom: 0;
-
-            height: 91px;
-
-            background:
-                repeating-linear-gradient(
-                    -5deg,
-                    rgba(255,220,155,.09) 0 3px,
-                    transparent 3px 12px
-                );
-
-            z-index: 1;
-
-            animation:
-                seSunsetWater
-                2.5s
-                ease-in-out
-                infinite
-                alternate;
-        }
-
-        .se-boat {
-            position: absolute;
-
-            left: 50%;
-            top: 119px;
-
-            width: 125px;
-            height: 72px;
-
-            margin-left: -62px;
-
-            z-index: 5;
-
-            opacity: 0;
-
-            animation:
-                seBoatAppear
-                1.1s
-                cubic-bezier(.2,.8,.2,1)
-                .55s
-                forwards;
-        }
-
-        .se-boat-hull {
-            position: absolute;
-
-            left: 5px;
-            bottom: 8px;
-
-            width: 112px;
-            height: 27px;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    #182125,
-                    #070b0d
-                );
-
-            clip-path:
-                polygon(
-                    0 0,
-                    100% 0,
-                    82% 76%,
-                    18% 100%
-                );
-
-            box-shadow:
-                0 8px 12px rgba(0,0,0,.35);
-        }
-
-        .se-boat-mast {
-            position: absolute;
-
-            left: 61px;
-            top: 0;
-
-            width: 4px;
-            height: 56px;
-
-            border-radius: 3px;
-
-            background:
-                #111719;
-        }
-
-        .se-boat-sail {
-            position: absolute;
-
-            left: 64px;
-            top: 4px;
-
-            width: 45px;
-            height: 45px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(250,240,210,.92),
-                    rgba(190,174,145,.7)
-                );
-
-            clip-path:
-                polygon(
-                    0 0,
-                    100% 100%,
-                    0 100%
-                );
-
-            transform-origin: left bottom;
-
-            animation:
-                seSailWave
-                1.8s
-                ease-in-out
-                infinite
-                alternate;
-        }
-
-        .se-sunset-star {
-            position: absolute;
-
-            font-size: 15px;
-
-            color: rgba(255,245,210,.9);
-
-            opacity: 0;
-
-            text-shadow:
-                0 0 8px rgba(255,230,150,.8);
-
-            z-index: 3;
-
-            animation:
-                seSunsetStar
-                1.8s
+                seSummerSun
+                2.8s
                 ease-in-out
                 infinite;
         }
 
-        .se-sunset-star:nth-child(6) {
-            left: 12%;
-            top: 30%;
+        .se-summer90-main {
+            position: relative;
+            z-index: 2;
+            font-size: 95px;
+            filter:
+                drop-shadow(0 7px 10px rgba(100,40,10,.2));
+            animation:
+                seSummerAppear
+                1.05s
+                cubic-bezier(.2,.8,.2,1)
+                forwards,
+                seSummerFloat
+                2.5s
+                ease-in-out
+                1.2s
+                infinite;
         }
 
-        .se-sunset-star:nth-child(7) {
-            right: 12%;
-            top: 23%;
-            animation-delay: .55s;
+        .se-summer90-wave {
+            position: absolute;
+            left: 50%;
+            top: 63%;
+            width: 300px;
+            height: 45px;
+            border-radius: 50%;
+            border-top: 3px solid rgba(120,200,230,.6);
+            border-bottom: 2px solid rgba(255,255,255,.45);
+            transform: translateX(-50%);
+            animation:
+                seSummerWave
+                2s
+                ease-in-out
+                infinite alternate;
         }
 
-        .se-sunset-star:nth-child(8) {
+        .se-summer90-wave.wave2 {
+            top: 70%;
+            width: 250px;
+            opacity: .6;
+            animation-delay: .6s;
+        }
+
+        .se-summer90-spark {
+            position: absolute;
+            font-size: 18px;
+            color: #fff0a8;
+            text-shadow:
+                0 0 7px white,
+                0 0 15px rgba(255,180,70,.9);
+            animation:
+                seSummerSpark
+                1.7s
+                ease-in-out
+                infinite;
+        }
+
+        .se-summer90-spark.spark1 {
             left: 25%;
-            top: 18%;
+            top: 32%;
+            animation-delay: .2s;
+        }
+
+        .se-summer90-spark.spark2 {
+            right: 25%;
+            top: 40%;
+            animation-delay: .8s;
+        }
+
+        .se-summer90-spark.spark3 {
+            left: 65%;
+            top: 65%;
+            animation-delay: 1.2s;
+        }
+
+
+        /* =====================================================
+           100/10 — CONSTELACIÓN
+           ===================================================== */
+
+        .se-constellation100 {
+            animation:
+                seConstellationFade
+                4.2s
+                ease
+                forwards;
+        }
+
+        .se-constellation100-glow {
+            position: absolute;
+            width: 330px;
+            height: 250px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(180,190,255,.35),
+                    transparent 70%
+                );
+            animation:
+                seConstellationGlow
+                2.5s
+                ease-in-out
+                infinite;
+        }
+
+        .se-constellation100-star {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 3;
+            font-size: 30px;
+            opacity: 0;
+            color: white;
+            text-shadow:
+                0 0 7px white,
+                0 0 18px rgba(150,170,255,.9);
+            filter:
+                drop-shadow(0 0 7px white)
+                drop-shadow(0 0 18px rgba(150,170,255,.9));
+            animation:
+                seConstellationStar
+                1s
+                ease-out
+                forwards,
+                seConstellationPulse
+                2s
+                ease-in-out
+                1s
+                infinite;
+        }
+
+        .se-constellation100 .star1 {
+            transform: translate(-125px,-60px);
+        }
+
+        .se-constellation100 .star2 {
+            transform: translate(-55px,-105px);
+            animation-delay: .15s;
+        }
+
+        .se-constellation100 .star3 {
+            transform: translate(25px,-65px);
+            animation-delay: .3s;
+        }
+
+        .se-constellation100 .star4 {
+            transform: translate(115px,-90px);
+            animation-delay: .45s;
+        }
+
+        .se-constellation100 .star5 {
+            transform: translate(90px,25px);
+            animation-delay: .6s;
+        }
+
+        .se-constellation100 .star6 {
+            transform: translate(10px,75px);
+            animation-delay: .75s;
+        }
+
+        .se-constellation100 .star7 {
+            transform: translate(-80px,45px);
             animation-delay: .9s;
         }
 
-        .se-sunset-star:nth-child(9) {
-            right: 27%;
-            top: 34%;
-            animation-delay: 1.25s;
+        .se-constellation100-line {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            transform-origin: left center;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(180,200,255,.05),
+                    rgba(200,215,255,.8)
+                );
+            box-shadow:
+                0 0 6px rgba(170,190,255,.6);
+            opacity: 0;
+            animation:
+                seConstellationLine
+                .8s
+                ease-out
+                forwards;
         }
+
+        .se-constellation100 .line1 {
+            width: 72px;
+            transform: rotate(-154deg);
+            animation-delay: .4s;
+        }
+
+        .se-constellation100 .line2 {
+            width: 80px;
+            transform: rotate(-56deg);
+            animation-delay: .55s;
+        }
+
+        .se-constellation100 .line3 {
+            width: 73px;
+            transform: rotate(-15deg);
+            animation-delay: .7s;
+        }
+
+        .se-constellation100 .line4 {
+            width: 80px;
+            transform: rotate(26deg);
+            animation-delay: .85s;
+        }
+
+        .se-constellation100 .line5 {
+            width: 82px;
+            transform: rotate(143deg);
+            animation-delay: 1s;
+        }
+
+        .se-constellation100 .line6 {
+            width: 100px;
+            transform: rotate(173deg);
+            animation-delay: 1.15s;
+        }
+
+
         /* =====================================================
-   ✨ ESTRELLA — 10/10
-   ===================================================== */
-
-.se-star10,
-.se-ice60,
-.se-butterfly80,
-.se-summer90,
-.se-constellation100 {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-}
-
-.se-star10-main {
-    position: relative;
-    z-index: 3;
-    font-size: 110px;
-    filter:
-        drop-shadow(0 0 12px rgba(255,255,255,.95))
-        drop-shadow(0 0 35px rgba(255,215,90,.9));
-    animation:
-        seStarAppear 1s ease-out forwards,
-        seStarPulse 1.5s ease-in-out 1s infinite;
-}
-
-.se-star10-glow {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(255,255,255,.8),
-        rgba(255,215,80,.35),
-        transparent 70%
-    );
-    animation: seStarGlow 1.8s ease-in-out infinite;
-}
-
-.se-star10-spark {
-    position: absolute;
-    font-size: 25px;
-    opacity: 0;
-    animation: seStarSpark 2.2s ease-out forwards;
-}
-
-.se-star10 .spark1 {
-    transform: translate(-120px,-80px);
-}
-
-.se-star10 .spark2 {
-    transform: translate(120px,-65px);
-    animation-delay: .2s;
-}
-
-.se-star10 .spark3 {
-    transform: translate(-100px,90px);
-    animation-delay: .4s;
-}
-
-.se-star10 .spark4 {
-    transform: translate(105px,80px);
-    animation-delay: .6s;
-}
-
-.se-star10 .spark5 {
-    transform: translate(0,-125px);
-    animation-delay: .8s;
-}
-
-
-/* =====================================================
-   ❄️ CRISTAL DE HIELO — 60/10
-   ===================================================== */
-
-.se-ice60 {
-    animation: seIceFade 3.4s ease forwards;
-}
-
-.se-ice60-main {
-    position: relative;
-    z-index: 3;
-    font-size: 115px;
-    filter:
-        drop-shadow(0 0 12px rgba(220,250,255,.95))
-        drop-shadow(0 0 35px rgba(120,220,255,.9));
-    animation:
-        seIceAppear 1s ease-out forwards,
-        seIceFloat 2.2s ease-in-out 1s infinite;
-}
-
-.se-ice60-glow {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(210,250,255,.7),
-        rgba(100,210,255,.3),
-        transparent 70%
-    );
-    animation: seIceGlow 2s ease-in-out infinite;
-}
-
-.se-ice60-shard {
-    position: absolute;
-    font-size: 25px;
-    opacity: 0;
-    animation: seIceShard 2.5s ease-out forwards;
-}
-
-.se-ice60 .shard1 {
-    transform: translate(-130px,-70px);
-}
-
-.se-ice60 .shard2 {
-    transform: translate(125px,-65px);
-    animation-delay: .2s;
-}
-
-.se-ice60 .shard3 {
-    transform: translate(-110px,85px);
-    animation-delay: .4s;
-}
-
-.se-ice60 .shard4 {
-    transform: translate(115px,90px);
-    animation-delay: .6s;
-}
-
-
-/* =====================================================
-   🦋 MARIPOSA — 80/10
-   ===================================================== */
-
-.se-butterfly80-main {
-    position: relative;
-    z-index: 3;
-    font-size: 110px;
-    filter:
-        drop-shadow(0 0 12px rgba(255,255,255,.9))
-        drop-shadow(0 0 30px rgba(220,120,255,.8));
-    animation:
-        seButterflyAppear 1s ease-out forwards,
-        seButterflyFlight 2.5s ease-in-out 1s infinite;
-}
-
-.se-butterfly80-glow {
-    position: absolute;
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(220,170,255,.45),
-        transparent 70%
-    );
-    animation: seButterflyGlow 2s ease-in-out infinite;
-}
-
-.se-butterfly80-spark {
-    position: absolute;
-    font-size: 22px;
-    opacity: 0;
-    animation: seButterflySpark 2.4s ease-out forwards;
-}
-
-.se-butterfly80 .spark1 {
-    transform: translate(-115px,-65px);
-}
-
-.se-butterfly80 .spark2 {
-    transform: translate(120px,-50px);
-    animation-delay: .25s;
-}
-
-.se-butterfly80 .spark3 {
-    transform: translate(-105px,75px);
-    animation-delay: .5s;
-}
-
-.se-butterfly80 .spark4 {
-    transform: translate(110px,80px);
-    animation-delay: .75s;
-}
-
-
-/* =====================================================
-   🌺 DETALLE VERANIEGO — 90/10
-   ===================================================== */
-
-.se-summer90 {
-    animation: seSummerFade 4s ease forwards;
-}
-
-.se-summer90-main {
-    position: relative;
-    z-index: 4;
-    font-size: 110px;
-    filter:
-        drop-shadow(0 0 12px rgba(255,255,255,.9))
-        drop-shadow(0 0 35px rgba(255,170,70,.8));
-    animation:
-        seSummerAppear 1s ease-out forwards,
-        seSummerFloat 2.4s ease-in-out 1s infinite;
-}
-
-.se-summer90-sun {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(255,220,120,.7),
-        rgba(255,170,80,.25),
-        transparent 70%
-    );
-    animation: seSummerSun 2s ease-in-out infinite;
-}
-
-.se-summer90-wave {
-    position: absolute;
-    width: 300px;
-    height: 35px;
-    border-top: 3px solid rgba(255,255,255,.5);
-    border-radius: 50%;
-    opacity: 0;
-    animation: seSummerWave 2.5s ease-out forwards;
-}
-
-.se-summer90 .wave1 {
-    transform: translateY(100px);
-}
-
-.se-summer90 .wave2 {
-    transform: translateY(130px);
-    animation-delay: .4s;
-}
-
-.se-summer90-spark {
-    position: absolute;
-    font-size: 22px;
-    opacity: 0;
-    animation: seSummerSpark 2.5s ease-out forwards;
-}
-
-.se-summer90 .spark1 {
-    transform: translate(-120px,-75px);
-}
-
-.se-summer90 .spark2 {
-    transform: translate(120px,-60px);
-    animation-delay: .3s;
-}
-
-.se-summer90 .spark3 {
-    transform: translate(0,-125px);
-    animation-delay: .6s;
-}
-
-
-/* =====================================================
-   ✦ CONSTELACIÓN — 100/10
-   ===================================================== */
-
-.se-constellation100 {
-    animation: seConstellationFade 4.2s ease forwards;
-}
-
-.se-constellation100-glow {
-    position: absolute;
-    width: 330px;
-    height: 250px;
-    border-radius: 50%;
-    background: radial-gradient(
-        ellipse,
-        rgba(180,190,255,.35),
-        transparent 70%
-    );
-    animation: seConstellationGlow 2.5s ease-in-out infinite;
-}
-
-.se-constellation100-star {
-    position: absolute;
-    z-index: 3;
-    font-size: 30px;
-    opacity: 0;
-    filter:
-        drop-shadow(0 0 7px white)
-        drop-shadow(0 0 18px rgba(150,170,255,.9));
-    animation:
-        seConstellationStar 1s ease-out forwards,
-        seConstellationPulse 2s ease-in-out 1s infinite;
-}
-
-.se-constellation100 .star1 {
-    transform: translate(-125px,-60px);
-}
-
-.se-constellation100 .star2 {
-    transform: translate(-55px,-105px);
-    animation-delay: .15s;
-}
-
-.se-constellation100 .star3 {
-    transform: translate(25px,-65px);
-    animation-delay: .3s;
-}
-
-.se-constellation100 .star4 {
-    transform: translate(115px,-90px);
-    animation-delay: .45s;
-}
-
-.se-constellation100 .star5 {
-    transform: translate(90px,25px);
-    animation-delay: .6s;
-}
-
-.se-constellation100 .star6 {
-    transform: translate(10px,75px);
-    animation-delay: .75s;
-}
-
-.se-constellation100 .star7 {
-    transform: translate(-80px,45px);
-    animation-delay: .9s;
-}
-
-.se-constellation100-line {
-    position: absolute;
-    z-index: 2;
-    width: 85px;
-    height: 2px;
-    transform-origin: left center;
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,.05),
-        rgba(180,200,255,.8),
-        rgba(255,255,255,.05)
-    );
-    opacity: 0;
-    animation: seConstellationLine 1s ease-out forwards;
-}
-
-.se-constellation100 .line1 {
-    transform: translate(-105px,-75px) rotate(-30deg);
-}
-
-.se-constellation100 .line2 {
-    transform: translate(-35px,-85px) rotate(25deg);
-}
-
-.se-constellation100 .line3 {
-    transform: translate(45px,-70px) rotate(-15deg);
-}
-
-.se-constellation100 .line4 {
-    transform: translate(105px,-65px) rotate(75deg);
-}
-
-.se-constellation100 .line5 {
-    transform: translate(75px,35px) rotate(160deg);
-}
-
-.se-constellation100 .line6 {
-    transform: translate(0,70px) rotate(170deg);
-}
-
-
-/* =====================================================
-   ANIMACIONES
-   ===================================================== */
-
-@keyframes seStarAppear {
-    from {
-        opacity: 0;
-        transform: scale(.2) rotate(-90deg);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) rotate(0);
-    }
-}
-
-@keyframes seStarPulse {
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-}
-
-@keyframes seStarGlow {
-    0%,100% {
-        transform: scale(.8);
-        opacity: .45;
-    }
-
-    50% {
-        transform: scale(1.25);
-        opacity: 1;
-    }
-}
-
-@keyframes seStarSpark {
-    from {
-        opacity: 0;
-        scale: .2;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-        scale: 1.2;
-    }
-}
-
-
-@keyframes seIceAppear {
-    from {
-        opacity: 0;
-        transform: scale(.2) rotate(-45deg);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) rotate(0);
-    }
-}
-
-@keyframes seIceFloat {
-    0%,100% {
-        transform: translateY(0) rotate(-3deg);
-    }
-
-    50% {
-        transform: translateY(-15px) rotate(3deg);
-    }
-}
-
-@keyframes seIceGlow {
-    0%,100% {
-        transform: scale(.8);
-        opacity: .35;
-    }
-
-    50% {
-        transform: scale(1.25);
-        opacity: .9;
-    }
-}
-
-@keyframes seIceShard {
-    from {
-        opacity: 0;
-        transform: scale(.2);
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes seIceFade {
-    0%,85% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-
-@keyframes seButterflyAppear {
-    from {
-        opacity: 0;
-        transform: scale(.3) translateY(50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-@keyframes seButterflyFlight {
-    0%,100% {
-        transform: translate(0,0) rotate(-3deg);
-    }
-
-    25% {
-        transform: translate(25px,-20px) rotate(5deg);
-    }
-
-    50% {
-        transform: translate(0,-35px) rotate(-2deg);
-    }
-
-    75% {
-        transform: translate(-25px,-15px) rotate(5deg);
-    }
-}
-
-@keyframes seButterflyGlow {
-    0%,100% {
-        transform: scale(.8);
-        opacity: .3;
-    }
-
-    50% {
-        transform: scale(1.2);
-        opacity: .8;
-    }
-}
-
-@keyframes seButterflySpark {
-    from {
-        opacity: 0;
-        transform: scale(.2);
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-
-@keyframes seSummerAppear {
-    from {
-        opacity: 0;
-        transform: scale(.4) translateY(40px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-@keyframes seSummerFloat {
-    0%,100% {
-        transform: translateY(0) rotate(-2deg);
-    }
-
-    50% {
-        transform: translateY(-12px) rotate(2deg);
-    }
-}
-
-@keyframes seSummerSun {
-    0%,100% {
-        transform: scale(.8);
-        opacity: .4;
-    }
-
-    50% {
-        transform: scale(1.25);
-        opacity: .8;
-    }
-}
-
-@keyframes seSummerWave {
-    from {
-        opacity: 0;
-        transform: translateY(100px) scaleX(.4);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(100px) scaleX(1);
-    }
-}
-
-@keyframes seSummerSpark {
-    from {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes seSummerFade {
-    0%,90% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-
-@keyframes seConstellationStar {
-    from {
-        opacity: 0;
-        transform: scale(.1);
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes seConstellationPulse {
-    0%,100% {
-        filter:
-            drop-shadow(0 0 7px white)
-            drop-shadow(0 0 18px rgba(150,170,255,.9));
-    }
-
-    50% {
-        filter:
-            drop-shadow(0 0 12px white)
-            drop-shadow(0 0 30px rgba(150,170,255,1));
-    }
-}
-
-@keyframes seConstellationLine {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: .8;
-    }
-}
-
-@keyframes seConstellationGlow {
-    0%,100% {
-        transform: scale(.8);
-        opacity: .3;
-    }
-
-    50% {
-        transform: scale(1.15);
-        opacity: .8;
-    }
-}
-
-@keyframes seConstellationFade {
-    0%,90% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-/* =====================================================
-   OBJETOS 100/10 E INFINITO
-   OCULTOS
-   ===================================================== */
-
-.se-final-safe-object,
-.se-infinity-object {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    animation: none !important;
-}
+           ANIMACIONES
+           ===================================================== */
+
+        @keyframes seStarAppear {
+            from {
+                opacity: 0;
+                transform: scale(.2) rotate(-90deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        @keyframes seStarPulse {
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        @keyframes seStarGlow {
+            0%,100% {
+                transform: scale(.8);
+                opacity: .45;
+            }
+
+            50% {
+                transform: scale(1.25);
+                opacity: 1;
+            }
+        }
+
+        @keyframes seStarSpark {
+            from {
+                opacity: 0;
+                transform: scale(.2);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(1.2);
+            }
+        }
+
+
+        @keyframes seIceAppear {
+            from {
+                opacity: 0;
+                transform: scale(.2) rotate(-45deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        @keyframes seIceFloat {
+            0%,100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+
+        @keyframes seIceGlow {
+            0%,100% {
+                transform: scale(.8);
+                opacity: .35;
+            }
+
+            50% {
+                transform: scale(1.25);
+                opacity: .9;
+            }
+        }
+
+        @keyframes seIceShard {
+            from {
+                opacity: 0;
+                transform: scale(.2);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes seIceFade {
+            0%,85% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes seButterflyAppear {
+            from {
+                opacity: 0;
+                transform: scale(.3) translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes seButterflyFlight {
+            0%,100% {
+                transform: translate(0,0) rotate(-3deg);
+            }
+
+            25% {
+                transform: translate(25px,-20px) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(0,-35px) rotate(-2deg);
+            }
+
+            75% {
+                transform: translate(-25px,-15px) rotate(5deg);
+            }
+        }
+
+        @keyframes seButterflyGlow {
+            0%,100% {
+                transform: scale(.8);
+                opacity: .3;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: .8;
+            }
+        }
+
+        @keyframes seButterflySpark {
+            from {
+                opacity: 0;
+                transform: scale(.2);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes seSummerAppear {
+            from {
+                opacity: 0;
+                transform: scale(.4) translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes seSummerFloat {
+            0%,100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(2deg);
+            }
+        }
+
+        @keyframes seSummerSun {
+            0%,100% {
+                transform: scale(.8);
+                opacity: .4;
+            }
+
+            50% {
+                transform: scale(1.25);
+                opacity: .8;
+            }
+        }
+
+        @keyframes seSummerWave {
+            from {
+                opacity: 0;
+                transform: translateY(100px) scaleX(.4);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(100px) scaleX(1);
+            }
+        }
+
+        @keyframes seSummerSpark {
+            from {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes seSummerFade {
+            0%,90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes seConstellationStar {
+            from {
+                opacity: 0;
+                transform: scale(.1);
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes seConstellationPulse {
+            0%,100% {
+                filter:
+                    drop-shadow(0 0 7px white)
+                    drop-shadow(0 0 18px rgba(150,170,255,.9));
+            }
+
+            50% {
+                filter:
+                    drop-shadow(0 0 12px white)
+                    drop-shadow(0 0 30px rgba(150,170,255,1));
+            }
+        }
+
+        @keyframes seConstellationLine {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: .8;
+            }
+        }
+
+        @keyframes seConstellationGlow {
+            0%,100% {
+                transform: scale(.8);
+                opacity: .3;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: .8;
+            }
+        }
+
+        @keyframes seConstellationFade {
+            0%,90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
 
         /* =====================================================
            ANIMACIONES — ARMARIO
@@ -2450,10 +1731,21 @@
         }
 
         @keyframes seNarniaFade {
-            0% { opacity: 0; }
-            12% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2567,10 +1859,21 @@
         }
 
         @keyframes seLampFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2676,7 +1979,7 @@
         }
 
         @keyframes seAslanSpark {
-            0%, 100% {
+            0%,100% {
                 opacity: 0;
                 transform:
                     scale(.4)
@@ -2702,10 +2005,21 @@
         }
 
         @keyframes seAslanFade {
-            0% { opacity: 0; }
-            12% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2759,13 +2073,6 @@
             }
         }
 
-        /*
-           IMPORTANTE:
-           El movimiento de flotación ahora usa un
-           pseudo-elemento independiente para no entrar
-           en conflicto con seRoseBloom.
-        */
-
         .se-rose-container {
             will-change: transform;
         }
@@ -2793,7 +2100,7 @@
         }
 
         @keyframes seRoseFloatContainer {
-            0%, 100% {
+            0%,100% {
                 transform:
                     translateY(0);
             }
@@ -2856,7 +2163,7 @@
         }
 
         @keyframes seRoseSpark {
-            0%, 100% {
+            0%,100% {
                 opacity: 0;
                 transform:
                     translateY(4px)
@@ -2874,10 +2181,21 @@
         }
 
         @keyframes seBellaFade {
-            0% { opacity: 0; }
-            12% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -2971,10 +2289,21 @@
         }
 
         @keyframes seLetterFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -3023,7 +2352,7 @@
         }
 
         @keyframes seCrownFloat {
-            0%, 100% {
+            0%,100% {
                 transform:
                     translateY(2px)
                     rotate(-2deg);
@@ -3049,7 +2378,7 @@
         }
 
         @keyframes seCrownSpark {
-            0%, 100% {
+            0%,100% {
                 opacity: 0;
                 transform:
                     scale(.5)
@@ -3065,10 +2394,21 @@
         }
 
         @keyframes seCrownFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            82% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            82% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -3121,7 +2461,7 @@
         }
 
         @keyframes seHpStar {
-            0%, 100% {
+            0%,100% {
                 opacity: .2;
                 transform:
                     translateY(4px)
@@ -3192,7 +2532,7 @@
         }
 
         @keyframes sePinPulse {
-            0%, 100% {
+            0%,100% {
                 transform: scale(.9);
             }
 
@@ -3202,7 +2542,7 @@
         }
 
         @keyframes seObxSpark {
-            0%, 100% {
+            0%,100% {
                 opacity: 0;
                 transform: scale(.5);
             }
@@ -3214,10 +2554,21 @@
         }
 
         @keyframes seMapFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            78% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            78% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -3321,7 +2672,7 @@
         }
 
         @keyframes seSunsetStar {
-            0%, 100% {
+            0%,100% {
                 opacity: 0;
                 transform:
                     scale(.45)
@@ -3337,10 +2688,21 @@
         }
 
         @keyframes seSunsetFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            82% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            82% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
 
@@ -3416,13 +2778,16 @@
            ===================================================== */
 
         let layer =
-            document.getElementById("special-effects-layer");
+            document.getElementById(
+                "special-effects-layer"
+            );
 
         if (!layer) {
 
             layer = document.createElement("div");
 
-            layer.id = "special-effects-layer";
+            layer.id =
+                "special-effects-layer";
 
             document.body.appendChild(layer);
         }
@@ -3432,79 +2797,82 @@
            NARNIA — ESTRELLA
            ===================================================== */
 
-function createStar10() {
+        function createStar10() {
 
-    layer.innerHTML = `
-        <div class="se-effect se-star10">
-            <div class="se-star10-glow"></div>
+            layer.innerHTML = `
+                <div class="se-effect se-star10">
 
-            <div class="se-star10-main">
-                ✨
-            </div>
+                    <div class="se-star10-glow"></div>
 
-            <div class="se-star10-spark spark1">✦</div>
-            <div class="se-star10-spark spark2">✧</div>
-            <div class="se-star10-spark spark3">✦</div>
-            <div class="se-star10-spark spark4">✧</div>
-            <div class="se-star10-spark spark5">✦</div>
-        </div>
-    `;
+                    <div class="se-star10-main">
+                        ✨
+                    </div>
 
-    removeEffectAfter(3200);
-}
+                    <div class="se-star10-spark spark1">✦</div>
+                    <div class="se-star10-spark spark2">✧</div>
+                    <div class="se-star10-spark spark3">✦</div>
+                    <div class="se-star10-spark spark4">✧</div>
+                    <div class="se-star10-spark spark5">✦</div>
+
+                </div>
+            `;
+
+            removeEffectAfter(3200);
+        }
+
 
         /* =====================================================
            NARNIA — CRISTAL HIELO
            ===================================================== */
 
-function createIce60() {
+        function createIce60() {
 
-    layer.innerHTML = `
-        <div class="se-effect se-ice60">
+            layer.innerHTML = `
+                <div class="se-effect se-ice60">
 
-            <div class="se-ice60-glow"></div>
+                    <div class="se-ice60-glow"></div>
 
-            <div class="se-ice60-main">
-                ❄️
-            </div>
+                    <div class="se-ice60-main">
+                        ❄️
+                    </div>
 
-            <div class="se-ice60-shard shard1">✦</div>
-            <div class="se-ice60-shard shard2">✧</div>
-            <div class="se-ice60-shard shard3">❄</div>
-            <div class="se-ice60-shard shard4">✦</div>
+                    <div class="se-ice60-shard shard1">✦</div>
+                    <div class="se-ice60-shard shard2">✧</div>
+                    <div class="se-ice60-shard shard3">❄</div>
+                    <div class="se-ice60-shard shard4">✦</div>
 
-        </div>
-    `;
+                </div>
+            `;
 
-    removeEffectAfter(3400);
-}
+            removeEffectAfter(3400);
+        }
 
 
         /* =====================================================
            NARNIA — MARIPOSA
            ===================================================== */
 
-function createButterfly80() {
+        function createButterfly80() {
 
-    layer.innerHTML = `
-        <div class="se-effect se-butterfly80">
+            layer.innerHTML = `
+                <div class="se-effect se-butterfly80">
 
-            <div class="se-butterfly80-glow"></div>
+                    <div class="se-butterfly80-glow"></div>
 
-            <div class="se-butterfly80-main">
-                🦋
-            </div>
+                    <div class="se-butterfly80-main">
+                        🦋
+                    </div>
 
-            <div class="se-butterfly80-spark spark1">✦</div>
-            <div class="se-butterfly80-spark spark2">✧</div>
-            <div class="se-butterfly80-spark spark3">✦</div>
-            <div class="se-butterfly80-spark spark4">✧</div>
+                    <div class="se-butterfly80-spark spark1">✦</div>
+                    <div class="se-butterfly80-spark spark2">✧</div>
+                    <div class="se-butterfly80-spark spark3">✦</div>
+                    <div class="se-butterfly80-spark spark4">✧</div>
 
-        </div>
-    `;
+                </div>
+            `;
 
-    removeEffectAfter(3800);
-}
+            removeEffectAfter(3800);
+        }
 
 
         /* =====================================================
@@ -3514,7 +2882,6 @@ function createButterfly80() {
         function createBella() {
 
             layer.innerHTML = `
-
                 <div class="se-effect se-bella">
 
                     <div class="se-rose-container">
@@ -3546,7 +2913,6 @@ function createButterfly80() {
         function createBridgerton() {
 
             layer.innerHTML = `
-
                 <div class="se-effect se-bridgerton">
 
                     <div class="se-letter-scene">
@@ -3587,7 +2953,6 @@ function createButterfly80() {
         function createPrincess() {
 
             layer.innerHTML = `
-
                 <div class="se-effect se-princess">
 
                     <div class="se-crown-container">
@@ -3618,7 +2983,6 @@ function createButterfly80() {
         function createHarry() {
 
             layer.innerHTML = `
-
                 <div class="se-effect se-hp">
 
                     <div class="se-hp-flight">
@@ -3653,7 +3017,6 @@ function createButterfly80() {
         function createOuterBanks() {
 
             layer.innerHTML = `
-
                 <div class="se-effect se-obx">
 
                     <div class="se-map-wrapper">
@@ -3695,66 +3058,77 @@ function createButterfly80() {
            OUTER BANKS — DETALLE VERANIEGO
            ===================================================== */
 
-function createSummer90() {
+        function createSummer90() {
 
-    layer.innerHTML = `
-        <div class="se-effect se-summer90">
+            layer.innerHTML = `
+                <div class="se-effect se-summer90">
 
-            <div class="se-summer90-sun"></div>
+                    <div class="se-summer90-sun"></div>
 
-            <div class="se-summer90-main">
-                🌺
-            </div>
+                    <div class="se-summer90-main">
+                        🌺
+                    </div>
 
-            <div class="se-summer90-wave wave1"></div>
-            <div class="se-summer90-wave wave2"></div>
+                    <div class="se-summer90-wave wave1"></div>
+                    <div class="se-summer90-wave wave2"></div>
 
-            <div class="se-summer90-spark spark1">✦</div>
-            <div class="se-summer90-spark spark2">✧</div>
-            <div class="se-summer90-spark spark3">✦</div>
+                    <div class="se-summer90-spark spark1">✦</div>
+                    <div class="se-summer90-spark spark2">✧</div>
+                    <div class="se-summer90-spark spark3">✦</div>
 
-        </div>
-    `;
+                </div>
+            `;
 
-    removeEffectAfter(4000);
-}
+            removeEffectAfter(4000);
+        }
+
+
         /* =====================================================
-            CONSTELACION
+           CONSTELACIÓN — 100/10
            ===================================================== */
-function createConstellation100() {
 
-    layer.innerHTML = `
-        <div class="se-effect se-constellation100">
+        function createConstellation100() {
 
-            <div class="se-constellation100-glow"></div>
+            layer.innerHTML = `
+                <div class="se-effect se-constellation100">
 
-            <div class="se-constellation100-line line1"></div>
-            <div class="se-constellation100-line line2"></div>
-            <div class="se-constellation100-line line3"></div>
-            <div class="se-constellation100-line line4"></div>
-            <div class="se-constellation100-line line5"></div>
-            <div class="se-constellation100-line line6"></div>
+                    <div class="se-constellation100-glow"></div>
 
-            <div class="se-constellation100-star star1">✦</div>
-            <div class="se-constellation100-star star2">✦</div>
-            <div class="se-constellation100-star star3">✦</div>
-            <div class="se-constellation100-star star4">✦</div>
-            <div class="se-constellation100-star star5">✦</div>
-            <div class="se-constellation100-star star6">✦</div>
-            <div class="se-constellation100-star star7">✦</div>
+                    <div class="se-constellation100-line line1"></div>
+                    <div class="se-constellation100-line line2"></div>
+                    <div class="se-constellation100-line line3"></div>
+                    <div class="se-constellation100-line line4"></div>
+                    <div class="se-constellation100-line line5"></div>
+                    <div class="se-constellation100-line line6"></div>
 
-        </div>
-    `;
+                    <div class="se-constellation100-star star1">✦</div>
+                    <div class="se-constellation100-star star2">✦</div>
+                    <div class="se-constellation100-star star3">✦</div>
+                    <div class="se-constellation100-star star4">✦</div>
+                    <div class="se-constellation100-star star5">✦</div>
+                    <div class="se-constellation100-star star6">✦</div>
+                    <div class="se-constellation100-star star7">✦</div>
 
-    removeEffectAfter(4200);
-}
+                </div>
+            `;
+
+            removeEffectAfter(4200);
+        }
+
+
         /* =====================================================
            DIAPOSITIVAS FINALES
            ===================================================== */
 
-        function protectFinalSlideObjects(slide, index) {
+        function protectFinalSlideObjects(
+            slide,
+            index
+        ) {
 
-            if (!slide || (index !== 10)) {
+            if (
+                !slide ||
+                index !== 10
+            ) {
                 return;
             }
 
@@ -3791,395 +3165,349 @@ function createConstellation100() {
 
             const objects = new Set();
 
-            selectors.forEach(function (selector) {
-
-                try {
-
-                    slide.querySelectorAll(selector)
-                        .forEach(function (el) {
-
-                            if (
-                                !el.classList.contains("slide") &&
-                                !el.closest(
-                                    "#special-effects-layer"
-                                )
-                            ) {
-                                objects.add(el);
-                            }
-
-                        });
-
-                } catch (_) {}
-            });
-
-
-            objects.forEach(function (el) {
-
-                el.classList.add(
-                    "se-final-safe-object"
-                );
-
-
-                if (index === 10) {
-
-                    if (
-                        el.matches(
-                            "[class*='compass'], " +
-                            "[class*='brujula'], " +
-                            "[class*='brújula'], " +
-                            ".compass, " +
-                            ".compass-object, " +
-                            ".compass-decoration"
-                        )
-                    ) {
-
-                        el.classList.add(
-                            "se-final-compass"
-                        );
-
-                    } else if (
-                        el.matches(
-                            "[class*='map'], " +
-                            ".map, " +
-                            ".map-object, " +
-                            ".map-decoration"
-                        )
-                    ) {
-
-                        el.classList.add(
-                            "se-final-map"
-                        );
-
-                    } else if (
-                        el.matches(
-                            "[class*='wand'], " +
-                            "[class*='varita'], " +
-                            ".wand, " +
-                            ".wand-object, " +
-                            ".wand-decoration, " +
-                            ".magic-wand, " +
-                            ".magic-wand-object"
-                        )
-                    ) {
-
-                        el.classList.add(
-                            "se-final-wand"
-                        );
-                    }
-            });
-        }
-
-
-        /* =====================================================
-           BORRAR EFECTO
-           ===================================================== */
-
-        let removeTimer = null;
-
-        function removeEffectAfter(time) {
-
-            if (removeTimer) {
-                clearTimeout(removeTimer);
-            }
-
-            removeTimer = setTimeout(function () {
-
-                layer.innerHTML = "";
-
-            }, time);
-        }
-
-
-        /* =====================================================
-           RELACIÓN DIAPOSITIVA → OBJETO
-           ===================================================== */
-
-        function triggerForSlide(slide) {
-
-            if (!slide) return;
-
-            const slides =
-                Array.from(
-                    document.querySelectorAll(".slide")
-                );
-
-            const index =
-                slides.indexOf(slide);
-
-            if (index === -1) return;
-
-
-            /*
-                0  = Portada
-
-10/10  → ✨ estrella
-60/10  → ❄️ cristal de hielo
-80/10  → 🦋 mariposa
-90/10  → 🌺 detalle veraniego
-100/10 → ✦ constelación
-∞/10   → animación épica existente
-            */
-
-
-            if (index === 1) {
-
-                createStar10();
-
-                return;
-            }
-
-
-            if (index === 2) {
-
-                createOuterBanks();
-
-                return;
-            }
-
-
-            if (index === 3) {
-
-                createBella();
-
-                return;
-            }
-
-
-            if (index === 4) {
-
-                createBridgerton();
-
-                return;
-            }
-
-
-            if (index === 5) {
-
-                createPrincess();
-
-                return;
-            }
-
-
-            if (index === 6) {
-
-                createIce60();
-
-                return;
-            }
-
-
-            if (index === 7) {
-
-                createHarry();
-
-                return;
-            }
-
-
-            if (index === 8) {
-
-                createButterfly80();
-
-                return;
-            }
-
-
-            if (index === 9) {
-
-                createSummer90();
-
-                return;
-            }
-            if (index === 10) {
-               createConstellation100();
-
-               return;
-            }
-            if (index === 11) {
-            layer.innerHTML = "";
-        }
-
-
-        /* =====================================================
-           DETECTAR CAMBIO DE DIAPOSITIVA
-           ===================================================== */
-
-        const slides =
-            document.querySelectorAll(".slide");
-
-
-        if (!slides.length) {
-
-            console.warn(
-                "special-effects.js: no se encontraron diapositivas."
+            selectors.forEach(
+                function (selector) {
+
+                    try {
+
+                        slide
+                            .querySelectorAll(selector)
+                            .forEach(
+                                function (el) {
+
+                                    if (
+                                        !el.classList.contains("slide") &&
+                                        !el.closest(
+                                            "#special-effects-layer"
+                                        )
+                                    ) {
+                                        objects.add(el);
+                                    }
+
+                                }
+                            );
+
+                    } catch (_) {}
+
+                }
             );
 
-            return;
-        }
 
+            objects.forEach(
+                function (el) {
 
-        let lastActiveSlide = null;
-
-        let checkScheduled = false;
-
-
-        function checkActiveSlide() {
-
-            checkScheduled = false;
-
-
-            const activeSlide =
-                document.querySelector(
-                    ".slide.active"
-                );
-
-
-            if (!activeSlide) return;
-
-
-            if (
-                activeSlide !==
-                lastActiveSlide
-            ) {
-
-                lastActiveSlide =
-                    activeSlide;
-
-
-                const slides =
-                    Array.from(
-                        document.querySelectorAll(
-                            ".slide"
-                        )
+                    el.classList.add(
+                        "se-final-safe-object"
                     );
 
 
-                const activeIndex =
-                    slides.indexOf(
-                        activeSlide
-                    );
-
-
-                triggerForSlide(
-                    activeSlide
-                );
-
-
-                protectFinalSlideObjects(
-                    activeSlide,
-                    activeIndex
-                );
-
-
-                setTimeout(function () {
-
-                    protectFinalSlideObjects(
-                        activeSlide,
-                        activeIndex
-                    );
-
-                }, 80);
-
-
-                setTimeout(function () {
-
-                    protectFinalSlideObjects(
-                        activeSlide,
-                        activeIndex
-                    );
-
-                }, 350);
-            }
-        }
-
-
-        function scheduleCheck() {
-
-            if (checkScheduled) return;
-
-            checkScheduled = true;
-
-            requestAnimationFrame(
-                checkActiveSlide
-            );
-        }
-
-
-        /* =====================================================
-           OBSERVADOR
-           ===================================================== */
-
-        const observer =
-            new MutationObserver(
-                function (mutations) {
-
-                    for (
-                        const mutation
-                        of mutations
-                    ) {
+                    if (index === 10) {
 
                         if (
-                            mutation.type ===
-                                "attributes" &&
-                            mutation.attributeName ===
-                                "class"
+                            el.matches(
+                                "[class*='compass'], " +
+                                "[class*='brujula'], " +
+                                "[class*='brújula'], " +
+                                ".compass, " +
+                                ".compass-object, " +
+                                ".compass-decoration"
+                            )
                         ) {
 
-                            scheduleCheck();
+                            el.classList.add(
+                                "se-final-compass"
+                            );
 
-                            break;
+                        } else if (
+                            el.matches(
+                                "[class*='map'], " +
+                                ".map, " +
+                                ".map-object, " +
+                                ".map-decoration"
+                            )
+                        ) {
+
+                            el.classList.add(
+                                "se-final-map"
+                            );
+
+                        } else if (
+                            el.matches(
+                                "[class*='wand'], " +
+                                "[class*='varita'], " +
+                                ".wand, " +
+                                ".wand-object, " +
+                                ".wand-decoration, " +
+                                ".magic-wand, " +
+                                ".magic-wand-object"
+                            )
+                        ) {
+
+                            el.classList.add(
+                                "se-final-wand"
+                            );
+
                         }
+
                     }
 
                 }
             );
+        }
+       /* =========================================================
+   2. UTILIDADES DE EFECTOS
+   ========================================================= */
 
+function removeEffectAfter(ms) {
+    clearTimeout(effectTimeout);
 
-        slides.forEach(function (slide) {
+    effectTimeout = setTimeout(() => {
+        if (layer) {
+            layer.innerHTML = "";
+        }
+    }, ms);
+}
 
-            observer.observe(
-                slide,
-                {
-                    attributes: true,
-                    attributeFilter: ["class"]
-                }
-            );
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
-        });
+function randomInt(min, max) {
+    return Math.floor(random(min, max + 1));
+}
 
+function createElement(className, content = "") {
+    const el = document.createElement("div");
 
-        /* =====================================================
-           INICIALIZAR
-           ===================================================== */
+    el.className = className;
 
-        scheduleCheck();
-
-
-        console.log(
-            "✨ Special Effects cargado correctamente."
-        );
+    if (content !== "") {
+        el.innerHTML = content;
     }
 
+    return el;
+}
 
-    /* =========================================================
-       ARRANQUE SEGURO
-       ========================================================= */
+function setRandomPosition(el) {
+    el.style.left = `${random(5, 95)}%`;
+    el.style.top = `${random(5, 95)}%`;
+}
 
-    if (
-        document.readyState ===
-        "loading"
-    ) {
+function setRandomDelay(el, min = 0, max = 2) {
+    el.style.animationDelay = `${random(min, max)}s`;
+}
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            initSpecialEffects
-        );
+function setRandomDuration(el, min = 2, max = 5) {
+    el.style.animationDuration = `${random(min, max)}s`;
+}
 
-    } else {
+function appendParticles(count, className, content = "") {
+    if (!layer) return;
 
-        initSpecialEffects();
+    for (let i = 0; i < count; i++) {
+        const particle = createElement(className, content);
 
+        setRandomPosition(particle);
+        setRandomDelay(particle);
+        setRandomDuration(particle);
+
+        layer.appendChild(particle);
     }
+}
+/* =========================================================
+   NARNIA — CRISTAL DE HIELO
+   ========================================================= */
 
-})();
+function createIce60() {
+
+    layer.innerHTML = `
+        <div class="se-effect se-ice60">
+
+            <div class="se-ice60-glow"></div>
+
+            <div class="se-ice60-main">
+                ❄️
+            </div>
+
+            <div class="se-ice60-shard shard1">✦</div>
+            <div class="se-ice60-shard shard2">✧</div>
+            <div class="se-ice60-shard shard3">❄</div>
+            <div class="se-ice60-shard shard4">✦</div>
+
+        </div>
+    `;
+
+    removeEffectAfter(3400);
+}
+
+
+/* =========================================================
+   NARNIA — MARIPOSA
+   ========================================================= */
+
+function createButterfly80() {
+
+    layer.innerHTML = `
+        <div class="se-effect se-butterfly80">
+
+            <div class="se-butterfly80-glow"></div>
+
+            <div class="se-butterfly80-main">
+                🦋
+            </div>
+
+            <div class="se-butterfly80-spark spark1">✦</div>
+            <div class="se-butterfly80-spark spark2">✧</div>
+            <div class="se-butterfly80-spark spark3">✦</div>
+            <div class="se-butterfly80-spark spark4">✧</div>
+
+        </div>
+    `;
+
+    removeEffectAfter(3800);
+}
+
+
+/* =========================================================
+   BELLA Y LA BESTIA — ROSA
+   ========================================================= */
+
+function createBella() {
+
+    layer.innerHTML = `
+        <div class="se-effect se-bella">
+
+            <div class="se-rose-container">
+
+                <div class="se-rose-glow"></div>
+
+                <div class="se-rose">
+                    🌹
+                </div>
+
+                <span class="se-rose-petal petal1">❀</span>
+                <span class="se-rose-petal petal2">✿</span>
+                <span class="se-rose-petal petal3">❀</span>
+                <span class="se-rose-petal petal4">✿</span>
+                <span class="se-rose-petal petal5">❀</span>
+
+            </div>
+
+        </div>
+    `;
+
+    removeEffectAfter(3600);
+}
+
+
+/* =========================================================
+   BRIDGERTON — CARTA ELEGANTE
+   ========================================================= */
+
+function createBridgerton() {
+
+    layer.innerHTML = `
+        <div class="se-effect se-bridgerton">
+
+            <div class="se-letter-scene">
+
+                <div class="se-letter-glow"></div>
+
+                <div class="se-letter">
+                    <div class="se-letter-seal">
+                        ✦
+                    </div>
+
+                    <div class="se-letter-paper">
+                        ♡
+                    </div>
+                </div>
+
+                <span class="se-bridgerton-spark spark1">
+                    ✦
+                </span>
+
+                <span class="se-bridgerton-spark spark2">
+                    ✧
+                </span>
+
+                <span class="se-bridgerton-spark spark3">
+                    ✦
+                </span>
+
+                <span class="se-bridgerton-spark spark4">
+                    ✧
+                </span>
+
+            </div>
+
+        </div>
+    `;
+
+    removeEffectAfter(3600);
+}
+
+
+/* =========================================================
+   DISNEY — CORONA / CUENTO
+   ========================================================= */
+
+function createPrincess() {
+
+    layer.innerHTML = `
+        <div class="se-effect se-princess">
+
+            <div class="se-crown-container">
+
+                <div class="se-crown-glow"></div>
+
+                <div class="se-crown">
+                    👑
+                </div>
+
+                <span class="se-crown-star star1">✦</span>
+                <span class="se-crown-star star2">✧</span>
+                <span class="se-crown-star star3">✦</span>
+                <span class="se-crown-star star4">✧</span>
+
+            </div>
+
+        </div>
+    `;
+
+    removeEffectAfter(3500);
+}
+
+
+/* =========================================================
+   HARRY POTTER — MAGIA
+   ========================================================= */
+
+function createHarry() {
+
+    layer.innerHTML = `
+        <div class="se-effect se-hp">
+
+            <div class="se-hp-flight">
+
+                <div class="se-hp-trail"></div>
+
+                <div class="se-hp-wizard">
+                    🧙‍♂️
+                </div>
+
+                <div class="se-hp-broom">
+                    🧹
+                </div>
+
+            </div>
+
+            <span class="se-hp-star">✦</span>
+            <span class="se-hp-star">✧</span>
+            <span class="se-hp-star">✦</span>
+
+        </div>
+    `;
+
+    removeEffectAfter(3100);
+}
