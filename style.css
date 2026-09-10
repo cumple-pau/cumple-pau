@@ -4077,3 +4077,1307 @@ main {
     }
 
 }
+/* =========================================================
+   MINIJUEGO DE GALLETITAS
+   ========================================================= */
+
+.cookie-game-open {
+    position: relative;
+    z-index: 5;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: auto !important;
+    min-width: 220px !important;
+    height: auto !important;
+
+    padding: 14px 24px !important;
+
+    border: none !important;
+    border-radius: 999px !important;
+
+    background: linear-gradient(135deg, #fff4a8, #ffd84d) !important;
+    color: #493800 !important;
+
+    font-family: "Poppins", sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+
+    box-shadow:
+        0 8px 25px rgba(90, 60, 0, .18),
+        inset 0 1px 0 rgba(255,255,255,.8) !important;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease !important;
+}
+
+.cookie-game-open:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.cookie-game-open:active {
+    transform: scale(.97);
+}
+
+
+/* OVERLAY */
+
+.cookie-game-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+
+    display: none;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 14px !important;
+
+    background: rgba(52, 36, 0, .48) !important;
+
+    backdrop-filter: blur(8px);
+
+    z-index: 999999 !important;
+
+    box-sizing: border-box !important;
+}
+
+.cookie-game-overlay.open {
+    display: flex !important;
+}
+
+
+/* PANEL */
+
+#cookieGame {
+    position: relative !important;
+
+    width: min(720px, 100%) !important;
+    max-height: calc(100dvh - 28px) !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    padding: 28px 22px 30px !important;
+
+    border-radius: 30px !important;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,.95),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #fff8cf 0%,
+            #fff0a2 100%
+        ) !important;
+
+    box-shadow:
+        0 25px 70px rgba(53, 37, 0, .3) !important;
+
+    box-sizing: border-box !important;
+
+    font-family: "Poppins", sans-serif !important;
+    color: #493800 !important;
+
+    animation: cookieGameAppear .45s cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes cookieGameAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* CERRAR */
+
+.cookie-game-close {
+    position: absolute !important;
+
+    top: 13px !important;
+    right: 13px !important;
+
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+
+    background: rgba(255,255,255,.75) !important;
+    color: #493800 !important;
+
+    font-family: Arial, sans-serif !important;
+    font-size: 27px !important;
+    line-height: 1 !important;
+
+    cursor: pointer !important;
+}
+
+
+/* CABECERA */
+
+.cookie-game-header {
+    text-align: center;
+    padding: 0 35px;
+}
+
+.cookie-game-kicker {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+
+    opacity: .55;
+}
+
+.cookie-game-header h2 {
+    margin: 0;
+
+    font-family: "DM Serif Display", serif !important;
+    font-size: clamp(28px, 6vw, 42px) !important;
+    font-weight: 400 !important;
+
+    color: #493800 !important;
+}
+
+.cookie-game-header p {
+    margin: 5px 0 0;
+
+    font-size: 13px;
+    opacity: .7;
+}
+
+
+/* PROGRESO */
+
+.cookie-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 22px auto 15px;
+
+    max-width: 430px;
+}
+
+.cookie-progress-dot {
+    width: 27px !important;
+    height: 27px !important;
+
+    flex: 0 0 27px;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 50% !important;
+
+    background: rgba(255,255,255,.7) !important;
+    color: #8b6d13 !important;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+
+    transition: .3s ease;
+}
+
+.cookie-progress-dot.active,
+.cookie-progress-dot.completed {
+    background: #e9bd24 !important;
+    color: white !important;
+
+    box-shadow: 0 4px 12px rgba(200,155,20,.25);
+}
+
+.cookie-progress-line {
+    width: 32px;
+    height: 2px;
+
+    background: rgba(180,140,20,.2);
+
+    transition: .3s ease;
+}
+
+
+/* PERSONAJE */
+
+.cookie-character-area {
+    height: 175px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    overflow: hidden;
+}
+
+.cookie-character {
+    position: relative;
+
+    width: 130px;
+    height: 170px;
+
+    transform-origin: bottom center;
+
+    animation: characterIdle 3.2s ease-in-out infinite;
+}
+
+@keyframes characterIdle {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* PELO */
+
+.character-hair {
+    position: absolute;
+
+    width: 91px;
+    height: 108px;
+
+    left: 19px;
+    top: 3px;
+
+    border-radius: 48% 48% 42% 42%;
+
+    background: #4c291d;
+
+    z-index: 1;
+
+    box-shadow:
+        -13px 18px 0 #4c291d,
+        13px 22px 0 #4c291d;
+}
+
+
+/* CABEZA */
+
+.character-head {
+    position: absolute;
+
+    left: 30px;
+    top: 15px;
+
+    width: 70px;
+    height: 78px;
+
+    border-radius: 48% 48% 45% 45%;
+
+    background: #f4c7a7;
+
+    z-index: 2;
+
+    box-shadow:
+        inset -5px -7px 0 rgba(195,120,90,.12);
+}
+
+
+/* CARA */
+
+.character-face {
+    position: absolute;
+
+    inset: 0;
+}
+
+
+/* OJOS */
+
+.character-eye {
+    position: absolute;
+
+    top: 37px;
+
+    width: 7px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #34221d;
+
+    animation: characterBlink 4.5s infinite;
+}
+
+.character-eye.left {
+    left: 18px;
+}
+
+.character-eye.right {
+    right: 18px;
+}
+
+@keyframes characterBlink {
+    0%, 45%, 49%, 100% {
+        transform: scaleY(1);
+    }
+
+    47% {
+        transform: scaleY(.1);
+    }
+}
+
+
+/* GAFAS */
+
+.character-glasses {
+    position: absolute;
+
+    top: 33px;
+
+    width: 27px;
+    height: 20px;
+
+    border: 2px solid #493800;
+    border-radius: 8px;
+
+    z-index: 3;
+}
+
+.character-glasses.left {
+    left: 8px;
+}
+
+.character-glasses.right {
+    right: 8px;
+}
+
+.character-glasses-bridge {
+    position: absolute;
+
+    top: 41px;
+    left: 31px;
+
+    width: 9px;
+    height: 2px;
+
+    background: #493800;
+
+    z-index: 3;
+}
+
+
+/* BOCA */
+
+.character-mouth {
+    position: absolute;
+
+    left: 30px;
+    top: 56px;
+
+    width: 12px;
+    height: 6px;
+
+    border-bottom: 2px solid #a95657;
+
+    border-radius: 0 0 50% 50%;
+}
+
+
+/* CUELLO */
+
+.character-neck {
+    position: absolute;
+
+    left: 53px;
+    top: 86px;
+
+    width: 25px;
+    height: 18px;
+
+    background: #f4c7a7;
+
+    z-index: 1;
+}
+
+
+/* CUERPO */
+
+.character-body {
+    position: absolute;
+
+    left: 22px;
+    top: 96px;
+
+    width: 86px;
+    height: 72px;
+
+    border-radius: 35px 35px 15px 15px;
+
+    background: #fff;
+
+    z-index: 2;
+}
+
+
+/* DELANTAL */
+
+.character-apron {
+    position: absolute;
+
+    left: 20px;
+    top: 5px;
+
+    width: 46px;
+    height: 66px;
+
+    border-radius: 14px 14px 8px 8px;
+
+    background: #f8d95a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+
+/* BRAZOS */
+
+.character-arm {
+    position: absolute;
+
+    top: 14px;
+
+    width: 21px;
+    height: 52px;
+
+    border-radius: 20px;
+
+    background: #f4c7a7;
+
+    transform-origin: top center;
+
+    transition: transform .3s ease;
+}
+
+.character-arm.left {
+    left: -8px;
+    transform: rotate(15deg);
+}
+
+.character-arm.right {
+    right: -8px;
+    transform: rotate(-15deg);
+}
+
+
+/* REACCIONES */
+
+.cookie-character.mixing {
+    animation: characterMix .25s ease-in-out infinite alternate;
+}
+
+@keyframes characterMix {
+    from {
+        transform: rotate(-3deg);
+    }
+
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+.cookie-character.happy {
+    animation: characterHappy .5s ease;
+}
+
+@keyframes characterHappy {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08) translateY(-7px);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* PASOS */
+
+.cookie-step {
+    display: none;
+
+    text-align: center;
+
+    animation: cookieStepIn .35s ease;
+}
+
+.cookie-step.active {
+    display: block;
+}
+
+@keyframes cookieStepIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cookie-step h3 {
+    margin: 5px 0 4px;
+
+    font-family: "DM Serif Display", serif !important;
+    font-size: 25px !important;
+    font-weight: 400 !important;
+
+    color: #493800 !important;
+}
+
+.cookie-step > p {
+    margin: 0 auto 17px;
+
+    max-width: 480px;
+
+    font-size: 12px;
+    opacity: .7;
+}
+
+.cookie-small-message {
+    margin-top: 12px !important;
+
+    font-weight: 600;
+
+    opacity: .7 !important;
+}
+
+
+/* INGREDIENTES */
+
+.cookie-ingredients {
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    gap: 8px;
+
+    max-width: 570px;
+
+    margin: 0 auto 20px;
+}
+
+#cookieGame .ingredient {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 88px !important;
+
+    padding: 10px 4px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 4px !important;
+
+    border: 2px solid transparent !important;
+    border-radius: 16px !important;
+
+    background: rgba(255,255,255,.72) !important;
+    color: #493800 !important;
+
+    font-family: "Poppins", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+
+    cursor: pointer !important;
+
+    transition: .25s ease !important;
+}
+
+#cookieGame .ingredient:hover {
+    transform: translateY(-3px);
+}
+
+#cookieGame .ingredient.selected {
+    border-color: #e5bb29 !important;
+
+    background: #fff5b4 !important;
+
+    transform: translateY(-4px) scale(1.03);
+}
+
+#cookieGame .ingredient.used {
+    opacity: .45 !important;
+    pointer-events: none !important;
+}
+
+.ingredient-icon {
+    font-size: 27px;
+}
+
+
+/* BOL */
+
+.cookie-bowl {
+    width: 130px;
+    height: 65px;
+
+    margin: 0 auto;
+
+    border-radius: 0 0 70px 70px;
+
+    background: linear-gradient(
+        180deg,
+        #fff 0%,
+        #f4d87a 100%
+    );
+
+    box-shadow:
+        0 9px 0 rgba(196,150,25,.18),
+        0 12px 20px rgba(80,60,0,.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cookie-bowl-inside {
+    width: 92px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ead28a;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* MEZCLAR */
+
+#cookieGame .mix-button {
+    width: 150px !important;
+    min-width: 150px !important;
+    height: 115px !important;
+
+    padding: 12px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 4px !important;
+
+    border: none !important;
+    border-radius: 24px !important;
+
+    background: rgba(255,255,255,.8) !important;
+    color: #493800 !important;
+
+    font-family: "Poppins", sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 8px 20px rgba(80,60,0,.12) !important;
+
+    transition: .2s ease !important;
+}
+
+#cookieGame .mix-button:active {
+    transform: scale(.93) rotate(-3deg);
+}
+
+.mix-bowl {
+    font-size: 48px;
+}
+
+.mix-progress {
+    width: min(300px, 90%);
+
+    margin: 20px auto 0;
+}
+
+.mix-progress-bar {
+    width: 100%;
+    height: 9px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background: rgba(150,110,0,.13);
+}
+
+#mixProgressFill {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        90deg,
+        #f3ce45,
+        #e6aa20
+    );
+
+    transition: width .2s ease;
+}
+
+#mixCount {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* FORMAS */
+
+.cookie-shapes {
+    display: flex;
+
+    justify-content: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+#cookieGame .shape-button {
+    width: 105px !important;
+    min-width: 105px !important;
+    height: 85px !important;
+
+    padding: 8px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 2px !important;
+
+    border: 2px solid transparent !important;
+    border-radius: 17px !important;
+
+    background: rgba(255,255,255,.75) !important;
+    color: #493800 !important;
+
+    font-size: 27px !important;
+
+    cursor: pointer !important;
+
+    transition: .2s ease !important;
+}
+
+#cookieGame .shape-button:hover {
+    border-color: #e6bc2d !important;
+    transform: translateY(-3px);
+}
+
+#cookieGame .shape-button small {
+    font-family: "Poppins", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 600 !important;
+}
+
+
+/* GALLETAS CREADAS */
+
+.created-cookies {
+    min-height: 82px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.created-cookie {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #f9db88,
+            #d99b48
+        );
+
+    box-shadow:
+        inset -5px -6px 0 rgba(130,75,20,.12),
+        0 5px 10px rgba(80,50,0,.12);
+
+    font-size: 30px;
+
+    animation: cookiePop .3s ease;
+}
+
+@keyframes cookiePop {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* HORNO */
+
+.cookie-oven {
+    width: min(280px, 80%);
+
+    margin: 0 auto 18px;
+
+    padding: 13px;
+
+    border-radius: 20px;
+
+    background: #56443b;
+
+    box-shadow:
+        0 12px 25px rgba(50,30,20,.2);
+}
+
+.oven-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    color: white;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.oven-window {
+    height: 125px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 5px solid #302520;
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle,
+            #a85f32,
+            #3b2820
+        );
+
+    overflow: hidden;
+}
+
+.oven-cookies {
+    font-size: 35px;
+
+    animation: ovenCookies 1.7s ease-in-out infinite alternate;
+}
+
+@keyframes ovenCookies {
+    from {
+        transform: translateY(3px);
+    }
+
+    to {
+        transform: translateY(-3px);
+    }
+}
+
+.oven-handle {
+    width: 95px;
+    height: 8px;
+
+    margin: 11px auto 0;
+
+    border-radius: 99px;
+
+    background: #1f1916;
+}
+
+.oven-progress {
+    width: min(300px, 90%);
+
+    margin: 0 auto;
+}
+
+.oven-progress-bar {
+    width: 100%;
+    height: 10px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background: rgba(120,70,0,.15);
+}
+
+#ovenProgressFill {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        90deg,
+        #f1cb42,
+        #e7962e
+    );
+
+    transition: width .15s linear;
+}
+
+#ovenProgressText {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* TOPPINGS */
+
+.toppings {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+
+    flex-wrap: wrap;
+}
+
+#cookieGame .topping-button {
+    width: 80px !important;
+    min-width: 80px !important;
+    height: 66px !important;
+
+    padding: 5px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 1px !important;
+
+    border: 2px solid transparent !important;
+    border-radius: 14px !important;
+
+    background: rgba(255,255,255,.72) !important;
+    color: #493800 !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 22px !important;
+
+    cursor: pointer !important;
+}
+
+#cookieGame .topping-button.active {
+    border-color: #e5bb29 !important;
+
+    background: #fff3a8 !important;
+}
+
+#cookieGame .topping-button small {
+    font-size: 8px !important;
+    font-weight: 600 !important;
+}
+
+.decorate-cookies {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    min-height: 80px;
+}
+
+.decorate-cookie {
+    position: relative;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #f8db8d,
+            #d89a46
+        );
+
+    box-shadow:
+        inset -5px -6px 0 rgba(130,75,20,.13),
+        0 5px 12px rgba(80,50,0,.12);
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.decorate-cookie:hover {
+    transform: translateY(-4px);
+}
+
+.decorate-cookie.decorated {
+    transform: translateY(-3px) scale(1.05);
+}
+
+
+/* RESULTADO */
+
+.cookie-result {
+    padding: 15px 0 5px;
+}
+
+.result-character {
+    font-size: 60px;
+
+    animation: resultBounce 1.2s ease-in-out infinite;
+}
+
+@keyframes resultBounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.result-cookies {
+    margin: 8px 0;
+
+    font-size: 45px;
+
+    letter-spacing: 5px;
+}
+
+.cookie-result h3 {
+    margin-top: 10px;
+}
+
+.final-rating {
+    display: inline-block;
+
+    margin: 10px 0;
+
+    padding: 8px 20px;
+
+    border-radius: 999px;
+
+    background: #f4cd45;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    box-shadow: 0 6px 15px rgba(210,165,25,.25);
+}
+
+.result-message {
+    margin-bottom: 18px !important;
+}
+
+#cookieGame .restart-cookie-game {
+    width: auto !important;
+    min-width: 190px !important;
+    height: auto !important;
+
+    padding: 12px 20px !important;
+
+    border: none !important;
+    border-radius: 999px !important;
+
+    background: #493800 !important;
+    color: white !important;
+
+    font-family: "Poppins", sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+}
+
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+
+    .cookie-game-overlay {
+        padding: 8px !important;
+    }
+
+    #cookieGame {
+        max-height: calc(100dvh - 16px) !important;
+
+        padding:
+            22px 13px 24px !important;
+
+        border-radius: 24px !important;
+    }
+
+    .cookie-game-header h2 {
+        font-size: 30px !important;
+    }
+
+    .cookie-character-area {
+        height: 145px;
+    }
+
+    .cookie-character {
+        transform: scale(.86);
+        transform-origin: bottom center;
+    }
+
+    .cookie-ingredients {
+        grid-template-columns: repeat(3, 1fr);
+
+        max-width: 330px;
+    }
+
+    #cookieGame .ingredient {
+        min-height: 75px !important;
+    }
+
+    .ingredient-icon {
+        font-size: 23px;
+    }
+
+    .cookie-shapes {
+        gap: 7px;
+    }
+
+    #cookieGame .shape-button {
+        width: 92px !important;
+        min-width: 92px !important;
+        height: 75px !important;
+    }
+
+    .decorate-cookies {
+        gap: 8px;
+    }
+
+    .decorate-cookie {
+        width: 58px;
+        height: 58px;
+    }
+
+    .cookie-progress-line {
+        width: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .cookie-game-header {
+        padding: 0 25px;
+    }
+
+    .cookie-progress-dot {
+        width: 24px;
+        height: 24px;
+
+        flex-basis: 24px;
+    }
+
+    .cookie-progress-line {
+        width: 12px;
+    }
+
+    .cookie-character-area {
+        height: 130px;
+    }
+
+    .cookie-character {
+        transform: scale(.76);
+    }
+
+    #cookieGame .ingredient {
+        min-height: 68px !important;
+
+        font-size: 9px !important;
+    }
+
+    .ingredient-icon {
+        font-size: 20px;
+    }
+}
