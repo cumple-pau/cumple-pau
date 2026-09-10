@@ -372,8 +372,8 @@
         }
 
         .cookie-game-flying {
-            position: absolute;
-            z-index: 10;
+            position: fixed;
+            z-index: 999999;
             pointer-events: none;
             font-size: 25px;
             animation: cookieGameIngredientFly .6s cubic-bezier(.2,.8,.3,1) forwards;
@@ -384,41 +384,199 @@
            ========================================================= */
 
         .cookie-game-button {
-            appearance: none;
-            border: none;
-            border-radius: 999px;
-            padding: 12px 20px;
-            margin-top: 15px;
-            background: linear-gradient(135deg, #e6b83f, #c99227);
-            color: white;
-            font: 700 12px Poppins, sans-serif;
-            letter-spacing: .3px;
-            cursor: pointer;
-            box-shadow: 0 7px 16px rgba(150,105,25,.22);
-            transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            border: none !important;
+            border-radius: 999px !important;
+            width: auto !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            height: auto !important;
+            min-height: 44px !important;
+            padding: 11px 17px !important;
+            margin: 15px auto 0 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: linear-gradient(135deg, #e6b83f, #c99227) !important;
+            color: white !important;
+            font: 700 12px/1.2 Poppins, sans-serif !important;
+            letter-spacing: .3px !important;
+            text-align: center !important;
+            white-space: normal !important;
+            cursor: pointer !important;
+            box-shadow: 0 7px 16px rgba(150,105,25,.22) !important;
+            transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease !important;
             touch-action: manipulation;
+            box-sizing: border-box !important;
         }
 
         .cookie-game-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(150,105,25,.28);
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 20px rgba(150,105,25,.28) !important;
         }
 
         .cookie-game-button:active {
-            transform: scale(.96);
+            transform: scale(.96) !important;
         }
 
         .cookie-game-button.secondary {
-            background: rgba(255,255,255,.8);
-            color: #8c6824;
-            border: 1px solid rgba(177,132,41,.25);
-            box-shadow: none;
+            background: rgba(255,255,255,.8) !important;
+            color: #8c6824 !important;
+            border: 1px solid rgba(177,132,41,.25) !important;
+            box-shadow: none !important;
         }
 
         .cookie-game-button:disabled {
-            opacity: .45;
-            cursor: not-allowed;
-            transform: none;
+            opacity: .45 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+        }
+
+        /* =========================================================
+           BOTÓN PARA ABRIR EL JUEGO
+           ========================================================= */
+
+        .cookie-game-open {
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: auto !important;
+            min-width: 0 !important;
+            max-width: calc(100% - 20px) !important;
+            height: auto !important;
+            min-height: 40px !important;
+            padding: 9px 16px !important;
+            margin: 18px auto 0 !important;
+            border: 1px solid rgba(190,143,45,.3) !important;
+            border-radius: 999px !important;
+            background: linear-gradient(135deg, #e6b83f, #c99227) !important;
+            color: #fff !important;
+            font: 700 10px/1.2 Poppins, sans-serif !important;
+            letter-spacing: .3px !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+            cursor: pointer !important;
+            box-sizing: border-box !important;
+            box-shadow: 0 7px 16px rgba(150,105,25,.22) !important;
+            transition: transform .2s ease, box-shadow .2s ease !important;
+            touch-action: manipulation !important;
+        }
+
+        .cookie-game-open:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 20px rgba(150,105,25,.28) !important;
+        }
+
+        .cookie-game-open:active {
+            transform: scale(.96) !important;
+        }
+
+        /* =========================================================
+           VENTANA DEL JUEGO
+           ========================================================= */
+
+        .cookie-game.cookie-game-visible {
+            display: block !important;
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 99990 !important;
+            width: 100vw !important;
+            max-width: none !important;
+            height: 100dvh !important;
+            max-height: 100dvh !important;
+            margin: 0 !important;
+            padding: 18px 14px 35px !important;
+            box-sizing: border-box !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            border: none !important;
+            border-radius: 0 !important;
+            background:
+                radial-gradient(
+                    circle at 15% 8%,
+                    rgba(255,255,255,.98),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 18%,
+                    rgba(255,224,143,.38),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    145deg,
+                    #fffaf0,
+                    #ffe9aa
+                ) !important;
+            -webkit-overflow-scrolling: touch !important;
+            overscroll-behavior: contain !important;
+        }
+
+        .cookie-game.cookie-game-visible .cookie-game-header {
+            width: min(94%, 900px);
+            margin: 0 auto 20px;
+        }
+
+        .cookie-game.cookie-game-visible .cookie-game-progress {
+            width: min(94%, 900px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cookie-game.cookie-game-visible .cookie-game-step,
+        .cookie-game.cookie-game-visible .cookie-game-result {
+            width: min(94%, 900px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* =========================================================
+           BOTÓN CERRAR
+           ========================================================= */
+
+        .cookie-game-close {
+            position: fixed !important;
+            top: 10px !important;
+            right: 10px !important;
+            z-index: 999999 !important;
+
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
+            max-width: 40px !important;
+            max-height: 40px !important;
+
+            padding: 0 !important;
+            margin: 0 !important;
+
+            border: 1px solid rgba(177,132,41,.2) !important;
+            border-radius: 50% !important;
+
+            background: rgba(255,255,255,.94) !important;
+            color: #79551d !important;
+
+            font-family: Arial, sans-serif !important;
+            font-size: 25px !important;
+            font-weight: 400 !important;
+            line-height: 40px !important;
+
+            text-align: center !important;
+            cursor: pointer !important;
+
+            box-shadow: 0 5px 15px rgba(90,65,20,.15) !important;
+
+            box-sizing: border-box !important;
+        }
+
+        .cookie-game-close:hover {
+            transform: scale(1.05) !important;
         }
 
         /* =========================================================
@@ -529,26 +687,31 @@
         }
 
         .cookie-game-shape-button {
-            appearance: none;
-            border: 1px solid rgba(172,126,38,.25);
-            background: rgba(255,255,255,.82);
-            border-radius: 17px;
-            min-width: 76px;
-            min-height: 66px;
-            padding: 7px;
-            cursor: pointer;
-            color: #715522;
-            font: 600 10px Poppins, sans-serif;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            border: 1px solid rgba(172,126,38,.25) !important;
+            background: rgba(255,255,255,.82) !important;
+            border-radius: 17px !important;
+            min-width: 76px !important;
+            min-height: 66px !important;
+            width: auto !important;
+            height: auto !important;
+            padding: 7px !important;
+            margin: 0 !important;
+            cursor: pointer !important;
+            color: #715522 !important;
+            font: 600 10px/1.2 Poppins, sans-serif !important;
             touch-action: manipulation;
             transition: .2s ease;
+            box-sizing: border-box !important;
         }
 
         .cookie-game-shape-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) !important;
         }
 
         .cookie-game-shape-button:active {
-            transform: scale(.94);
+            transform: scale(.94) !important;
         }
 
         .cookie-game-shape-icon {
@@ -754,25 +917,31 @@
         }
 
         .cookie-game-topping {
-            appearance: none;
-            min-width: 70px;
-            min-height: 58px;
-            border-radius: 16px;
-            border: 1px solid rgba(177,131,40,.25);
-            background: rgba(255,255,255,.85);
-            cursor: pointer;
-            color: #704f20;
-            font: 600 9px Poppins, sans-serif;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            min-width: 70px !important;
+            min-height: 58px !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 7px !important;
+            border-radius: 16px !important;
+            border: 1px solid rgba(177,131,40,.25) !important;
+            background: rgba(255,255,255,.85) !important;
+            cursor: pointer !important;
+            color: #704f20 !important;
+            font: 600 9px/1.2 Poppins, sans-serif !important;
             touch-action: manipulation;
             transition: .2s ease;
+            box-sizing: border-box !important;
         }
 
         .cookie-game-topping:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) !important;
         }
 
         .cookie-game-topping:active {
-            transform: scale(.94);
+            transform: scale(.94) !important;
         }
 
         .cookie-game-topping span {
@@ -1070,11 +1239,15 @@
 
         @media (max-width: 650px) {
 
-            .cookie-game {
-                width: 96%;
-                margin-top: 38px;
-                padding: 19px 11px 23px;
-                border-radius: 27px;
+            .cookie-game.cookie-game-visible {
+                padding: 12px 9px 30px !important;
+            }
+
+            .cookie-game-open {
+                min-height: 39px !important;
+                max-height: 44px !important;
+                padding: 9px 14px !important;
+                font-size: 9px !important;
             }
 
             .cookie-game-title {
@@ -1115,9 +1288,9 @@
             }
 
             .cookie-game-ingredient {
-                min-height: 67px;
-                border-radius: 12px;
-                padding: 6px 2px;
+                min-height: 67px !important;
+                border-radius: 12px !important;
+                padding: 6px 2px !important;
             }
 
             .cookie-game-ingredient-icon {
@@ -1214,12 +1387,30 @@
             .cookie-game-result-text {
                 font-size: 12px;
             }
+
+            .cookie-game-button {
+                min-height: 42px !important;
+                padding: 10px 15px !important;
+                font-size: 11px !important;
+            }
+
+            .cookie-game-shape-button {
+                min-width: 72px !important;
+                min-height: 62px !important;
+            }
+
+            .cookie-game-topping {
+                min-width: 66px !important;
+                min-height: 56px !important;
+            }
+
         }
 
         @media (max-width: 390px) {
 
-            .cookie-game {
-                margin-top: 28px;
+            .cookie-game.cookie-game-visible {
+                padding-left: 7px !important;
+                padding-right: 7px !important;
             }
 
             .cookie-game-character {
@@ -1227,7 +1418,7 @@
             }
 
             .cookie-game-ingredient {
-                min-height: 61px;
+                min-height: 61px !important;
             }
 
             .cookie-game-ingredient-icon {
@@ -1239,9 +1430,25 @@
             }
 
             .cookie-game-button {
-                padding: 11px 16px;
-                font-size: 11px;
+                min-height: 40px !important;
+                padding: 9px 14px !important;
+                font-size: 10px !important;
             }
+
+            .cookie-game-open {
+                min-height: 38px !important;
+                padding: 8px 13px !important;
+                font-size: 9px !important;
+            }
+
+            .cookie-game-close {
+                width: 38px !important;
+                height: 38px !important;
+                min-width: 38px !important;
+                min-height: 38px !important;
+                line-height: 38px !important;
+            }
+
         }
 
     </style>
@@ -1791,11 +1998,25 @@
 
 
             <!-- ================================================= -->
-            <!-- MINIJUEGO DE GALLETAS -->
-            <!-- AÑADIDO AL FINAL DE LA ÚLTIMA DIAPOSITIVA -->
+            <!-- BOTÓN PARA ABRIR EL MINIJUEGO -->
             <!-- ================================================= -->
 
-            <section class="cookie-game" id="cookieGame">
+            <button
+                type="button"
+                id="cookieGameOpen"
+                class="cookie-game-open">
+                🍪 COCINAR GALLETITAS
+            </button>
+
+
+            <!-- ================================================= -->
+            <!-- MINIJUEGO DE GALLETAS -->
+            <!-- ================================================= -->
+
+            <section
+                class="cookie-game"
+                id="cookieGame"
+                aria-hidden="true">
 
                 <div class="cookie-game-header">
 
@@ -1850,11 +2071,9 @@
                                  xmlns="http://www.w3.org/2000/svg"
                                  aria-label="Pequeña chef navideña morena con gafas">
 
-                                <!-- sombra -->
                                 <ellipse cx="110" cy="287" rx="65" ry="8"
                                          fill="rgba(90,60,20,.13)"/>
 
-                                <!-- cuerpo -->
                                 <path d="M62 164
                                          Q110 145 158 164
                                          L177 263
@@ -1863,12 +2082,10 @@
                                       stroke="#a8792c"
                                       stroke-width="2"/>
 
-                                <!-- cuello -->
                                 <path d="M91 147 Q110 160 129 147 L130 169
                                          Q110 182 90 169Z"
                                       fill="#f2d0a7"/>
 
-                                <!-- pelo trasero -->
                                 <path d="M57 78
                                          Q52 39 82 25
                                          Q110 8 140 25
@@ -1879,7 +2096,6 @@
                                          Q55 160 50 135Z"
                                       fill="#3b2925"/>
 
-                                <!-- cara -->
                                 <path d="M69 63
                                          Q110 38 151 63
                                          L148 119
@@ -1889,7 +2105,6 @@
                                       stroke="#c58d5b"
                                       stroke-width="1.5"/>
 
-                                <!-- pelo frontal -->
                                 <path d="M66 70
                                          Q59 43 81 29
                                          Q109 13 139 29
@@ -1898,7 +2113,6 @@
                                          Q108 70 66 70Z"
                                       fill="#3b2925"/>
 
-                                <!-- mechones -->
                                 <path d="M70 67 Q53 82 61 127"
                                       fill="none"
                                       stroke="#3b2925"
@@ -1911,7 +2125,6 @@
                                       stroke-width="15"
                                       stroke-linecap="round"/>
 
-                                <!-- gafas -->
                                 <rect x="74" y="79" width="31" height="21"
                                       rx="8"
                                       fill="rgba(255,255,255,.18)"
@@ -1929,11 +2142,9 @@
                                       stroke="#55433c"
                                       stroke-width="4"/>
 
-                                <!-- ojos -->
                                 <circle cx="90" cy="89" r="3.5" fill="#392925"/>
                                 <circle cx="130" cy="89" r="3.5" fill="#392925"/>
 
-                                <!-- cejas -->
                                 <path d="M81 74 Q91 69 100 74"
                                       fill="none"
                                       stroke="#50352d"
@@ -1946,28 +2157,24 @@
                                       stroke-width="2.5"
                                       stroke-linecap="round"/>
 
-                                <!-- nariz -->
                                 <path d="M108 91 Q104 104 110 106"
                                       fill="none"
                                       stroke="#c38b63"
                                       stroke-width="2"
                                       stroke-linecap="round"/>
 
-                                <!-- sonrisa -->
                                 <path d="M101 116 Q110 123 119 116"
                                       fill="none"
                                       stroke="#a94d50"
                                       stroke-width="2.5"
                                       stroke-linecap="round"/>
 
-                                <!-- colorete -->
                                 <ellipse cx="82" cy="108" rx="9" ry="4"
                                          fill="#e9a39c" opacity=".5"/>
 
                                 <ellipse cx="138" cy="108" rx="9" ry="4"
                                          fill="#e9a39c" opacity=".5"/>
 
-                                <!-- GORRO CHEF -->
                                 <g class="cookie-game-character-hat">
 
                                     <path d="M70 51
@@ -1993,12 +2200,10 @@
 
                                 </g>
 
-                                <!-- pañuelo -->
                                 <path d="M83 150 L110 165 L137 150
                                          L132 178 Q110 188 88 178Z"
                                       fill="#c94755"/>
 
-                                <!-- delantal -->
                                 <path d="M68 176
                                          Q110 188 152 176
                                          L163 261
@@ -2007,27 +2212,23 @@
                                       stroke="#c49543"
                                       stroke-width="2"/>
 
-                                <!-- bolsillo -->
                                 <path d="M88 223 Q110 215 132 223
                                          L130 248 Q110 255 90 248Z"
                                       fill="#f3d995"
                                       stroke="#b98531"
                                       stroke-width="2"/>
 
-                                <!-- corazón del delantal -->
                                 <path d="M110 198
                                          C101 187 84 198 110 215
                                          C136 198 119 187 110 198Z"
                                       fill="#df6670"/>
 
-                                <!-- brazo izquierdo -->
                                 <path d="M67 183 Q42 204 50 236"
                                       fill="none"
                                       stroke="#f2cda8"
                                       stroke-width="16"
                                       stroke-linecap="round"/>
 
-                                <!-- brazo derecho -->
                                 <g class="cookie-game-character-arm">
                                     <path d="M153 183 Q177 203 169 234"
                                           fill="none"
@@ -2036,7 +2237,6 @@
                                           stroke-linecap="round"/>
                                 </g>
 
-                                <!-- zapatos -->
                                 <path d="M66 260 Q47 269 51 280
                                          Q63 287 91 278"
                                       fill="#7b4e45"/>
@@ -2045,7 +2245,6 @@
                                          Q173 269 154 260"
                                       fill="#7b4e45"/>
 
-                                <!-- detalle navideño -->
                                 <circle cx="48" cy="30" r="3" fill="#d6a839"/>
                                 <circle cx="171" cy="54" r="3" fill="#d6a839"/>
 
@@ -2060,9 +2259,11 @@
 
                                 <div class="cookie-game-ingredients">
 
-                                    <button class="cookie-game-ingredient"
-                                            data-cookie-ingredient="harina"
-                                            data-cookie-icon="🌾">
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient"
+                                        data-cookie-ingredient="harina"
+                                        data-cookie-icon="🌾">
 
                                         <span class="cookie-game-ingredient-icon">
                                             🌾
@@ -2075,9 +2276,11 @@
                                     </button>
 
 
-                                    <button class="cookie-game-ingredient"
-                                            data-cookie-ingredient="mantequilla"
-                                            data-cookie-icon="🧈">
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient"
+                                        data-cookie-ingredient="mantequilla"
+                                        data-cookie-icon="🧈">
 
                                         <span class="cookie-game-ingredient-icon">
                                             🧈
@@ -2090,9 +2293,11 @@
                                     </button>
 
 
-                                    <button class="cookie-game-ingredient"
-                                            data-cookie-ingredient="azucar"
-                                            data-cookie-icon="🍚">
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient"
+                                        data-cookie-ingredient="azucar"
+                                        data-cookie-icon="🍚">
 
                                         <span class="cookie-game-ingredient-icon">
                                             🍚
@@ -2105,9 +2310,11 @@
                                     </button>
 
 
-                                    <button class="cookie-game-ingredient"
-                                            data-cookie-ingredient="huevo"
-                                            data-cookie-icon="🥚">
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient"
+                                        data-cookie-ingredient="huevo"
+                                        data-cookie-icon="🥚">
 
                                         <span class="cookie-game-ingredient-icon">
                                             🥚
@@ -2120,9 +2327,11 @@
                                     </button>
 
 
-                                    <button class="cookie-game-ingredient"
-                                            data-cookie-ingredient="chocolate"
-                                            data-cookie-icon="🍫">
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient"
+                                        data-cookie-ingredient="chocolate"
+                                        data-cookie-icon="🍫">
 
                                         <span class="cookie-game-ingredient-icon">
                                             🍫
@@ -2176,22 +2385,26 @@
                         Toca el bol varias veces para mezclar todos los ingredientes. 🥣✨
                     </p>
 
-                    <div class="cookie-game-mixing-area"
-                         id="cookieGameMixingArea">
+                    <div
+                        class="cookie-game-mixing-area"
+                        id="cookieGameMixingArea">
 
-                        <div class="cookie-game-large-bowl"
-                             id="cookieGameLargeBowl">
+                        <div
+                            class="cookie-game-large-bowl"
+                            id="cookieGameLargeBowl">
 
-                            <div class="cookie-game-dough"
-                                 id="cookieGameDough">
+                            <div
+                                class="cookie-game-dough"
+                                id="cookieGameDough">
                             </div>
 
                             <div class="cookie-game-spoon"></div>
 
                         </div>
 
-                        <div class="cookie-game-mix-count"
-                             id="cookieGameMixCount">
+                        <div
+                            class="cookie-game-mix-count"
+                            id="cookieGameMixCount">
                             0 / 12
                         </div>
 
@@ -2217,34 +2430,56 @@
 
                     <div class="cookie-game-shape-buttons">
 
-                        <button class="cookie-game-shape-button"
-                                data-cookie-shape="heart">
-                            <span class="cookie-game-shape-icon">💗</span>
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button"
+                            data-cookie-shape="heart">
+
+                            <span class="cookie-game-shape-icon">
+                                💗
+                            </span>
+
                             Corazón
+
                         </button>
 
-                        <button class="cookie-game-shape-button"
-                                data-cookie-shape="star">
-                            <span class="cookie-game-shape-icon">⭐</span>
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button"
+                            data-cookie-shape="star">
+
+                            <span class="cookie-game-shape-icon">
+                                ⭐
+                            </span>
+
                             Estrella
+
                         </button>
 
-                        <button class="cookie-game-shape-button"
-                                data-cookie-shape="circle">
-                            <span class="cookie-game-shape-icon">🍪</span>
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button"
+                            data-cookie-shape="circle">
+
+                            <span class="cookie-game-shape-icon">
+                                🍪
+                            </span>
+
                             Redonda
+
                         </button>
 
                     </div>
 
 
-                    <div class="cookie-game-tray"
-                         id="cookieGameShapeTray">
-
+                    <div
+                        class="cookie-game-tray"
+                        id="cookieGameShapeTray">
                     </div>
 
 
                     <button
+                        type="button"
                         class="cookie-game-button"
                         id="cookieGameBakeButton"
                         disabled>
@@ -2268,15 +2503,17 @@
 
                     <div class="cookie-game-oven-area">
 
-                        <div class="cookie-game-oven closed"
-                             id="cookieGameOven">
+                        <div
+                            class="cookie-game-oven closed"
+                            id="cookieGameOven">
 
                             <div class="cookie-game-oven-top">
 
                                 <span>🔥</span>
 
-                                <div class="cookie-game-oven-display"
-                                     id="cookieGameOvenDisplay">
+                                <div
+                                    class="cookie-game-oven-display"
+                                    id="cookieGameOvenDisplay">
                                     0%
                                 </div>
 
@@ -2290,8 +2527,9 @@
 
                             <div class="cookie-game-oven-window">
 
-                                <div class="cookie-game-tray"
-                                     id="cookieGameOvenTray">
+                                <div
+                                    class="cookie-game-tray"
+                                    id="cookieGameOvenTray">
                                 </div>
 
                             </div>
@@ -2301,15 +2539,17 @@
 
                         <div class="cookie-game-baking-bar">
 
-                            <div class="cookie-game-baking-fill"
-                                 id="cookieGameBakingFill">
+                            <div
+                                class="cookie-game-baking-fill"
+                                id="cookieGameBakingFill">
                             </div>
 
                         </div>
 
 
-                        <div class="cookie-game-baking-text"
-                             id="cookieGameBakingText">
+                        <div
+                            class="cookie-game-baking-text"
+                            id="cookieGameBakingText">
                             Horneando con mucho cariño... 💗
                         </div>
 
@@ -2334,47 +2574,68 @@
 
                         <div class="cookie-game-toppings">
 
-                            <button class="cookie-game-topping"
-                                    data-cookie-topping="chocolate">
+                            <button
+                                type="button"
+                                class="cookie-game-topping"
+                                data-cookie-topping="chocolate">
+
                                 <span>🍫</span>
                                 Chocolate
+
                             </button>
 
-                            <button class="cookie-game-topping"
-                                    data-cookie-topping="glaseado">
+                            <button
+                                type="button"
+                                class="cookie-game-topping"
+                                data-cookie-topping="glaseado">
+
                                 <span>🤍</span>
                                 Glaseado
+
                             </button>
 
-                            <button class="cookie-game-topping"
-                                    data-cookie-topping="virutas">
+                            <button
+                                type="button"
+                                class="cookie-game-topping"
+                                data-cookie-topping="virutas">
+
                                 <span>🌈</span>
                                 Virutas
+
                             </button>
 
-                            <button class="cookie-game-topping"
-                                    data-cookie-topping="corazon">
+                            <button
+                                type="button"
+                                class="cookie-game-topping"
+                                data-cookie-topping="corazon">
+
                                 <span>💗</span>
                                 Corazones
+
                             </button>
 
-                            <button class="cookie-game-topping"
-                                    data-cookie-topping="estrella">
+                            <button
+                                type="button"
+                                class="cookie-game-topping"
+                                data-cookie-topping="estrella">
+
                                 <span>⭐</span>
                                 Estrellas
+
                             </button>
 
                         </div>
 
 
-                        <div class="cookie-game-decoration-tray"
-                             id="cookieGameDecorationTray">
-
+                        <div
+                            class="cookie-game-decoration-tray"
+                            id="cookieGameDecorationTray">
                         </div>
 
 
-                        <div class="cookie-game-decoration-counter"
-                             id="cookieGameDecorationCounter">
+                        <div
+                            class="cookie-game-decoration-counter"
+                            id="cookieGameDecorationCounter">
                             Decoraciones: 0
                         </div>
 
@@ -2382,6 +2643,7 @@
 
 
                     <button
+                        type="button"
                         class="cookie-game-button"
                         id="cookieGameFinishButton"
                         disabled>
@@ -2395,8 +2657,9 @@
                 <!-- RESULTADO -->
                 <!-- ================================================= -->
 
-                <div class="cookie-game-result"
-                     id="cookieGameResult">
+                <div
+                    class="cookie-game-result"
+                    id="cookieGameResult">
 
                     <div class="cookie-game-final-hearts">
                         ✨ 💗 ✨
@@ -2435,6 +2698,7 @@
 
 
                     <button
+                        type="button"
                         class="cookie-game-button"
                         id="cookieGameRestartButton">
                         Volver a jugar 🍪
@@ -2492,11 +2756,17 @@
                 cookies: [],
                 decorations: 0,
                 requiredDecorations: 3,
-                bakingInterval: null
+                bakingInterval: null,
+                lastTopping: null
             };
 
 
-            const cookieGame = document.getElementById("cookieGame");
+            const cookieGame =
+                document.getElementById("cookieGame");
+
+            const cookieGameOpenButton =
+                document.getElementById("cookieGameOpen");
+
 
             if (!cookieGame) {
                 return;
@@ -2504,68 +2774,233 @@
 
 
             /* =====================================================
+               MOVER EL JUEGO FUERA DEL SISTEMA DE SLIDES
+               ===================================================== */
+
+            /*
+             * El juego se coloca directamente en body cuando
+             * se inicializa para que ningún .slide pueda recortarlo
+             * mediante overflow, transformaciones o animaciones.
+             */
+
+            document.body.appendChild(cookieGame);
+
+
+            /* =====================================================
+               BOTÓN CERRAR
+               ===================================================== */
+
+            const cookieGameCloseButton =
+                document.createElement("button");
+
+            cookieGameCloseButton.type = "button";
+
+            cookieGameCloseButton.className =
+                "cookie-game-close";
+
+            cookieGameCloseButton.setAttribute(
+                "aria-label",
+                "Cerrar minijuego"
+            );
+
+            cookieGameCloseButton.textContent = "×";
+
+
+            cookieGame.insertBefore(
+                cookieGameCloseButton,
+                cookieGame.firstChild
+            );
+
+
+            /* =====================================================
                REFERENCIAS
                ===================================================== */
 
             const cookieGameSteps =
-                cookieGame.querySelectorAll(".cookie-game-step");
+                cookieGame.querySelectorAll(
+                    ".cookie-game-step"
+                );
 
             const cookieGameProgressDots =
-                cookieGame.querySelectorAll(".cookie-game-progress-dot");
+                cookieGame.querySelectorAll(
+                    ".cookie-game-progress-dot"
+                );
 
             const cookieGameIngredients =
-                cookieGame.querySelectorAll(".cookie-game-ingredient");
+                cookieGame.querySelectorAll(
+                    ".cookie-game-ingredient"
+                );
 
             const cookieGameBowlCount =
-                document.getElementById("cookieGameBowlCount");
+                document.getElementById(
+                    "cookieGameBowlCount"
+                );
 
             const cookieGameSmallMixture =
-                document.getElementById("cookieGameSmallMixture");
+                document.getElementById(
+                    "cookieGameSmallMixture"
+                );
 
             const cookieGameMixingArea =
-                document.getElementById("cookieGameMixingArea");
+                document.getElementById(
+                    "cookieGameMixingArea"
+                );
 
             const cookieGameLargeBowl =
-                document.getElementById("cookieGameLargeBowl");
+                document.getElementById(
+                    "cookieGameLargeBowl"
+                );
 
             const cookieGameDough =
-                document.getElementById("cookieGameDough");
+                document.getElementById(
+                    "cookieGameDough"
+                );
 
             const cookieGameMixCount =
-                document.getElementById("cookieGameMixCount");
+                document.getElementById(
+                    "cookieGameMixCount"
+                );
 
             const cookieGameShapeTray =
-                document.getElementById("cookieGameShapeTray");
+                document.getElementById(
+                    "cookieGameShapeTray"
+                );
 
             const cookieGameBakeButton =
-                document.getElementById("cookieGameBakeButton");
+                document.getElementById(
+                    "cookieGameBakeButton"
+                );
 
             const cookieGameOvenTray =
-                document.getElementById("cookieGameOvenTray");
+                document.getElementById(
+                    "cookieGameOvenTray"
+                );
 
             const cookieGameBakingFill =
-                document.getElementById("cookieGameBakingFill");
+                document.getElementById(
+                    "cookieGameBakingFill"
+                );
 
             const cookieGameOvenDisplay =
-                document.getElementById("cookieGameOvenDisplay");
+                document.getElementById(
+                    "cookieGameOvenDisplay"
+                );
 
             const cookieGameBakingText =
-                document.getElementById("cookieGameBakingText");
+                document.getElementById(
+                    "cookieGameBakingText"
+                );
 
             const cookieGameDecorationTray =
-                document.getElementById("cookieGameDecorationTray");
+                document.getElementById(
+                    "cookieGameDecorationTray"
+                );
 
             const cookieGameDecorationCounter =
-                document.getElementById("cookieGameDecorationCounter");
+                document.getElementById(
+                    "cookieGameDecorationCounter"
+                );
 
             const cookieGameFinishButton =
-                document.getElementById("cookieGameFinishButton");
+                document.getElementById(
+                    "cookieGameFinishButton"
+                );
 
             const cookieGameResult =
-                document.getElementById("cookieGameResult");
+                document.getElementById(
+                    "cookieGameResult"
+                );
 
             const cookieGameRestartButton =
-                document.getElementById("cookieGameRestartButton");
+                document.getElementById(
+                    "cookieGameRestartButton"
+                );
+
+
+            /* =====================================================
+               ABRIR MINIJUEGO
+               ===================================================== */
+
+            if (cookieGameOpenButton) {
+
+                cookieGameOpenButton.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        cookieGame.classList.add(
+                            "cookie-game-visible"
+                        );
+
+                        cookieGame.setAttribute(
+                            "aria-hidden",
+                            "false"
+                        );
+
+                        cookieGame.scrollTop = 0;
+
+                        cookieGameReset();
+
+                    }
+                );
+
+            }
+
+
+            /* =====================================================
+               CERRAR MINIJUEGO
+               ===================================================== */
+
+            cookieGameCloseButton.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    cookieGame.classList.remove(
+                        "cookie-game-visible"
+                    );
+
+                    cookieGame.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                }
+            );
+
+
+            /* =====================================================
+               ESCAPE PARA CERRAR
+               ===================================================== */
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Escape" &&
+                        cookieGame.classList.contains(
+                            "cookie-game-visible"
+                        )
+                    ) {
+
+                        cookieGame.classList.remove(
+                            "cookie-game-visible"
+                        );
+
+                        cookieGame.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+                    }
+
+                }
+            );
 
 
             /* =====================================================
@@ -2576,29 +3011,34 @@
 
                 cookieGameState.currentStep = step;
 
-                cookieGameSteps.forEach(function (element, index) {
 
-                    element.classList.toggle(
-                        "active",
-                        index === step - 1
-                    );
+                cookieGameSteps.forEach(
+                    function (element, index) {
 
-                });
+                        element.classList.toggle(
+                            "active",
+                            index === step - 1
+                        );
+
+                    }
+                );
 
 
-                cookieGameProgressDots.forEach(function (dot, index) {
+                cookieGameProgressDots.forEach(
+                    function (dot, index) {
 
-                    dot.classList.toggle(
-                        "active",
-                        index === step - 1
-                    );
+                        dot.classList.toggle(
+                            "active",
+                            index === step - 1
+                        );
 
-                    dot.classList.toggle(
-                        "done",
-                        index < step - 1
-                    );
+                        dot.classList.toggle(
+                            "done",
+                            index < step - 1
+                        );
 
-                });
+                    }
+                );
 
 
                 cookieGame.classList.remove(
@@ -2614,41 +3054,6 @@
                     );
 
                 }
-
-
-                cookieGameScrollToGame();
-
-            }
-
-
-            /* =====================================================
-               SCROLL SUAVE AL MINIJUEGO
-               ===================================================== */
-
-            function cookieGameScrollToGame() {
-
-                /*
-                 * No modificamos el sistema de slides.
-                 * Solo intentamos llevar la vista hasta el juego
-                 * cuando el navegador permite desplazamiento.
-                 */
-
-                setTimeout(function () {
-
-                    try {
-
-                        cookieGame.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center"
-                        });
-
-                    } catch (error) {
-
-                        /* Compatibilidad con navegadores antiguos */
-
-                    }
-
-                }, 80);
 
             }
 
@@ -2678,7 +3083,8 @@
                     particle.textContent =
                         symbols[
                             Math.floor(
-                                Math.random() * symbols.length
+                                Math.random() *
+                                symbols.length
                             )
                         ];
 
@@ -2698,14 +3104,20 @@
                         (-40 - Math.random() * 90) + "px"
                     );
 
-                    cookieGame.appendChild(particle);
+
+                    cookieGame.appendChild(
+                        particle
+                    );
 
 
-                    setTimeout(function () {
+                    setTimeout(
+                        function () {
 
-                        particle.remove();
+                            particle.remove();
 
-                    }, 1900);
+                        },
+                        1900
+                    );
 
                 }
 
@@ -2716,72 +3128,82 @@
                INGREDIENTES
                ===================================================== */
 
-            cookieGameIngredients.forEach(function (ingredient) {
+            cookieGameIngredients.forEach(
+                function (ingredient) {
 
-                ingredient.addEventListener(
-                    "click",
-                    function () {
+                    ingredient.addEventListener(
+                        "click",
+                        function () {
 
-                        const ingredientName =
-                            ingredient.dataset.cookieIngredient;
+                            const ingredientName =
+                                ingredient.dataset.cookieIngredient;
 
-                        const ingredientIcon =
-                            ingredient.dataset.cookieIcon;
+                            const ingredientIcon =
+                                ingredient.dataset.cookieIcon;
 
-                        if (
-                            cookieGameState.ingredients.includes(
+
+                            if (
+                                cookieGameState.ingredients.includes(
+                                    ingredientName
+                                )
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            cookieGameState.ingredients.push(
                                 ingredientName
-                            )
-                        ) {
-                            return;
+                            );
+
+
+                            ingredient.classList.add(
+                                "added"
+                            );
+
+
+                            cookieGameCreateFlyingIngredient(
+                                ingredient,
+                                ingredientIcon
+                            );
+
+
+                            cookieGameBowlCount.textContent =
+                                cookieGameState.ingredients.length +
+                                " / " +
+                                cookieGameState.requiredIngredients;
+
+
+                            cookieGameSmallMixture.classList.add(
+                                "visible"
+                            );
+
+
+                            if (
+                                cookieGameState.ingredients.length >=
+                                cookieGameState.requiredIngredients
+                            ) {
+
+                                cookieGameCreateParticles(8);
+
+
+                                setTimeout(
+                                    function () {
+
+                                        cookieGameGoToStep(2);
+
+                                    },
+                                    700
+                                );
+
+                            }
+
                         }
+                    );
 
-
-                        cookieGameState.ingredients.push(
-                            ingredientName
-                        );
-
-
-                        ingredient.classList.add("added");
-
-
-                        cookieGameCreateFlyingIngredient(
-                            ingredient,
-                            ingredientIcon
-                        );
-
-
-                        cookieGameBowlCount.textContent =
-                            cookieGameState.ingredients.length +
-                            " / " +
-                            cookieGameState.requiredIngredients;
-
-
-                        cookieGameSmallMixture.classList.add(
-                            "visible"
-                        );
-
-
-                        if (
-                            cookieGameState.ingredients.length >=
-                            cookieGameState.requiredIngredients
-                        ) {
-
-                            cookieGameCreateParticles(8);
-
-                            setTimeout(function () {
-
-                                cookieGameGoToStep(2);
-
-                            }, 700);
-
-                        }
-
-                    },
-                    { passive: true }
-                );
-
-            });
+                }
+            );
 
 
             /* =====================================================
@@ -2799,7 +3221,8 @@
                 flying.className =
                     "cookie-game-flying";
 
-                flying.textContent = icon;
+                flying.textContent =
+                    icon;
 
 
                 const ingredientRect =
@@ -2826,9 +3249,12 @@
                     bowlRect.height / 2;
 
 
-                flying.style.position = "fixed";
-                flying.style.left = startX + "px";
-                flying.style.top = startY + "px";
+                flying.style.left =
+                    startX + "px";
+
+                flying.style.top =
+                    startY + "px";
+
 
                 flying.style.setProperty(
                     "--cookie-fly-x",
@@ -2841,14 +3267,19 @@
                 );
 
 
-                document.body.appendChild(flying);
+                document.body.appendChild(
+                    flying
+                );
 
 
-                setTimeout(function () {
+                setTimeout(
+                    function () {
 
-                    flying.remove();
+                        flying.remove();
 
-                }, 650);
+                    },
+                    650
+                );
 
             }
 
@@ -2861,8 +3292,13 @@
                 "click",
                 function () {
 
-                    if (cookieGameState.mixCount >= 12) {
+                    if (
+                        cookieGameState.mixCount >=
+                        cookieGameState.requiredMixes
+                    ) {
+
                         return;
+
                     }
 
 
@@ -2905,16 +3341,18 @@
                         cookieGameCreateParticles(10);
 
 
-                        setTimeout(function () {
+                        setTimeout(
+                            function () {
 
-                            cookieGameGoToStep(3);
+                                cookieGameGoToStep(3);
 
-                        }, 850);
+                            },
+                            850
+                        );
 
                     }
 
-                },
-                { passive: true }
+                }
             );
 
 
@@ -2928,48 +3366,53 @@
                 );
 
 
-            cookieGameShapeButtons.forEach(function (button) {
+            cookieGameShapeButtons.forEach(
+                function (button) {
 
-                button.addEventListener(
-                    "click",
-                    function () {
+                    button.addEventListener(
+                        "click",
+                        function () {
 
-                        if (
-                            cookieGameState.cookies.length >= 6
-                        ) {
-                            return;
+                            if (
+                                cookieGameState.cookies.length >=
+                                6
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            const shape =
+                                button.dataset.cookieShape;
+
+
+                            cookieGameState.cookies.push(
+                                shape
+                            );
+
+
+                            cookieGameCreateCookie(
+                                cookieGameShapeTray,
+                                shape
+                            );
+
+
+                            if (
+                                cookieGameState.cookies.length >=
+                                3
+                            ) {
+
+                                cookieGameBakeButton.disabled =
+                                    false;
+
+                            }
+
                         }
+                    );
 
-
-                        const shape =
-                            button.dataset.cookieShape;
-
-
-                        cookieGameState.cookies.push(
-                            shape
-                        );
-
-
-                        cookieGameCreateCookie(
-                            cookieGameShapeTray,
-                            shape
-                        );
-
-
-                        if (
-                            cookieGameState.cookies.length >= 3
-                        ) {
-
-                            cookieGameBakeButton.disabled =
-                                false;
-
-                        }
-
-                    },
-                    { passive: true }
-                );
-
-            });
+                }
+            );
 
 
             /* =====================================================
@@ -3009,7 +3452,9 @@
                 }
 
 
-                tray.appendChild(cookie);
+                tray.appendChild(
+                    cookie
+                );
 
             }
 
@@ -3022,7 +3467,17 @@
                 "click",
                 function () {
 
-                    cookieGameBakeButton.disabled = true;
+                    if (
+                        cookieGameState.cookies.length < 3
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    cookieGameBakeButton.disabled =
+                        true;
 
 
                     cookieGameCopyTrayToOven();
@@ -3043,7 +3498,8 @@
 
             function cookieGameCopyTrayToOven() {
 
-                cookieGameOvenTray.innerHTML = "";
+                cookieGameOvenTray.innerHTML =
+                    "";
 
 
                 cookieGameState.cookies.forEach(
@@ -3069,7 +3525,9 @@
                 let progress = 0;
 
 
-                if (cookieGameState.bakingInterval) {
+                if (
+                    cookieGameState.bakingInterval
+                ) {
 
                     clearInterval(
                         cookieGameState.bakingInterval
@@ -3086,58 +3544,70 @@
 
 
                 cookieGameState.bakingInterval =
-                    setInterval(function () {
+                    setInterval(
+                        function () {
 
-                        progress += 2;
-
-
-                        cookieGameBakingFill.style.width =
-                            progress + "%";
+                            progress += 2;
 
 
-                        cookieGameOvenDisplay.textContent =
-                            progress + "%";
+                            cookieGameBakingFill.style.width =
+                                progress + "%";
 
 
-                        if (progress < 35) {
-
-                            cookieGameBakingText.textContent =
-                                "Calentando el horno... 🔥";
-
-                        } else if (progress < 70) {
-
-                            cookieGameBakingText.textContent =
-                                "Las galletitas empiezan a dorarse... 🍪";
-
-                        } else if (progress < 100) {
-
-                            cookieGameBakingText.textContent =
-                                "¡Ya casi están! ✨";
-
-                        } else {
-
-                            clearInterval(
-                                cookieGameState.bakingInterval
-                            );
-
-                            cookieGameBakingText.textContent =
-                                "¡Perfectas! Doraditas y listas. 💗";
+                            cookieGameOvenDisplay.textContent =
+                                progress + "%";
 
 
-                            cookieGameCreateParticles(14);
+                            if (progress < 35) {
+
+                                cookieGameBakingText.textContent =
+                                    "Calentando el horno... 🔥";
+
+                            } else if (progress < 70) {
+
+                                cookieGameBakingText.textContent =
+                                    "Las galletitas empiezan a dorarse... 🍪";
+
+                            } else if (progress < 100) {
+
+                                cookieGameBakingText.textContent =
+                                    "¡Ya casi están! ✨";
+
+                            } else {
+
+                                clearInterval(
+                                    cookieGameState.bakingInterval
+                                );
+
+                                cookieGameState.bakingInterval =
+                                    null;
 
 
-                            setTimeout(function () {
+                                cookieGameBakingText.textContent =
+                                    "¡Perfectas! Doraditas y listas. 💗";
 
-                                cookieGameGoToStep(5);
 
-                                cookieGamePrepareDecoration();
+                                cookieGameCreateParticles(
+                                    14
+                                );
 
-                            }, 1000);
 
-                        }
+                                setTimeout(
+                                    function () {
 
-                    }, 55);
+                                        cookieGameGoToStep(5);
+
+                                        cookieGamePrepareDecoration();
+
+                                    },
+                                    1000
+                                );
+
+                            }
+
+                        },
+                        55
+                    );
 
             }
 
@@ -3148,93 +3618,103 @@
 
             function cookieGamePrepareDecoration() {
 
-                cookieGameDecorationTray.innerHTML = "";
+                cookieGameDecorationTray.innerHTML =
+                    "";
 
 
                 cookieGameState.cookies
                     .slice(0, 3)
-                    .forEach(function (shape) {
+                    .forEach(
+                        function (shape) {
 
-                        const cookie =
-                            document.createElement("div");
-
-                        cookie.className =
-                            "cookie-game-decorated-cookie";
-
-                        cookie.dataset.cookieDecorations =
-                            "0";
-
-                        cookie.dataset.cookieShape =
-                            shape;
-
-                        cookie.setAttribute(
-                            "role",
-                            "button"
-                        );
-
-                        cookie.setAttribute(
-                            "aria-label",
-                            "Galleta para decorar"
-                        );
-
-                        cookie.tabIndex = 0;
-
-
-                        cookie.addEventListener(
-                            "click",
-                            function () {
-
-                                if (
-                                    !cookieGameState.lastTopping
-                                ) {
-
-                                    return;
-
-                                }
-
-
-                                cookieGameAddTopping(
-                                    cookie,
-                                    cookieGameState.lastTopping
+                            const cookie =
+                                document.createElement(
+                                    "div"
                                 );
 
-                            }
-                        );
+
+                            cookie.className =
+                                "cookie-game-decorated-cookie";
 
 
-                        cookie.addEventListener(
-                            "keydown",
-                            function (event) {
+                            cookie.dataset.cookieDecorations =
+                                "0";
 
-                                if (
-                                    event.key === "Enter" ||
-                                    event.key === " "
-                                ) {
+                            cookie.dataset.cookieShape =
+                                shape;
 
-                                    event.preventDefault();
+
+                            cookie.setAttribute(
+                                "role",
+                                "button"
+                            );
+
+                            cookie.setAttribute(
+                                "aria-label",
+                                "Galleta para decorar"
+                            );
+
+                            cookie.tabIndex =
+                                0;
+
+
+                            cookie.addEventListener(
+                                "click",
+                                function () {
 
                                     if (
-                                        cookieGameState.lastTopping
+                                        !cookieGameState.lastTopping
                                     ) {
 
-                                        cookieGameAddTopping(
-                                            cookie,
+                                        return;
+
+                                    }
+
+
+                                    cookieGameAddTopping(
+                                        cookie,
+                                        cookieGameState.lastTopping
+                                    );
+
+                                }
+                            );
+
+
+                            cookie.addEventListener(
+                                "keydown",
+                                function (event) {
+
+                                    if (
+                                        event.key === "Enter" ||
+                                        event.key === " "
+                                    ) {
+
+                                        event.preventDefault();
+
+
+                                        if (
                                             cookieGameState.lastTopping
-                                        );
+                                        ) {
+
+                                            cookieGameAddTopping(
+                                                cookie,
+                                                cookieGameState.lastTopping
+                                            );
+
+                                        }
 
                                     }
 
                                 }
-
-                            }
-                        );
+                            );
 
 
-                        cookieGameDecorationTray.appendChild(
-                            cookie
-                        );
+                            cookieGameDecorationTray.appendChild(
+                                cookie
+                            );
 
-                    });
+                        }
+                    );
 
 
                 cookieGameDecorationCounter.textContent =
@@ -3253,40 +3733,39 @@
                 );
 
 
-            cookieGameState.lastTopping = null;
+            cookieGameToppings.forEach(
+                function (topping) {
+
+                    topping.addEventListener(
+                        "click",
+                        function () {
+
+                            cookieGameState.lastTopping =
+                                topping.dataset.cookieTopping;
 
 
-            cookieGameToppings.forEach(function (topping) {
+                            cookieGameToppings.forEach(
+                                function (item) {
 
-                topping.addEventListener(
-                    "click",
-                    function () {
+                                    item.style.transform =
+                                        "";
 
-                        cookieGameState.lastTopping =
-                            topping.dataset.cookieTopping;
-
-
-                        cookieGameToppings.forEach(
-                            function (item) {
-
-                                item.style.transform = "";
-
-                            }
-                        );
+                                }
+                            );
 
 
-                        topping.style.transform =
-                            "translateY(-4px) scale(1.04)";
+                            topping.style.transform =
+                                "translateY(-4px) scale(1.04)";
 
 
-                        cookieGameDecorationCounter.textContent =
-                            "Ahora toca una galleta para decorarla ✨";
+                            cookieGameDecorationCounter.textContent =
+                                "Ahora toca una galleta para decorarla ✨";
 
-                    },
-                    { passive: true }
-                );
+                        }
+                    );
 
-            });
+                }
+            );
 
 
             /* =====================================================
@@ -3319,7 +3798,10 @@
 
 
                 const toppingElement =
-                    document.createElement("span");
+                    document.createElement(
+                        "span"
+                    );
+
 
                 toppingElement.className =
                     "cookie-game-topping-item";
@@ -3381,6 +3863,16 @@
                 "click",
                 function () {
 
+                    if (
+                        cookieGameState.decorations <
+                        cookieGameState.requiredDecorations
+                    ) {
+
+                        return;
+
+                    }
+
+
                     cookieGameFinishButton.disabled =
                         true;
 
@@ -3421,10 +3913,12 @@
                     );
 
 
-                    cookieGameCreateParticles(28);
+                    cookieGameCreateParticles(
+                        28
+                    );
 
 
-                    cookieGameScrollToGame();
+                    cookieGame.scrollTop = 0;
 
                 }
             );
@@ -3440,6 +3934,8 @@
 
                     cookieGameReset();
 
+                    cookieGame.scrollTop = 0;
+
                 }
             );
 
@@ -3450,7 +3946,9 @@
 
             function cookieGameReset() {
 
-                if (cookieGameState.bakingInterval) {
+                if (
+                    cookieGameState.bakingInterval
+                ) {
 
                     clearInterval(
                         cookieGameState.bakingInterval
@@ -3462,12 +3960,23 @@
                 }
 
 
-                cookieGameState.currentStep = 1;
-                cookieGameState.ingredients = [];
-                cookieGameState.mixCount = 0;
-                cookieGameState.cookies = [];
-                cookieGameState.decorations = 0;
-                cookieGameState.lastTopping = null;
+                cookieGameState.currentStep =
+                    1;
+
+                cookieGameState.ingredients =
+                    [];
+
+                cookieGameState.mixCount =
+                    0;
+
+                cookieGameState.cookies =
+                    [];
+
+                cookieGameState.decorations =
+                    0;
+
+                cookieGameState.lastTopping =
+                    null;
 
 
                 cookieGameIngredients.forEach(
@@ -3508,14 +4017,16 @@
                 );
 
 
-                cookieGameShapeTray.innerHTML = "";
+                cookieGameShapeTray.innerHTML =
+                    "";
 
 
                 cookieGameBakeButton.disabled =
                     true;
 
 
-                cookieGameOvenTray.innerHTML = "";
+                cookieGameOvenTray.innerHTML =
+                    "";
 
 
                 cookieGameBakingFill.style.width =
@@ -3530,7 +4041,8 @@
                     "Horneando con mucho cariño... 💗";
 
 
-                cookieGameDecorationTray.innerHTML = "";
+                cookieGameDecorationTray.innerHTML =
+                    "";
 
 
                 cookieGameDecorationCounter.textContent =
@@ -3555,7 +4067,8 @@
                 cookieGameToppings.forEach(
                     function (item) {
 
-                        item.style.transform = "";
+                        item.style.transform =
+                            "";
 
                     }
                 );
@@ -3571,6 +4084,7 @@
                ===================================================== */
 
             cookieGameGoToStep(1);
+
 
         })();
 
