@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Feliz 16 💗</title>
 
     <!-- Favicon 💗 -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💗</text></svg>">
+    <link
+        rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💗</text></svg>"
+    >
+
     <link rel="stylesheet" href="style.css">
 
     <!-- ========================================================= -->
     <!-- ESTILOS DEL MINIJUEGO DE GALLETAS -->
     <!-- ========================================================= -->
+
     <style>
+
         /* =========================================================
            COOKIE GAME - CONTENEDOR GENERAL / OVERLAY
            ========================================================= */
+
         .cookie-game-overlay {
             display: none;
             position: fixed;
@@ -118,7 +126,8 @@
             color: #795f32;
         }
 
-        .cookie-progress {
+        .cookie-progress,
+        .cookie-game-progress {
             display: flex;
             justify-content: center;
             gap: 7px;
@@ -126,7 +135,8 @@
             flex-wrap: wrap;
         }
 
-        .cookie-progress-dot {
+        .cookie-progress-dot,
+        .cookie-game-progress-dot {
             width: 9px;
             height: 9px;
             border-radius: 50%;
@@ -134,22 +144,26 @@
             transition: .3s ease;
         }
 
-        .cookie-progress-dot.active {
+        .cookie-progress-dot.active,
+        .cookie-game-progress-dot.active {
             width: 27px;
             border-radius: 10px;
             background: #d8a932;
         }
 
-        .cookie-progress-dot.done {
+        .cookie-progress-dot.done,
+        .cookie-game-progress-dot.done {
             background: #e5b94d;
         }
 
-        .cookie-step {
+        .cookie-step,
+        .cookie-game-step {
             display: none;
             animation: cookieGameStepIn .45s ease both;
         }
 
-        .cookie-step.active {
+        .cookie-step.active,
+        .cookie-game-step.active {
             display: block;
         }
 
@@ -174,6 +188,7 @@
         /* =========================================================
            PERSONAJE
            ========================================================= */
+
         .cookie-game-character {
             position: relative;
             width: 100%;
@@ -227,6 +242,7 @@
         /* =========================================================
            MESA / ZONA DEL JUEGO
            ========================================================= */
+
         .cookie-game-kitchen {
             min-width: 0;
             padding: 17px;
@@ -267,7 +283,9 @@
         /* =========================================================
            INGREDIENTES
            ========================================================= */
-        .ingredients-grid {
+
+        .ingredients-grid,
+        .cookie-game-ingredients {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 8px;
@@ -275,7 +293,8 @@
             z-index: 3;
         }
 
-        .ingredient {
+        .ingredient,
+        .cookie-game-ingredient {
             appearance: none;
             border: 1px solid rgba(179,136,47,.25);
             background: rgba(255,255,255,.85);
@@ -290,29 +309,34 @@
             touch-action: manipulation;
         }
 
-        .ingredient:hover {
+        .ingredient:hover,
+        .cookie-game-ingredient:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 17px rgba(90,65,20,.13);
         }
 
-        .ingredient:active {
+        .ingredient:active,
+        .cookie-game-ingredient:active {
             transform: scale(.94);
         }
 
-        .ingredient.added {
+        .ingredient.added,
+        .cookie-game-ingredient.added {
             opacity: .38;
             transform: scale(.9);
             pointer-events: none;
         }
 
-        .ingredient-icon {
+        .ingredient-icon,
+        .cookie-game-ingredient-icon {
             display: block;
             font-size: 27px;
             line-height: 1;
             margin-bottom: 5px;
         }
 
-        .ingredient-name {
+        .ingredient-name,
+        .cookie-game-ingredient-name {
             display: block;
             font-size: 9px;
             font-weight: 600;
@@ -321,6 +345,7 @@
         /* =========================================================
            BOL
            ========================================================= */
+
         .cookie-game-bowl-area {
             min-height: 105px;
             display: flex;
@@ -398,6 +423,9 @@
         /* =========================================================
            BOTONES
            ========================================================= */
+
+        .cookie-game-button,
+        .mix-button,
         .cookie-btn {
             appearance: none !important;
             -webkit-appearance: none !important;
@@ -426,15 +454,28 @@
             box-sizing: border-box !important;
         }
 
+        .cookie-game-button:hover,
+        .mix-button:hover,
         .cookie-btn:hover {
             transform: translateY(-2px) !important;
             box-shadow: 0 10px 20px rgba(150,105,25,.28) !important;
         }
 
+        .cookie-game-button:active,
+        .mix-button:active,
         .cookie-btn:active {
             transform: scale(.96) !important;
         }
 
+        .cookie-game-button.secondary {
+            background: rgba(255,255,255,.8) !important;
+            color: #8c6824 !important;
+            border: 1px solid rgba(177,132,41,.25) !important;
+            box-shadow: none !important;
+        }
+
+        .cookie-game-button:disabled,
+        .mix-button:disabled,
         .cookie-btn:disabled {
             opacity: .45 !important;
             cursor: not-allowed !important;
@@ -444,6 +485,7 @@
         /* =========================================================
            BOTÓN PARA ABRIR EL JUEGO
            ========================================================= */
+
         .cookie-game-open {
             appearance: none !important;
             -webkit-appearance: none !important;
@@ -484,31 +526,43 @@
         /* =========================================================
            BOTÓN CERRAR
            ========================================================= */
+
         .cookie-game-close {
             position: fixed !important;
             top: 10px !important;
             right: 10px !important;
             z-index: 999999 !important;
+
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
+
             width: 40px !important;
             height: 40px !important;
             min-width: 40px !important;
             min-height: 40px !important;
+            max-width: 40px !important;
+            max-height: 40px !important;
+
             padding: 0 !important;
             margin: 0 !important;
+
             border: 1px solid rgba(177,132,41,.2) !important;
             border-radius: 50% !important;
+
             background: rgba(255,255,255,.94) !important;
             color: #79551d !important;
+
             font-family: Arial, sans-serif !important;
             font-size: 25px !important;
             font-weight: 400 !important;
             line-height: 40px !important;
+
             text-align: center !important;
             cursor: pointer !important;
+
             box-shadow: 0 5px 15px rgba(90,65,20,.15) !important;
+
             box-sizing: border-box !important;
         }
 
@@ -519,11 +573,13 @@
         /* =========================================================
            PASO MEZCLAR
            ========================================================= */
+
         .cookie-game-mixing-area {
             max-width: 330px;
             margin: auto;
         }
 
+        .cookie-game-large-bowl,
         .large-bowl {
             width: 210px;
             height: 115px;
@@ -537,6 +593,7 @@
             touch-action: manipulation;
         }
 
+        .cookie-game-large-bowl::before,
         .large-bowl::before {
             content: "";
             position: absolute;
@@ -550,6 +607,7 @@
             border: 3px solid rgba(155,109,32,.3);
         }
 
+        .cookie-game-dough,
         .dough-in-bowl {
             position: absolute;
             width: 145px;
@@ -563,6 +621,7 @@
             transition: .4s ease;
         }
 
+        .cookie-game-dough.ready,
         .dough-in-bowl.ready {
             background: #bd8140;
             box-shadow:
@@ -570,6 +629,7 @@
                 0 0 12px rgba(219,166,59,.35);
         }
 
+        .cookie-game-spoon,
         .mixing-spoon {
             position: absolute;
             width: 12px;
@@ -584,6 +644,7 @@
             pointer-events: none;
         }
 
+        .cookie-game-spoon::before,
         .mixing-spoon::before {
             content: "";
             position: absolute;
@@ -595,6 +656,7 @@
             left: -8px;
         }
 
+        .cookie-game-mixing-area.mixing .cookie-game-spoon,
         .cookie-game-mixing-area.mixing .mixing-spoon {
             animation: cookieGameSpoonMix .42s ease-in-out infinite alternate;
         }
@@ -613,6 +675,8 @@
         /* =========================================================
            PASO FORMAS
            ========================================================= */
+
+        .cookie-game-shape-buttons,
         .shapes-grid {
             display: flex;
             justify-content: center;
@@ -621,6 +685,7 @@
             margin-bottom: 15px;
         }
 
+        .cookie-game-shape-button,
         .shape-button {
             appearance: none !important;
             -webkit-appearance: none !important;
@@ -641,10 +706,12 @@
             box-sizing: border-box !important;
         }
 
+        .cookie-game-shape-button:hover,
         .shape-button:hover {
             transform: translateY(-3px) !important;
         }
 
+        .cookie-game-shape-button:active,
         .shape-button:active {
             transform: scale(.94) !important;
         }
@@ -656,11 +723,13 @@
             margin-bottom: 3px;
         }
 
+        .cookie-game-tray,
         .tray {
             position: relative;
             min-height: 145px;
             border-radius: 18px;
-            background: linear-gradient(145deg, #d1a05a, #b97f35);
+            background:
+                linear-gradient(145deg, #d1a05a, #b97f35);
             border: 3px solid rgba(130,88,26,.28);
             box-shadow:
                 inset 0 0 0 5px rgba(255,218,145,.35),
@@ -674,6 +743,7 @@
             box-sizing: border-box;
         }
 
+        .cookie-game-cookie,
         .created-cookie {
             width: 50px;
             height: 50px;
@@ -687,11 +757,14 @@
             display: inline-block;
         }
 
+        .cookie-game-cookie-heart,
         .created-cookie.heart {
             border-radius: 8px;
             transform: rotate(-45deg);
         }
 
+        .cookie-game-cookie-heart::before,
+        .cookie-game-cookie-heart::after,
         .created-cookie.heart::before,
         .created-cookie.heart::after {
             content: "";
@@ -703,16 +776,19 @@
             border: inherit;
         }
 
+        .cookie-game-cookie-heart::before,
         .created-cookie.heart::before {
             top: -25px;
             left: 0;
         }
 
+        .cookie-game-cookie-heart::after,
         .created-cookie.heart::after {
             left: 25px;
             top: 0;
         }
 
+        .cookie-game-cookie-star,
         .created-cookie.star {
             clip-path: polygon(
                 50% 0%,
@@ -730,18 +806,58 @@
             border-radius: 0;
         }
 
+        .cookie-game-cookie-circle,
         .created-cookie.circle {
             border-radius: 50%;
+        }
+
+        .cookie-game-cookie-flower,
+        .created-cookie.flower {
+            border-radius: 50%;
+            box-shadow:
+                inset 0 4px 6px rgba(255,234,178,.55),
+                0 0 0 9px #e4b766,
+                0 0 0 11px #c08b40;
+        }
+
+        .cookie-game-cookie-moon,
+        .created-cookie.moon {
+            border-radius: 50%;
+            box-shadow: 12px -5px 0 0 #fff0c9;
+            background: transparent;
+            border-color: transparent;
+        }
+
+        .cookie-game-cookie-diamond,
+        .created-cookie.diamond {
+            border-radius: 8px;
+            transform: rotate(45deg) scale(.72);
+        }
+
+        .cookie-game-cookie-flower::after,
+        .cookie-game-cookie-moon::after,
+        .cookie-game-cookie-diamond::after {
+            content: "✦";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-size: 17px;
+            transform: rotate(-45deg);
+            color: rgba(255,255,255,.7);
+            pointer-events: none;
         }
 
         /* =========================================================
            HORNO
            ========================================================= */
+
         .cookie-game-oven-area {
             max-width: 430px;
             margin: auto;
         }
 
+        .cookie-game-oven,
         .oven-container {
             position: relative;
             width: min(100%, 320px);
@@ -788,12 +904,14 @@
             justify-content: center;
         }
 
+        .cookie-game-oven-window .cookie-game-tray,
         .cookie-game-oven-window .tray {
             transform: scale(.72);
             width: 210px;
             min-height: 105px;
         }
 
+        .cookie-game-oven.closed .cookie-game-oven-window,
         .oven-container.closed .cookie-game-oven-window {
             animation: cookieGameOvenGlow 1.4s ease-in-out infinite alternate;
         }
@@ -810,6 +928,7 @@
             z-index: 5;
         }
 
+        .cookie-game-baking-bar,
         .oven-progress-bar {
             width: min(100%, 340px);
             height: 12px;
@@ -819,6 +938,7 @@
             margin: auto;
         }
 
+        .cookie-game-baking-fill,
         .oven-progress-fill {
             width: 0%;
             height: 100%;
@@ -827,6 +947,7 @@
             transition: width .2s linear;
         }
 
+        .cookie-game-baking-text,
         .oven-progress-text {
             font: 600 11px Poppins, sans-serif;
             color: #80622f;
@@ -836,11 +957,13 @@
         /* =========================================================
            DECORACIÓN
            ========================================================= */
+
         .cookie-game-decoration-area {
             max-width: 650px;
             margin: auto;
         }
 
+        .cookie-game-toppings,
         .toppings-grid {
             display: flex;
             justify-content: center;
@@ -849,6 +972,7 @@
             margin-bottom: 15px;
         }
 
+        .cookie-game-topping,
         .topping-button {
             appearance: none !important;
             -webkit-appearance: none !important;
@@ -869,20 +993,24 @@
             box-sizing: border-box !important;
         }
 
+        .cookie-game-topping:hover,
         .topping-button:hover {
             transform: translateY(-3px) !important;
         }
 
+        .cookie-game-topping:active,
         .topping-button:active {
             transform: scale(.94) !important;
         }
 
+        .cookie-game-topping span,
         .topping-button span {
             display: block;
             font-size: 23px;
             margin-bottom: 3px;
         }
 
+        .cookie-game-decoration-tray,
         .decorate-tray {
             min-height: 175px;
             padding: 18px;
@@ -898,6 +1026,7 @@
                 0 10px 20px rgba(91,58,16,.16);
         }
 
+        .cookie-game-decorated-cookie,
         .decorating-cookie {
             width: 78px;
             height: 68px;
@@ -912,14 +1041,17 @@
             display: inline-block;
         }
 
+        .cookie-game-decorated-cookie:nth-child(2),
         .decorating-cookie:nth-child(2) {
             background: #e1ae5c;
         }
 
+        .cookie-game-decorated-cookie:nth-child(3),
         .decorating-cookie:nth-child(3) {
             background: #dca552;
         }
 
+        .cookie-game-topping-item,
         .topping-on-cookie {
             position: absolute;
             pointer-events: none;
@@ -927,6 +1059,7 @@
             z-index: 2;
         }
 
+        .cookie-game-decoration-counter,
         .decoration-message {
             margin-top: 10px;
             font: 600 11px Poppins, sans-serif;
@@ -936,6 +1069,7 @@
         /* =========================================================
            RESULTADO FINAL
            ========================================================= */
+
         .cookie-game-result {
             display: none;
             animation: cookieGameResultIn .8s cubic-bezier(.2,.8,.2,1) both;
@@ -1003,6 +1137,7 @@
         /* =========================================================
            PARTÍCULAS
            ========================================================= */
+
         .cookie-game-particle {
             position: absolute;
             pointer-events: none;
@@ -1014,6 +1149,7 @@
         /* =========================================================
            ANIMACIONES
            ========================================================= */
+
         @keyframes cookieGameStepIn {
             from {
                 opacity: 0;
@@ -1070,7 +1206,10 @@
             }
             100% {
                 opacity: 0;
-                transform: translate(var(--cookie-fly-x), var(--cookie-fly-y)) scale(.45) rotate(180deg);
+                transform: translate(
+                    var(--cookie-fly-x),
+                    var(--cookie-fly-y)
+                ) scale(.45) rotate(180deg);
             }
         }
 
@@ -1096,10 +1235,12 @@
 
         @keyframes cookieGameOvenGlow {
             from {
-                box-shadow: inset 0 0 25px rgba(255,163,36,.18);
+                box-shadow:
+                    inset 0 0 25px rgba(255,163,36,.18);
             }
             to {
-                box-shadow: inset 0 0 45px rgba(255,176,43,.58);
+                box-shadow:
+                    inset 0 0 45px rgba(255,176,43,.58);
             }
         }
 
@@ -1153,14 +1294,168 @@
             }
             100% {
                 opacity: 0;
-                transform: translate(var(--cookie-particle-x), var(--cookie-particle-y)) scale(1.1);
+                transform: translate(
+                    var(--cookie-particle-x),
+                    var(--cookie-particle-y)
+                ) scale(1.1);
+            }
+        }
+
+        /* =========================================================
+           MEJORAS DEL MINIJUEGO · MARCADOR / FEEDBACK / PROFUNDIDAD
+           ========================================================= */
+
+        .cookie-game-hud {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 9px;
+            width: min(760px, 100%);
+            margin: 0 auto 14px;
+        }
+
+        .cookie-game-hud-card {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 7px;
+            min-height: 43px;
+            padding: 7px 10px;
+            border-radius: 15px;
+            background: rgba(255,255,255,.7);
+            border: 1px solid rgba(184,139,47,.18);
+            box-shadow: 0 5px 13px rgba(90,65,20,.07);
+            text-align: left;
+        }
+
+        .cookie-game-hud-icon {
+            font-size: 18px;
+        }
+
+        .cookie-game-hud-label {
+            font: 600 9px/1.1 Poppins, sans-serif;
+            color: #92713b;
+        }
+
+        .cookie-game-hud-card strong {
+            font: 800 13px/1 Poppins, sans-serif;
+            color: #8e6318;
+        }
+
+        .cookie-game-hud-goal strong {
+            font-size: 10px;
+        }
+
+        .cookie-game-score-pop {
+            position: absolute;
+            z-index: 30;
+            pointer-events: none;
+            font: 800 14px Poppins, sans-serif;
+            color: #a66d12;
+            animation: cookieGameScorePop .8s ease-out forwards;
+        }
+
+        .cookie-game-decoration-tip {
+            width: min(650px, 100%);
+            margin: -4px auto 12px;
+            padding: 9px 12px;
+            border-radius: 13px;
+            background: rgba(255,248,221,.8);
+            border: 1px dashed rgba(183,132,38,.3);
+            font: 600 10px/1.4 Poppins, sans-serif;
+            color: #85652f;
+        }
+
+        .cookie-game-character svg {
+            filter: drop-shadow(0 12px 12px rgba(94,67,26,.13));
+        }
+
+        .cookie-game-character-bubble {
+            animation: cookieGameBubbleFloat 2.8s ease-in-out infinite;
+        }
+
+        .cookie-game-ingredient.perfect-hit {
+            animation: cookieGamePerfect .45s ease both;
+        }
+
+        .cookie-game-shape-button.selected {
+            box-shadow:
+                0 0 0 3px rgba(230,184,63,.2),
+                0 9px 18px rgba(150,105,25,.18) !important;
+        }
+
+        .cookie-game-cookie.flawless {
+            box-shadow:
+                inset 0 4px 6px rgba(255,234,178,.55),
+                0 0 0 3px rgba(255,215,102,.32),
+                0 8px 15px rgba(90,65,20,.14);
+        }
+
+        .cookie-game-final-score {
+            width: min(260px, 100%);
+            margin: 5px auto 12px;
+            padding: 10px 14px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.76);
+            border: 1px solid rgba(190,143,45,.25);
+            box-shadow: 0 8px 18px rgba(90,65,20,.09);
+        }
+
+        .cookie-game-final-score span {
+            display: block;
+            font: 600 9px Poppins, sans-serif;
+            color: #8e6b31;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cookie-game-final-score strong {
+            display: block;
+            margin-top: 2px;
+            font: 800 29px Poppins, sans-serif;
+            color: #a36c14;
+        }
+
+        @keyframes cookieGameScorePop {
+            0% {
+                opacity: 0;
+                transform: translateY(4px) scale(.7);
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-28px) scale(1.08);
+            }
+        }
+
+        @keyframes cookieGameBubbleFloat {
+            0%,100% {
+                transform: rotate(2deg) translateY(0);
+            }
+            50% {
+                transform: rotate(1deg) translateY(-4px);
+            }
+        }
+
+        @keyframes cookieGamePerfect {
+            0% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.08) rotate(-2deg);
+            }
+            100% {
+                transform: scale(.9);
             }
         }
 
         /* =========================================================
            RESPONSIVE
            ========================================================= */
+
         @media (max-width: 650px) {
+
             .cookie-game-overlay {
                 padding: 12px 9px 30px !important;
             }
@@ -1196,6 +1491,37 @@
                 max-width: 105px;
             }
 
+            .cookie-game-hud {
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+
+            .cookie-game-hud-card {
+                min-height: 39px;
+                padding: 6px 7px;
+                gap: 4px;
+            }
+
+            .cookie-game-hud-icon {
+                font-size: 15px;
+            }
+
+            .cookie-game-hud-label {
+                font-size: 7px;
+            }
+
+            .cookie-game-hud-card strong {
+                font-size: 10px;
+            }
+
+            .cookie-game-hud-goal strong {
+                font-size: 8px;
+            }
+
+            .cookie-game-decoration-tip {
+                font-size: 9px;
+            }
+
             .cookie-game-kitchen {
                 padding: 9px;
             }
@@ -1205,21 +1531,25 @@
                 padding: 9px;
             }
 
-            .ingredients-grid {
+            .ingredients-grid,
+            .cookie-game-ingredients {
                 gap: 5px;
             }
 
-            .ingredient {
+            .ingredient,
+            .cookie-game-ingredient {
                 min-height: 67px !important;
                 border-radius: 12px !important;
                 padding: 6px 2px !important;
             }
 
-            .ingredient-icon {
+            .ingredient-icon,
+            .cookie-game-ingredient-icon {
                 font-size: 23px;
             }
 
-            .ingredient-name {
+            .ingredient-name,
+            .cookie-game-ingredient-name {
                 font-size: 8px;
             }
 
@@ -1236,47 +1566,58 @@
                 width: 72px;
             }
 
+            .cookie-game-large-bowl,
             .large-bowl {
                 width: 175px;
                 height: 100px;
             }
 
+            .cookie-game-large-bowl::before,
             .large-bowl::before {
                 width: 140px;
             }
 
+            .cookie-game-dough,
             .dough-in-bowl {
                 width: 118px;
             }
 
+            .cookie-game-spoon,
             .mixing-spoon {
                 left: 82px;
             }
 
+            .cookie-game-tray,
             .tray {
                 min-height: 125px;
                 padding: 10px;
             }
 
+            .cookie-game-cookie,
             .created-cookie {
                 width: 42px;
                 height: 42px;
             }
 
+            .cookie-game-cookie-heart::before,
+            .cookie-game-cookie-heart::after,
             .created-cookie.heart::before,
             .created-cookie.heart::after {
                 width: 42px;
                 height: 42px;
             }
 
+            .cookie-game-cookie-heart::before,
             .created-cookie.heart::before {
                 top: -21px;
             }
 
+            .cookie-game-cookie-heart::after,
             .created-cookie.heart::after {
                 left: 21px;
             }
 
+            .cookie-game-oven,
             .oven-container {
                 height: 185px;
             }
@@ -1286,15 +1627,18 @@
                 bottom: 13px;
             }
 
+            .cookie-game-oven-window .cookie-game-tray,
             .cookie-game-oven-window .tray {
                 transform: scale(.55);
             }
 
+            .cookie-game-decorated-cookie,
             .decorating-cookie {
                 width: 65px;
                 height: 57px;
             }
 
+            .cookie-game-decoration-tray,
             .decorate-tray {
                 min-height: 145px;
                 padding: 12px;
@@ -1310,24 +1654,30 @@
                 font-size: 12px;
             }
 
+            .cookie-game-button,
+            .mix-button,
             .cookie-btn {
                 min-height: 42px !important;
                 padding: 10px 15px !important;
                 font-size: 11px !important;
             }
 
+            .cookie-game-shape-button,
             .shape-button {
                 min-width: 72px !important;
                 min-height: 62px !important;
             }
 
+            .cookie-game-topping,
             .topping-button {
                 min-width: 66px !important;
                 min-height: 56px !important;
             }
+
         }
 
         @media (max-width: 390px) {
+
             .cookie-game-overlay {
                 padding-left: 7px !important;
                 padding-right: 7px !important;
@@ -1337,18 +1687,23 @@
                 max-width: 125px;
             }
 
-            .ingredient {
+            .ingredient,
+            .cookie-game-ingredient {
                 min-height: 61px !important;
             }
 
-            .ingredient-icon {
+            .ingredient-icon,
+            .cookie-game-ingredient-icon {
                 font-size: 20px;
             }
 
-            .ingredient-name {
+            .ingredient-name,
+            .cookie-game-ingredient-name {
                 font-size: 7px;
             }
 
+            .cookie-game-button,
+            .mix-button,
             .cookie-btn {
                 min-height: 40px !important;
                 padding: 9px 14px !important;
@@ -1368,9 +1723,12 @@
                 min-height: 38px !important;
                 line-height: 38px !important;
             }
+
         }
+
     </style>
 </head>
+
 <body>
 
     <!-- FONDO ANIMADO -->
@@ -1379,919 +1737,2723 @@
     <div id="decorations-container"></div>
 
     <main>
+
         <!-- ========================= -->
         <!-- PORTADA -->
         <!-- ========================= -->
-        <section class="slide">
-            <div class="cover-content">
-                <div class="birthday-small">✨ HOY ES UN DÍA ESPECIAL ✨</div>
 
+        <section class="slide">
+
+            <div class="cover-content">
+
+                <div class="birthday-small">
+                    ✨ HOY ES UN DÍA ESPECIAL ✨
+                </div>
+
+                <!-- NUEVA TARTA -->
                 <div class="new-cake">
+
                     <div class="cake-candles">
-                        <span>🕯️</span><span>🕯️</span><span>🕯️</span><span>🕯️</span><span>🕯️</span><span>🕯️</span>
+                        <span>🕯️</span>
+                        <span>🕯️</span>
+                        <span>🕯️</span>
+                        <span>🕯️</span>
+                        <span>🕯️</span>
+                        <span>🕯️</span>
                     </div>
+
                     <div class="cake-flame-glow"></div>
+
                     <div class="cake-tier cake-tier-top">
                         <div class="cream-line"></div>
-                        <div class="cake-strawberries">🍓 🍓 🍓</div>
+                        <div class="cake-strawberries">
+                            🍓 🍓 🍓
+                        </div>
                     </div>
+
                     <div class="cake-tier cake-tier-middle">
                         <div class="cream-drip"></div>
                     </div>
+
                     <div class="cake-tier cake-tier-bottom">
-                        <div class="cake-decoration">💗 ✨ 💗 ✨ 💗</div>
+                        <div class="cake-decoration">
+                            💗 ✨ 💗 ✨ 💗
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="cover-number">16</div>
-                <h1>AÑOS DE SER TÚ</h1>
-                <div class="cover-divider">✦ ───────── 💗 ───────── ✦</div>
-                <h2>FELICIDADES, ENANA 💗</h2>
+
+                <div class="cover-number">
+                    16
+                </div>
+
+
+                <h1>
+                    AÑOS DE SER TÚ
+                </h1>
+
+
+                <div class="cover-divider">
+                    ✦ ───────── 💗 ───────── ✦
+                </div>
+
+
+                <h2>
+                    FELICIDADES, ENANA 💗
+                </h2>
+
+
                 <p class="cover-text">
-                    Hoy no vengo solamente a felicitarte…<br>
+                    Hoy no vengo solamente a felicitarte…
+                    <br>
                     he preparado algo para ti.
                 </p>
-                <button class="gift-button" onclick="nextSlide()">✨ ABRE TU REGALO ✨</button>
+
+
+                <button class="gift-button" onclick="nextSlide()">
+                    ✨ ABRE TU REGALO ✨
+                </button>
+
             </div>
+
         </section>
 
-        <!-- ========================= -->
-        <!-- SLIDES DE CALIFICACIÓN -->
-        <!-- ========================= -->
+        <!-- RESTO DE TU WEB ORIGINAL SIN CAMBIOS -->
+        <!-- ========================================================= -->
+        <!-- A PARTIR DE AQUÍ SE MANTIENE EL CONTENIDO ORIGINAL -->
+        <!-- ========================================================= -->
+
+        <!-- 10/10 -->
         <section class="slide">
             <div class="rating-label">Eres una persona</div>
             <div class="rating">10/10</div>
-            <h2>Porque haces que cualquier día normal sea especial</h2>
+
+            <h2>
+                Porque haces que cualquier día normal sea especial
+            </h2>
+
             <p>
-                Contigo hasta el día más normal podría terminar pareciendo una aventura en Narnia.
-                No hace falta atravesar un armario mágico para que estar contigo convierta cualquier momento en algo especial.
-                Porque tienes esa capacidad de convertir pequeños momentos en recuerdos que después quieres guardar para siempre. 💗
+                Contigo hasta el día más normal podría terminar pareciendo
+                una aventura en Narnia.
+
+                No hace falta atravesar un armario mágico para que estar
+                contigo convierta cualquier momento en algo especial.
+
+                Porque tienes esa capacidad de convertir pequeños momentos
+                en recuerdos que después quieres guardar para siempre. 💗
             </p>
         </section>
 
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">20/10</div>
-            <h2>Porque eres de esas personas que siempre están</h2>
-            <p>
-                En cualquier aventura, tú serías esa persona que quieres tener siempre en tu equipo.
-                Porque sé que contigo puedo compartir risas, planes improvisados, momentos absurdos y también esos días en los que simplemente necesitas tener a alguien al lado.
-                Si nuestra amistad fuera una aventura de <i>Outer Banks</i>, probablemente acabaríamos metidos en algún lío…
-                pero tengo clarísimo que lo viviríamos juntos hasta el final. 💗
-            </p>
-        </section>
+        <!-- ========================================================= -->
+        <!-- MINIJUEGO DE GALLETAS -->
+        <!-- ========================================================= -->
 
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">30/10</div>
-            <h2>Porque tienes un corazón enorme</h2>
-            <p>
-                Una de las cosas más bonitas de ti es la forma en la que sabes mirar más allá de lo que se ve por fuera.
-                Como Bella, sabes que las personas no se pueden resumir en una primera impresión y que lo verdaderamente importante está en lo que llevan dentro.
-                Y creo que precisamente por eso eres una persona tan especial para quienes tenemos la suerte de conocerte de verdad. 💗
-            </p>
-        </section>
+        <button
+            type="button"
+            id="cookieGameOpen"
+            class="cookie-game-open"
+            onclick="openCookieGame()">
+            🍪 COCINAR GALLETITAS
+        </button>
 
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">40/10</div>
-            <h2>Porque contigo nunca faltan historias que recordar</h2>
-            <p>
-                Si nuestra amistad fuera una temporada de <i>Los Bridgerton</i>, tendría suficientes capítulos como para no querer que terminase nunca.
-                Porque contigo siempre acaba pasando algo: una conversación que se alarga muchísimo, una tontería que termina dándonos un ataque de risa o simplemente uno de esos momentos que en el instante parecen normales, pero que después se convierten en recuerdos favoritos.
-                Y espero que todavía nos queden muchísimos capítulos por escribir. 💗
-            </p>
-        </section>
+        <div
+            class="cookie-game-overlay"
+            id="cookieGameOverlay"
+            aria-hidden="true">
 
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">50/10</div>
-            <h2>Porque tienes algo que te hace única</h2>
-            <p>
-                No necesitas descubrir que eres una princesa para ser extraordinaria.
-                Tienes esa forma de ser que hace que seas tú misma sin necesidad de intentar parecerte a nadie.
-                Y creo que eso es precisamente una de las cosas que más me gustan de ti.
-                Así que, aunque no tengas un castillo, una corona ni una abuela que aparezca de repente para revelarte que perteneces a la realeza…
-                para mí sigues siendo la mejor princesa del mundo. 👑💗
-            </p>
-        </section>
-
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">60/10</div>
-            <h2>Porque contigo cualquier aventura merece la pena</h2>
-            <p>
-                Como cuando Lucy atraviesa un simple armario y descubre todo un mundo al otro lado, contigo siento que nunca sabes qué momento aparentemente normal puede terminar convirtiéndose en un recuerdo inolvidable.
-                Y si alguna vez tuviera que atravesar un armario para descubrir un mundo nuevo, tengo clarísimo que iría contigo. 💗
-            </p>
-        </section>
-
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">70/10</div>
-            <h2>Porque tienes una magia que no se puede explicar</h2>
-            <p>
-                No sé si será magia, pero tienes esa capacidad de hacer que un día cualquiera termine siendo uno de esos días que quieres recordar.
-                Y si alguna vez tuviéramos que enfrentarnos a algo que pareciera sacado de un libro de <i>Harry Potter</i>, estoy bastante seguro de que encontrarías la forma de convertirlo en una aventura.
-                Porque tienes algo que no se aprende en ningún libro: esa manera tan tuya de hacer que las personas que están contigo se sientan tan bien y seguras. 💗
-            </p>
-        </section>
-
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">80/10</div>
-            <h2>Porque ves lo bonito donde otros no lo ven</h2>
-            <p>
-                Como Lucy cuando descubre Narnia por primera vez, tienes esa capacidad de encontrar algo especial incluso cuando los demás todavía no lo ven.
-                Porque una de las cosas más bonitas de ti es la forma en la que valoras a las personas por lo que realmente son.
-                Y creo que esa forma de mirar a las personas, de comprenderlas y de darles su lugar es una de las razones por las que tienes un corazón tan especial y tan grande. 💗
-            </p>
-        </section>
-
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">90/10</div>
-            <h2>Porque eres protagonista sin darte cuenta</h2>
-            <p>
-                Tienes esa forma de ser que hace que destaques sin necesitar llamar la atención.
-                En cualquier aventura serías de esas personas que terminan formando parte de una historia enorme sin haberlo planeado.
-                Y si alguna vez nuestra vida se convirtiera en una aventura de <i>Outer Banks</i>, sé perfectamente que acabaríamos teniendo alguna historia imposible de explicar.
-                Porque contigo hasta lo inesperado termina siendo un buen recuerdo. 💗
-            </p>
-        </section>
-
-        <section class="slide">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">100/10</div>
-            <h2>Porque eres simplemente tú</h2>
-            <p>
-                Después de llegar al 100/10 me he quedado sin números, pero todavía me queda muchísimo que decir.
-                Porque podría seguir poniendo números hasta el infinito y seguirían sin ser suficientes para explicar todo lo que significas para mí.
-                Podría hacer una lista de todas las cosas que me gustan de ti, de todos nuestros momentos y de todas las razones por las que eres especial…
-                pero probablemente necesitaríamos una web entera solamente para eso.
-                Así que creo que ha llegado el momento de dejar de contar. 💗
-            </p>
-        </section>
-
-        <!-- ========================= -->
-        <!-- INFINITO -->
-        <!-- ========================= -->
-        <section class="slide infinity">
-            <div class="rating-label">Eres una persona</div>
-            <div class="rating">∞/10</div>
-            <h2>Porque no existe un número suficientemente grande</h2>
-
-            <div class="infinity-text">
-                <p>Porque sinceramente, no existe un número suficientemente grande para explicar lo especial que eres para mí.</p>
-                <p>Gracias por cada risa, cada conversación, cada momento absurdo, cada recuerdo y también por todos esos momentos que quizá en el instante parecían pequeños, pero que ahora forman parte de algunos de mis recuerdos favoritos.</p>
-                <p>Gracias por ser tú. Por tu forma de ser, por tu manera de hacerme reír y por todos esos pequeños detalles que hacen que seas una persona imposible de sustituir.</p>
-                <p>Espero que estos 16 sean solamente el comienzo de muchísimas aventuras más.</p>
-                <p>Que sigamos teniendo historias que contar, momentos de los que reírnos años después y recuerdos que algún día miremos y pensemos:<br>«¿Cómo hemos llegado hasta aquí?»</p>
-                <p>Y si alguna vez la vida nos pusiera delante un armario que escondiera un mundo entero al otro lado, espero que fuéramos juntos a descubrirlo.</p>
-                <p>Porque hay aventuras que merecen la pena simplemente por compartirlas con la persona adecuada.</p>
-                <p>Y si tuviera que elegir a alguien para vivir todas esas aventuras, no tendría ninguna duda.</p>
-                <p class="infinity-highlight">Te elegiría a ti. 💗</p>
-                <p>Porque hay personas que aparecen en tu vida y se quedan como un recuerdo bonito, y luego están las personas que consiguen convertirse en una parte importante de ella.</p>
-                <p class="infinity-highlight">Tú eres de esas personas.</p>
-                <p>Y aunque esta página tenga un principio y un final, espero que nuestra historia todavía tenga muchísimos capítulos por delante.</p>
-                <p>Como en <i>Los Bridgerton</i>, espero que nuestra historia tenga muchas temporadas más.</p>
-                <p>Y como en <i>La Bella y la Bestia</i>, espero que nunca dejemos de valorar lo que realmente hay en el corazón de las personas, sobre todo en el tuyo que es el mejor que existe en este universo.</p>
-                <p>Y si alguna vez necesitas recordar que eres capaz de enfrentarte a cualquier aventura, piensa en todas esas protagonistas que admiras.</p>
-                <p>Porque hasta una chica que empieza su historia sin saber lo que le espera puede terminar viviendo algo increíble, como en <i>La Princesa por Sorpresa</i>.</p>
-                <p>Y si alguna vez la vida nos pusiera delante una aventura todavía más grande, siempre tendremos nuestras propias historias que contar.</p>
-                <p>Así que hoy no quiero decirte solamente feliz cumpleaños.</p>
-                <p class="infinity-highlight">Quiero decirte que espero que nunca olvides lo muchísimo que vales, lo especial que eres y lo feliz que me hace poder llamarte mi mejor amiga.</p>
-                <p class="infinity-final">Te quiero muchísimo, enana. 💗</p>
-                <p class="infinity-final">Felices 16.</p>
-                <p class="infinity-final">Y por todas las aventuras que todavía nos quedan. ✨</p>
-            </div>
-
-            <div class="final-heart">💗</div>
-            <div class="final-message">
-                Fin de la presentación.<br>
-                Pero no de nuestra historia. 💗
-            </div>
-
-            <button type="button" id="cookieGameOpen" class="cookie-game-open" onclick="openCookieGame()">
-                🍪 COCINAR GALLETITAS
+            <button
+                type="button"
+                class="cookie-game-close"
+                onclick="closeCookieGame()"
+                aria-label="Cerrar minijuego">
+                ×
             </button>
-        </section>
+
+            <section
+                class="cookie-game"
+                id="cookieGame">
+
+                <div class="cookie-game-header">
+
+                    <div class="cookie-game-kicker">
+                        ✨ UNA ÚLTIMA SORPRESA ✨
+                    </div>
+
+                    <h3 class="cookie-game-title">
+                        La pequeña pastelería navideña 🍪
+                    </h3>
+
+                    <p class="cookie-game-subtitle">
+                        Ahora toca crear unas galletitas juntas.
+                        Tú eliges los ingredientes, las formas y la decoración. 💗
+                    </p>
+
+                </div>
+
+                <div class="cookie-game-hud" aria-label="Marcador del minijuego">
+                    <div class="cookie-game-hud-card">
+                        <span class="cookie-game-hud-icon">⭐</span>
+                        <span class="cookie-game-hud-label">Puntos</span>
+                        <strong id="cookieGameScore">0</strong>
+                    </div>
+
+                    <div class="cookie-game-hud-card">
+                        <span class="cookie-game-hud-icon">🔥</span>
+                        <span class="cookie-game-hud-label">Racha</span>
+                        <strong id="cookieGameCombo">0</strong>
+                    </div>
+
+                    <div class="cookie-game-hud-card cookie-game-hud-goal">
+                        <span class="cookie-game-hud-icon">🎯</span>
+                        <span class="cookie-game-hud-label">Objetivo</span>
+                        <strong id="cookieGameObjective">Ingredientes</strong>
+                    </div>
+                </div>
+
+                <div class="cookie-game-progress cookie-progress" id="cookieGameProgress">
+
+                    <span class="cookie-game-progress-dot cookie-progress-dot active"></span>
+                    <span class="cookie-game-progress-dot cookie-progress-dot"></span>
+                    <span class="cookie-game-progress-dot cookie-progress-dot"></span>
+                    <span class="cookie-game-progress-dot cookie-progress-dot"></span>
+                    <span class="cookie-game-progress-dot cookie-progress-dot"></span>
+
+                </div>
+
+                <!-- PASO 1 -->
+
+                <div class="cookie-game-step cookie-step active" id="cookieGameStep1">
+
+                    <p class="cookie-game-instruction">
+                        <strong>Paso 1 · Preparar los ingredientes</strong><br>
+                        Toca todos los ingredientes para echarlos al bol. 🥣
+                    </p>
+
+                    <div class="cookie-game-layout">
+
+                        <div class="cookie-game-character">
+
+                            <div class="cookie-game-character-bubble">
+                                ¡Vamos a cocinar! 🎄🍪
+                            </div>
+
+                            <!-- PERSONAJE NUEVO -->
+                            <svg viewBox="0 0 240 320"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 aria-label="Joven chef sonriente preparando galletas">
+
+                                <defs>
+                                    <linearGradient id="chefHair" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#5b3b31"/>
+                                        <stop offset="1" stop-color="#2f211f"/>
+                                    </linearGradient>
+
+                                    <linearGradient id="chefApron" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0" stop-color="#fffdf7"/>
+                                        <stop offset="1" stop-color="#f2e5c9"/>
+                                    </linearGradient>
+
+                                    <linearGradient id="chefShirt" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#ffd9e0"/>
+                                        <stop offset="1" stop-color="#f4a9bb"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <ellipse
+                                    cx="120"
+                                    cy="305"
+                                    rx="72"
+                                    ry="9"
+                                    fill="rgba(90,60,20,.13)"/>
+
+                                <path
+                                    d="M58 184 Q120 158 182 184 L193 275 Q120 299 47 275Z"
+                                    fill="url(#chefShirt)"
+                                    stroke="#c77f96"
+                                    stroke-width="2"/>
+
+                                <path
+                                    d="M72 176 Q120 194 168 176 L177 280 Q120 295 63 280Z"
+                                    fill="url(#chefApron)"
+                                    stroke="#c89b50"
+                                    stroke-width="2"/>
+
+                                <path
+                                    d="M93 175 Q120 190 147 175 L143 205 Q120 216 97 205Z"
+                                    fill="#efc2d0"
+                                    stroke="#c77f96"
+                                    stroke-width="1.5"/>
+
+                                <path
+                                    d="M91 177 L120 195 L149 177 L144 213 Q120 224 96 213Z"
+                                    fill="#e65b72"/>
+
+                                <circle
+                                    cx="120"
+                                    cy="205"
+                                    r="4"
+                                    fill="#ffd77d"/>
+
+                                <path
+                                    d="M101 150 Q120 164 139 150 L138 181 Q120 193 102 181Z"
+                                    fill="#f3c99e"/>
+
+                                <path
+                                    d="M67 82 Q57 42 83 24 Q109 5 140 20 Q177 29 173 82 L181 139 Q176 176 151 185 L88 185 Q62 173 58 140Z"
+                                    fill="url(#chefHair)"/>
+
+                                <path
+                                    d="M78 68 Q120 39 162 68 L159 126 Q151 161 120 169 Q89 161 81 126Z"
+                                    fill="#f4cda5"
+                                    stroke="#c58d61"
+                                    stroke-width="1.5"/>
+
+                                <path
+                                    d="M75 76 Q62 52 84 32 Q108 11 140 29 Q163 38 166 70 Q151 55 136 55 Q122 71 75 76Z"
+                                    fill="url(#chefHair)"/>
+
+                                <path
+                                    d="M79 68 Q63 85 70 127"
+                                    fill="none"
+                                    stroke="#4a3029"
+                                    stroke-width="13"
+                                    stroke-linecap="round"/>
+
+                                <path
+                                    d="M161 68 Q177 85 169 128"
+                                    fill="none"
+                                    stroke="#4a3029"
+                                    stroke-width="13"
+                                    stroke-linecap="round"/>
+
+                                <ellipse
+                                    cx="101"
+                                    cy="100"
+                                    rx="13"
+                                    ry="10"
+                                    fill="#fffdfb"/>
+
+                                <ellipse
+                                    cx="139"
+                                    cy="100"
+                                    rx="13"
+                                    ry="10"
+                                    fill="#fffdfb"/>
+
+                                <circle
+                                    cx="103"
+                                    cy="101"
+                                    r="5"
+                                    fill="#49342f"/>
+
+                                <circle
+                                    cx="137"
+                                    cy="101"
+                                    r="5"
+                                    fill="#49342f"/>
+
+                                <circle
+                                    cx="105"
+                                    cy="99"
+                                    r="1.8"
+                                    fill="#fff"/>
+
+                                <circle
+                                    cx="139"
+                                    cy="99"
+                                    r="1.8"
+                                    fill="#fff"/>
+
+                                <path
+                                    d="M88 87 Q100 80 111 87"
+                                    fill="none"
+                                    stroke="#55382f"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"/>
+
+                                <path
+                                    d="M129 87 Q140 80 152 87"
+                                    fill="none"
+                                    stroke="#55382f"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"/>
+
+                                <path
+                                    d="M119 103 Q114 116 120 118"
+                                    fill="none"
+                                    stroke="#c18a62"
+                                    stroke-width="2"
+                                    stroke-linecap="round"/>
+
+                                <path
+                                    d="M106 130 Q120 143 134 130 Q130 149 120 150 Q110 149 106 130Z"
+                                    fill="#fff9f4"
+                                    stroke="#a94d5a"
+                                    stroke-width="1.5"/>
+
+                                <path
+                                    d="M110 139 Q120 143 130 139"
+                                    fill="none"
+                                    stroke="#ef9ba4"
+                                    stroke-width="2"/>
+
+                                <ellipse
+                                    cx="91"
+                                    cy="119"
+                                    rx="10"
+                                    ry="5"
+                                    fill="#e99c99"
+                                    opacity=".42"/>
+
+                                <ellipse
+                                    cx="149"
+                                    cy="119"
+                                    rx="10"
+                                    ry="5"
+                                    fill="#e99c99"
+                                    opacity=".42"/>
+
+                                <g class="cookie-game-character-hat">
+
+                                    <path
+                                        d="M73 55 Q60 47 65 33 Q70 20 84 27 Q87 10 101 18 Q111 3 123 18 Q138 9 143 27 Q158 20 166 34 Q170 49 154 57Z"
+                                        fill="#fffdf6"
+                                        stroke="#b78532"
+                                        stroke-width="2"/>
+
+                                    <path
+                                        d="M68 52 Q120 64 172 51 L169 67 Q120 79 71 66Z"
+                                        fill="#e75c72"/>
+
+                                    <path
+                                        d="M75 55 Q120 68 164 54"
+                                        fill="none"
+                                        stroke="#ffd66f"
+                                        stroke-width="3"/>
+
+                                    <circle
+                                        cx="151"
+                                        cy="40"
+                                        r="5"
+                                        fill="#ffd66f"/>
+
+                                </g>
+
+                                <path
+                                    d="M70 193 Q42 212 52 251"
+                                    fill="none"
+                                    stroke="#f4cda5"
+                                    stroke-width="17"
+                                    stroke-linecap="round"/>
+
+                                <g class="cookie-game-character-arm">
+
+                                    <path
+                                        d="M170 193 Q198 211 188 246"
+                                        fill="none"
+                                        stroke="#f4cda5"
+                                        stroke-width="17"
+                                        stroke-linecap="round"/>
+
+                                </g>
+
+                                <path
+                                    d="M91 238 Q120 229 149 238 L147 270 Q120 278 93 270Z"
+                                    fill="#f7dca2"
+                                    stroke="#c39142"
+                                    stroke-width="2"/>
+
+                                <path
+                                    d="M104 251 Q120 240 136 251"
+                                    fill="none"
+                                    stroke="#d4a657"
+                                    stroke-width="2"/>
+
+                                <text
+                                    x="120"
+                                    y="263"
+                                    text-anchor="middle"
+                                    font-size="12">💗</text>
+
+                                <path
+                                    d="M63 276 Q45 286 53 297 Q70 305 99 293 L95 279Z"
+                                    fill="#f7f3ed"
+                                    stroke="#b88c50"
+                                    stroke-width="2"/>
+
+                                <path
+                                    d="M145 279 L141 293 Q170 305 187 297 Q195 286 177 276Z"
+                                    fill="#f7f3ed"
+                                    stroke="#b88c50"
+                                    stroke-width="2"/>
+
+                                <path
+                                    d="M63 291 Q77 296 94 288 M146 288 Q164 296 180 291"
+                                    fill="none"
+                                    stroke="#e65b72"
+                                    stroke-width="3"/>
+
+                                <circle
+                                    cx="48"
+                                    cy="46"
+                                    r="4"
+                                    fill="#ffd66f"/>
+
+                                <circle
+                                    cx="192"
+                                    cy="72"
+                                    r="4"
+                                    fill="#ffd66f"/>
+
+                            </svg>
+
+                        </div>
+
+                        <div class="cookie-game-kitchen">
+
+                            <div class="cookie-game-table">
+
+                                <div class="cookie-game-ingredients ingredients-grid">
+
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient ingredient"
+                                        data-ingredient="harina"
+                                        data-cookie-ingredient="harina"
+                                        data-cookie-icon="🌾"
+                                        onclick="addIngredient(this)">
+
+                                        <span class="cookie-game-ingredient-icon ingredient-icon">
+                                            🌾
+                                        </span>
+
+                                        <span class="cookie-game-ingredient-name ingredient-name">
+                                            Harina
+                                        </span>
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient ingredient"
+                                        data-ingredient="mantequilla"
+                                        data-cookie-ingredient="mantequilla"
+                                        data-cookie-icon="🧈"
+                                        onclick="addIngredient(this)">
+
+                                        <span class="cookie-game-ingredient-icon ingredient-icon">
+                                            🧈
+                                        </span>
+
+                                        <span class="cookie-game-ingredient-name ingredient-name">
+                                            Mantequilla
+                                        </span>
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient ingredient"
+                                        data-ingredient="azucar"
+                                        data-cookie-ingredient="azucar"
+                                        data-cookie-icon="🍚"
+                                        onclick="addIngredient(this)">
+
+                                        <span class="cookie-game-ingredient-icon ingredient-icon">
+                                            🍚
+                                        </span>
+
+                                        <span class="cookie-game-ingredient-name ingredient-name">
+                                            Azúcar
+                                        </span>
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient ingredient"
+                                        data-ingredient="huevo"
+                                        data-cookie-ingredient="huevo"
+                                        data-cookie-icon="🥚"
+                                        onclick="addIngredient(this)">
+
+                                        <span class="cookie-game-ingredient-icon ingredient-icon">
+                                            🥚
+                                        </span>
+
+                                        <span class="cookie-game-ingredient-name ingredient-name">
+                                            Huevo
+                                        </span>
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient ingredient"
+                                        data-ingredient="chocolate"
+                                        data-cookie-ingredient="chocolate"
+                                        data-cookie-icon="🍫"
+                                        onclick="addIngredient(this)">
+
+                                        <span class="cookie-game-ingredient-icon ingredient-icon">
+                                            🍫
+                                        </span>
+
+                                        <span class="cookie-game-ingredient-name ingredient-name">
+                                            Chocolate
+                                        </span>
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="cookie-game-ingredient ingredient"
+                                        data-ingredient="vainilla"
+                                        data-cookie-ingredient="vainilla"
+                                        data-cookie-icon="🌼"
+                                        onclick="addIngredient(this)">
+
+                                        <span class="cookie-game-ingredient-icon ingredient-icon">
+                                            🌼
+                                        </span>
+
+                                        <span class="cookie-game-ingredient-name ingredient-name">
+                                            Vainilla
+                                        </span>
+
+                                    </button>
+
+                                </div>
+
+                                <div class="cookie-game-bowl-area">
+
+                                    <div class="cookie-game-bowl">
+
+                                        <div
+                                            class="cookie-game-mixture"
+                                            id="cookieGameSmallMixture">
+                                        </div>
+
+                                        <div
+                                            class="cookie-game-bowl-count"
+                                            id="cookieGameBowlCount">
+                                            <span id="ingredientCount">0</span> / 6
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- PASO 2 -->
+
+                <div class="cookie-game-step cookie-step" id="cookieGameStep2">
+
+                    <p class="cookie-game-instruction">
+                        <strong>Paso 2 · Mezclar</strong><br>
+                        Toca el bol o el botón 18 veces para conseguir una masa perfecta. 🥣✨
+                    </p>
+
+                    <div
+                        class="cookie-game-mixing-area"
+                        id="cookieGameMixingArea">
+
+                        <div
+                            class="cookie-game-large-bowl large-bowl"
+                            id="cookieGameLargeBowl"
+                            onclick="mixCookieDough()">
+
+                            <div
+                                class="cookie-game-dough dough-in-bowl"
+                                id="cookieGameDough">
+                            </div>
+
+                            <div class="cookie-game-spoon mixing-spoon"></div>
+
+                        </div>
+
+                        <div
+                            class="cookie-game-mix-count"
+                            id="cookieGameMixCount">
+                            <span id="mixCount">0</span> / 18
+                        </div>
+
+                        <div class="cookie-game-mix-hint">
+                            ¡Sigue mezclando! 💗
+                        </div>
+
+                        <button
+                            type="button"
+                            class="cookie-game-button mix-button"
+                            id="mixButton"
+                            onclick="mixCookieDough()">
+                            Mezclar masa 🥣
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- PASO 3 -->
+
+                <div class="cookie-game-step cookie-step" id="cookieGameStep3">
+
+                    <p class="cookie-game-instruction">
+                        <strong>Paso 3 · Dar forma</strong><br>
+                        Elige distintas formas, crea al menos 5 y prepara tu bandeja. Cuantas más hagas, más puntos. 🍪✨
+                    </p>
+
+                    <div class="cookie-game-shape-buttons shapes-grid">
+
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button shape-button"
+                            data-cookie-shape="heart"
+                            onclick="createCookie('heart')">
+
+                            <span class="cookie-game-shape-icon">
+                                💗
+                            </span>
+
+                            Corazón
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button shape-button"
+                            data-cookie-shape="star"
+                            onclick="createCookie('star')">
+
+                            <span class="cookie-game-shape-icon">
+                                ⭐
+                            </span>
+
+                            Estrella
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button shape-button"
+                            data-cookie-shape="circle"
+                            onclick="createCookie('circle')">
+
+                            <span class="cookie-game-shape-icon">
+                                🍪
+                            </span>
+
+                            Redonda
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button shape-button"
+                            data-cookie-shape="flower"
+                            onclick="createCookie('flower')">
+
+                            <span class="cookie-game-shape-icon">
+                                🌸
+                            </span>
+
+                            Flor
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button shape-button"
+                            data-cookie-shape="moon"
+                            onclick="createCookie('moon')">
+
+                            <span class="cookie-game-shape-icon">
+                                🌙
+                            </span>
+
+                            Luna
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="cookie-game-shape-button shape-button"
+                            data-cookie-shape="diamond"
+                            onclick="createCookie('diamond')">
+
+                            <span class="cookie-game-shape-icon">
+                                💎
+                            </span>
+
+                            Diamante
+
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="cookie-game-tray tray"
+                        id="cookieGameShapeTray">
+
+                        <div
+                            id="createdCookies"
+                            style="display: flex; gap: 9px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%;">
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="cookie-game-button cookie-btn"
+                        id="cookieGameBakeButton"
+                        onclick="startBakingFromButton()"
+                        disabled>
+
+                        Meter 5+ al horno 🔥
+
+                    </button>
+
+                </div>
+
+                <!-- PASO 4 -->
+
+                <div class="cookie-game-step cookie-step" id="cookieGameStep4">
+
+                    <p class="cookie-game-instruction">
+                        <strong>Paso 4 · Hornear</strong><br>
+                        Las galletitas ya están en el horno. Ahora toca esperar... 🎄
+                    </p>
+
+                    <div class="cookie-game-oven-area">
+
+                        <div
+                            class="cookie-game-oven oven-container closed"
+                            id="cookieGameOven">
+
+                            <div class="cookie-game-oven-top">
+
+                                <span>🔥</span>
+
+                                <div
+                                    class="cookie-game-oven-display"
+                                    id="cookieGameOvenDisplay">
+                                    0%
+                                </div>
+
+                                <span>✨</span>
+
+                            </div>
+
+                            <div class="cookie-game-oven-handle"></div>
+
+                            <div class="cookie-game-oven-window">
+
+                                <div
+                                    class="cookie-game-tray tray"
+                                    id="cookieGameOvenTray">
+
+                                    <div
+                                        id="ovenCookies"
+                                        style="display: flex; gap: 9px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%;">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="cookie-game-baking-bar oven-progress-bar">
+
+                            <div
+                                class="cookie-game-baking-fill oven-progress-fill"
+                                id="cookieGameBakingFill">
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="cookie-game-baking-text oven-progress-text"
+                            id="cookieGameBakingText">
+
+                            Horneando con mucho cariño... 💗
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- PASO 5 -->
+
+                <div class="cookie-game-step cookie-step" id="cookieGameStep5">
+
+                    <p class="cookie-game-instruction">
+                        <strong>Paso 5 · Decorar</strong><br>
+                        Elige un topping y toca las galletas. Cada decoración suma puntos y puedes combinar toppings. ✨
+                    </p>
+
+                    <div
+                        class="cookie-game-decoration-tip"
+                        id="cookieGameDecorationTip">
+
+                        💡 Consejo: decora las 5 galletas al menos una vez para conseguir la recompensa final.
+
+                    </div>
+
+                    <div class="cookie-game-decoration-area">
+
+                        <div class="cookie-game-toppings toppings-grid">
+
+                            <button
+                                type="button"
+                                class="cookie-game-topping topping-button"
+                                data-topping="chocolate"
+                                data-cookie-topping="chocolate"
+                                onclick="selectTopping(this)">
+
+                                <span>🍫</span>
+                                Chocolate
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="cookie-game-topping topping-button"
+                                data-topping="glaseado"
+                                data-cookie-topping="glaseado"
+                                onclick="selectTopping(this)">
+
+                                <span>🤍</span>
+                                Glaseado
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="cookie-game-topping topping-button"
+                                data-topping="virutas"
+                                data-cookie-topping="virutas"
+                                onclick="selectTopping(this)">
+
+                                <span>🌈</span>
+                                Virutas
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="cookie-game-topping topping-button"
+                                data-topping="corazon"
+                                data-cookie-topping="corazon"
+                                onclick="selectTopping(this)">
+
+                                <span>💗</span>
+                                Corazones
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="cookie-game-topping topping-button"
+                                data-topping="estrella"
+                                data-cookie-topping="estrella"
+                                onclick="selectTopping(this)">
+
+                                <span>⭐</span>
+                                Estrellas
+
+                            </button>
+
+                        </div>
+
+                        <div
+                            class="cookie-game-decoration-tray decorate-tray"
+                            id="cookieGameDecorationTray">
+
+                            <div
+                                id="decorateCookies"
+                                style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%;">
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="cookie-game-decoration-counter decoration-message"
+                            id="cookieGameDecorationCounter">
+
+                            Decoraciones: 0 / 8
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="cookie-game-button cookie-btn"
+                        id="cookieGameFinishButton"
+                        onclick="finishCookieGame()"
+                        disabled>
+
+                        Terminar galletitas ✨
+
+                    </button>
+
+                </div>
+
+                <!-- RESULTADO -->
+
+                <div
+                    class="cookie-game-result"
+                    id="cookieGameResult">
+
+                    <div class="cookie-game-final-hearts">
+                        ✨ 💗 ✨
+                    </div>
+
+                    <div class="cookie-game-final-score">
+
+                        <span>
+                            🏆 Puntuación final
+                        </span>
+
+                        <strong id="cookieGameFinalScore">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <h3 class="cookie-game-result-title">
+                        ¡Lo has conseguido! 🍪
+                    </h3>
+
+                    <p class="cookie-game-result-text">
+                        ¡Has creado tus propias galletitas! 🍪💗
+                        <br>
+                        Nuestra pequeña chef navideña está
+                        oficialmente orgullosa de ti.
+                    </p>
+
+                    <div class="cookie-game-result-cookies">
+
+                        <div class="cookie-game-result-cookie">
+                        </div>
+
+                        <div class="cookie-game-result-cookie">
+                        </div>
+
+                        <div class="cookie-game-result-cookie">
+                        </div>
+
+                    </div>
+
+                    <div class="cookie-game-message">
+
+                        Una receta hecha con cariño,
+                        chocolate y muchísimas ganas de celebrar. 🎄💗
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="cookie-game-button cookie-btn"
+                        id="cookieGameRestartButton"
+                        onclick="restartCookieGame()">
+
+                        Volver a jugar 🍪
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
     </main>
 
-    <!-- ================================================= -->
-    <!-- MINIJUEGO DE GALLETAS OVERLAY -->
-    <!-- ================================================= -->
-    <div class="cookie-game-overlay" id="cookieGameOverlay" aria-hidden="true">
-        <button type="button" class="cookie-game-close" onclick="closeCookieGame()" aria-label="Cerrar minijuego">×</button>
-
-        <section class="cookie-game" id="cookieGame">
-            <div class="cookie-game-header">
-                <div class="cookie-game-kicker">✨ UNA ÚLTIMA SORPRESA ✨</div>
-                <h3 class="cookie-game-title">La pequeña pastelería navideña 🍪</h3>
-                <p class="cookie-game-subtitle">
-                    Ahora toca crear unas galletitas juntas.
-                    Tú eliges los ingredientes, las formas y la decoración. 💗
-                </p>
-            </div>
-
-            <div class="cookie-progress" id="cookieGameProgress">
-                <span class="cookie-progress-dot active"></span>
-                <span class="cookie-progress-dot"></span>
-                <span class="cookie-progress-dot"></span>
-                <span class="cookie-progress-dot"></span>
-                <span class="cookie-progress-dot"></span>
-            </div>
-
-            <!-- PASO 1 -->
-            <div class="cookie-step active" id="cookieGameStep1">
-                <p class="cookie-game-instruction">
-                    <strong>Paso 1 · Preparar los ingredientes</strong><br>
-                    Toca todos los ingredientes para echarlos al bol. 🥣
-                </p>
-
-                <div class="cookie-game-layout">
-                    <div class="cookie-game-character">
-                        <div class="cookie-game-character-bubble">¡Vamos a cocinar! 🎄🍪</div>
-                        <svg viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg" aria-label="Pequeña chef navideña morena con gafas">
-                            <ellipse cx="110" cy="287" rx="65" ry="8" fill="rgba(90,60,20,.13)"/>
-                            <path d="M62 164 Q110 145 158 164 L177 263 Q110 285 43 263 Z" fill="#f7f1df" stroke="#a8792c" stroke-width="2"/>
-                            <path d="M91 147 Q110 160 129 147 L130 169 Q110 182 90 169Z" fill="#f2d0a7"/>
-                            <path d="M57 78 Q52 39 82 25 Q110 8 140 25 Q170 40 163 82 L171 135 Q165 164 143 171 L77 171 Q55 160 50 135Z" fill="#3b2925"/>
-                            <path d="M69 63 Q110 38 151 63 L148 119 Q141 148 110 154 Q79 148 72 119Z" fill="#f2cda8" stroke="#c58d5b" stroke-width="1.5"/>
-                            <path d="M66 70 Q59 43 81 29 Q109 13 139 29 Q159 40 154 72 Q139 53 124 52 Q108 70 66 70Z" fill="#3b2925"/>
-                            <path d="M70 67 Q53 82 61 127" fill="none" stroke="#3b2925" stroke-width="15" stroke-linecap="round"/>
-                            <path d="M151 67 Q168 82 160 128" fill="none" stroke="#3b2925" stroke-width="15" stroke-linecap="round"/>
-                            <rect x="74" y="79" width="31" height="21" rx="8" fill="rgba(255,255,255,.18)" stroke="#55433c" stroke-width="4"/>
-                            <rect x="115" y="79" width="31" height="21" rx="8" fill="rgba(255,255,255,.18)" stroke="#55433c" stroke-width="4"/>
-                            <path d="M105 87 Q110 83 115 87" fill="none" stroke="#55433c" stroke-width="4"/>
-                            <circle cx="90" cy="89" r="3.5" fill="#392925"/>
-                            <circle cx="130" cy="89" r="3.5" fill="#392925"/>
-                            <path d="M81 74 Q91 69 100 74" fill="none" stroke="#50352d" stroke-width="2.5" stroke-linecap="round"/>
-                            <path d="M120 74 Q130 69 139 74" fill="none" stroke="#50352d" stroke-width="2.5" stroke-linecap="round"/>
-                            <path d="M108 91 Q104 104 110 106" fill="none" stroke="#c38b63" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M101 116 Q110 123 119 116" fill="none" stroke="#a94d50" stroke-width="2.5" stroke-linecap="round"/>
-                            <ellipse cx="82" cy="108" rx="9" ry="4" fill="#e9a39c" opacity=".5"/>
-                            <ellipse cx="138" cy="108" rx="9" ry="4" fill="#e9a39c" opacity=".5"/>
-
-                            <g class="cookie-game-character-hat">
-                                <path d="M70 51 Q57 44 62 31 Q67 17 82 24 Q85 8 100 15 Q111 0 122 15 Q139 7 141 24 Q157 17 162 33 Q166 47 150 53Z" fill="#fffaf0" stroke="#b78532" stroke-width="2"/>
-                                <path d="M65 48 Q110 59 155 48 L153 61 Q110 70 67 60Z" fill="#c94755"/>
-                                <path d="M72 50 Q110 60 148 50" fill="none" stroke="#f6d67b" stroke-width="3"/>
-                            </g>
-
-                            <path d="M83 150 L110 165 L137 150 L132 178 Q110 188 88 178Z" fill="#c94755"/>
-                            <path d="M68 176 Q110 188 152 176 L163 261 Q110 278 57 261Z" fill="#fff8e8" stroke="#c49543" stroke-width="2"/>
-                            <path d="M88 223 Q110 215 132 223 L130 248 Q110 255 90 248Z" fill="#f3d995" stroke="#b98531" stroke-width="2"/>
-                            <path d="M110 198 C101 187 84 198 110 215 C136 198 119 187 110 198Z" fill="#df6670"/>
-                            <path d="M67 183 Q42 204 50 236" fill="none" stroke="#f2cda8" stroke-width="16" stroke-linecap="round"/>
-                            <g class="cookie-game-character-arm">
-                                <path d="M153 183 Q177 203 169 234" fill="none" stroke="#f2cda8" stroke-width="16" stroke-linecap="round"/>
-                            </g>
-                            <path d="M66 260 Q47 269 51 280 Q63 287 91 278" fill="#7b4e45"/>
-                            <path d="M129 278 Q157 287 169 280 Q173 269 154 260" fill="#7b4e45"/>
-                            <circle cx="48" cy="30" r="3" fill="#d6a839"/>
-                            <circle cx="171" cy="54" r="3" fill="#d6a839"/>
-                        </svg>
-                    </div>
-
-                    <div class="cookie-game-kitchen">
-                        <div class="cookie-game-table">
-                            <div class="ingredients-grid">
-                                <button type="button" class="ingredient" data-ingredient="harina" data-cookie-icon="🌾" onclick="addIngredient(this)">
-                                    <span class="ingredient-icon">🌾</span>
-                                    <span class="ingredient-name">Harina</span>
-                                </button>
-                                <button type="button" class="ingredient" data-ingredient="mantequilla" data-cookie-icon="🧈" onclick="addIngredient(this)">
-                                    <span class="ingredient-icon">🧈</span>
-                                    <span class="ingredient-name">Mantequilla</span>
-                                </button>
-                                <button type="button" class="ingredient" data-ingredient="azucar" data-cookie-icon="🍚" onclick="addIngredient(this)">
-                                    <span class="ingredient-icon">🍚</span>
-                                    <span class="ingredient-name">Azúcar</span>
-                                </button>
-                                <button type="button" class="ingredient" data-ingredient="huevo" data-cookie-icon="🥚" onclick="addIngredient(this)">
-                                    <span class="ingredient-icon">🥚</span>
-                                    <span class="ingredient-name">Huevo</span>
-                                </button>
-                                <button type="button" class="ingredient" data-ingredient="chocolate" data-cookie-icon="🍫" onclick="addIngredient(this)">
-                                    <span class="ingredient-icon">🍫</span>
-                                    <span class="ingredient-name">Chocolate</span>
-                                </button>
-                            </div>
-
-                            <div class="cookie-game-bowl-area">
-                                <div class="cookie-game-bowl">
-                                    <div class="cookie-game-mixture" id="cookieGameSmallMixture"></div>
-                                    <div class="cookie-game-bowl-count" id="cookieGameBowlCount">
-                                        <span id="ingredientCount">0</span> / 5
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASO 2 -->
-            <div class="cookie-step" id="cookieGameStep2">
-                <p class="cookie-game-instruction">
-                    <strong>Paso 2 · Mezclar</strong><br>
-                    Toca el bol o el botón varias veces para mezclar todos los ingredientes. 🥣✨
-                </p>
-
-                <div class="cookie-game-mixing-area" id="cookieGameMixingArea">
-                    <div class="large-bowl" id="cookieGameLargeBowl" onclick="mixCookieDough()">
-                        <div class="dough-in-bowl" id="cookieGameDough"></div>
-                        <div class="mixing-spoon"></div>
-                    </div>
-
-                    <div class="cookie-game-mix-count" id="cookieGameMixCount">
-                        <span id="mixCount">0</span> / 12
-                    </div>
-
-                    <div class="cookie-game-mix-hint">¡Sigue mezclando! 💗</div>
-
-                    <button type="button" class="cookie-btn" id="mixButton" onclick="mixCookieDough()">
-                        Mezclar masa 🥣
-                    </button>
-                </div>
-            </div>
-
-            <!-- PASO 3 -->
-            <div class="cookie-step" id="cookieGameStep3">
-                <p class="cookie-game-instruction">
-                    <strong>Paso 3 · Dar forma</strong><br>
-                    Elige las formas que quieres hacer y colócalas en la bandeja. 🍪
-                </p>
-
-                <div class="shapes-grid">
-                    <button type="button" class="shape-button" onclick="createCookie('heart')">
-                        <span class="cookie-game-shape-icon">💗</span> Corazón
-                    </button>
-                    <button type="button" class="shape-button" onclick="createCookie('star')">
-                        <span class="cookie-game-shape-icon">⭐</span> Estrella
-                    </button>
-                    <button type="button" class="shape-button" onclick="createCookie('circle')">
-                        <span class="cookie-game-shape-icon">🍪</span> Redonda
-                    </button>
-                </div>
-
-                <div class="tray" id="cookieGameShapeTray">
-                    <div id="createdCookies" style="display: flex; gap: 9px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%;"></div>
-                </div>
-
-                <button type="button" class="cookie-btn" id="cookieGameBakeButton" onclick="startBakingFromButton()" disabled>
-                    Meter al horno 🔥
-                </button>
-            </div>
-
-            <!-- PASO 4 -->
-            <div class="cookie-step" id="cookieGameStep4">
-                <p class="cookie-game-instruction">
-                    <strong>Paso 4 · Hornear</strong><br>
-                    Las galletitas ya están en el horno. Ahora toca esperar... 🎄
-                </p>
-
-                <div class="cookie-game-oven-area">
-                    <div class="oven-container closed" id="cookieGameOven">
-                        <div class="cookie-game-oven-top">
-                            <span>🔥</span>
-                            <div class="cookie-game-oven-display" id="cookieGameOvenDisplay">0%</div>
-                            <span>✨</span>
-                        </div>
-                        <div class="cookie-game-oven-handle"></div>
-                        <div class="cookie-game-oven-window">
-                            <div class="tray" id="cookieGameOvenTray">
-                                <div id="ovenCookies" style="display: flex; gap: 9px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="oven-progress-bar">
-                        <div class="oven-progress-fill" id="cookieGameBakingFill"></div>
-                    </div>
-
-                    <div class="oven-progress-text" id="cookieGameBakingText">
-                        Horneando con mucho cariño... 💗
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASO 5 -->
-            <div class="cookie-step" id="cookieGameStep5">
-                <p class="cookie-game-instruction">
-                    <strong>Paso 5 · Decorar</strong><br>
-                    Elige tus toppings favoritos y toca las galletas para llenarlas de magia. ✨
-                </p>
-
-                <div class="cookie-game-decoration-area">
-                    <div class="toppings-grid">
-                        <button type="button" class="topping-button" data-topping="chocolate" onclick="selectTopping(this)">
-                            <span>🍫</span> Chocolate
-                        </button>
-                        <button type="button" class="topping-button" data-topping="glaseado" onclick="selectTopping(this)">
-                            <span>🤍</span> Glaseado
-                        </button>
-                        <button type="button" class="topping-button" data-topping="virutas" onclick="selectTopping(this)">
-                            <span>🌈</span> Virutas
-                        </button>
-                        <button type="button" class="topping-button" data-topping="corazon" onclick="selectTopping(this)">
-                            <span>💗</span> Corazones
-                        </button>
-                        <button type="button" class="topping-button" data-topping="estrella" onclick="selectTopping(this)">
-                            <span>⭐</span> Estrellas
-                        </button>
-                    </div>
-
-                    <div class="decorate-tray" id="cookieGameDecorationTray">
-                        <div id="decorateCookies" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%;"></div>
-                    </div>
-
-                    <div class="decoration-message" id="cookieGameDecorationCounter">
-                        Decoraciones: 0
-                    </div>
-                </div>
-
-                <button type="button" class="cookie-btn" id="cookieGameFinishButton" onclick="finishCookieGame()" disabled>
-                    Terminar galletitas ✨
-                </button>
-            </div>
-
-            <!-- RESULTADO -->
-            <div class="cookie-game-result" id="cookieGameResult">
-                <div class="cookie-game-final-hearts">✨ 💗 ✨</div>
-                <h3 class="cookie-game-result-title">¡Lo has conseguido! 🍪</h3>
-                <p class="cookie-game-result-text">
-                    ¡Has creado tus propias galletitas! 🍪💗<br>
-                    Nuestra pequeña chef navideña está oficialmente orgullosa de ti.
-                </p>
-
-                <div class="cookie-game-result-cookies">
-                    <div class="cookie-game-result-cookie"></div>
-                    <div class="cookie-game-result-cookie"></div>
-                    <div class="cookie-game-result-cookie"></div>
-                </div>
-
-                <div class="cookie-game-message">
-                    Una receta hecha con cariño, chocolate y muchísimas ganas de celebrar. 🎄💗
-                </div>
-
-                <button type="button" class="cookie-btn" id="cookieGameRestartButton" onclick="restartCookieGame()">
-                    Volver a jugar 🍪
-                </button>
-            </div>
-        </section>
-    </div>
-
-    <!-- NAVEGACIÓN PRINCIPAL -->
     <div class="navigation">
-        <button id="prevButton" onclick="previousSlide()">←</button>
-        <button id="nextButton" onclick="nextSlide()">→</button>
+
+        <button id="prevButton" onclick="previousSlide()">
+            ←
+        </button>
+
+        <button id="nextButton" onclick="nextSlide()">
+            →
+        </button>
+
     </div>
 
-    <!-- SCRIPTS EXTERNOS -->
     <script src="script.js"></script>
     <script src="special-effects.js"></script>
 
-    <!-- LÓGICA DEL MINIJUEGO -->
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT DEL MINIJUEGO -->
+    <!-- ========================================================= -->
+
     <script>
+
         const cookieGameState = {
             currentStep: 1,
             ingredients: [],
-            requiredIngredients: 5,
+            requiredIngredients: 6,
             mixCount: 0,
-            requiredMixes: 12,
+            requiredMixes: 18,
             cookies: [],
             decorations: 0,
-            requiredDecorations: 3,
+            requiredDecorations: 8,
             bakingInterval: null,
-            lastTopping: null
+            lastTopping: null,
+            score: 0,
+            combo: 0
         };
 
+        function updateCookieGameHUD() {
+
+            const scoreEl = document.getElementById("cookieGameScore");
+            const comboEl = document.getElementById("cookieGameCombo");
+            const objectiveEl = document.getElementById("cookieGameObjective");
+
+            if (scoreEl) {
+                scoreEl.textContent = cookieGameState.score;
+            }
+
+            if (comboEl) {
+                comboEl.textContent = cookieGameState.combo;
+            }
+
+            if (objectiveEl) {
+
+                const objectives = {
+                    1: "6 ingredientes",
+                    2: "18 mezclas",
+                    3: "5+ galletas",
+                    4: "Horneando",
+                    5: "8 decoraciones"
+                };
+
+                objectiveEl.textContent =
+                    objectives[cookieGameState.currentStep] || "¡Completado!";
+            }
+        }
+
+        function cookieGameAddScore(points, sourceElement) {
+
+            cookieGameState.score += points;
+
+            if (sourceElement) {
+
+                const pop = document.createElement("span");
+
+                pop.className = "cookie-game-score-pop";
+                pop.textContent = "+" + points;
+
+                const rect = sourceElement.getBoundingClientRect();
+                const gameRect = document
+                    .getElementById("cookieGame")
+                    .getBoundingClientRect();
+
+                pop.style.left =
+                    (rect.left - gameRect.left + rect.width / 2) + "px";
+
+                pop.style.top =
+                    (rect.top - gameRect.top + 5) + "px";
+
+                document
+                    .getElementById("cookieGame")
+                    .appendChild(pop);
+
+                setTimeout(function () {
+                    pop.remove();
+                }, 850);
+            }
+
+            updateCookieGameHUD();
+        }
+
+        function cookieGameIncreaseCombo() {
+
+            cookieGameState.combo++;
+
+            updateCookieGameHUD();
+        }
+
+        function cookieGameBreakCombo() {
+
+            cookieGameState.combo = 0;
+
+            updateCookieGameHUD();
+        }
+
         function openCookieGame() {
-            const overlay = document.getElementById("cookieGameOverlay");
+
+            const overlay =
+                document.getElementById("cookieGameOverlay");
+
             if (overlay) {
+
                 overlay.classList.add("active");
                 overlay.setAttribute("aria-hidden", "false");
                 overlay.scrollTop = 0;
             }
+
             cookieGameReset();
         }
 
         function closeCookieGame() {
-            const overlay = document.getElementById("cookieGameOverlay");
+
+            const overlay =
+                document.getElementById("cookieGameOverlay");
+
             if (overlay) {
+
                 overlay.classList.remove("active");
                 overlay.setAttribute("aria-hidden", "true");
             }
         }
 
         function addIngredient(btn) {
-            if (!btn) return;
-            const ingredientName = btn.getAttribute("data-ingredient");
-            const ingredientIcon = btn.getAttribute("data-cookie-icon") || "✨";
 
-            if (!ingredientName || cookieGameState.ingredients.includes(ingredientName)) {
+            if (!btn) return;
+
+            const ingredientName =
+                btn.getAttribute("data-ingredient") ||
+                btn.getAttribute("data-cookie-ingredient");
+
+            const ingredientIcon =
+                btn.getAttribute("data-cookie-icon") ||
+                (
+                    btn.querySelector(
+                        ".ingredient-icon, .cookie-game-ingredient-icon"
+                    )
+                        ? btn.querySelector(
+                            ".ingredient-icon, .cookie-game-ingredient-icon"
+                        ).textContent.trim()
+                        : "✨"
+                );
+
+            if (
+                !ingredientName ||
+                cookieGameState.ingredients.includes(ingredientName)
+            ) {
                 return;
             }
 
             cookieGameState.ingredients.push(ingredientName);
-            btn.classList.add("added");
 
-            cookieGameCreateFlyingIngredient(btn, ingredientIcon);
+            btn.classList.add(
+                "added",
+                "perfect-hit"
+            );
 
-            const countEl = document.getElementById("ingredientCount");
-            if (countEl) countEl.textContent = cookieGameState.ingredients.length;
+            cookieGameIncreaseCombo();
 
-            const mixture = document.getElementById("cookieGameSmallMixture");
-            if (mixture) mixture.classList.add("visible");
+            const bonus =
+                75 +
+                Math.min(
+                    cookieGameState.combo * 10,
+                    80
+                );
 
-            if (cookieGameState.ingredients.length >= cookieGameState.requiredIngredients) {
-                cookieGameCreateParticles(8);
+            cookieGameAddScore(
+                bonus,
+                btn
+            );
+
+            cookieGameCreateFlyingIngredient(
+                btn,
+                ingredientIcon
+            );
+
+            const countEl =
+                document.getElementById("ingredientCount");
+
+            if (countEl) {
+                countEl.textContent =
+                    cookieGameState.ingredients.length;
+            }
+
+            const bowlCountEl =
+                document.getElementById("cookieGameBowlCount");
+
+            if (bowlCountEl) {
+
+                bowlCountEl.innerHTML =
+                    '<span id="ingredientCount">' +
+                    cookieGameState.ingredients.length +
+                    '</span> / ' +
+                    cookieGameState.requiredIngredients;
+            }
+
+            const mixture =
+                document.getElementById(
+                    "cookieGameSmallMixture"
+                );
+
+            if (mixture) {
+                mixture.classList.add("visible");
+            }
+
+            if (
+                cookieGameState.ingredients.length >=
+                cookieGameState.requiredIngredients
+            ) {
+
+                cookieGameAddScore(150);
+
+                cookieGameCreateParticles(12);
+
+                const hint =
+                    document.querySelector(
+                        "#cookieGameStep1 .cookie-game-instruction"
+                    );
+
+                if (hint) {
+
+                    hint.innerHTML =
+                        "<strong>¡Receta completa!</strong><br>" +
+                        "Perfecto. Has reunido todos los ingredientes. " +
+                        "Ahora toca conseguir una masa perfecta. 🥣✨";
+                }
+
                 setTimeout(function () {
                     cookieGameGoToStep(2);
-                }, 700);
-            }
-        }
-
-        function mixCookieDough() {
-            if (cookieGameState.mixCount >= cookieGameState.requiredMixes) return;
-
-            cookieGameState.mixCount++;
-
-            const mixingArea = document.getElementById("cookieGameMixingArea");
-            if (mixingArea) mixingArea.classList.add("mixing");
-
-            const mixCountSpan = document.getElementById("mixCount");
-            if (mixCountSpan) mixCountSpan.textContent = cookieGameState.mixCount;
-
-            const dough = document.getElementById("cookieGameDough");
-            if (dough) {
-                dough.style.transform = "translateX(-50%) scale(" + (1 + cookieGameState.mixCount * 0.012) + ")";
-            }
-
-            if (cookieGameState.mixCount >= cookieGameState.requiredMixes) {
-                if (dough) dough.classList.add("ready");
-                if (mixingArea) mixingArea.classList.remove("mixing");
-                cookieGameCreateParticles(10);
-
-                setTimeout(function () {
-                    cookieGameGoToStep(3);
                 }, 850);
             }
         }
 
+        function mixCookieDough() {
+
+            if (
+                cookieGameState.mixCount >=
+                cookieGameState.requiredMixes
+            ) {
+                return;
+            }
+
+            cookieGameState.mixCount++;
+
+            cookieGameIncreaseCombo();
+
+            const mixingArea =
+                document.getElementById(
+                    "cookieGameMixingArea"
+                );
+
+            if (mixingArea) {
+                mixingArea.classList.add("mixing");
+            }
+
+            const mixCountSpan =
+                document.getElementById("mixCount");
+
+            if (mixCountSpan) {
+                mixCountSpan.textContent =
+                    cookieGameState.mixCount;
+            }
+
+            const mixCountEl =
+                document.getElementById(
+                    "cookieGameMixCount"
+                );
+
+            if (
+                mixCountEl &&
+                !mixCountSpan
+            ) {
+
+                mixCountEl.textContent =
+                    cookieGameState.mixCount +
+                    " / " +
+                    cookieGameState.requiredMixes;
+            }
+
+            const dough =
+                document.getElementById(
+                    "cookieGameDough"
+                );
+
+            if (dough) {
+
+                dough.style.transform =
+                    "translateX(-50%) scale(" +
+                    (
+                        1 +
+                        cookieGameState.mixCount *
+                        0.012
+                    ) +
+                    ")";
+            }
+
+            cookieGameAddScore(
+                20 +
+                Math.min(
+                    cookieGameState.combo,
+                    10
+                ) * 2
+            );
+
+            if (
+                cookieGameState.mixCount === 9
+            ) {
+
+                cookieGameCreateParticles(5);
+
+                const hint =
+                    document.querySelector(
+                        "#cookieGameStep2 .cookie-game-mix-hint"
+                    );
+
+                if (hint) {
+
+                    hint.textContent =
+                        "¡Muy bien! La masa ya empieza a quedar suave. Sigue. 💗";
+                }
+            }
+
+            if (
+                cookieGameState.mixCount >=
+                cookieGameState.requiredMixes
+            ) {
+
+                if (dough) {
+                    dough.classList.add("ready");
+                }
+
+                if (mixingArea) {
+                    mixingArea.classList.remove("mixing");
+                }
+
+                cookieGameAddScore(200);
+
+                cookieGameCreateParticles(14);
+
+                const hint =
+                    document.querySelector(
+                        "#cookieGameStep2 .cookie-game-mix-hint"
+                    );
+
+                if (hint) {
+
+                    hint.textContent =
+                        "¡Masa perfecta! Bonus de +200 puntos. ✨";
+                }
+
+                setTimeout(function () {
+
+                    cookieGameGoToStep(3);
+
+                }, 950);
+            }
+        }
+
         function createCookie(shape) {
-            if (cookieGameState.cookies.length >= 6) return;
+
+            if (
+                cookieGameState.cookies.length >= 8
+            ) {
+                return;
+            }
 
             cookieGameState.cookies.push(shape);
 
-            const createdCookiesContainer = document.getElementById("createdCookies");
-            if (createdCookiesContainer) {
-                cookieGameCreateCookie(createdCookiesContainer, shape);
+            cookieGameIncreaseCombo();
+
+            const createdCookiesContainer =
+                document.getElementById(
+                    "createdCookies"
+                );
+
+            const tray =
+                createdCookiesContainer ||
+                document.getElementById(
+                    "cookieGameShapeTray"
+                );
+
+            if (tray) {
+
+                cookieGameCreateCookie(
+                    tray,
+                    shape
+                );
             }
 
-            const bakeBtn = document.getElementById("cookieGameBakeButton");
-            if (bakeBtn && cookieGameState.cookies.length >= 3) {
+            cookieGameAddScore(
+                90 +
+                Math.min(
+                    cookieGameState.combo * 5,
+                    50
+                )
+            );
+
+            const bakeBtn =
+                document.getElementById(
+                    "cookieGameBakeButton"
+                );
+
+            if (
+                bakeBtn &&
+                cookieGameState.cookies.length >= 5
+            ) {
+
                 bakeBtn.disabled = false;
+
+                bakeBtn.textContent =
+                    "¡Meter al horno! 🔥";
+            }
+
+            const counter =
+                document.querySelector(
+                    "#cookieGameStep3 .cookie-game-instruction"
+                );
+
+            if (
+                counter &&
+                cookieGameState.cookies.length === 5
+            ) {
+
+                counter.innerHTML =
+                    "<strong>¡Bandeja lista!</strong><br>" +
+                    "Ya tienes 5. Puedes hornearlas o crear hasta 3 más " +
+                    "para conseguir más puntos. 🍪✨";
             }
         }
 
         function startBakingFromButton() {
-            if (cookieGameState.cookies.length < 3) return;
 
-            const bakeBtn = document.getElementById("cookieGameBakeButton");
-            if (bakeBtn) bakeBtn.disabled = true;
+            if (
+                cookieGameState.cookies.length < 5
+            ) {
+                return;
+            }
+
+            const bakeBtn =
+                document.getElementById(
+                    "cookieGameBakeButton"
+                );
+
+            if (bakeBtn) {
+                bakeBtn.disabled = true;
+            }
+
+            cookieGameAddScore(250);
 
             cookieGameCopyTrayToOven();
+
             cookieGameGoToStep(4);
+
             cookieGameStartBaking();
         }
 
         function selectTopping(btn) {
-            if (!btn) return;
-            cookieGameState.lastTopping = btn.getAttribute("data-topping");
 
-            const allToppings = document.querySelectorAll(".topping-button");
+            if (!btn) return;
+
+            const topping =
+                btn.getAttribute("data-topping") ||
+                btn.getAttribute("data-cookie-topping");
+
+            cookieGameState.lastTopping =
+                topping;
+
+            const allToppings =
+                document.querySelectorAll(
+                    ".cookie-game-topping, .topping-button"
+                );
+
             allToppings.forEach(function (item) {
                 item.style.transform = "";
             });
 
-            btn.style.transform = "translateY(-4px) scale(1.04)";
+            btn.style.transform =
+                "translateY(-4px) scale(1.04)";
 
-            const counter = document.getElementById("cookieGameDecorationCounter");
-            if (counter) counter.textContent = "Ahora toca una galleta para decorarla ✨";
+            const counter =
+                document.getElementById(
+                    "cookieGameDecorationCounter"
+                );
+
+            if (counter) {
+
+                counter.textContent =
+                    "Topping elegido: " +
+                    (btn.textContent.trim() || topping) +
+                    " · toca una galleta ✨";
+            }
+
+            const msg =
+                document.getElementById(
+                    "decorationMessage"
+                );
+
+            if (msg) {
+
+                msg.textContent =
+                    "Toca una galleta para ponerle el topping 💗";
+            }
         }
 
         function finishCookieGame() {
-            if (cookieGameState.decorations < cookieGameState.requiredDecorations) return;
 
-            const finishBtn = document.getElementById("cookieGameFinishButton");
-            if (finishBtn) finishBtn.disabled = true;
+            if (
+                cookieGameState.decorations <
+                cookieGameState.requiredDecorations
+            ) {
+                return;
+            }
 
-            const cookieGame = document.getElementById("cookieGame");
-            if (cookieGame) cookieGame.classList.add("character-celebrating");
+            const finishBtn =
+                document.getElementById(
+                    "cookieGameFinishButton"
+                );
 
-            const steps = document.querySelectorAll(".cookie-step");
-            steps.forEach(function (step) { step.classList.remove("active"); });
+            if (finishBtn) {
+                finishBtn.disabled = true;
+            }
 
-            const dots = document.querySelectorAll(".cookie-progress-dot");
-            dots.forEach(function (dot) {
-                dot.classList.add("done");
-                dot.classList.remove("active");
+            const cookieGame =
+                document.getElementById(
+                    "cookieGame"
+                );
+
+            if (cookieGame) {
+                cookieGame.classList.add(
+                    "character-celebrating"
+                );
+            }
+
+            cookieGameState.score += 500;
+
+            cookieGameState.combo += 2;
+
+            updateCookieGameHUD();
+
+            const finalScore =
+                document.getElementById(
+                    "cookieGameFinalScore"
+                );
+
+            if (finalScore) {
+                finalScore.textContent =
+                    cookieGameState.score;
+            }
+
+            const steps =
+                document.querySelectorAll(
+                    ".cookie-game-step, .cookie-step"
+                );
+
+            steps.forEach(function (step) {
+
+                step.classList.remove("active");
+
             });
 
-            const result = document.getElementById("cookieGameResult");
-            if (result) result.classList.add("active");
+            const dots =
+                document.querySelectorAll(
+                    ".cookie-game-progress-dot, .cookie-progress-dot"
+                );
 
-            cookieGameCreateParticles(28);
+            dots.forEach(function (dot) {
 
-            const overlay = document.getElementById("cookieGameOverlay");
-            if (overlay) overlay.scrollTop = 0;
+                dot.classList.add("done");
+
+                dot.classList.remove("active");
+
+            });
+
+            const result =
+                document.getElementById(
+                    "cookieGameResult"
+                );
+
+            if (result) {
+                result.classList.add("active");
+            }
+
+            cookieGameCreateParticles(35);
+
+            const overlay =
+                document.getElementById(
+                    "cookieGameOverlay"
+                );
+
+            if (overlay) {
+                overlay.scrollTop = 0;
+            }
         }
 
         function restartCookieGame() {
+
             cookieGameReset();
-            const overlay = document.getElementById("cookieGameOverlay");
-            if (overlay) overlay.scrollTop = 0;
+
+            const overlay =
+                document.getElementById(
+                    "cookieGameOverlay"
+                );
+
+            if (overlay) {
+                overlay.scrollTop = 0;
+            }
         }
 
         function cookieGameGoToStep(step) {
-            cookieGameState.currentStep = step;
 
-            const steps = document.querySelectorAll(".cookie-step");
-            steps.forEach(function (element, index) {
-                element.classList.toggle("active", index === step - 1);
+            cookieGameState.currentStep =
+                step;
+
+            const steps =
+                document.querySelectorAll(
+                    ".cookie-game-step, .cookie-step"
+                );
+
+            steps.forEach(function (
+                element,
+                index
+            ) {
+
+                element.classList.toggle(
+                    "active",
+                    index === step - 1
+                );
+
             });
 
-            const dots = document.querySelectorAll(".cookie-progress-dot");
-            dots.forEach(function (dot, index) {
-                dot.classList.toggle("active", index === step - 1);
-                dot.classList.toggle("done", index < step - 1);
+            const dots =
+                document.querySelectorAll(
+                    ".cookie-game-progress-dot, .cookie-progress-dot"
+                );
+
+            dots.forEach(function (
+                dot,
+                index
+            ) {
+
+                dot.classList.toggle(
+                    "active",
+                    index === step - 1
+                );
+
+                dot.classList.toggle(
+                    "done",
+                    index < step - 1
+                );
+
             });
 
-            const cookieGame = document.getElementById("cookieGame");
+            const cookieGame =
+                document.getElementById(
+                    "cookieGame"
+                );
+
             if (cookieGame) {
-                cookieGame.classList.remove("character-mixing", "character-celebrating");
+
+                cookieGame.classList.remove(
+                    "character-mixing",
+                    "character-celebrating"
+                );
+
                 if (step === 2) {
-                    cookieGame.classList.add("character-mixing");
+
+                    cookieGame.classList.add(
+                        "character-mixing"
+                    );
                 }
             }
+
+            updateCookieGameHUD();
         }
 
         function cookieGameCreateParticles(amount) {
-            const container = document.getElementById("cookieGame") || document.body;
 
-            for (let i = 0; i < amount; i++) {
-                const particle = document.createElement("span");
-                particle.className = "cookie-game-particle";
-                const symbols = ["✨", "💗", "✦", "❄️", "⭐"];
-                particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                particle.style.left = (15 + Math.random() * 70) + "%";
-                particle.style.top = (35 + Math.random() * 45) + "%";
-                particle.style.setProperty("--cookie-particle-x", ((Math.random() - .5) * 130) + "px");
-                particle.style.setProperty("--cookie-particle-y", (-40 - Math.random() * 90) + "px");
+            const container =
+                document.getElementById(
+                    "cookieGame"
+                ) || document.body;
 
-                container.appendChild(particle);
+            for (
+                let i = 0;
+                i < amount;
+                i++
+            ) {
 
-                setTimeout(function () { particle.remove(); }, 1900);
+                const particle =
+                    document.createElement("span");
+
+                particle.className =
+                    "cookie-game-particle";
+
+                const symbols = [
+                    "✨",
+                    "💗",
+                    "✦",
+                    "❄️",
+                    "⭐",
+                    "🍪"
+                ];
+
+                particle.textContent =
+                    symbols[
+                        Math.floor(
+                            Math.random() *
+                            symbols.length
+                        )
+                    ];
+
+                particle.style.left =
+                    (
+                        10 +
+                        Math.random() * 80
+                    ) + "%";
+
+                particle.style.top =
+                    (
+                        30 +
+                        Math.random() * 50
+                    ) + "%";
+
+                particle.style.setProperty(
+                    "--cookie-particle-x",
+                    (
+                        (
+                            Math.random() - .5
+                        ) * 150
+                    ) + "px"
+                );
+
+                particle.style.setProperty(
+                    "--cookie-particle-y",
+                    (
+                        -40 -
+                        Math.random() * 100
+                    ) + "px"
+                );
+
+                container.appendChild(
+                    particle
+                );
+
+                setTimeout(function () {
+
+                    particle.remove();
+
+                }, 1900);
             }
         }
 
-        function cookieGameCreateFlyingIngredient(ingredient, icon) {
-            const flying = document.createElement("span");
-            flying.className = "cookie-game-flying";
-            flying.textContent = icon;
+        function cookieGameCreateFlyingIngredient(
+            ingredient,
+            icon
+        ) {
 
-            const ingredientRect = ingredient.getBoundingClientRect();
-            const mixture = document.getElementById("cookieGameSmallMixture");
-            const bowlRect = mixture ? mixture.getBoundingClientRect() : ingredientRect;
+            const flying =
+                document.createElement("span");
 
-            const startX = ingredientRect.left + ingredientRect.width / 2;
-            const startY = ingredientRect.top + ingredientRect.height / 2;
-            const endX = bowlRect.left + bowlRect.width / 2;
-            const endY = bowlRect.top + bowlRect.height / 2;
+            flying.className =
+                "cookie-game-flying";
 
-            flying.style.left = startX + "px";
-            flying.style.top = startY + "px";
-            flying.style.setProperty("--cookie-fly-x", (endX - startX) + "px");
-            flying.style.setProperty("--cookie-fly-y", (endY - startY) + "px");
+            flying.textContent =
+                icon;
 
-            document.body.appendChild(flying);
+            const ingredientRect =
+                ingredient.getBoundingClientRect();
 
-            setTimeout(function () { flying.remove(); }, 650);
+            const mixture =
+                document.getElementById(
+                    "cookieGameSmallMixture"
+                );
+
+            const bowlRect =
+                mixture
+                    ? mixture.getBoundingClientRect()
+                    : ingredientRect;
+
+            const startX =
+                ingredientRect.left +
+                ingredientRect.width / 2;
+
+            const startY =
+                ingredientRect.top +
+                ingredientRect.height / 2;
+
+            const endX =
+                bowlRect.left +
+                bowlRect.width / 2;
+
+            const endY =
+                bowlRect.top +
+                bowlRect.height / 2;
+
+            flying.style.left =
+                startX + "px";
+
+            flying.style.top =
+                startY + "px";
+
+            flying.style.setProperty(
+                "--cookie-fly-x",
+                (endX - startX) + "px"
+            );
+
+            flying.style.setProperty(
+                "--cookie-fly-y",
+                (endY - startY) + "px"
+            );
+
+            document.body.appendChild(
+                flying
+            );
+
+            setTimeout(function () {
+
+                flying.remove();
+
+            }, 650);
         }
 
-        function cookieGameCreateCookie(tray, shape) {
-            const cookie = document.createElement("div");
-            cookie.className = "created-cookie " + shape;
+        function cookieGameCreateCookie(
+            tray,
+            shape
+        ) {
+
+            const cookie =
+                document.createElement("div");
+
+            cookie.className =
+                "cookie-game-cookie created-cookie " +
+                shape;
+
+            if (shape === "heart") {
+
+                cookie.classList.add(
+                    "cookie-game-cookie-heart"
+                );
+
+            } else if (shape === "star") {
+
+                cookie.classList.add(
+                    "cookie-game-cookie-star"
+                );
+
+            } else if (shape === "flower") {
+
+                cookie.classList.add(
+                    "cookie-game-cookie-flower"
+                );
+
+            } else if (shape === "moon") {
+
+                cookie.classList.add(
+                    "cookie-game-cookie-moon"
+                );
+
+            } else if (shape === "diamond") {
+
+                cookie.classList.add(
+                    "cookie-game-cookie-diamond"
+                );
+
+            } else {
+
+                cookie.classList.add(
+                    "cookie-game-cookie-circle"
+                );
+            }
+
             tray.appendChild(cookie);
         }
 
         function cookieGameCopyTrayToOven() {
-            const ovenCookiesContainer = document.getElementById("ovenCookies");
-            if (ovenCookiesContainer) {
-                ovenCookiesContainer.innerHTML = "";
-                cookieGameState.cookies.forEach(function (shape) {
-                    cookieGameCreateCookie(ovenCookiesContainer, shape);
-                });
+
+            const ovenCookiesContainer =
+                document.getElementById(
+                    "ovenCookies"
+                );
+
+            const ovenTray =
+                ovenCookiesContainer ||
+                document.getElementById(
+                    "cookieGameOvenTray"
+                );
+
+            if (ovenTray) {
+
+                ovenTray.innerHTML = "";
+
+                cookieGameState.cookies.forEach(
+                    function (shape) {
+
+                        cookieGameCreateCookie(
+                            ovenTray,
+                            shape
+                        );
+
+                    }
+                );
             }
         }
 
         function cookieGameStartBaking() {
+
             let progress = 0;
 
-            if (cookieGameState.bakingInterval) {
-                clearInterval(cookieGameState.bakingInterval);
+            if (
+                cookieGameState.bakingInterval
+            ) {
+
+                clearInterval(
+                    cookieGameState.bakingInterval
+                );
             }
 
-            const fill = document.getElementById("cookieGameBakingFill");
-            const display = document.getElementById("cookieGameOvenDisplay");
-            const text = document.getElementById("cookieGameBakingText");
+            const fill =
+                document.getElementById(
+                    "cookieGameBakingFill"
+                ) ||
+                document.getElementById(
+                    "ovenProgressFill"
+                );
 
-            if (fill) fill.style.width = "0%";
-            if (display) display.textContent = "0%";
+            const display =
+                document.getElementById(
+                    "cookieGameOvenDisplay"
+                );
 
-            cookieGameState.bakingInterval = setInterval(function () {
-                progress += 2;
+            const text =
+                document.getElementById(
+                    "cookieGameBakingText"
+                ) ||
+                document.getElementById(
+                    "ovenProgressText"
+                );
 
-                if (fill) fill.style.width = progress + "%";
-                if (display) display.textContent = progress + "%";
+            if (fill) {
+                fill.style.width = "0%";
+            }
 
-                if (progress < 35) {
-                    if (text) text.textContent = "Calentando el horno... 🔥";
-                } else if (progress < 70) {
-                    if (text) text.textContent = "Las galletitas empiezan a dorarse... 🍪";
-                } else if (progress < 100) {
-                    if (text) text.textContent = "¡Ya casi están! ✨";
-                } else {
-                    clearInterval(cookieGameState.bakingInterval);
-                    cookieGameState.bakingInterval = null;
+            if (display) {
+                display.textContent = "0%";
+            }
 
-                    if (text) text.textContent = "¡Perfectas! Doraditas y listas. 💗";
+            cookieGameState.bakingInterval =
+                setInterval(function () {
 
-                    cookieGameCreateParticles(14);
+                    progress += 2;
 
-                    setTimeout(function () {
-                        cookieGameGoToStep(5);
-                        cookieGamePrepareDecoration();
-                    }, 1000);
-                }
-            }, 55);
+                    if (fill) {
+                        fill.style.width =
+                            progress + "%";
+                    }
+
+                    if (display) {
+                        display.textContent =
+                            progress + "%";
+                    }
+
+                    if (progress < 25) {
+
+                        if (text) {
+                            text.textContent =
+                                "Calentando el horno... 🔥";
+                        }
+
+                    } else if (progress < 50) {
+
+                        if (text) {
+                            text.textContent =
+                                "La masa empieza a crecer... 🥣";
+                        }
+
+                    } else if (progress < 75) {
+
+                        if (text) {
+                            text.textContent =
+                                "Las galletitas se están dorando... 🍪";
+                        }
+
+                    } else if (progress < 100) {
+
+                        if (text) {
+                            text.textContent =
+                                "¡Ya casi! Preparando la decoración... ✨";
+                        }
+
+                    } else {
+
+                        clearInterval(
+                            cookieGameState.bakingInterval
+                        );
+
+                        cookieGameState.bakingInterval =
+                            null;
+
+                        if (text) {
+
+                            text.textContent =
+                                "¡Perfectas! Doraditas y listas. +300 puntos 💗";
+                        }
+
+                        cookieGameAddScore(300);
+
+                        cookieGameCreateParticles(18);
+
+                        setTimeout(function () {
+
+                            cookieGameGoToStep(5);
+
+                            cookieGamePrepareDecoration();
+
+                        }, 1000);
+                    }
+
+                }, 55);
         }
 
         function cookieGamePrepareDecoration() {
-            const decorateContainer = document.getElementById("decorateCookies");
 
-            if (decorateContainer) {
-                decorateContainer.innerHTML = "";
+            const decorateContainer =
+                document.getElementById(
+                    "decorateCookies"
+                );
 
-                cookieGameState.cookies.slice(0, 3).forEach(function (shape) {
-                    const cookie = document.createElement("div");
-                    cookie.className = "decorating-cookie " + shape;
-                    cookie.dataset.cookieDecorations = "0";
-                    cookie.setAttribute("role", "button");
-                    cookie.setAttribute("aria-label", "Galleta para decorar");
-                    cookie.tabIndex = 0;
+            const decorationTray =
+                decorateContainer ||
+                document.getElementById(
+                    "cookieGameDecorationTray"
+                );
 
-                    const handleDecoration = function () {
-                        if (!cookieGameState.lastTopping) return;
-                        cookieGameAddTopping(cookie, cookieGameState.lastTopping);
-                    };
+            if (decorationTray) {
 
-                    cookie.addEventListener("click", handleDecoration);
-                    cookie.addEventListener("keydown", function (event) {
-                        if (event.key === "Enter" || event.key === " ") {
-                            event.preventDefault();
-                            handleDecoration();
-                        }
-                    });
+                decorationTray.innerHTML = "";
 
-                    decorateContainer.appendChild(cookie);
-                });
+                cookieGameState.cookies.forEach(
+                    function (
+                        shape,
+                        index
+                    ) {
+
+                        const cookie =
+                            document.createElement(
+                                "div"
+                            );
+
+                        cookie.className =
+                            "cookie-game-decorated-cookie decorating-cookie";
+
+                        cookie.dataset.cookieDecorations =
+                            "0";
+
+                        cookie.dataset.cookieShape =
+                            shape;
+
+                        cookie.setAttribute(
+                            "role",
+                            "button"
+                        );
+
+                        cookie.setAttribute(
+                            "aria-label",
+                            "Galleta para decorar " +
+                            (index + 1)
+                        );
+
+                        cookie.tabIndex = 0;
+
+                        const handleDecoration =
+                            function () {
+
+                                if (
+                                    !cookieGameState.lastTopping
+                                ) {
+                                    return;
+                                }
+
+                                cookieGameAddTopping(
+                                    cookie,
+                                    cookieGameState.lastTopping
+                                );
+                            };
+
+                        cookie.addEventListener(
+                            "click",
+                            handleDecoration
+                        );
+
+                        cookie.addEventListener(
+                            "keydown",
+                            function (event) {
+
+                                if (
+                                    event.key === "Enter" ||
+                                    event.key === " "
+                                ) {
+
+                                    event.preventDefault();
+
+                                    handleDecoration();
+                                }
+                            }
+                        );
+
+                        decorationTray.appendChild(
+                            cookie
+                        );
+
+                    }
+                );
             }
 
-            const counter = document.getElementById("cookieGameDecorationCounter");
-            if (counter) counter.textContent = "Elige un topping y toca una galleta 💗";
+            const counter =
+                document.getElementById(
+                    "cookieGameDecorationCounter"
+                );
+
+            if (counter) {
+
+                counter.textContent =
+                    "Elige un topping y toca las galletas 💗";
+            }
+
+            const msg =
+                document.getElementById(
+                    "decorationMessage"
+                );
+
+            if (msg) {
+
+                msg.textContent =
+                    "Combina toppings y consigue 8 decoraciones para desbloquear el final. ✨";
+            }
         }
 
-        function cookieGameAddTopping(cookie, topping) {
-            const current = Number(cookie.dataset.cookieDecorations || 0);
-            if (current >= 4) return;
+        function cookieGameAddTopping(
+            cookie,
+            topping
+        ) {
 
-            cookie.dataset.cookieDecorations = current + 1;
+            if (!cookie || !topping) {
+                return;
+            }
+
+            const current =
+                Number(
+                    cookie.dataset.cookieDecorations ||
+                    0
+                );
+
+            if (current >= 4) {
+                return;
+            }
+
+            cookie.dataset.cookieDecorations =
+                current + 1;
+
             cookieGameState.decorations++;
 
-            const toppingElement = document.createElement("span");
-            toppingElement.className = "topping-on-cookie";
+            cookieGameIncreaseCombo();
+
+            const toppingElement =
+                document.createElement("span");
+
+            toppingElement.className =
+                "cookie-game-topping-item topping-on-cookie";
 
             const toppingSymbols = {
+
                 chocolate: "🍫",
+
                 glaseado: "🤍",
+
                 virutas: "🌈",
+
                 corazon: "💗",
+
                 estrella: "⭐"
             };
 
-            toppingElement.textContent = toppingSymbols[topping] || "✨";
-            toppingElement.style.left = (15 + Math.random() * 60) + "%";
-            toppingElement.style.top = (10 + Math.random() * 60) + "%";
+            toppingElement.textContent =
+                toppingSymbols[topping] ||
+                "✨";
 
-            cookie.appendChild(toppingElement);
-            cookieGameCreateParticles(2);
+            toppingElement.style.left =
+                (
+                    12 +
+                    Math.random() * 66
+                ) + "%";
 
-            const counterText = "Decoraciones: " + cookieGameState.decorations;
-            const counter = document.getElementById("cookieGameDecorationCounter");
-            if (counter) counter.textContent = counterText;
+            toppingElement.style.top =
+                (
+                    8 +
+                    Math.random() * 66
+                ) + "%";
 
-            const finishBtn = document.getElementById("cookieGameFinishButton");
-            if (finishBtn && cookieGameState.decorations >= cookieGameState.requiredDecorations) {
+            cookie.appendChild(
+                toppingElement
+            );
+
+            cookie.classList.add(
+                "flawless"
+            );
+
+            cookieGameAddScore(
+                35 +
+                Math.min(
+                    cookieGameState.combo * 3,
+                    30
+                ),
+                cookie
+            );
+
+            cookieGameCreateParticles(3);
+
+            const counterText =
+                "Decoraciones: " +
+                cookieGameState.decorations +
+                " / " +
+                cookieGameState.requiredDecorations;
+
+            const counter =
+                document.getElementById(
+                    "cookieGameDecorationCounter"
+                );
+
+            if (counter) {
+
+                counter.textContent =
+                    counterText +
+                    " · ¡Sigue! ✨";
+            }
+
+            const msg =
+                document.getElementById(
+                    "decorationMessage"
+                );
+
+            if (msg) {
+
+                msg.textContent =
+                    counterText;
+            }
+
+            const finishBtn =
+                document.getElementById(
+                    "cookieGameFinishButton"
+                );
+
+            if (
+                finishBtn &&
+                cookieGameState.decorations >=
+                cookieGameState.requiredDecorations
+            ) {
+
+                cookieGameAddScore(250);
+
                 finishBtn.disabled = false;
+
+                finishBtn.textContent =
+                    "¡Reclamar premio! 🏆✨";
+
+                if (counter) {
+
+                    counter.textContent =
+                        "¡Objetivo completado! " +
+                        "Has desbloqueado el premio final. 🏆💗";
+                }
             }
         }
 
         function cookieGameReset() {
-            if (cookieGameState.bakingInterval) {
-                clearInterval(cookieGameState.bakingInterval);
-                cookieGameState.bakingInterval = null;
+
+            if (
+                cookieGameState.bakingInterval
+            ) {
+
+                clearInterval(
+                    cookieGameState.bakingInterval
+                );
+
+                cookieGameState.bakingInterval =
+                    null;
             }
 
-            cookieGameState.currentStep = 1;
-            cookieGameState.ingredients = [];
-            cookieGameState.mixCount = 0;
-            cookieGameState.cookies = [];
-            cookieGameState.decorations = 0;
-            cookieGameState.lastTopping = null;
+            cookieGameState.currentStep =
+                1;
 
-            const ingredients = document.querySelectorAll(".ingredient");
-            ingredients.forEach(function (ing) { ing.classList.remove("added"); });
+            cookieGameState.ingredients =
+                [];
 
-            const countEl = document.getElementById("ingredientCount");
-            if (countEl) countEl.textContent = "0";
+            cookieGameState.mixCount =
+                0;
 
-            const mixture = document.getElementById("cookieGameSmallMixture");
-            if (mixture) mixture.classList.remove("visible");
+            cookieGameState.cookies =
+                [];
 
-            const mixCountSpan = document.getElementById("mixCount");
-            if (mixCountSpan) mixCountSpan.textContent = "0";
+            cookieGameState.decorations =
+                0;
 
-            const dough = document.getElementById("cookieGameDough");
+            cookieGameState.lastTopping =
+                null;
+
+            cookieGameState.score =
+                0;
+
+            cookieGameState.combo =
+                0;
+
+            const ingredients =
+                document.querySelectorAll(
+                    ".cookie-game-ingredient, .ingredient"
+                );
+
+            ingredients.forEach(
+                function (ing) {
+
+                    ing.classList.remove(
+                        "added",
+                        "perfect-hit"
+                    );
+                }
+            );
+
+            const bowlCountEl =
+                document.getElementById(
+                    "cookieGameBowlCount"
+                );
+
+            if (bowlCountEl) {
+
+                bowlCountEl.innerHTML =
+                    '<span id="ingredientCount">0</span> / ' +
+                    cookieGameState.requiredIngredients;
+            }
+
+            const mixture =
+                document.getElementById(
+                    "cookieGameSmallMixture"
+                );
+
+            if (mixture) {
+
+                mixture.classList.remove(
+                    "visible",
+                    "mixed"
+                );
+            }
+
+            const mixCountSpan =
+                document.getElementById(
+                    "mixCount"
+                );
+
+            if (mixCountSpan) {
+
+                mixCountSpan.textContent =
+                    "0";
+            }
+
+            const mixCountEl =
+                document.getElementById(
+                    "cookieGameMixCount"
+                );
+
+            if (mixCountEl) {
+
+                mixCountEl.innerHTML =
+                    '<span id="mixCount">0</span> / ' +
+                    cookieGameState.requiredMixes;
+            }
+
+            const dough =
+                document.getElementById(
+                    "cookieGameDough"
+                );
+
             if (dough) {
-                dough.classList.remove("ready");
-                dough.style.transform = "translateX(-50%) scale(1)";
+
+                dough.classList.remove(
+                    "ready"
+                );
+
+                dough.style.transform =
+                    "translateX(-50%) scale(1)";
             }
 
-            const mixingArea = document.getElementById("cookieGameMixingArea");
-            if (mixingArea) mixingArea.classList.remove("mixing");
+            const mixingArea =
+                document.getElementById(
+                    "cookieGameMixingArea"
+                );
 
-            const createdCookies = document.getElementById("createdCookies");
-            if (createdCookies) createdCookies.innerHTML = "";
+            if (mixingArea) {
 
-            const bakeBtn = document.getElementById("cookieGameBakeButton");
-            if (bakeBtn) bakeBtn.disabled = true;
+                mixingArea.classList.remove(
+                    "mixing"
+                );
+            }
 
-            const ovenCookies = document.getElementById("ovenCookies");
-            if (ovenCookies) ovenCookies.innerHTML = "";
+            const createdCookies =
+                document.getElementById(
+                    "createdCookies"
+                );
 
-            const fill = document.getElementById("cookieGameBakingFill");
-            if (fill) fill.style.width = "0%";
+            if (createdCookies) {
 
-            const display = document.getElementById("cookieGameOvenDisplay");
-            if (display) display.textContent = "0%";
+                createdCookies.innerHTML =
+                    "";
+            }
 
-            const bakeText = document.getElementById("cookieGameBakingText");
-            if (bakeText) bakeText.textContent = "Horneando con mucho cariño... 💗";
+            const shapeTray =
+                document.getElementById(
+                    "cookieGameShapeTray"
+                );
 
-            const decorateCookies = document.getElementById("decorateCookies");
-            if (decorateCookies) decorateCookies.innerHTML = "";
+            if (
+                shapeTray &&
+                !createdCookies
+            ) {
 
-            const counter = document.getElementById("cookieGameDecorationCounter");
-            if (counter) counter.textContent = "Decoraciones: 0";
+                shapeTray.innerHTML =
+                    "";
+            }
 
-            const finishBtn = document.getElementById("cookieGameFinishButton");
-            if (finishBtn) finishBtn.disabled = true;
+            const bakeBtn =
+                document.getElementById(
+                    "cookieGameBakeButton"
+                );
 
-            const result = document.getElementById("cookieGameResult");
-            if (result) result.classList.remove("active");
+            if (bakeBtn) {
 
-            const cookieGame = document.getElementById("cookieGame");
-            if (cookieGame) cookieGame.classList.remove("character-mixing", "character-celebrating");
+                bakeBtn.disabled = true;
 
-            const toppings = document.querySelectorAll(".topping-button");
-            toppings.forEach(function (item) { item.style.transform = ""; });
+                bakeBtn.textContent =
+                    "Meter 5+ al horno 🔥";
+            }
+
+            const ovenCookies =
+                document.getElementById(
+                    "ovenCookies"
+                );
+
+            if (ovenCookies) {
+
+                ovenCookies.innerHTML =
+                    "";
+            }
+
+            const ovenTray =
+                document.getElementById(
+                    "cookieGameOvenTray"
+                );
+
+            if (
+                ovenTray &&
+                !ovenCookies
+            ) {
+
+                ovenTray.innerHTML =
+                    "";
+            }
+
+            const fill =
+                document.getElementById(
+                    "cookieGameBakingFill"
+                ) ||
+                document.getElementById(
+                    "ovenProgressFill"
+                );
+
+            if (fill) {
+
+                fill.style.width =
+                    "0%";
+            }
+
+            const display =
+                document.getElementById(
+                    "cookieGameOvenDisplay"
+                );
+
+            if (display) {
+
+                display.textContent =
+                    "0%";
+            }
+
+            const bakeText =
+                document.getElementById(
+                    "cookieGameBakingText"
+                ) ||
+                document.getElementById(
+                    "ovenProgressText"
+                );
+
+            if (bakeText) {
+
+                bakeText.textContent =
+                    "Horneando con mucho cariño... 💗";
+            }
+
+            const decorateCookies =
+                document.getElementById(
+                    "decorateCookies"
+                );
+
+            if (decorateCookies) {
+
+                decorateCookies.innerHTML =
+                    "";
+            }
+
+            const decTray =
+                document.getElementById(
+                    "cookieGameDecorationTray"
+                );
+
+            if (
+                decTray &&
+                !decorateCookies
+            ) {
+
+                decTray.innerHTML =
+                    "";
+            }
+
+            const counter =
+                document.getElementById(
+                    "cookieGameDecorationCounter"
+                );
+
+            if (counter) {
+
+                counter.textContent =
+                    "Decoraciones: 0 / 8";
+            }
+
+            const decMsg =
+                document.getElementById(
+                    "decorationMessage"
+                );
+
+            if (decMsg) {
+
+                decMsg.textContent =
+                    "Elige un topping y toca una galleta 💗";
+            }
+
+            const finishBtn =
+                document.getElementById(
+                    "cookieGameFinishButton"
+                );
+
+            if (finishBtn) {
+
+                finishBtn.disabled = true;
+
+                finishBtn.textContent =
+                    "Terminar galletitas ✨";
+            }
+
+            const result =
+                document.getElementById(
+                    "cookieGameResult"
+                );
+
+            if (result) {
+
+                result.classList.remove(
+                    "active"
+                );
+            }
+
+            const finalScore =
+                document.getElementById(
+                    "cookieGameFinalScore"
+                );
+
+            if (finalScore) {
+
+                finalScore.textContent =
+                    "0";
+            }
+
+            const cookieGame =
+                document.getElementById(
+                    "cookieGame"
+                );
+
+            if (cookieGame) {
+
+                cookieGame.classList.remove(
+                    "character-mixing",
+                    "character-celebrating"
+                );
+            }
+
+            const toppings =
+                document.querySelectorAll(
+                    ".cookie-game-topping, .topping-button"
+                );
+
+            toppings.forEach(
+                function (item) {
+
+                    item.style.transform =
+                        "";
+                }
+            );
+
+            const shapeButtons =
+                document.querySelectorAll(
+                    ".cookie-game-shape-button, .shape-button"
+                );
+
+            shapeButtons.forEach(
+                function (item) {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+                }
+            );
+
+            updateCookieGameHUD();
 
             cookieGameGoToStep(1);
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "Escape") {
-                    closeCookieGame();
-                }
-            });
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-            cookieGameGoToStep(1);
-        });
+                document.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key ===
+                            "Escape"
+                        ) {
+
+                            closeCookieGame();
+                        }
+                    }
+                );
+
+                cookieGameGoToStep(1);
+
+                updateCookieGameHUD();
+
+            }
+        );
+
     </script>
+
 </body>
 </html>
